@@ -1,9 +1,45 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
+<head>
+    <title>Sofia Silva</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="shortcut icon" href="files/favicon.ico">
+    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+    <link href='https://fonts.googleapis.com/css?family=Raleway:500,400,300,200,100' rel='stylesheet' type='text/css'>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</head>
 
 <body>
-    <h1>Hello World</h1>
-    <p>I'm hosted with GitHub Pages.</p>
+    <canvas class="container" id="container" role="main"></canvas>
+    <div class="content">
+        <h1>Sofia Silva</h1>
+        <p>Informatics and Computing Engineering Student @FEUP, Portugal</p>
+        <ul class="contact">
+            <li>
+                <a href="mailto:sofialcfsilva@gmail.com">sofialcfsilva@gmail.com</a>
+            </li>
+            <li>
+                <a target="_top" href="https://www.behance.net/sofialcfsilva">Behance</a>
+            </li>
+            <li>
+                <a target="_top" href="https://si.linkedin.com/in/sofialcfsilva">LinkedIn</a>
+            </li>
+            <li>
+                <a target="_top" href="files/cv.pdf">CV</a>
+            </li>
+        </ul>
+    </div>
+    </div>
+    <div class="blur blurTop">
+        <canvas class="canvas" id="blurCanvasTop"></canvas>
+    </div>
+    <div class="blur blurBottom">
+        <canvas width="1000px" height="1000px" class="canvas" id="blurCanvasBottom"></canvas>
+    </div>
+    <script src="js/background.js"></script>
 </body>
 
 </html>
