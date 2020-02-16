@@ -80,21 +80,21 @@ class About extends React.Component {
                     <h4>Languages</h4>
                     <div className="language">
                       <div className="d-flex">
-                        <span>🇵🇹</span>
+                        <span role="img" aria-label="emoji portugal flag">🇵🇹</span>
                         <h5>Portuguese</h5>
                       </div>
                       <p>Native</p>
                     </div>
                     <div className="language">
                       <div className="d-flex">
-                        <span>🇬🇧</span>
+                        <span role="img" aria-label="emoji uk flag">🇬🇧</span>
                         <h5>English</h5>
                       </div>
                       <p>Fluent</p>
                     </div>
                     <div className="language">
                       <div className="d-flex">
-                        <span>🇪🇸</span>
+                        <span role="img" aria-label="emoji spain flag">🇪🇸</span>
                         <h5>Spanish</h5>
                       </div>
                       <p>Intermediate</p>
