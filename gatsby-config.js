@@ -12,5 +12,5 @@ module.exports = {
     siteUrl: config.siteUrl,
     description: config.siteDescription,
   },
-  plugins: [`gatsby-plugin-sass`, `gatsby-plugin-react-helmet`],
+  plugins: [`gatsby-plugin-sass`, `gatsby-plugin-react-helmet`, `gatsby-plugin-styled-components`],
 }
