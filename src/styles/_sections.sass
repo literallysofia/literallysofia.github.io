@@ -1,0 +1,33 @@
+section
+    padding: 2em 0
+    [class*="col-"]
+        &:first-child
+            padding-left: 0
+        &:last-child
+            padding-right: 0
+    h3
+        font-size: 30px
+        counter-increment: item 1
+        &:before
+            content: '0' counter(item) '.'
+            color: $redColor
+            margin-right: 1em
+            font-family: $font-mono
+            font-weight: normal
+            font-size: 0.7em
+    p
+        font-size: 20px
+    img
+        transition: all 1s ease-in-out
+    h4
+        font-size: 24px
+    ul
+        list-style: none
+        padding: 0
+        li
+            font-family: $font-mono
+            font-size: 14px
+            &:before
+                content: '\26AC'
+                color: $orangeColor
+                margin-right: 1em

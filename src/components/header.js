@@ -1,6 +1,6 @@
 import React from "react"
 import { Link } from "gatsby"
-import { Navbar, Nav, Button } from "react-bootstrap"
+import { Navbar, Nav } from "react-bootstrap"
 import { navLinks } from "../config"
 import logo from "../images/Logo.png"
 import BurgerSqueeze from "@animated-burgers/burger-squeeze"
@@ -31,7 +31,7 @@ class Header extends React.Component {
             onClick={this.handleClick}
           />
         </Navbar.Toggle>
-        
+
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="ml-auto">
             {navLinks &&
