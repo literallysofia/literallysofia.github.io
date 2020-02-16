@@ -1,6 +1,5 @@
 import React from "react"
 import File from "../../static/cv.pdf"
-import { Link } from "gatsby"
 
 export default () => (
   <section className="hero">

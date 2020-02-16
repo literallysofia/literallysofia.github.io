@@ -1,5 +1,5 @@
 import React from "react"
-import { Layout, Header, Hero, Footer } from '../components';
+import { Layout, Hero } from '../components';
 
 export default () => (
   <Layout>
