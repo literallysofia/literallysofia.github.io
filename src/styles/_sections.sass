@@ -5,6 +5,10 @@ section
             padding-left: 0
         &:last-child
             padding-right: 0
+        @include media-breakpoint-down(md)
+            padding: 0
+            &:not(:last-child)
+                margin-bottom: 2em
     h3
         font-size: 30px
         counter-increment: item 1
@@ -17,8 +21,6 @@ section
             font-size: 0.7em
     p
         font-size: 20px
-    img
-        transition: all 1s ease-in-out
     h4
         font-size: 24px
     ul
@@ -31,3 +33,21 @@ section
                 content: '\26AC'
                 color: $orangeColor
                 margin-right: 1em
+    .education
+        span, a
+            font-family: $font-mono
+            font-size: 14px
+        a
+            text-decoration: none
+            color: $redColor
+        &:not(:last-child)
+            margin-bottom: 2em
+    .language
+        p
+            font-family: $font-mono
+            font-size: 14px
+        span
+            font-size: 20px
+            margin: -5px 5px 0 0
+        &:not(:last-child)
+            margin-bottom: 2em

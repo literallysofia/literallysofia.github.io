@@ -1,4 +1,5 @@
 import React from "react"
+import { Link } from "gatsby"
 import { Container, Row, Col, Image } from "react-bootstrap"
 import ProfileNormal from "../images/sofia-normal.jpg"
 import ProfileHover from "../images/sofia-hover.jpg"
@@ -15,8 +16,8 @@ class About extends React.Component {
         <h3>About</h3>
         <Container fluid>
           <Row>
-            <Col sm={9}>
-              <p>
+            <Col sm={12} md={9}>
+              <p className="mb-4">
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ut
                 commodo ex, vitae efficitur odio. Proin eget consectetur risus.
                 Ut accumsan et dolor quis vulputate. Etiam sagittis turpis non
@@ -29,10 +30,25 @@ class About extends React.Component {
               </p>
               <Container fluid>
                 <Row>
-                  <Col sm>
+                  <Col md={12} lg={4}>
                     <h4>Education</h4>
+                    <div className="education">
+                      <span>Sep 2015 - Present</span>
+                      <h5>
+                        Integrated Master’s in Informatics and Computing
+                        Engineering
+                      </h5>
+                      <Link to="">
+                        @ Faculdade de Engenharia da Universidade do Porto
+                      </Link>
+                    </div>
+                    <div className="education">
+                      <span>Sep 2019 - Jan 2020</span>
+                      <h5>Programme Erasmus+ Studies</h5>
+                      <Link to="">@ Universidad Politécnica de Madrid</Link>
+                    </div>
                   </Col>
-                  <Col sm>
+                  <Col md={12} lg={4}>
                     <h4>Skills</h4>
                     <div className="d-flex justify-content-between">
                       <ul>
@@ -60,13 +76,34 @@ class About extends React.Component {
                       <li>Sketch</li>
                     </ul>
                   </Col>
-                  <Col sm>
+                  <Col md={12} lg={4}>
                     <h4>Languages</h4>
+                    <div className="language">
+                      <div className="d-flex">
+                        <span>🇵🇹</span>
+                        <h5>Portuguese</h5>
+                      </div>
+                      <p>Native</p>
+                    </div>
+                    <div className="language">
+                      <div className="d-flex">
+                        <span>🇬🇧</span>
+                        <h5>English</h5>
+                      </div>
+                      <p>Fluent</p>
+                    </div>
+                    <div className="language">
+                      <div className="d-flex">
+                        <span>🇪🇸</span>
+                        <h5>Spanish</h5>
+                      </div>
+                      <p>Intermediate</p>
+                    </div>
                   </Col>
                 </Row>
               </Container>
             </Col>
-            <Col sm={3}>
+            <Col sm={12} md={3}>
               <Image
                 src={this.state.hovered ? ProfileNormal : ProfileHover}
                 rounded
