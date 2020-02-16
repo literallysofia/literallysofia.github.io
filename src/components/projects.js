@@ -11,7 +11,9 @@ class Projects extends React.Component {
   render() {
     return (
       <section>
-        <h3>Projects</h3>
+        <h3 className="heading">
+          <span>03.</span>Projects
+        </h3>
       </section>
     )
   }

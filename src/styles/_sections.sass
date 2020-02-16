@@ -9,11 +9,10 @@ section
             padding: 0
             &:not(:last-child)
                 margin-bottom: 2em
-    h3
+    .heading
         font-size: 30px
-        counter-increment: item 1
-        &:before
-            content: '0' counter(item) '.'
+        margin-bottom: 1.2em
+        span
             color: $redColor
             margin-right: 1em
             font-family: $font-mono

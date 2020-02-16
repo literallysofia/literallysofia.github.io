@@ -122,6 +122,26 @@ header
     width: 70%
     @include media-breakpoint-down(md)
       width: 100%
+  .social-media
+    display: flex
+    align-items: center
+    padding: 0
+    list-style: none
+    &:before
+      content: ""
+      width: 20px
+      height: 1px
+      margin-right: 1.5em
+      background-color: $nudeColor
+    li
+      font-size: 20px
+      &:not(:last-child)
+        margin-right: 1em
+      a
+        color: $redColor
+        transition: all 0.2s ease-in-out
+        &:hover
+          color: $orangeColor
 
 .btn-primary
   background: $redColor

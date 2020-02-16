@@ -13,7 +13,10 @@ class About extends React.Component {
   render() {
     return (
       <section>
-        <h3>About</h3>
+        <h3 className="heading">
+          <span>01.</span>About
+        </h3>
+
         <Container fluid>
           <Row>
             <Col sm={12} md={9}>
@@ -30,7 +33,7 @@ class About extends React.Component {
               </p>
               <Container fluid>
                 <Row>
-                  <Col md={12} lg={4}>
+                  <Col md={12} lg={5}>
                     <h4>Education</h4>
                     <div className="education">
                       <span>Sep 2015 - Present</span>
@@ -38,14 +41,42 @@ class About extends React.Component {
                         Integrated Master’s in Informatics and Computing
                         Engineering
                       </h5>
-                      <Link to="">
-                        @ Faculdade de Engenharia da Universidade do Porto
-                      </Link>
+                      <a href="https://sigarra.up.pt/feup/pt">@ Faculdade de Engenharia da Universidade do Porto</a>
                     </div>
                     <div className="education">
                       <span>Sep 2019 - Jan 2020</span>
                       <h5>Programme Erasmus+ Studies</h5>
-                      <Link to="">@ Universidad Politécnica de Madrid</Link>
+                      <a href="https://www.fi.upm.es">@ Universidad Politécnica de Madrid</a>
+                    </div>
+                  </Col>
+                  <Col md={12} lg={3}>
+                    <h4>Languages</h4>
+                    <div className="language">
+                      <div className="d-flex">
+                        <span role="img" aria-label="emoji portugal flag">
+                          🇵🇹
+                        </span>
+                        <h5>Portuguese</h5>
+                      </div>
+                      <p>Native</p>
+                    </div>
+                    <div className="language">
+                      <div className="d-flex">
+                        <span role="img" aria-label="emoji uk flag">
+                          🇬🇧
+                        </span>
+                        <h5>English</h5>
+                      </div>
+                      <p>Fluent</p>
+                    </div>
+                    <div className="language">
+                      <div className="d-flex">
+                        <span role="img" aria-label="emoji spain flag">
+                          🇪🇸
+                        </span>
+                        <h5>Spanish</h5>
+                      </div>
+                      <p>Intermediate</p>
                     </div>
                   </Col>
                   <Col md={12} lg={4}>
@@ -75,30 +106,6 @@ class About extends React.Component {
                       <li>Figma</li>
                       <li>Sketch</li>
                     </ul>
-                  </Col>
-                  <Col md={12} lg={4}>
-                    <h4>Languages</h4>
-                    <div className="language">
-                      <div className="d-flex">
-                        <span role="img" aria-label="emoji portugal flag">🇵🇹</span>
-                        <h5>Portuguese</h5>
-                      </div>
-                      <p>Native</p>
-                    </div>
-                    <div className="language">
-                      <div className="d-flex">
-                        <span role="img" aria-label="emoji uk flag">🇬🇧</span>
-                        <h5>English</h5>
-                      </div>
-                      <p>Fluent</p>
-                    </div>
-                    <div className="language">
-                      <div className="d-flex">
-                        <span role="img" aria-label="emoji spain flag">🇪🇸</span>
-                        <h5>Spanish</h5>
-                      </div>
-                      <p>Intermediate</p>
-                    </div>
                   </Col>
                 </Row>
               </Container>

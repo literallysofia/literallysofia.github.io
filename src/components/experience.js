@@ -11,7 +11,9 @@ class Experience extends React.Component {
   render() {
     return (
       <section>
-        <h3>Experience</h3>
+        <h3 className="heading">
+          <span>02.</span>Experience
+        </h3>
       </section>
     )
   }
