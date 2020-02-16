@@ -21,15 +21,7 @@ class About extends React.Component {
           <Row>
             <Col sm={12} md={9}>
               <p className="mb-4">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ut
-                commodo ex, vitae efficitur odio. Proin eget consectetur risus.
-                Ut accumsan et dolor quis vulputate. Etiam sagittis turpis non
-                convallis pulvinar. Proin porttitor volutpat condimentum. Sed a
-                neque metus. Nulla facilisi. Nulla finibus massa eu urna
-                euismod, eu mattis eros tincidunt. Donec eleifend nisl aliquam,
-                accumsan eros at, cursus libero. Duis commodo enim at tortor
-                egestas tempor. Ut rutrum, est nec mattis commodo, libero nunc
-                cursus orci, non aliquet ligula turpis ac leo.
+                Hello! I'm Sofia, a software engineer based in Porto, Portugal. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ut commodo ex, vitae efficitur odio. Proin eget consectetur risus. Ut accumsan et dolor quis vulputate. Etiam sagittis turpis non convallis pulvinar. Proin porttitor volutpat condimentum.
               </p>
               <Container fluid>
                 <Row>
@@ -41,12 +33,16 @@ class About extends React.Component {
                         Integrated Master’s in Informatics and Computing
                         Engineering
                       </h5>
-                      <a href="https://sigarra.up.pt/feup/pt">@ Faculdade de Engenharia da Universidade do Porto</a>
+                      <a href="https://sigarra.up.pt/feup/pt">
+                        @ Faculdade de Engenharia da Universidade do Porto
+                      </a>
                     </div>
                     <div className="education">
                       <span>Sep 2019 - Jan 2020</span>
                       <h5>Programme Erasmus+ Studies</h5>
-                      <a href="https://www.fi.upm.es">@ Universidad Politécnica de Madrid</a>
+                      <a href="https://www.fi.upm.es">
+                        @ Universidad Politécnica de Madrid
+                      </a>
                     </div>
                   </Col>
                   <Col md={12} lg={3}>
@@ -81,24 +77,21 @@ class About extends React.Component {
                   </Col>
                   <Col md={12} lg={4}>
                     <h4>Skills</h4>
+                    <h5>Technologies</h5>
                     <div className="d-flex justify-content-between">
                       <ul>
                         <li>JavaScript</li>
+                        <li>TypeScript</li>
                         <li>C/C++/C#</li>
                         <li>Java</li>
-                        <li>TypeScript</li>
-                        <li>Angular</li>
-                        <li>React</li>
-                        <li>Vue</li>
+                        <li>Node.js</li>
                       </ul>
                       <ul>
                         <li>HTML & (S)CSS</li>
-                        <li>Node.js</li>
-                        <li>PHP</li>
-                        <li>Laravel</li>
+                        <li>Angular</li>
+                        <li>React</li>
+                        <li>Vue</li>
                         <li>Android</li>
-                        <li>Ionic</li>
-                        <li>SQLite</li>
                       </ul>
                     </div>
                     <h5>Design Tools</h5>
