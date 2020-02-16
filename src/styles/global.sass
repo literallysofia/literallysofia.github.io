@@ -1,0 +1,121 @@
+@use 'typography.sass'
+
+$font-calibre: "Calibre", sans-serif
+$font-mono: "SF Mono", monospace
+$redColor: #BB5A5A
+$orangeColor: #E79E85
+$nudeColor: #EACEB4
+$sandColor: #F2E9D0
+$greyColor: #FBFBFD
+
+html, body
+  font: 100% $font-calibre
+  background: $greyColor
+  margin: 0
+
+main
+  padding: 0 8em
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6
+  font-weight: 600
+  margin: 0 0 10px 0
+
+header
+  position: fixed
+  top: 0
+  right: 0
+  width: 100%
+  z-index: 10
+
+.navbar
+  display: flex
+  justify-content: space-between
+  align-items: center
+  padding: 1em 3em
+  background: $greyColor
+  ul
+    display: flex
+    align-items: center
+    padding: 0
+    margin: 0
+    list-style: none
+    li
+      margin: 0 1em
+      font-size: 1em
+      counter-increment: item 1
+      transition: all 0.2s ease-in-out
+      position: relative
+      &:before
+        content: '0' counter(item) '.'
+        font-family: $font-mono
+        color: $redColor
+        font-size: 0.8em
+        margin-right: 1em
+      &:after
+        content: ""
+        position: absolute
+        bottom: 0
+        width: 0px
+        height: 1px
+        left: 0
+        margin: 5px 0 0
+        transition: all 0.2s ease-in-out
+        transition-duration: 0.75s
+        opacity: 0
+        background-color: $nudeColor
+      &:hover
+        &:after
+          width: 100%
+          opacity: 1
+      a
+        text-decoration: none
+        color: black
+
+.hero
+  min-height: 100vh !important
+  display: flex
+  justify-content: center
+  align-items: center
+  .hero-inner
+    padding-top: 90px
+    *
+      margin: 0
+  h1
+    font-family: $font-mono
+    color: $orangeColor
+    font-size: 20px
+    font-weight: normal
+    padding-bottom: 1em
+  h2
+    font-size: 90px
+  p
+    font-size: 20px
+    padding: 2em 0
+    width: 70%
+
+button
+  background: $redColor
+  border-radius: 5px
+  font-family: $font-mono
+  font-size: 14px
+  color: white
+  border: none
+  padding: 0.8em 1.4em
+  cursor: pointer
+  transition: all 0.2s linear
+  box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.2)
+  &:hover
+    background: $orangeColor
+
+footer
+  text-align: center
+  font-family: $font-mono
+  font-size: 12px
+  padding: 1em 0
+  background: $nudeColor
+  color: white
