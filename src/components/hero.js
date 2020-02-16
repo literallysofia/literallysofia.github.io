@@ -1,8 +1,9 @@
 import React from "react"
+import { Jumbotron, Button } from "react-bootstrap"
 import File from "../../static/cv.pdf"
 
 export default () => (
-  <section className="hero">
+  <Jumbotron fluid className="hero">
     <div className="hero-inner">
       <h1>Hello, my name is</h1>
       <h2>Sofia Silva.</h2>
@@ -13,8 +14,9 @@ export default () => (
         a greater good.
       </p>
       <a href={File} target="_blank" rel="nofollow noopener noreferrer">
-        <button type="button">Resume</button>
+        <Button variant="primary">Resume</Button>
       </a>
     </div>
-  </section>
+    
+  </Jumbotron>
 )
