@@ -1,6 +1,4 @@
 import React from "react"
-import { Link } from "gatsby"
-import { Container, Row, Col, Image } from "react-bootstrap"
 
 class Experience extends React.Component {
   constructor(props) {
@@ -10,7 +8,7 @@ class Experience extends React.Component {
 
   render() {
     return (
-      <section>
+      <section id="experience" className="target">
         <h3 className="heading">
           <span>02.</span>Experience
         </h3>

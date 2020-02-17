@@ -1,5 +1,4 @@
 import React from "react"
-import { Link } from "gatsby"
 import { Container, Row, Col, Image } from "react-bootstrap"
 import ProfileNormal from "../images/sofia-normal.jpg"
 import ProfileHover from "../images/sofia-hover.jpg"
@@ -12,7 +11,7 @@ class About extends React.Component {
 
   render() {
     return (
-      <section>
+      <section id="about" className="target">
         <h3 className="heading">
           <span>01.</span>About
         </h3>
@@ -21,7 +20,11 @@ class About extends React.Component {
           <Row>
             <Col sm={12} md={9}>
               <p className="mb-4">
-                Hello! I'm Sofia, a software engineer based in Porto, Portugal. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ut commodo ex, vitae efficitur odio. Proin eget consectetur risus. Ut accumsan et dolor quis vulputate. Etiam sagittis turpis non convallis pulvinar. Proin porttitor volutpat condimentum.
+                Hello! I'm Sofia, a software engineer based in Porto, Portugal.
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ut
+                commodo ex, vitae efficitur odio. Proin eget consectetur risus.
+                Ut accumsan et dolor quis vulputate. Etiam sagittis turpis non
+                convallis pulvinar. Proin porttitor volutpat condimentum.
               </p>
               <Container fluid>
                 <Row>
@@ -110,7 +113,9 @@ class About extends React.Component {
                 fluid
                 alt="Sofia"
                 onMouseOut={() => this.setState({ hovered: true })}
+                onBlur={() => this.setState({ hovered: true })}
                 onMouseOver={() => this.setState({ hovered: false })}
+                onFocus={() => this.setState({ hovered: false })}
               />
             </Col>
           </Row>

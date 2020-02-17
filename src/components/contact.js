@@ -1,6 +1,4 @@
 import React from "react"
-import { Link } from "gatsby"
-import { Container, Row, Col, Image } from "react-bootstrap"
 
 class Contact extends React.Component {
   constructor(props) {
@@ -10,7 +8,7 @@ class Contact extends React.Component {
 
   render() {
     return (
-      <section>
+      <section id="contact" className="target">
         <h3 className="heading">
           <span>04.</span>Contact
         </h3>

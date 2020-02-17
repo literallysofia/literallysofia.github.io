@@ -4,41 +4,60 @@ import { Navbar, Nav } from "react-bootstrap"
 import { navLinks } from "../config"
 import logo from "../images/Logo.png"
 import BurgerSqueeze from "@animated-burgers/burger-squeeze"
+import scrollTo from "gatsby-plugin-smoothscroll"
 
 class Header extends React.Component {
   constructor(props) {
     super(props)
-    this.state = { isActive: false }
+    this.state = { isActive: false, scrolled: false }
     this.handleClick = this.handleClick.bind(this)
+    this.handleScroll = this.handleScroll.bind(this)
   }
 
   handleClick = () => {
     this.setState(state => ({ isActive: !state.isActive }))
   }
 
+  handleScroll = () => {
+    if (document.documentElement.scrollTop > 0) {
+      this.setState({ scrolled: true })
+    } else {
+      this.setState({ scrolled: false })
+    }
+  }
+
+  componentDidMount() {
+    window.onscroll = () => this.handleScroll()
+  }
+
   render() {
     return (
-      <Navbar fixed="top" expand="lg">
+      <Navbar
+        fixed="top"
+        expand="lg"
+        onToggle={this.handleClick}
+        expanded={this.state.isActive}
+        className={this.state.scrolled ? "scroll" : ""}
+      >
         <Navbar.Brand>
           <Link to="/">
             <img src={logo} alt="Logo" />
           </Link>
         </Navbar.Brand>
 
-        <Navbar.Toggle aria-controls="basic-navbar-nav">
-          <BurgerSqueeze
-            isOpen={this.state.isActive}
-            onClick={this.handleClick}
-          />
+        <Navbar.Toggle>
+          <BurgerSqueeze isOpen={this.state.isActive} />
         </Navbar.Toggle>
 
-        <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className="ml-auto">
+        <Navbar.Collapse>
+          <Nav className="ml-auto" onSelect={this.state.isActive ? this.handleClick : null}>
             {navLinks &&
               navLinks.map(({ url, name }, i) => (
-                <li key={i}>
-                  <Link to={url}>{name}</Link>
-                </li>
+                <Nav.Item key={i}>
+                  <Nav.Link eventKey={name} onClick={() => scrollTo(url)}>
+                    {name}
+                  </Nav.Link>
+                </Nav.Item>
               ))}
           </Nav>
         </Navbar.Collapse>

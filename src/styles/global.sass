@@ -38,12 +38,13 @@ ul
   list-style: none
   padding: 0
 
-header
-  position: fixed
-  top: 0
-  right: 0
-  width: 100%
-  z-index: 10
+button
+  border: none !important
+  outline: none !important
+  cursor: pointer
+
+.target
+  padding-top: 120px
 
 .navbar
   display: flex
@@ -51,14 +52,13 @@ header
   align-items: center
   padding: 1em 3em
   background: $greyColor
-  .navbar-toggler
-    border: none
-    outline: none
+  transition: all 0.3s ease-in
+  &.scroll
+    box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.2)
   .navbar-nav
-    display: flex
-    align-items: center
-    margin: 0
-    li
+    .nav-item
+      display: flex
+      align-items: center
       font-family: $font-mono
       margin: 0 1em
       font-size: 13px
@@ -85,16 +85,17 @@ header
         &:after
           width: 100%
           opacity: 1
-      a
+      a.nav-link
         text-decoration: none
         color: black
+        padding: 0
 
 @include media-breakpoint-down(md)
   .navbar
     padding: 1em 2em
   .navbar-nav
     align-items: flex-start !important
-    li
+    .nav-item
       margin: 1em 0 !important
       font-size: 1em !important
       &:before
@@ -106,6 +107,7 @@ header
   justify-content: center
   align-items: center
   background: none
+  margin: 0
   .hero-inner
     padding-top: 90px
     *
@@ -151,7 +153,6 @@ header
   color: white
   border: none
   padding: 0.8em 1.4em
-  cursor: pointer
   transition: all 0.2s linear
   box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.2)
   &:hover
