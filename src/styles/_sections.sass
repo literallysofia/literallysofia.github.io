@@ -80,3 +80,39 @@ section
             margin-bottom: 0.4em
         &:not(:last-child)
             margin-bottom: 3em
+
+#projects
+    .card
+        border: none
+        box-shadow: 0px 0px 15px 0px rgba(0,0,0,0.1)
+        padding: 1em 1em 0 1em
+        .card-text
+            font-size: 17px
+        .card-header
+            font-family: $font-mono
+            font-size: 25px
+            border: none
+            background: none
+            display: flex
+            justify-content: flex-end
+        .card-body
+            padding-top: 0
+        ul
+            display: flex
+            align-items: center
+        li
+            font-size: 14px
+            &:before
+                content: ''
+                margin: 0
+            &:not(:last-child)
+                margin-right: 1em
+        a
+            color: $redColor
+            &:hover
+                color: $orangeColor
+        .tags li
+            font-size: 12px
+            color: $orangeColor
+        &:not(:last-child)
+            margin-bottom: 2em
