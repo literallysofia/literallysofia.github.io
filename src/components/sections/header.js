@@ -1,6 +1,6 @@
 import React from "react"
 import { Link } from "gatsby"
-import { Navbar, Nav } from "react-bootstrap"
+import { Navbar, Nav, Button } from "react-bootstrap"
 import { navLinks } from "../../config"
 import logo from "../../images/Logo.png"
 import BurgerSqueeze from "@animated-burgers/burger-squeeze"
@@ -59,6 +59,7 @@ class Header extends React.Component {
                   </Nav.Link>
                 </Nav.Item>
               ))}
+              <Button variant="secondary" href="mailto: sofialcfsilva@gmail.com">Contact</Button>
           </Nav>
         </Navbar.Collapse>
       </Navbar>

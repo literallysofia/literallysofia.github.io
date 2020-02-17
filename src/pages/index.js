@@ -1,5 +1,5 @@
 import React from "react"
-import { Layout, Hero, About, Experience, Projects, Contact } from "../components"
+import { Layout, Hero, About, Experience, Projects } from "../components"
 
 export default () => (
   <Layout>
@@ -8,7 +8,6 @@ export default () => (
       <About />
       <Experience />
       <Projects />
-      <Contact />
     </main>
   </Layout>
 )

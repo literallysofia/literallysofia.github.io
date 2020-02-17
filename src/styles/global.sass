@@ -16,9 +16,9 @@ html, body
   margin: 0
 
 main
-  padding: 0 8em
+  padding: 0 8em 5em 8em
   @include media-breakpoint-down(md)
-    padding: 0 2em
+    padding: 0 2em 2em 2em
 
 h1,
 h2,
@@ -160,6 +160,23 @@ button
   &:hover
     background: $orangeColor
     color: white
+
+.btn-secondary
+  background: $redColor
+  border-radius: 5px
+  font-family: $font-mono
+  font-size: 13px
+  color: white
+  border: none
+  padding: 0.8em 1.4em
+  transition: all 0.2s linear
+  margin-left: 1em
+  &:hover
+    background: $orangeColor
+    color: white
+  @include media-breakpoint-down(md)
+    margin-left: 0
+    width: 100%
 
 .burger .burger-lines,
 .burger .burger-lines:after,

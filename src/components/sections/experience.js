@@ -4,7 +4,6 @@ import { Card } from "react-bootstrap"
 class Experience extends React.Component {
   constructor(props) {
     super(props)
-    this.state = { hovered: false }
   }
 
   render() {
