@@ -1,7 +1,7 @@
 import React from "react"
 import { Container, Row, Col, Image } from "react-bootstrap"
-import ProfileNormal from "../images/sofia-normal.jpg"
-import ProfileHover from "../images/sofia-hover.jpg"
+import ProfileNormal from "../../images/sofia-normal.jpg"
+import ProfileHover from "../../images/sofia-hover.jpg"
 
 class About extends React.Component {
   constructor(props) {

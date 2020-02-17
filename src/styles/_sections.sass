@@ -34,7 +34,6 @@ section
             font-family: $font-mono
             font-size: 14px
         a
-            text-decoration: none
             color: $redColor
         &:not(:last-child)
             margin-bottom: 2em
@@ -47,3 +46,37 @@ section
             margin: -5px 5px 0 0
         &:not(:last-child)
             margin-bottom: 2em
+
+#experience
+    .card-list
+        margin-left: 0.6em
+        padding-left: 3.8em
+        border-left: thick solid $orangeColor
+
+    .card
+        border: none
+        box-shadow: 0px 0px 15px 0px rgba(0,0,0,0.1)
+        &::after
+            content: ''
+            position: absolute
+            width: 25px
+            height: 25px
+            background-color: white
+            border: 3px solid $orangeColor
+            top: 0.5em
+            left: -4.7em
+            border-radius: 50%
+            z-index: 1
+            color: $orangeColor
+        .card-header
+            font-family: $font-mono
+            font-size: 14px
+            border: none
+        a
+            color: $redColor
+            &:before
+                content: '@ '
+        li:not(:last-child)
+            margin-bottom: 0.4em
+        &:not(:last-child)
+            margin-bottom: 3em

@@ -1,8 +1,8 @@
 import React from "react"
 import { Link } from "gatsby"
 import { Navbar, Nav } from "react-bootstrap"
-import { navLinks } from "../config"
-import logo from "../images/Logo.png"
+import { navLinks } from "../../config"
+import logo from "../../images/Logo.png"
 import BurgerSqueeze from "@animated-burgers/burger-squeeze"
 import scrollTo from "gatsby-plugin-smoothscroll"
 

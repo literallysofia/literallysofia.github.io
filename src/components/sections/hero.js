@@ -6,8 +6,8 @@ import {
   faLinkedinIn,
   faBehance,
 } from "@fortawesome/free-brands-svg-icons"
-import { socialMedia } from "../config"
-import File from "../../static/cv.pdf"
+import { socialMedia } from "../../config"
+import File from "../../../static/cv.pdf"
 
 class Hero extends React.Component {
   constructor(props) {

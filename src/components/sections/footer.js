@@ -5,7 +5,7 @@ import {
   faLinkedinIn,
   faBehance,
 } from "@fortawesome/free-brands-svg-icons"
-import { socialMedia } from "../config"
+import { socialMedia } from "../../config"
 
 class Footer extends React.Component {
   constructor(props) {
