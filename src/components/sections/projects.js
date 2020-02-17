@@ -37,26 +37,6 @@ class Projects extends React.Component {
                   </ul>
                 </Card.Body>
               </Card>
-              <Card>
-                <Card.Header>
-                  <a href="">
-                    <FontAwesomeIcon icon={faGithub} />
-                  </a>
-                </Card.Header>
-                <Card.Body>
-                  <Card.Title as="h4">Aurora</Card.Title>
-                  <Card.Text>
-                    A hack and slash game developed for the Computer Games
-                    Development (DJCO) class of the Master in Informatics and
-                    Computer Engineering (MIEIC) at the Faculty of Engineering
-                    of the University of Porto (FEUP).
-                  </Card.Text>
-                  <ul className="tags">
-                    <li>Tech</li>
-                    <li>Tech</li>
-                  </ul>
-                </Card.Body>
-              </Card>
             </Col>
             <Col sm={12} md={6} lg={4}>
               <Card>

@@ -7,8 +7,6 @@ section
             padding-right: 0
         @include media-breakpoint-down(md)
             padding: 0
-            &:not(:last-child)
-                margin-bottom: 2em
     .heading
         font-size: 30px
         margin-bottom: 1.2em
@@ -86,8 +84,10 @@ section
         border: none
         box-shadow: 0px 0px 15px 0px rgba(0,0,0,0.1)
         padding: 1em 1em 0 1em
+        height: 100%
         .card-text
             font-size: 17px
+            flex-grow: 1
         .card-header
             font-family: $font-mono
             font-size: 25px
@@ -97,6 +97,8 @@ section
             justify-content: flex-end
         .card-body
             padding-top: 0
+            display: flex
+            flex-direction: column
         ul
             display: flex
             align-items: center
