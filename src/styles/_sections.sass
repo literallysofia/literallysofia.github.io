@@ -33,8 +33,6 @@ section
         span, a
             font-family: $font-mono
             font-size: 14px
-        a
-            color: $redColor
         &:not(:last-child)
             margin-bottom: 2em
     .language
@@ -76,9 +74,7 @@ section
                 font-family: $font-mono
                 font-size: 14px
                 border: none
-            a
-                color: $redColor
-                &:before
+            a:before
                     content: '@ '
             li:not(:last-child)
                 margin-bottom: 0.4em
@@ -115,10 +111,6 @@ section
                 margin: 0
             &:not(:last-child)
                 margin-right: 1em
-        a
-            color: $redColor
-            &:hover
-                color: $orangeColor
         .tags li
             font-size: 12px
             color: $orangeColor

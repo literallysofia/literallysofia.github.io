@@ -3,9 +3,6 @@ import { Card } from "react-bootstrap"
 import ScrollAnimation from "react-animate-on-scroll"
 
 class Experience extends React.Component {
-  constructor(props) {
-    super(props)
-  }
 
   render() {
     return (

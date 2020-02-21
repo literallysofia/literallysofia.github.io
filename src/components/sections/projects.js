@@ -5,9 +5,6 @@ import { faGithub, faBehance } from "@fortawesome/free-brands-svg-icons"
 import ScrollAnimation from "react-animate-on-scroll"
 
 class Projects extends React.Component {
-  constructor(props) {
-    super(props)
-  }
 
   render() {
     return (
