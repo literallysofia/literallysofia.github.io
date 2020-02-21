@@ -2,9 +2,9 @@ import React from "react"
 import { Link } from "gatsby"
 import { Navbar, Nav, Button } from "react-bootstrap"
 import { navLinks } from "../../config"
-import logo from "../../images/Logo.png"
 import BurgerSqueeze from "@animated-burgers/burger-squeeze"
 import scrollTo from "gatsby-plugin-smoothscroll"
+import logo from "../../images/Logo.png"
 
 class Header extends React.Component {
   constructor(props) {
@@ -50,7 +50,10 @@ class Header extends React.Component {
         </Navbar.Toggle>
 
         <Navbar.Collapse>
-          <Nav className="ml-auto" onSelect={this.state.isActive ? this.handleClick : null}>
+          <Nav
+            className="ml-auto"
+            onSelect={this.state.isActive ? this.handleClick : null}
+          >
             {navLinks &&
               navLinks.map(({ url, name }, i) => (
                 <Nav.Item key={i}>
@@ -59,7 +62,9 @@ class Header extends React.Component {
                   </Nav.Link>
                 </Nav.Item>
               ))}
-              <Button variant="secondary" href="mailto: sofialcfsilva@gmail.com">Contact</Button>
+            <Button variant="secondary" href="mailto: sofialcfsilva@gmail.com">
+              Contact
+            </Button>
           </Nav>
         </Navbar.Collapse>
       </Navbar>

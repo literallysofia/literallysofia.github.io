@@ -1,5 +1,6 @@
 import React from "react"
 import { Jumbotron, Button } from "react-bootstrap"
+import ScrollAnimation from "react-animate-on-scroll"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import {
   faGithub,
@@ -32,25 +33,35 @@ class Hero extends React.Component {
     return (
       <Jumbotron fluid className="hero">
         <div className="hero-inner">
-          <h1>Hello, my name is</h1>
-          <h2>Sofia Silva.</h2>
-          <ul className="social-media">
-            {socialMedia &&
-              socialMedia.map(({ url, name }, i) => (
-                <li key={i}>
-                  <a href={url}>{this.renderSwitch(name)}</a>
-                </li>
-              ))}
-          </ul>
-          <p>
-            I'm a woman in engineering who is enthusiastic about UX/UI design,
-            interactive systems, and keen on web/mobile development. I love to
-            be involved in projects that allow me to share my passion and
-            contribute to a greater good.
-          </p>
-          <a href={File} target="_blank" rel="nofollow noopener noreferrer">
-            <Button variant="primary">Resume</Button>
-          </a>
+          <ScrollAnimation animateIn="fadeInUp" animateOnce={true}>
+            <h1>Hello, my name is</h1>
+          </ScrollAnimation>
+          <ScrollAnimation animateIn="fadeInUp" delay={500} animateOnce={true}>
+            <h2>Sofia Silva.</h2>
+          </ScrollAnimation>
+          <ScrollAnimation animateIn="fadeInUp" delay={1000} animateOnce={true}>
+            <ul className="social-media">
+              {socialMedia &&
+                socialMedia.map(({ url, name }, i) => (
+                  <li key={i}>
+                    <a href={url}>{this.renderSwitch(name)}</a>
+                  </li>
+                ))}
+            </ul>
+          </ScrollAnimation>
+          <ScrollAnimation animateIn="fadeInUp" delay={1500} animateOnce={true}>
+            <p>
+              I'm a woman in engineering who is enthusiastic about UX/UI design,
+              interactive systems, and keen on web/mobile development. I love to
+              be involved in projects that allow me to share my passion and
+              contribute to a greater good.
+            </p>
+          </ScrollAnimation>
+          <ScrollAnimation animateIn="fadeInUp" delay={2000} animateOnce={true}>
+            <a href={File} target="_blank" rel="nofollow noopener noreferrer">
+              <Button variant="primary">Resume</Button>
+            </a>
+          </ScrollAnimation>
         </div>
       </Jumbotron>
     )
