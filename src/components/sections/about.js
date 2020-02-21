@@ -81,7 +81,7 @@ class About extends React.Component {
                   <Col md={12} lg={4}>
                     <h4>Skills</h4>
                     <h5>Technologies</h5>
-                    <div className="d-flex justify-content-between">
+                    <div className="d-flex">
                       <ul>
                         <li>JavaScript</li>
                         <li>TypeScript</li>
@@ -108,14 +108,14 @@ class About extends React.Component {
             </Col>
             <Col sm={12} md={3}>
               <Image
-                src={this.state.hovered ? ProfileNormal : ProfileHover}
+                src={this.state.hovered ? ProfileHover : ProfileNormal}
                 rounded
                 fluid
                 alt="Sofia"
-                onMouseOut={() => this.setState({ hovered: true })}
-                onBlur={() => this.setState({ hovered: true })}
-                onMouseOver={() => this.setState({ hovered: false })}
-                onFocus={() => this.setState({ hovered: false })}
+                onMouseOut={() => this.setState({ hovered: false })}
+                onBlur={() => this.setState({ hovered: false })}
+                onMouseOver={() => this.setState({ hovered: true })}
+                onFocus={() => this.setState({ hovered: true })}
               />
             </Col>
           </Row>
