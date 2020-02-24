@@ -29,10 +29,10 @@ class About extends React.Component {
           <Container fluid>
             <Row>
               <Col sm={12} md={9}>
-                <p
-                  className="mb-4"
+                <div
+                  className="description"
                   dangerouslySetInnerHTML={{ __html: html }}
-                ></p>
+                ></div>
                 <Container fluid>
                   <Row>
                     <Col md={12} lg={5}>
