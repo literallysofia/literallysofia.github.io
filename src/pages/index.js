@@ -7,7 +7,7 @@ export default ({ data }) => (
     <main>
       <Hero />
       <About data={data.about.edges} />
-      <Experience />
+      <Experience data={data.experience.edges} />
       <Projects />
     </main>
   </Layout>
@@ -15,7 +15,9 @@ export default ({ data }) => (
 
 export const pageQuery = graphql`
   {
-    about: allMarkdownRemark(filter: { fileAbsolutePath: { regex: "/about/" } }) {
+    about: allMarkdownRemark(
+      filter: { fileAbsolutePath: { regex: "/about/" } }
+    ) {
       edges {
         node {
           frontmatter {
@@ -33,6 +35,25 @@ export const pageQuery = graphql`
             }
             skills
             tools
+          }
+          html
+        }
+      }
+    }
+    experience: allMarkdownRemark(
+      filter: { fileAbsolutePath: { regex: "/experience/" } }
+    ) {
+      edges {
+        node {
+          frontmatter {
+            title
+            jobs {
+              date
+              title
+              company
+              web
+              bio
+            }
           }
           html
         }
