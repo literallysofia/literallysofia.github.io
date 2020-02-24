@@ -4,7 +4,7 @@ import { Navbar, Nav, Button } from "react-bootstrap"
 import { navLinks } from "../../config"
 import BurgerSqueeze from "@animated-burgers/burger-squeeze"
 import scrollTo from "gatsby-plugin-smoothscroll"
-import logo from "../../images/Logo.png"
+import logo from "../../images/logo.svg"
 
 class Header extends React.Component {
   constructor(props) {
