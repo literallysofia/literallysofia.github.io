@@ -5,82 +5,52 @@ import { faGithub, faBehance } from "@fortawesome/free-brands-svg-icons"
 import ScrollAnimation from "react-animate-on-scroll"
 
 class Projects extends React.Component {
+  constructor(props) {
+    super(props)
+    this.data = props.data
+  }
 
   render() {
+    const { frontmatter } = this.data[0].node
+    const { title, projects } = frontmatter
+
     return (
       <section id="projects" className="target">
         <ScrollAnimation animateIn="fadeIn" animateOnce={true}>
           <h3 className="heading">
-            <span>03.</span>Projects
+            <span>03.</span>{title}
           </h3>
           <Container fluid>
             <Row>
-              <Col sm={12} md={6} lg={4}>
-                <Card>
-                  <Card.Header>
-                    <a href="">
-                      <FontAwesomeIcon icon={faGithub} />
-                    </a>
-                  </Card.Header>
-                  <Card.Body>
-                    <Card.Title as="h4">Aurora</Card.Title>
-                    <Card.Text>
-                      A hack and slash game developed for the Computer Games
-                      Development (DJCO) class of the Master in Informatics and
-                      Computer Engineering (MIEIC) at the Faculty of Engineering
-                      of the University of Porto (FEUP).
-                    </Card.Text>
-                    <ul className="tags">
-                      <li>Tech</li>
-                      <li>Tech</li>
-                    </ul>
-                  </Card.Body>
-                </Card>
-              </Col>
-              <Col sm={12} md={6} lg={4}>
-                <Card>
-                  <Card.Header>
-                    <a href="">
-                      <FontAwesomeIcon icon={faGithub} />
-                    </a>
-                  </Card.Header>
-                  <Card.Body>
-                    <Card.Title as="h4">Aurora</Card.Title>
-                    <Card.Text>
-                      A hack and slash game developed for the Computer Games
-                      Development (DJCO) class of the Master in Informatics and
-                      Computer Engineering (MIEIC) at the Faculty of Engineering
-                      of the University of Porto (FEUP).
-                    </Card.Text>
-                    <ul className="tags">
-                      <li>Tech</li>
-                      <li>Tech</li>
-                    </ul>
-                  </Card.Body>
-                </Card>
-              </Col>
-              <Col sm={12} md={6} lg={4}>
-                <Card>
-                  <Card.Header>
-                    <a href="">
-                      <FontAwesomeIcon icon={faGithub} />
-                    </a>
-                  </Card.Header>
-                  <Card.Body>
-                    <Card.Title as="h4">Aurora</Card.Title>
-                    <Card.Text>
-                      A hack and slash game developed for the Computer Games
-                      Development (DJCO) class of the Master in Informatics and
-                      Computer Engineering (MIEIC) at the Faculty of Engineering
-                      of the University of Porto (FEUP).
-                    </Card.Text>
-                    <ul className="tags">
-                      <li>Tech</li>
-                      <li>Tech</li>
-                    </ul>
-                  </Card.Body>
-                </Card>
-              </Col>
+              {projects &&
+                projects.map((project, i) => (
+                  <Col sm={12} md={6} lg={4} key={i}>
+                    <Card>
+                      <Card.Header>
+                        {project.github !== "" && (
+                          <a href={project.github}>
+                            <FontAwesomeIcon icon={faGithub} />
+                          </a>
+                        )}
+                        {project.behance !== "" && (
+                          <a href={project.behance}>
+                            <FontAwesomeIcon icon={faBehance} />
+                          </a>
+                        )}
+                      </Card.Header>
+                      <Card.Body>
+                        <Card.Title as="h4">{project.title}</Card.Title>
+                        <Card.Text>{project.abstract}</Card.Text>
+                        <ul className="tags">
+                          {project.keywords &&
+                            project.keywords.map((item, j) => (
+                              <li key={j}>{item}</li>
+                            ))}
+                        </ul>
+                      </Card.Body>
+                    </Card>
+                  </Col>
+                ))}
             </Row>
           </Container>
         </ScrollAnimation>

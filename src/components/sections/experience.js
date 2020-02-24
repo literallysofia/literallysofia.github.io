@@ -9,8 +9,9 @@ class Experience extends React.Component {
   }
 
   render() {
-    const { frontmatter, html } = this.data[0].node
+    const { frontmatter } = this.data[0].node
     const { title, jobs } = frontmatter
+
     return (
       <section id="experience" className="target">
         <ScrollAnimation animateIn="fadeIn" animateOnce={true}>

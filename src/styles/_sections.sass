@@ -1,14 +1,5 @@
 section
     padding: 1em 0
-    [class*="col-"]
-        &:first-child
-            padding-left: 0
-        &:last-child
-            padding-right: 0
-        @include media-breakpoint-down(md)
-            padding: 0
-            &:not(:last-child)
-                margin-bottom: 2em
     .heading
         font-size: 30px
         margin-bottom: 1.2em
@@ -48,6 +39,15 @@ section
             margin-bottom: 2em
 
 #about
+    [class*="col-"]
+        &:first-child
+            padding-left: 0
+        &:last-child
+            padding-right: 0
+        @include media-breakpoint-down(md)
+            padding: 0
+            &:not(:last-child)
+                margin-bottom: 2em
     ul:not(:last-child)
         margin-right: 2em
 
@@ -84,6 +84,27 @@ section
             margin-bottom: 3em
 
 #projects
+    [class*="col-"]
+        &:nth-child(n)
+            padding-left: 0
+        &:nth-child(3n)
+            padding-right: 0
+        &:nth-child(n + 4)
+            padding-top: 1em
+        @include media-breakpoint-down(md)
+            &:nth-child(2n)
+                padding-right: 0
+            &:nth-child(3n)
+                padding-right: 15px
+            &:nth-child(n + 3)
+                padding-top: 1em
+            @include media-breakpoint-down(sm)
+                &:nth-child(n)
+                    padding-right: 0
+                &:nth-child(3n)
+                    padding-right: 0
+                &:nth-child(n + 2)
+                    padding-top: 1em
     .card
         border: none
         box-shadow: 0px 0px 15px 0px rgba(0,0,0,0.1)
@@ -93,28 +114,28 @@ section
             font-size: 17px
             flex-grow: 1
         .card-header
-            font-family: $font-mono
-            font-size: 25px
+            font-size: 20px
             border: none
             background: none
             display: flex
             justify-content: flex-end
+            a:not(:last-child)
+                margin-right: 1em
         .card-body
             padding-top: 0
+            padding-bottom: 0.5em
             display: flex
             flex-direction: column
         ul
             display: flex
             align-items: center
-        li
-            font-size: 14px
+            flex-wrap: wrap
+            line-height: 1.2em
+        .tags li
+            font-size: 12px
+            color: $orangeColor
             &:before
                 content: ''
                 margin: 0
             &:not(:last-child)
                 margin-right: 1em
-        .tags li
-            font-size: 12px
-            color: $orangeColor
-        &:not(:last-child)
-            margin-bottom: 2em

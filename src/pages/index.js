@@ -8,7 +8,7 @@ export default ({ data }) => (
       <Hero />
       <About data={data.about.edges} />
       <Experience data={data.experience.edges} />
-      <Projects />
+      <Projects data={data.projects.edges} />
     </main>
   </Layout>
 )
@@ -53,6 +53,25 @@ export const pageQuery = graphql`
               company
               web
               bio
+            }
+          }
+          html
+        }
+      }
+    }
+    projects: allMarkdownRemark(
+      filter: { fileAbsolutePath: { regex: "/projects/" } }
+    ) {
+      edges {
+        node {
+          frontmatter {
+            title
+            projects {
+              title
+              abstract
+              github
+              behance
+              keywords
             }
           }
           html
