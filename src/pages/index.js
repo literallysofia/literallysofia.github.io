@@ -5,7 +5,7 @@ import { Layout, Hero, About, Experience, Projects } from "../components"
 export default ({ data }) => (
   <Layout>
     <main>
-      <Hero />
+      <Hero data={data.hero.edges} />
       <About data={data.about.edges} />
       <Experience data={data.experience.edges} />
       <Projects data={data.projects.edges} />
@@ -15,6 +15,17 @@ export default ({ data }) => (
 
 export const pageQuery = graphql`
   {
+    hero: allMarkdownRemark(filter: { fileAbsolutePath: { regex: "/hero/" } }) {
+      edges {
+        node {
+          frontmatter {
+            title
+            subtitle
+          }
+          html
+        }
+      }
+    }
     about: allMarkdownRemark(
       filter: { fileAbsolutePath: { regex: "/about/" } }
     ) {

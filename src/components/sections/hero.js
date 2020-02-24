@@ -13,6 +13,7 @@ import File from "../../../static/cv.pdf"
 class Hero extends React.Component {
   constructor(props) {
     super(props)
+    this.data = props.data
     this.renderSwitch = this.renderSwitch.bind(this)
   }
 
@@ -30,14 +31,17 @@ class Hero extends React.Component {
   }
 
   render() {
+    const { frontmatter, html } = this.data[0].node
+    const { title, subtitle } = frontmatter
+
     return (
       <Jumbotron fluid className="hero">
         <div className="hero-inner">
           <ScrollAnimation animateIn="fadeInUp" animateOnce={true}>
-            <h1>Hello, my name is</h1>
+            <h1>{subtitle}</h1>
           </ScrollAnimation>
           <ScrollAnimation animateIn="fadeInUp" delay={500} animateOnce={true}>
-            <h2>Sofia Silva.</h2>
+            <h2>{title}</h2>
           </ScrollAnimation>
           <ScrollAnimation animateIn="fadeInUp" delay={1000} animateOnce={true}>
             <ul className="social-media">
@@ -50,12 +54,7 @@ class Hero extends React.Component {
             </ul>
           </ScrollAnimation>
           <ScrollAnimation animateIn="fadeInUp" delay={1500} animateOnce={true}>
-            <p>
-              I'm a woman in engineering who is enthusiastic about UX/UI design,
-              interactive systems, and keen on web/mobile development. I love to
-              be involved in projects that allow me to share my passion and
-              contribute to a greater good.
-            </p>
+            <div dangerouslySetInnerHTML={{ __html: html }}></div>
           </ScrollAnimation>
           <ScrollAnimation animateIn="fadeInUp" delay={2000} animateOnce={true}>
             <a href={File} target="_blank" rel="nofollow noopener noreferrer">
