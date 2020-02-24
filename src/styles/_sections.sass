@@ -33,6 +33,8 @@ section
         span, a
             font-family: $font-mono
             font-size: 14px
+        a:before
+            content: '@ '
         &:not(:last-child)
             margin-bottom: 2em
     .language
@@ -75,7 +77,7 @@ section
                 font-size: 14px
                 border: none
             a:before
-                    content: '@ '
+                content: '@ '
             li:not(:last-child)
                 margin-bottom: 0.4em
         &:not(:last-child)

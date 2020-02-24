@@ -1,13 +1,42 @@
 import React from "react"
+import { graphql } from "gatsby"
 import { Layout, Hero, About, Experience, Projects } from "../components"
 
-export default () => (
+export default ({ data }) => (
   <Layout>
     <main>
       <Hero />
-      <About />
+      <About data={data.about.edges} />
       <Experience />
       <Projects />
     </main>
   </Layout>
 )
+
+export const pageQuery = graphql`
+  {
+    about: allMarkdownRemark(filter: { fileAbsolutePath: { regex: "/about/" } }) {
+      edges {
+        node {
+          frontmatter {
+            title
+            education {
+              date
+              degree
+              school
+              web
+            }
+            languages {
+              language
+              icon
+              level
+            }
+            skills
+            tools
+          }
+          html
+        }
+      }
+    }
+  }
+`
