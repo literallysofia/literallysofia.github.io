@@ -1,6 +1,7 @@
 import React from "react"
 import { Container, Row, Col, Image } from "react-bootstrap"
 import ScrollAnimation from "react-animate-on-scroll"
+import Emoji from "react-emoji-render"
 import ProfileNormal from "../../images/sofia-normal.jpg"
 import ProfileHover from "../../images/sofia-hover.jpg"
 
@@ -52,9 +53,7 @@ class About extends React.Component {
                         languages.map((item, i) => (
                           <div className="language" key={i}>
                             <div className="d-flex">
-                              <span role="img" aria-label="emoji flag">
-                                {item.icon}
-                              </span>
+                              <Emoji text={item.icon} />
                               <h5>{item.language}</h5>
                             </div>
                             <p>{item.level}</p>

@@ -55,7 +55,7 @@ section
     .card-list
         margin-left: 0.6em
         padding-left: 3.8em
-        border-left: thick solid $orangeColor
+        border-left: thick solid $nudeColor
         @include media-breakpoint-down(sm)
             padding-left: 2.8em
     .card-item
@@ -65,12 +65,11 @@ section
             width: 25px
             height: 25px
             background-color: white
-            border: 3px solid $orangeColor
+            border: 3px solid $nudeColor
             margin-top: 0.5em
             margin-left: -4.7em
             border-radius: 50%
             z-index: 1
-            color: $orangeColor
             @include media-breakpoint-down(sm)
                 margin-left: -3.7em
         .card
@@ -116,6 +115,9 @@ section
         box-shadow: 0px 0px 15px 0px rgba(0,0,0,0.1)
         padding: 1em 1em 0 1em
         height: 100%
+        transition: all 0.2s linear
+        &:hover
+            transform: translateY(-5px)
         .card-text
             font-size: 17px
             flex-grow: 1

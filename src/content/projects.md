@@ -49,7 +49,7 @@ projects:
       abstract: "A web application where users can store and share to-do lists. This website was inspired in the previous version of Meraki, the android app.",
       github: https://github.com/literallysofia/feup-ltw,
       behance: https://www.behance.net/gallery/59839535/Meraki-Website,
-      keywords: ["HTML", "CSS", "JS", "PHP", "Sketch"],
+      keywords: ["HTML", "CSS", "JS", "PHP", "UI/UX", "Sketch"],
     },
     {
       title: IEEE Cybersecurity Week,
