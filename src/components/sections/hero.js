@@ -56,7 +56,7 @@ class Hero extends React.Component {
           <ScrollAnimation animateIn="fadeInUp" delay={1500} animateOnce={true}>
             <div dangerouslySetInnerHTML={{ __html: html }}></div>
           </ScrollAnimation>
-          <ScrollAnimation animateIn="fadeInUp" delay={2000} animateOnce={true}>
+          <ScrollAnimation animateIn="fadeInUp" delay={2000} animateOnce={true} offset={50}>
             <a href={File} target="_blank" rel="nofollow noopener noreferrer">
               <Button variant="primary">Resume</Button>
             </a>
