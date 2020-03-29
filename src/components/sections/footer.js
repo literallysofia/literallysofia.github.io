@@ -37,7 +37,7 @@ class Footer extends React.Component {
               </li>
             ))}
         </ul>
-        <span>© 2020 Sofia Silva</span>
+        <span>Built with Gatsby © 2020 Sofia Silva</span>
       </footer>
     )
   }

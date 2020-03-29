@@ -3,6 +3,16 @@ title: Experience
 jobs:
   [
     {
+      date: Jan 2020 - Present,
+      title: Vice Chair,
+      company: ACM FEUP Student Chapter,
+      web: https://www.facebook.com/acmfeup,
+      bio:
+        [
+          "Founder, designer, and marketing manager.",
+        ],
+    },
+    {
       date: Nov 2018 - Present,
       title: Active Member,
       company: IEEE UP Student Branch,
