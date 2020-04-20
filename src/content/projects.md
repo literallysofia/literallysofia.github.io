@@ -24,11 +24,6 @@ projects:
       keywords: ["UI/UX", "Figma"],
     },
     {
-      title: VOU WordPress Theme,
-      abstract: "A WordPress theme for the University Volunteer Association (VOU).",
-      keywords: ["WordPress", "PHP", "Gulp", "UI/UX", "Figma"],
-    },
-    {
       title: Meraki App,
       abstract: "An android application where users can store tasks and organize them by date, category or location.",
       github: "https://github.com/literallysofia/feup-lpoo",
