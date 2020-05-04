@@ -43,6 +43,7 @@ class About extends React.Component {
                           <div className="education" key={i}>
                             <span>{item.date}</span>
                             <h5>{item.degree}</h5>
+                            <p>{item.details}</p>
                             <a href={item.web}>{item.school}</a>
                           </div>
                         ))}

@@ -5,13 +5,15 @@ education: [
         date: Sep 2015 - Present,
         degree: Integrated Master’s in Informatics and Computing Engineering,
         school: Faculdade de Engenharia da Universidade do Porto,
-        web: https://sigarra.up.pt/feup/pt
+        web: https://sigarra.up.pt/feup/pt,
+        details: "Master Thesis: Generation of hand-drawn wireframes from real websites."
     },
     {
         date: Sep 2019 - Jan 2020,
-        degree: Programme Erasmus+ Studies,
+        degree: Erasmus+ Exchange Program,
         school: Universidad Politécnica de Madrid,
-        web: https://www.fi.upm.es
+        web: https://www.fi.upm.es,
+        details: "Concentration in Human-Computer Interaction, Design, and Software Engineering."
     }
 ]
 languages: [

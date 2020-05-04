@@ -37,7 +37,8 @@ export const pageQuery = graphql`
               date
               degree
               school
-              web
+              web,
+              details
             }
             languages {
               language
