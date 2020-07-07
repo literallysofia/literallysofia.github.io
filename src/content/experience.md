@@ -23,18 +23,6 @@ jobs:
         ],
     },
     {
-      date: Jun 2017 - Present,
-      title: "Web Developer, Marketing Manager and Designer",
-      company: Porto Campus Studios,
-      web: http://portocampustudios.com,
-      bio:
-        [
-          "Branding and product design.",
-          "Developed a website based on Wordpress.",
-          "Marketing and social media management during the launch of the company.",
-        ],
-    },
-    {
       date: Jul 2019,
       title: Teaching Assistant,
       company: Universidade Júnior,
@@ -43,6 +31,18 @@ jobs:
         [
           "Universidade Júnior is a summer course program at the University of Porto, aimed at students in the 2nd and 3rd cycle of basic education and secondary education (typically up to the 11th year).",
           "Taught programming to children from the age of 11 to 14.",
+        ],
+    },
+    {
+      date: Jun 2017 - Jun 2019,
+      title: "Web Developer, Marketing Manager and Designer",
+      company: Porto Campus Studios,
+      web: http://portocampustudios.com,
+      bio:
+        [
+          "Branding and product design.",
+          "Developed a website based on Wordpress.",
+          "Marketing and social media management during the launch of the company.",
         ],
     },
     {
