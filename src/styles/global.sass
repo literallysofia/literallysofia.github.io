@@ -1,16 +1,21 @@
 @import '~bootstrap/scss/bootstrap.scss'
 @import '~animate.css/animate.min.css'
 
-$font-calibre: 'Playfair Display', serif //delete
-$font-mono: 'Raleway', sans-serif //delete
+// DELETE
+$font-calibre: 'Playfair Display', serif
+$font-mono: 'Raleway', sans-serif
+$redColor: #BB5A5A
+$sandColor: #F7F3F0
+$nudeColor: #EACEB4
+$greyColor: #FBFBFD
+
 $font-playfair: 'Playfair Display', serif
 $font-raleway: 'Raleway', sans-serif
 $font-poppins: 'Poppins', sans-serif
-$redColor: #BB5A5A
-$orangeColor: #E79E85
-$nudeColor: #EACEB4
-$sandColor: #F2E9D0
-$greyColor: #FBFBFD
+$lightColor: #F7F3F0
+$orangeColor: #C38352
+$blueColor: #71A7B2
+$darkColor: #403F3F
 
 $transition: all 0.4s ease-out
 
@@ -73,32 +78,38 @@ button
   transition: all 0.3s ease-in
   &.scroll
     box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.2)
-  .navbar-brand a img
-    height: 50px !important
+  .navbar-brand
+    padding: 0 !important
+    margin: 0 !important
+    font-weight: 900
+    font-size: 6em
+    transition: $transition
+    &.scroll
+      font-size: 3em
+    &:after
+      content: '.'
+      color: $orangeColor
   .navbar-nav
+    padding-bottom: 2em
+    transition: $transition
+    &.scroll
+      padding-bottom: 0 !important
     .nav-item
-      display: flex
-      align-items: center
-      font-family: $font-mono
-      margin: 0 1em
-      font-size: 13px
-      counter-increment: item 1
+      font-family: $font-raleway
+      text-transform: uppercase
+      margin-left: 3em
       position: relative
-      &:before
-        content: '0' counter(item) '.'
-        color: $redColor
-        margin-right: 1em
       &:after
         content: ""
         position: absolute
-        bottom: 10px
+        bottom: -3px
         width: 0
-        height: 1px
+        height: 3px
         left: 0
         transition: all 0.2s ease-in-out
         transition-duration: 0.75s
         opacity: 0
-        background-color: $nudeColor
+        background-color: black
       &:hover
         &:after
           width: 100%

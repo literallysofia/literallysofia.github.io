@@ -1,10 +1,8 @@
 import React from "react"
-import { Link } from "gatsby"
 import { Navbar, Nav, Button } from "react-bootstrap"
 import { navLinks } from "../../config"
 import BurgerSqueeze from "@animated-burgers/burger-squeeze"
 import scrollTo from "gatsby-plugin-smoothscroll"
-import logo from "../../images/logo.svg"
 
 class Header extends React.Component {
   constructor(props) {
@@ -39,11 +37,7 @@ class Header extends React.Component {
         expanded={this.state.isActive}
         className={this.state.scrolled ? "scroll" : ""}
       >
-        <Navbar.Brand>
-          <Link to="/">
-            <img src={logo} alt="Logo" />
-          </Link>
-        </Navbar.Brand>
+        <Navbar.Brand className={this.state.scrolled ? "scroll" : ""}>S</Navbar.Brand>
 
         <Navbar.Toggle>
           <BurgerSqueeze isOpen={this.state.isActive} />
@@ -51,7 +45,7 @@ class Header extends React.Component {
 
         <Navbar.Collapse>
           <Nav
-            className="ml-auto"
+            className={this.state.scrolled ? "ml-auto scroll" : "ml-auto"}
             onSelect={this.state.isActive ? this.handleClick : null}
           >
             {navLinks &&
@@ -62,9 +56,6 @@ class Header extends React.Component {
                   </Nav.Link>
                 </Nav.Item>
               ))}
-            <Button variant="secondary" href="mailto: sofialcfsilva@gmail.com">
-              Contact
-            </Button>
           </Nav>
         </Navbar.Collapse>
       </Navbar>
