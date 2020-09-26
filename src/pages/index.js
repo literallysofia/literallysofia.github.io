@@ -21,6 +21,7 @@ export const pageQuery = graphql`
           frontmatter {
             title
             subtitle
+            slogan
           }
           html
         }

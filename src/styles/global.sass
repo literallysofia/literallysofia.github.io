@@ -22,8 +22,8 @@ $transition: all 0.4s ease-out
 @import 'sections'
 
 html, body
-  font: 100% $font-calibre
-  background: $greyColor
+  font: 100% $font-poppins
+  background: $lightColor
   margin: 0
 
 main
@@ -32,18 +32,27 @@ main
     padding: 0 2em 2em 2em
 
 h1,
-h2,
-h3,
-h4,
-h5,
-h6
-  font-weight: 600
-  margin: 0 0 10px 0
+h2
+  font-family: $font-playfair
+  font-weight: 700
 
-h5,
-h6
-  font-weight: 500
-  margin: 0 0 10px 0
+h3
+  font-family: $font-raleway
+  text-transform: uppercase
+
+//h1,
+//h2,
+//h3,
+//h4,
+//h5,
+//h6
+//  font-weight: 600
+//  margin: 0 0 10px 0
+
+//h5,
+//h6
+//  font-weight: 500
+//  margin: 0 0 10px 0
 
 p
   font-size: 20px
@@ -73,14 +82,15 @@ button
   display: flex
   justify-content: space-between
   align-items: center
-  padding: 1em 3em
-  background: $greyColor
+  padding: 1em 8em
+  background: $lightColor
   transition: all 0.3s ease-in
   &.scroll
-    box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.2)
+    box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.1)
   .navbar-brand
     padding: 0 !important
     margin: 0 !important
+    font-family: $font-playfair
     font-weight: 900
     font-size: 6em
     transition: $transition
@@ -131,64 +141,57 @@ button
 
 .hero
   min-height: 100vh !important
-  display: flex
-  justify-content: center
-  align-items: center
-  background: none
-  margin: 0
+  padding-top: 160px
   .hero-inner
-    padding-top: 80px
+    display: flex
+    align-items: center
+    flex: 1
+    padding: 0
     @include media-breakpoint-down(sm)
       padding-top: 40px
-    *
-      margin: 0
+    .content
+      padding-left: 2em
   h1
-    font-family: $font-mono
-    color: $orangeColor
-    font-size: 20px
-    font-weight: normal
-    padding-bottom: 1em
-    @include media-breakpoint-down(sm)
-      font-size: 15px
-  h2
-    font-size: 90px
+    font-size: 5em
+    padding: 0 0 0.2em 0
     @include media-breakpoint-down(sm)
       font-size: 45px
-  p
-    padding: 2em 0
-    width: 70%
-    @include media-breakpoint-down(md)
-      width: 100%
+  span
+    font-family: $font-raleway
+    font-size: 1.5em
     @include media-breakpoint-down(sm)
-      padding: 1.5em 0
+      font-size: 15px
+  p
+    font-size: 1.25em
+    margin-bottom: 1.5em
   .social-media
     display: flex
     align-items: center
-    &:before
-      content: ""
-      width: 20px
-      height: 1px
-      margin-right: 1.5em
-      background-color: $nudeColor
+    margin-bottom: 2em
     li
-      font-size: 20px
+      font-size: 1.6em
       transition: $transition
       &:not(:last-child)
-        margin-right: 1em
+        margin-right: 1.2em
       &:hover
-        transform: translateY(-2px)
+        transform: translateY(-3px)
+      a
+        color: black !important
+        &:hover
+          color: $blueColor !important
 
 .btn-primary
-  background: $redColor
-  border-radius: 5px
-  font-family: $font-mono
-  font-size: 14px
+  background: $orangeColor
+  border-radius: 50px
+  font-family: $font-raleway
+  font-weight: 700
+  text-transform: uppercase
   color: white
   border: none
-  padding: 0.8em 1.4em
+  padding: 0.6em 2.5em
   transition: $transition
   &:hover
-    background: $orangeColor
+    background: black
     color: white
 
 .btn-secondary

@@ -1,5 +1,5 @@
 import React from "react"
-import { Jumbotron, Button } from "react-bootstrap"
+import { Button, Container, Row, Col, Image } from "react-bootstrap"
 import ScrollAnimation from "react-animate-on-scroll"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import {
@@ -9,6 +9,7 @@ import {
 } from "@fortawesome/free-brands-svg-icons"
 import { socialMedia } from "../../config"
 import File from "../../../static/cv.pdf"
+import ProfileNormal from "../../images/test.png"
 
 class Hero extends React.Component {
   constructor(props) {
@@ -31,11 +32,47 @@ class Hero extends React.Component {
   }
 
   render() {
-    const { frontmatter, html } = this.data[0].node
-    const { title, subtitle } = frontmatter
+    const { frontmatter } = this.data[0].node
+    const { title, subtitle, slogan } = frontmatter
 
     return (
-      <Jumbotron fluid className="hero">
+      <div className="hero d-flex flex-column">
+        <Container fluid className="hero-inner">
+          <Row>
+            <Col sm={12} md={5}>
+              <Image src={ProfileNormal} fluid alt="Sofia" />
+            </Col>
+            <Col
+              sm={12}
+              md={7}
+              className="d-flex flex-column justify-content-center align-items-start content"
+            >
+              <span>{subtitle}</span>
+              <h1>{title}</h1>
+              <p>{slogan}</p>
+              <a href={File} target="_blank" rel="nofollow noopener noreferrer">
+                <Button variant="primary">Resume</Button>
+              </a>
+            </Col>
+          </Row>
+        </Container>
+        <ul className="social-media ml-auto">
+          {socialMedia &&
+            socialMedia.map(({ url, name }, i) => (
+              <li key={i}>
+                <a href={url}>{this.renderSwitch(name)}</a>
+              </li>
+            ))}
+        </ul>
+      </div>
+    )
+  }
+}
+
+export default Hero
+
+/*
+<Jumbotron fluid className="hero">
         <div className="hero-inner">
           <ScrollAnimation animateIn="fadeInUp" animateOnce={true}>
             <h1>{subtitle}</h1>
@@ -63,8 +100,4 @@ class Hero extends React.Component {
           </ScrollAnimation>
         </div>
       </Jumbotron>
-    )
-  }
-}
-
-export default Hero
+      */

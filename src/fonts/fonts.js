@@ -2,6 +2,7 @@ import { css } from 'styled-components';
 
 import PlayfairDisplayBlackTTF from './Playfair_Display/PlayfairDisplay-Black.ttf';
 import PlayfairDisplayBoldTTF from './Playfair_Display/PlayfairDisplay-Bold.ttf';
+import RalewayBoldTTF from './Raleway/Raleway-Bold.ttf';
 import RalewayRegularTTF from './Raleway/Raleway-Regular.ttf';
 import PoppinsBoldTTF from './Poppins/Poppins-Bold.ttf';
 import PoppinsBoldItalicTTF from './Poppins/Poppins-BoldItalic.ttf';
@@ -21,6 +22,14 @@ const FontFaces = css`
   @font-face {
     font-family: 'Playfair Display';
     src: url(${PlayfairDisplayBoldTTF}) format('truetype');
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: 'Raleway';
+    src: url(${RalewayBoldTTF}) format('truetype');
     font-weight: 700;
     font-style: normal;
     font-display: swap;
