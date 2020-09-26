@@ -1,4 +1,6 @@
-# literallysofia.github.io
+# Personal Website Theme One
+
+![Demo](https://github.com/literallysofia/literallysofia.github.io/blob/source/demo.gif)
 
 ## Installation
 
