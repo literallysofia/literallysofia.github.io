@@ -78,14 +78,25 @@ button
 .target
   padding-top: 120px
 
+.dot
+  height: 75vh
+  width: 75vh
+  background-color: $blueColor
+  border-radius: 50%
+  position: absolute
+  margin: auto
+  left: 50vh
+  top: 10vh
+  opacity: 0.1
+
 .navbar
   display: flex
   justify-content: space-between
   align-items: center
   padding: 1em 8em
-  background: $lightColor
   transition: all 0.3s ease-in
   &.scroll
+    background: $lightColor
     box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.1)
   .navbar-brand
     padding: 0 !important
