@@ -23,10 +23,7 @@ class About extends React.Component {
     return (
       <section id="about" className="target">
         <ScrollAnimation animateIn="fadeIn" animateOnce={true}>
-          <h3 className="heading">
-            <span>01.</span>
-            {title}
-          </h3>
+          <h2 className="heading">{title}</h2>
           <Container fluid>
             <Row>
               <Col sm={12} md={9}>
@@ -37,7 +34,7 @@ class About extends React.Component {
                 <Container fluid>
                   <Row>
                     <Col md={12} lg={5}>
-                      <h4>Education</h4>
+                      <h3>Education</h3>
                       {education &&
                         education.map((item, i) => (
                           <div className="education" key={i}>
@@ -49,7 +46,7 @@ class About extends React.Component {
                         ))}
                     </Col>
                     <Col md={12} lg={3}>
-                      <h4>Languages</h4>
+                      <h3>Languages</h3>
                       {languages &&
                         languages.map((item, i) => (
                           <div className="language" key={i}>

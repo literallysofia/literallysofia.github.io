@@ -1,16 +1,21 @@
 section
     padding: 1em 0
     .heading
-        font-size: 30px
+        display: inline-block
+        font-size: 2.6em
         margin-bottom: 1.2em
-        span
-            color: $redColor
-            margin-right: 1em
-            font-family: $font-mono
-            font-weight: normal
-            font-size: 0.7em
-    h4
-        font-size: 24px
+        position: relative
+        &:after
+            content: ""
+            position: absolute
+            bottom: -10%
+            width: 100%
+            height: 50%
+            left: 0
+            opacity: 0.1
+            background-color: $blueColor
+    h3
+        font-size: 1.4em
     li
         font-family: $font-mono
         font-size: 14px
