@@ -13,7 +13,7 @@ export default ({ children }) => (
     <GlobalStyle/>
     <div>
       <Header />
-      <span class="dot"></span>
+      <span className="dot"></span>
       <div id="content">
         {children}
         <Footer />
