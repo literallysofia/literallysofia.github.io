@@ -22,20 +22,22 @@ class Portfolio extends React.Component {
               projects.map((project, i) => (
                 <Col sm={12} md={6} lg={4} key={i}>
                   <Card>
-                    <Card.Header>
-                      {project.github !== "" && (
-                        <a href={project.github}>
-                          <FontAwesomeIcon icon={faGithub} />
-                        </a>
-                      )}
-                      {project.behance !== "" && (
-                        <a href={project.behance}>
-                          <FontAwesomeIcon icon={faBehance} />
-                        </a>
-                      )}
-                    </Card.Header>
                     <Card.Body>
-                      <Card.Title as="h4">{project.title}</Card.Title>
+                      <Card.Title>
+                        <h4>{project.title}</h4>
+                        <div className="ml-4">
+                          {project.github !== "" && (
+                            <a href={project.github}>
+                              <FontAwesomeIcon icon={faGithub} />
+                            </a>
+                          )}
+                          {project.behance !== "" && (
+                            <a href={project.behance}>
+                              <FontAwesomeIcon icon={faBehance} />
+                            </a>
+                          )}
+                        </div>
+                      </Card.Title>
                       <Card.Text>{project.abstract}</Card.Text>
                       <ul className="tags">
                         {project.keywords &&

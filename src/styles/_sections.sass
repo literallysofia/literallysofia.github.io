@@ -103,6 +103,8 @@ section
             margin-bottom: 2em
 
 #portfolio
+    h4
+        font-size: 1em
     [class*="col-"]
         &:nth-child(n)
             padding-left: 0
@@ -128,36 +130,36 @@ section
                     padding-top: 1em
     .card
         border: none
-        box-shadow: 0px 0px 15px 0px rgba(0,0,0,0.1)
-        padding: 1em 1em 0 1em
+        border-radius: 0
+        box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.1)
+        padding: 2em 1.5em 1em 1.5em
         height: 100%
         transition: all 0.2s linear
-        &:hover
-            transform: translateY(-5px)
-        .card-text
-            font-size: 17px
-            flex-grow: 1
-        .card-header
-            font-size: 20px
-            border: none
-            background: none
+        .card-title
             display: flex
-            justify-content: flex-end
-            a:not(:last-child)
-                margin-right: 1em
+            justify-content: space-between
+        .card-text
+            font-size: 1em
+            flex-grow: 1
         .card-body
             padding-top: 0
             padding-bottom: 0.5em
             display: flex
             flex-direction: column
+            a
+                color: black !important
+                &:hover
+                    color: $blueColor !important
+                &:not(:last-child)
+                    margin-right: 1em
         ul
             display: flex
             align-items: center
             flex-wrap: wrap
             line-height: 1.2em
         .tags li
-            font-size: 12px
             color: $orangeColor
+            font-size: 0.9em
             &:before
                 content: ''
                 margin: 0

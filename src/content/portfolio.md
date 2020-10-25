@@ -3,8 +3,15 @@ title: Portfolio
 projects:
   [
     {
+      title: WebWire,
+      abstract: "A tool capable of generating images of hand-drawn wireframes from real websites. ",
+      github: "https://github.com/literallysofia/webwire",
+      behance: "",
+      keywords: ["TypeScript", "Selenium", "Puppeteer", "RoughJS"],
+    },
+    {
       title: Sweven,
-      abstract: "An online tech store developed for a faculty project. It is based on HTML5, JavaScript, SCSS, PostgreSQL, and PHP. The user interface has bootstrap as its core, and the backend built with the Laravel framework.",
+      abstract: "An online tech store developed for a faculty project. This web application has an adaptive design and a detailed navigation system by arranging the products through categories.",
       github: https://github.com/literallysofia/feup-lbaw,
       behance: https://www.behance.net/gallery/71374245/Sweven-Website,
       keywords: ["HTML", "JS", "SCSS", "PostgreSQL", "Bootstrap", "Laravel"],
@@ -28,7 +35,7 @@ projects:
       abstract: "An android application where users can store tasks and organize them by date, category or location.",
       github: "https://github.com/literallysofia/feup-lpoo",
       behance: "https://www.behance.net/gallery/57191733/Meraki-Android-App",
-      keywords: ["Android", "Java", "SQLite", "Google API"],
+      keywords: ["Android", "Java", "SQLite"],
     },
     {
       title: Christmas Run,
@@ -60,10 +67,17 @@ projects:
     },
     {
       title: Semana de Informática,
-      abstract: "Semana de Informática is a conference that aims to bring together students of informatics, computer science, and engineering. For the 2018 edition, I designed the event's identity guidelines and mockups for the website.",
+      abstract: "This conference aims to bring together students of informatics, computer science, and engineering. For the 2018 edition, I designed the event's identity guidelines and mockups for the website.",
       github: "",
       behance: "https://www.behance.net/gallery/71743537/semana-de-informatica",
       keywords: ["UI/UX", "Adobe Illustrator", "Sketch"],
+    },
+    {
+      title: VOU Website,
+      abstract: "A WordPress theme for the University Volunteer Association (VOU).",
+      github: "https://github.com/literallysofia/vou-wordpress",
+      behance: "",
+      keywords: ["WordPress", "PHP", "Node.js", "Gulp", "Bootstrap"],
     },
     {
       title: NIAEFEUP,
@@ -71,6 +85,6 @@ projects:
       github: "",
       behance: "https://www.behance.net/gallery/57627347/NIAEFEUP-Website",
       keywords: ["Pug", "CSS", "Bootstrap", "UI/UX", "Adobe Photoshop"],
-    },
+    }
   ]
 ---
