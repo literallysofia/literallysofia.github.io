@@ -33,20 +33,6 @@ languages: [
         level: Intermediate
     }
 ]
-skills:
-  - JavaScript
-  - TypeScript
-  - C/C++/C#
-  - Java
-  - Node.js
-  - HTML & (S)CSS
-  - Angular
-  - React
-  - Vue
-  - Android
-tools:
-  - Figma
-  - Sketch
 ---
 
 Hello! I'm Sofia, a software engineer based in Porto, Portugal who enjoys building things that interact with people. Besides my passion for technology, I love to travel, music, tv shows, and movies! One of my life goals is to explore every unique location of planet earth.

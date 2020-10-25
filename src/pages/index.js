@@ -47,8 +47,6 @@ export const pageQuery = graphql`
               icon
               level
             }
-            skills
-            tools
           }
           html
         }

@@ -1,5 +1,5 @@
 import React from "react"
-import { Navbar, Nav, Button } from "react-bootstrap"
+import { Navbar, Nav } from "react-bootstrap"
 import { navLinks } from "../../config"
 import BurgerSqueeze from "@animated-burgers/burger-squeeze"
 import scrollTo from "gatsby-plugin-smoothscroll"
@@ -37,7 +37,9 @@ class Header extends React.Component {
         expanded={this.state.isActive}
         className={this.state.scrolled ? "scroll" : ""}
       >
-        <Navbar.Brand className={this.state.scrolled ? "scroll" : ""}>S</Navbar.Brand>
+        <Navbar.Brand className={this.state.scrolled ? "scroll" : ""}>
+          S
+        </Navbar.Brand>
 
         <Navbar.Toggle>
           <BurgerSqueeze isOpen={this.state.isActive} />

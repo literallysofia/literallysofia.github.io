@@ -1,15 +1,13 @@
 import React from "react"
 import { Button, Container, Row, Col, Image } from "react-bootstrap"
-import ScrollAnimation from "react-animate-on-scroll"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { socialMedia } from "../../config"
+import Portrait from "../../images/test.png"
 import {
   faGithub,
   faLinkedinIn,
   faBehance,
 } from "@fortawesome/free-brands-svg-icons"
-import { socialMedia } from "../../config"
-import File from "../../../static/cv.pdf"
-import ProfileNormal from "../../images/test.png"
 
 class Hero extends React.Component {
   constructor(props) {
@@ -40,7 +38,7 @@ class Hero extends React.Component {
         <Container fluid className="hero-inner">
           <Row>
             <Col sm={12} md={5}>
-              <Image src={ProfileNormal} fluid alt="Sofia" />
+              <Image src={Portrait} fluid alt="Sofia" />
             </Col>
             <Col
               sm={12}
@@ -50,9 +48,7 @@ class Hero extends React.Component {
               <span>{subtitle}</span>
               <h1>{title}</h1>
               <p>{slogan}</p>
-              <a href={File} target="_blank" rel="nofollow noopener noreferrer">
-                <Button variant="primary">Say hello</Button>
-              </a>
+              <Button variant="primary" href="mailto:sofialcfsilva@gmail.com">Say hello</Button>
             </Col>
           </Row>
         </Container>
