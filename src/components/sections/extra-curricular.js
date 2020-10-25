@@ -2,7 +2,7 @@ import React from "react"
 import { Card } from "react-bootstrap"
 import ScrollAnimation from "react-animate-on-scroll"
 
-class Experience extends React.Component {
+class ExtraCurricular extends React.Component {
   constructor(props) {
     super(props)
     this.data = props.data
@@ -13,7 +13,7 @@ class Experience extends React.Component {
     const { title, jobs } = frontmatter
 
     return (
-      <section id="experience" className="target">
+      <section id="extracurricular" className="target">
         <ScrollAnimation animateIn="fadeIn" animateOnce={true}>
           <h2 className="heading">{title}</h2>
           <div className="card-list">
@@ -42,4 +42,4 @@ class Experience extends React.Component {
   }
 }
 
-export default Experience
+export default ExtraCurricular

@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faGithub, faBehance } from "@fortawesome/free-brands-svg-icons"
 import ScrollAnimation from "react-animate-on-scroll"
 
-class Projects extends React.Component {
+class Portfolio extends React.Component {
   constructor(props) {
     super(props)
     this.data = props.data
@@ -15,11 +15,9 @@ class Projects extends React.Component {
     const { title, projects } = frontmatter
 
     return (
-      <section id="projects" className="target">
+      <section id="portfolio" className="target">
         <ScrollAnimation animateIn="fadeIn" animateOnce={true}>
-          <h3 className="heading">
-            <span>03.</span>{title}
-          </h3>
+          <h2 className="heading">{title}</h2>
           <Container fluid>
             <Row>
               {projects &&
@@ -59,4 +57,4 @@ class Projects extends React.Component {
   }
 }
 
-export default Projects
+export default Portfolio

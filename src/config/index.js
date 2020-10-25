@@ -35,12 +35,12 @@ module.exports = {
       url: "#experience",
     },
     {
-      name: "Portfolio",
-      url: "#portfolio",
+      name: "Extra Curricular",
+      url: "#extracurricular",
     },
     {
-      name: "Contact",
-      url: "#contact",
-    },
+      name: "Portfolio",
+      url: "#portfolio",
+    }
   ],
 }

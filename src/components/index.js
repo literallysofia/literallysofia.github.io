@@ -5,7 +5,8 @@ import Header from './sections/header';
 import Hero from './sections/hero';
 import About from './sections/about';
 import Experience from './sections/experience';
-import Projects from './sections/projects';
+import ExtraCurricular from './sections/extra-curricular';
+import Portfolio from './sections/portfolio';
 import Footer from './sections/footer';
 
 export {
@@ -15,6 +16,7 @@ export {
   Hero,
   About,
   Experience,
-  Projects,
+  ExtraCurricular,
+  Portfolio,
   Footer
 };

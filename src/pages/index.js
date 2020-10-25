@@ -1,6 +1,6 @@
 import React from "react"
 import { graphql } from "gatsby"
-import { Layout, Hero, About, Experience, Projects } from "../components"
+import { Layout, Hero, About, Experience, ExtraCurricular, Portfolio } from "../components"
 
 export default ({ data }) => (
   <Layout>
@@ -8,7 +8,8 @@ export default ({ data }) => (
       <Hero data={data.hero.edges} />
       <About data={data.about.edges} />
       <Experience data={data.experience.edges} />
-      <Projects data={data.projects.edges} />
+      <ExtraCurricular data={data.extra.edges} />
+      <Portfolio data={data.portfolio.edges} />
     </main>
   </Layout>
 )
@@ -72,8 +73,27 @@ export const pageQuery = graphql`
         }
       }
     }
-    projects: allMarkdownRemark(
-      filter: { fileAbsolutePath: { regex: "/projects/" } }
+    extra: allMarkdownRemark(
+      filter: { fileAbsolutePath: { regex: "/extra-curricular/" } }
+    ) {
+      edges {
+        node {
+          frontmatter {
+            title
+            jobs {
+              date
+              title
+              company
+              web
+              bio
+            }
+          }
+          html
+        }
+      }
+    }
+    portfolio: allMarkdownRemark(
+      filter: { fileAbsolutePath: { regex: "/portfolio/" } }
     ) {
       edges {
         node {

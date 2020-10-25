@@ -51,7 +51,7 @@ class Hero extends React.Component {
               <h1>{title}</h1>
               <p>{slogan}</p>
               <a href={File} target="_blank" rel="nofollow noopener noreferrer">
-                <Button variant="primary">Resume</Button>
+                <Button variant="primary">Say hello</Button>
               </a>
             </Col>
           </Row>

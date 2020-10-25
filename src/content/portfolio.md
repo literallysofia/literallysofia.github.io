@@ -1,5 +1,5 @@
 ---
-title: Projects
+title: Portfolio
 projects:
   [
     {
