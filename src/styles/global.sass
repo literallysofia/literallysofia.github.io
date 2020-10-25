@@ -233,21 +233,20 @@ button
 
 footer
   text-align: center
-  font-family: $font-mono
-  font-size: 12px
   padding: 1.5em 0
-  background: $nudeColor
-  color: white
   .social-media
     display: flex
     justify-content: center
     align-items: center
     margin-bottom: 0.5em
     li
-      font-size: 15px
+      font-size: 1.2em
+      transition: $transition
       &:not(:last-child)
         margin-right: 1em
+      &:hover
+        transform: translateY(-3px)
       a
-        color: white !important
+        color: black !important
         &:hover
-          color: $redColor !important
+          color: $blueColor !important
