@@ -10,9 +10,21 @@ jobs:
       bio:
         [
           "Write modern, performant, maintainable code for a diverse array of client and internal projects.",
-          "Work with Swift, Cocoa Touch, Apple frameworks, and FRP frameworks such as ReactiveCocoa/ReactiveSwift and Alicerce.",
+          "Work with Swift, Cocoa Touch, Apple and FRP frameworks: UIKit, ReactiveCocoa/ReactiveSwift, Alicerce, etc.",
           "Projects based on MVVM(-C) architecture and functional programming concepts.",
           "Communicate with multi-disciplinary teams of engineers, designers, managers, and clients on a daily basis."
+        ],
+    },
+    {
+      date: May 2019 - Present,
+      title: Frontend Software Engineer,
+      company: "",
+      web: "",
+      bio:
+        [
+          "Freelance projects mainly focused on UI/UX design and frontend development.",
+          "Design and develop a web application for the Visual Computing and Machine Intelligence (VCMI) and Breast research group of INESC TEC.",
+          "Design and develop a WordPress theme for Associação de Voluntariado Universitário (VOU)."
         ],
     },
     {
@@ -34,8 +46,8 @@ jobs:
       bio:
         [
           "Branding and product design.",
-          "Development of a website based on Wordpress.",
-          "Marketing and social media management during the launch of the company.",
+          "Develop of a website based on Wordpress.",
+          "Marketing and social media management for the launch of the company.",
         ],
     }
   ]

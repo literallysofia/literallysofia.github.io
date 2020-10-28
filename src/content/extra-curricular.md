@@ -19,7 +19,7 @@ jobs:
       web: https://up.ieee-pt.org,
       bio:
         [
-          "Prototype design and web development, working mostly for the design and marketing department.",
+          "Prototype design and web development, tasks mostly for the design and marketing department.",
         ],
     },
     {
@@ -29,8 +29,8 @@ jobs:
       web: https://paginas.fe.up.pt/~escolas/,
       bio:
         [
-          "Invited by a teacher to present Sweven, a web project for the Database and Web Applications Laboratory (LBAW) class of the Master in Informatics and Computer Engineering (MIEIC).",
-          "Talked about my experience in college and cleared doubts regarding the course.",
+          "Present Sweven, a web project for the Database and Web Applications Laboratory (LBAW) class of the Master in Informatics and Computer Engineering (MIEIC).",
+          "Talk about my experience in college and clear doubts regarding the course.",
         ],
     },
     {
@@ -51,7 +51,7 @@ jobs:
       bio:
         [
           "Active participation in the Informatics Club of the Faculty of Engineering (Academic Organization).",
-          "Designed and helped with the development of the website.",
+          "Design and develop NIAEFEUP's website.",
         ],
     },
     {
