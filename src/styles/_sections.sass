@@ -23,7 +23,6 @@ section
         content: '-'
         margin-right: 0.5em
     .education
-        padding-right: 1em
         span, a
             font-family: $font-poppins
         h4
@@ -54,9 +53,7 @@ section
         @include media-breakpoint-down(md)
             padding: 0
             &:not(:last-child)
-                margin-bottom: 2em
-    ul:not(:last-child)
-        margin-right: 2em
+                margin-bottom: 3em
     .description
         margin-bottom: 3em
     .gallery [class*="col-"]
@@ -64,6 +61,22 @@ section
             margin-top: -8em
         &:last-child
             margin-top: 0
+        @include media-breakpoint-down(md)
+            &:first-child
+                padding-left: 2em
+                img
+                    margin-top: -4em
+            &:last-child
+                padding-left: 2em
+        @include media-breakpoint-down(sm)
+            &:first-child
+                padding: 0 0.5em 0 0
+                img
+                    margin-top: 0
+            &:last-child
+                padding-left: 0.5em
+                img
+                    margin-top: 4em
 
 #experience,
 #extracurricular

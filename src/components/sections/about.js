@@ -58,10 +58,10 @@ class About extends React.Component {
             <Col sm={12} md={5}>
               <Container fluid className="gallery">
                 <Row>
-                  <Col md={12} lg={5}>
+                  <Col xs={5} lg={5}>
                     <Image src={PhotoOne} fluid alt="Sofia" />
                   </Col>
-                  <Col md={12} lg={7}>
+                  <Col xs={7} lg={7}>
                     <Image src={PhotoTwo} fluid alt="Sofia" />
                   </Col>
                 </Row>

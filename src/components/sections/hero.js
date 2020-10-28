@@ -66,34 +66,3 @@ class Hero extends React.Component {
 }
 
 export default Hero
-
-/*
-<Jumbotron fluid className="hero">
-        <div className="hero-inner">
-          <ScrollAnimation animateIn="fadeInUp" animateOnce={true}>
-            <h1>{subtitle}</h1>
-          </ScrollAnimation>
-          <ScrollAnimation animateIn="fadeInUp" delay={500} animateOnce={true}>
-            <h2>{title}</h2>
-          </ScrollAnimation>
-          <ScrollAnimation animateIn="fadeInUp" delay={1000} animateOnce={true}>
-            <ul className="social-media">
-              {socialMedia &&
-                socialMedia.map(({ url, name }, i) => (
-                  <li key={i}>
-                    <a href={url}>{this.renderSwitch(name)}</a>
-                  </li>
-                ))}
-            </ul>
-          </ScrollAnimation>
-          <ScrollAnimation animateIn="fadeInUp" delay={1500} animateOnce={true}>
-            <div dangerouslySetInnerHTML={{ __html: html }}></div>
-          </ScrollAnimation>
-          <ScrollAnimation animateIn="fadeInUp" delay={2000} animateOnce={true} offset={50}>
-            <a href={File} target="_blank" rel="nofollow noopener noreferrer">
-              <Button variant="primary">Resume</Button>
-            </a>
-          </ScrollAnimation>
-        </div>
-      </Jumbotron>
-      */

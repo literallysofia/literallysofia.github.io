@@ -34,8 +34,6 @@ h3
 
 p
   font-size: 1.1em
-  @include media-breakpoint-down(sm)
-    font-size: 18px //TODO
 
 a
   text-decoration: none !important
@@ -88,6 +86,8 @@ button
     &:after
       content: '.'
       color: $orangeColor
+    @include media-breakpoint-down(sm)
+      font-size: 4em
   .navbar-nav
     padding-bottom: 2em
     transition: $transition
@@ -120,8 +120,9 @@ button
 @include media-breakpoint-down(md)
   .navbar
     padding: 1em 2em
+    background-color: $lightColor
   .navbar-nav
-    align-items: flex-start !important
+    padding-bottom: 0.5em !important
     .nav-item
       margin: 1em 0 !important
       font-size: 0.9em !important
@@ -136,20 +137,14 @@ button
     align-items: center
     flex: 1
     padding: 0
-    @include media-breakpoint-down(sm)
-      padding-top: 40px
     .content
       padding-left: 2em
   h1
     font-size: 5em
-    padding: 0 0 0.2em 0
-    @include media-breakpoint-down(sm)
-      font-size: 45px
+    padding: 0 0 0.2em 0   
   span
     font-family: $font-raleway
     font-size: 1.5em
-    @include media-breakpoint-down(sm)
-      font-size: 15px
   p
     font-size: 1.25em
     margin-bottom: 1.5em
@@ -168,6 +163,20 @@ button
         color: black !important
         &:hover
           color: $blueColor !important
+
+@include media-breakpoint-down(sm)
+  .hero
+    padding-top: 130px
+    .hero-inner .content
+      padding: 2em 1em 1em 1em
+    img
+      max-width: 60%
+    h1
+      font-size: 3em
+    span
+      font-size: 1.2em
+    p
+      font-size: 1em
 
 .btn-primary
   background: $orangeColor
