@@ -6,7 +6,8 @@ education: [
         degree: Integrated Master’s in Informatics and Computing Engineering,
         school: Faculdade de Engenharia da Universidade do Porto,
         web: https://sigarra.up.pt/feup/pt,
-        details: "Master Thesis: Automatic Generation of Synthetic Website Wireframe Datasets from Source Code."
+        details: "Master Thesis: Automatic Generation of Synthetic Website Wireframe Datasets from Source Code (18/20) ",
+        link: "https://hdl.handle.net/10216/128542"
     },
     {
         date: Sep 2019 - Jan 2020,

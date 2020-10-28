@@ -18,8 +18,6 @@ jobs:
     {
       date: May 2019 - Present,
       title: Frontend Software Engineer,
-      company: "",
-      web: "",
       bio:
         [
           "Freelance projects mainly focused on UI/UX design and frontend development.",

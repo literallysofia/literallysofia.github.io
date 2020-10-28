@@ -1,8 +1,10 @@
 import React from "react"
 import { Container, Row, Col, Image } from "react-bootstrap"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import Emoji from "react-emoji-render"
 import PhotoOne from "../../images/about-1.jpg"
 import PhotoTwo from "../../images/about-2.jpg"
+import { faFile } from "@fortawesome/free-solid-svg-icons"
 
 class About extends React.Component {
   constructor(props) {
@@ -34,7 +36,14 @@ class About extends React.Component {
                         <div className="education" key={i}>
                           <span>{item.date}</span>
                           <h4>{item.degree}</h4>
-                          <p>{item.details}</p>
+                          <p>
+                            {item.details}
+                            {item.link && (
+                              <a href={item.link} target="_blank" rel="noopener noreferrer" className="ref" aria-label="File">
+                                <FontAwesomeIcon icon={faFile} />
+                              </a>
+                            )}
+                          </p>
                           <a href={item.web} target="_blank" rel="noopener noreferrer">{item.school}</a>
                         </div>
                       ))}

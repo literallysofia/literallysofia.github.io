@@ -40,7 +40,8 @@ export const pageQuery = graphql`
               degree
               school
               web,
-              details
+              details,
+              link
             }
             languages {
               language
