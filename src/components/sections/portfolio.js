@@ -28,14 +28,14 @@ class Portfolio extends React.Component {
                         <ul className="ml-4">
                           {project.github !== "" && (
                             <li>
-                              <a href={project.github}>
+                              <a href={project.github} target="_blank" rel="noopener noreferrer">
                                 <FontAwesomeIcon icon={faGithub} />
                               </a>
                             </li>
                           )}
                           {project.behance !== "" && (
                             <li>
-                              <a href={project.behance}>
+                              <a href={project.behance} target="_blank" rel="noopener noreferrer">
                                 <FontAwesomeIcon icon={faBehance} />
                               </a>
                             </li>

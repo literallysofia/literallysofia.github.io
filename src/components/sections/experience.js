@@ -22,7 +22,7 @@ class Experience extends React.Component {
                   <Card.Body>
                     <Card.Title>
                       {job.title}
-                      <a href={job.web}>{job.company}</a>
+                      <a href={job.web} target="_blank" rel="noopener noreferrer">{job.company}</a>
                     </Card.Title>
                     <span>{job.date}</span>
                     <ul>

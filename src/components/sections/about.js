@@ -35,7 +35,7 @@ class About extends React.Component {
                           <span>{item.date}</span>
                           <h4>{item.degree}</h4>
                           <p>{item.details}</p>
-                          <a href={item.web}>{item.school}</a>
+                          <a href={item.web} target="_blank" rel="noopener noreferrer">{item.school}</a>
                         </div>
                       ))}
                   </Col>

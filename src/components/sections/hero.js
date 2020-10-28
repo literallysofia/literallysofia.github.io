@@ -48,7 +48,9 @@ class Hero extends React.Component {
               <span>{subtitle}</span>
               <h1>{title}</h1>
               <p>{slogan}</p>
-              <Button variant="primary" href="mailto:sofialcfsilva@gmail.com">Say hello</Button>
+              <Button variant="primary" href="mailto:sofialcfsilva@gmail.com">
+                Say hello
+              </Button>
             </Col>
           </Row>
         </Container>
@@ -56,7 +58,7 @@ class Hero extends React.Component {
           {socialMedia &&
             socialMedia.map(({ url, name }, i) => (
               <li key={i}>
-                <a href={url}>{this.renderSwitch(name)}</a>
+                <a href={url} target="_blank" rel="noopener noreferrer">{this.renderSwitch(name)}</a>
               </li>
             ))}
         </ul>

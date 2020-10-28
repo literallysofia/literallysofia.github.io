@@ -33,7 +33,9 @@ class Footer extends React.Component {
           {socialMedia &&
             socialMedia.map(({ url, name }, i) => (
               <li key={i}>
-                <a href={url}>{this.renderSwitch(name)}</a>
+                <a href={url} target="_blank" rel="noopener noreferrer">
+                  {this.renderSwitch(name)}
+                </a>
               </li>
             ))}
         </ul>
