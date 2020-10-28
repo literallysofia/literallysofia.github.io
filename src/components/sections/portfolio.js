@@ -25,18 +25,22 @@ class Portfolio extends React.Component {
                     <Card.Body>
                       <Card.Title>
                         <h4>{project.title}</h4>
-                        <div className="ml-4">
+                        <ul className="ml-4">
                           {project.github !== "" && (
-                            <a href={project.github}>
-                              <FontAwesomeIcon icon={faGithub} />
-                            </a>
+                            <li>
+                              <a href={project.github}>
+                                <FontAwesomeIcon icon={faGithub} />
+                              </a>
+                            </li>
                           )}
                           {project.behance !== "" && (
-                            <a href={project.behance}>
-                              <FontAwesomeIcon icon={faBehance} />
-                            </a>
+                            <li>
+                              <a href={project.behance}>
+                                <FontAwesomeIcon icon={faBehance} />
+                              </a>
+                            </li>
                           )}
-                        </div>
+                        </ul>
                       </Card.Title>
                       <Card.Text>{project.abstract}</Card.Text>
                       <ul className="tags">

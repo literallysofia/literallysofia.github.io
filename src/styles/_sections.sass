@@ -138,6 +138,14 @@ section
         .card-title
             display: flex
             justify-content: space-between
+            li
+                transition: $transition
+                &:before
+                    content: ''
+                &:hover
+                    transform: translateY(-3px)
+                &:not(:last-child)
+                    margin-right: 1em
         .card-text
             font-size: 1em
             flex-grow: 1
@@ -150,8 +158,6 @@ section
                 color: black !important
                 &:hover
                     color: $blueColor !important
-                &:not(:last-child)
-                    margin-right: 1em
         ul
             display: flex
             align-items: center
