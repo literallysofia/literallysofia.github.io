@@ -1,5 +1,7 @@
 # literallysofia.github.io
 
+Theme 2 under construction! Be patient 👀
+
 ## Installation
 
 ```bash
