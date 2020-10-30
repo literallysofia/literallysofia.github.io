@@ -1,0 +1,132 @@
+@import "theme";
+
+body.light-mode {
+  background-color: $color-light;
+  color: black;
+
+  .btn.btn-primary {
+    background: $color-primary !important;
+    &:hover {
+      background: $color-secondary !important;
+    }
+  }
+
+  a {
+    color: $color-primary !important;
+    &:hover {
+      color: $color-secondary !important;
+    }
+  }
+}
+
+body.dark-mode {
+  background-color: $color-dark;
+  color: white;
+
+  .btn.btn-primary {
+    background: $color-secondary !important;
+    &:hover {
+      background: $color-primary !important;
+    }
+  }
+
+  a {
+    color: $color-secondary !important;
+    &:hover {
+      color: $color-primary !important;
+    }
+  }
+}
+
+html,
+body {
+  font: 100% $font-poppins;
+  margin: 0;
+  transition: $transition-mode;
+}
+
+main {
+  padding: 0 8em 5em 8em;
+  @include media-breakpoint-down(md) {
+    padding: 0 2em 2em 2em;
+  }
+}
+
+h1,
+h2 {
+  font-family: $font-playfair;
+  font-weight: 700;
+}
+
+h3 {
+  font-family: $font-raleway;
+  text-transform: uppercase;
+}
+
+p {
+  font-size: 1.1em;
+}
+
+a {
+  text-decoration: none !important;
+  transition: $transition !important;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+.target {
+  padding-top: 120px;
+}
+
+.btn.btn-primary {
+  border: none !important;
+  outline: none !important;
+  cursor: pointer;
+  transition: $transition;
+  border-radius: 50px;
+  font-family: $font-raleway;
+  font-weight: 700;
+  text-transform: uppercase;
+  padding: 0.6em 2.5em;
+  color: white !important;
+  &:hover {
+    color: white !important;
+  }
+}
+
+section {
+  padding: 1em 0;
+
+  h3 {
+    font-size: 1.4em;
+  }
+  h4 {
+    font-size: 1.2em;
+    font-weight: 600;
+  }
+
+  li::before {
+    content: "-";
+    margin-right: 0.5em;
+  }
+
+  .heading {
+    display: inline-block;
+    font-size: 2.6em;
+    margin-bottom: 1em;
+    position: relative;
+    &::after {
+      content: "";
+      position: absolute;
+      bottom: -10%;
+      width: 100%;
+      height: 50%;
+      left: 0;
+      opacity: 0.1;
+      background-color: $color-secondary;
+    }
+  }
+}

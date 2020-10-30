@@ -1,0 +1,55 @@
+@import "../../utils/theme";
+
+#extracurricular {
+  .card-list {
+    margin-left: 0.6em;
+    padding-left: 3em;
+    border-left: 1px solid #d6d3d0;
+    @include media-breakpoint-down(sm) {
+      padding-left: 2.8em;
+    }
+  }
+  .card-item {
+    &::before {
+      content: "";
+      position: absolute;
+      width: 23px;
+      height: 23px;
+      background-color: $color-primary;
+      margin-left: -3.74em;
+      border-radius: 50%;
+      z-index: 2;
+      @include media-breakpoint-down(sm) {
+        margin-left: -3.7em;
+      }
+    }
+
+    &:not(:last-child) {
+      margin-bottom: 2em;
+    }
+
+    .card {
+      background-color: transparent;
+      border: none;
+      border-radius: 0;
+
+      .card-title {
+        font-weight: 600;
+        margin: 0;
+      }
+
+      .card-body {
+        padding: 0;
+        margin-top: -2px;
+      }
+
+      a:before {
+        content: " @ ";
+      }
+
+      ul {
+        margin-top: 1em;
+      }
+    }
+  }
+}

@@ -1,16 +1,11 @@
 import React from "react"
-import FontFaces from "../fonts/fonts"
-import { createGlobalStyle } from "styled-components"
-import { Head, Header, Footer } from "../components"
-
-const GlobalStyle = createGlobalStyle`
-  ${FontFaces};
-`
+import Head from "./head"
+import Header from "./header/header"
+import Footer from "./footer/footer"
 
 export default ({ children }) => (
   <div id="root">
     <Head />
-    <GlobalStyle/>
     <div>
       <Header />
       <div id="content">

@@ -1,0 +1,99 @@
+@import "../../utils/theme";
+
+#about {
+  h3 {
+    margin-bottom: 1em;
+  }
+
+  [class*="col-"] {
+    &:first-child {
+      padding-left: 0;
+    }
+    &:last-child {
+      padding-right: 0;
+    }
+    @include media-breakpoint-down(md) {
+      padding: 0;
+      &:not(:last-child) {
+        margin-bottom: 3em;
+      }
+    }
+  }
+
+  .description {
+    margin-bottom: 3em;
+  }
+
+  .education {
+    &:not(:last-child) {
+      margin-bottom: 2em;
+    }
+    
+    a,
+    span {
+      font-family: $font-poppins;
+    }
+
+    h4 {
+      margin: 0.2em 0 1em 0;
+    }
+
+    a:not(.ref):before {
+      content: "@ ";
+    }
+
+    p {
+      font-size: 1em;
+    }
+  }
+
+  .language {
+    p {
+      font-size: 1em;
+    }
+
+    span {
+      font-size: 20px;
+      margin: -5px 5px 0 0;
+      &:not(:last-child) {
+        margin-bottom: 2em;
+      }
+    }
+  }
+}
+
+#about .gallery [class*="col-"] {
+  &:first-child img {
+    margin-top: -8em;
+  }
+  &:last-child {
+    margin-top: 0;
+  }
+
+  @include media-breakpoint-down(md) {
+    &:first-child {
+      padding-left: 2em;
+      img {
+        margin-top: -4em;
+      }
+    }
+    &:last-child {
+      padding-left: 2em;
+    }
+  }
+
+  @include media-breakpoint-down(sm) {
+    &:first-child {
+      padding: 0 0.5em 0 0;
+      img {
+        margin-top: 0;
+      }
+    }
+    &:last-child {
+      padding-left: 0.5em;
+      img {
+        margin-top: 4em;
+      }
+    }
+  }
+}

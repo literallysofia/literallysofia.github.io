@@ -1,0 +1,148 @@
+@import "../../utils/theme";
+
+body.light-mode {
+  .navbar.scroll {
+    background: $color-light;
+  }
+
+  .navbar .navbar-brand {
+    color: black;
+    &::after {
+      color: $color-primary;
+    }
+  }
+
+  .navbar .navbar-nav .nav-item {
+    &::after {
+      background-color: black;
+    }
+
+    a.nav-link {
+      color: black !important;
+    }
+  }
+
+  @include media-breakpoint-down(md) {
+    .navbar {
+      background-color: $color-light;
+    }
+  }
+}
+
+body.dark-mode {
+  .navbar.scroll {
+    background: $color-dark;
+  }
+
+  .navbar .navbar-brand {
+    color: white;
+    &::after {
+      color: $color-secondary;
+    }
+  }
+
+  .navbar .navbar-nav .nav-item {
+    &::after {
+      background-color: white;
+    }
+
+    a.nav-link {
+      color: white !important;
+    }
+  }
+
+  @include media-breakpoint-down(md) {
+    .navbar {
+      background-color: $color-dark;
+    }
+  }
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1em 8em;
+  transition: all 0.3s ease-in; //TODO fix transition
+
+  &.scroll {
+    box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.1);
+  }
+}
+
+.navbar .navbar-brand {
+  padding: 0 !important;
+  margin: 0 !important;
+  font-family: $font-playfair;
+  font-weight: 900;
+  font-size: 6em;
+  transition: $transition;
+
+  &.scroll {
+    font-size: 3em;
+  }
+
+  &::after {
+    content: ".";
+  }
+
+  @include media-breakpoint-down(sm) {
+    font-size: 4em;
+  }
+}
+
+.navbar .navbar-nav {
+  padding-bottom: 2em;
+  transition: $transition;
+
+  &.scroll {
+    padding-bottom: 0 !important;
+  }
+
+  .nav-item {
+    font-family: $font-raleway;
+    text-transform: uppercase;
+    margin-left: 3em;
+    position: relative;
+
+    &::after {
+      content: "";
+      position: absolute;
+      bottom: -3px;
+      width: 0;
+      height: 3px;
+      left: 0;
+      transition: all 0.2s ease-in-out;
+      transition-duration: 0.75s;
+      opacity: 0;
+    }
+
+    &:hover:after {
+      width: 100%;
+      opacity: 1;
+    }
+
+    a.nav-link {
+      padding: 0;
+    }
+  }
+}
+
+@include media-breakpoint-down(md) {
+  .navbar {
+    padding: 1em 2em;
+
+    .navbar-nav {
+      padding-bottom: 0.5em !important;
+    }
+
+    .nav-item {
+      margin: 1em 0 !important;
+      font-size: 0.9em !important;
+
+      &:before {
+        font-size: 0.8em !important;
+      }
+    }
+  }
+}

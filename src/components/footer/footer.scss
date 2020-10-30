@@ -1,0 +1,30 @@
+@import "../../utils/theme";
+
+footer {
+  text-align: center;
+  padding: 1.5em 0;
+  background-color: rgba(113, 167, 178, 0.1);
+  border-radius: 200px 200px 0 0;
+  .social-media {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 0.5em;
+    li {
+      font-size: 1.2em;
+      transition: $transition;
+      &:not(:last-child) {
+        margin-right: 1em;
+      }
+      &:hover {
+        transform: translateY(-3px);
+      }
+      a {
+        color: black !important;
+        &:hover {
+          color: $color-secondary !important;
+        }
+      }
+    }
+  }
+}
