@@ -1,71 +1,27 @@
-import React from "react"
+import React, { useState, useEffect } from "react"
 import "./header.scss"
-import { Navbar, Nav } from "react-bootstrap"
-import { navLinks } from "../../config"
-import BurgerSqueeze from "@animated-burgers/burger-squeeze"
-import scrollTo from "gatsby-plugin-smoothscroll"
-import DarkModeToggle from "../toggle/toggle"
+import Burger from "../burger/burger"
+import Menu from "../menu/menu"
 
-class Header extends React.Component {
-  constructor(props) {
-    super(props)
-    this.state = { isActive: false, scrolled: false }
-    this.handleClick = this.handleClick.bind(this)
-    this.handleScroll = this.handleScroll.bind(this)
-  }
+const Header = () => {
+  const [scroll, setScroll] = useState("")
+  const [open, setOpen] = useState(false)
 
-  handleClick = () => {
-    this.setState(state => ({ isActive: !state.isActive }))
-  }
-
-  handleScroll = () => {
-    if (document.documentElement.scrollTop > 0) {
-      this.setState({ scrolled: true })
-    } else {
-      this.setState({ scrolled: false })
+  useEffect(() => {
+    window.onscroll = () => {
+      if (document.documentElement.scrollTop > 0) setScroll("scroll")
+      else setScroll("")
     }
-  }
+  })
 
-  componentDidMount() {
-    window.onscroll = () => this.handleScroll()
-  }
+  return (
+    <header className={scroll}>
+      <span className={"navbar-brand " + scroll}>S</span>
 
-  render() {
-    return (
-      <Navbar
-        fixed="top"
-        expand="lg"
-        onToggle={this.handleClick}
-        expanded={this.state.isActive}
-        className={this.state.scrolled ? "scroll" : ""}
-      >
-        <Navbar.Brand className={this.state.scrolled ? "scroll" : ""}>
-          S
-        </Navbar.Brand>
-
-        <Navbar.Toggle>
-          <BurgerSqueeze isOpen={this.state.isActive} />
-        </Navbar.Toggle>
-
-        <Navbar.Collapse className={this.state.scrolled ? "scroll" : ""}>
-          <Nav
-            className="ml-auto"
-            onSelect={this.state.isActive ? this.handleClick : null}
-          >
-            {navLinks &&
-              navLinks.map(({ url, name }, i) => (
-                <Nav.Item key={i}>
-                  <Nav.Link eventKey={name} onClick={() => scrollTo(url)}>
-                    {name}
-                  </Nav.Link>
-                </Nav.Item>
-              ))}
-          </Nav>
-          <DarkModeToggle />
-        </Navbar.Collapse>
-      </Navbar>
-    )
-  }
+      <Burger aria-label="Toggle navigation" open={open} setOpen={setOpen} />
+      <Menu open={open} setOpen={setOpen} />
+    </header>
+  )
 }
 
 export default Header

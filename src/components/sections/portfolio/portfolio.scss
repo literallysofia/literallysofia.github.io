@@ -18,7 +18,7 @@
       padding-top: 1em;
     }
 
-    @include media-breakpoint-down(md) {
+    @media ($breakpoint-tablet) {
       &:nth-child(2n) {
         padding-right: 0;
       }
@@ -36,7 +36,7 @@
       }
     }
 
-    @include media-breakpoint-down(sm) {
+    @media ($breakpoint-phone) {
       &:nth-child(n) {
         padding-right: 0;
       }

@@ -10,7 +10,7 @@ export default ({ children }) => (
       <Header />
       <div id="content">
         {children}
-        <Footer />
+  {/*       <Footer /> */}
       </div>
     </div>
   </div>

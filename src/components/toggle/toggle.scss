@@ -9,11 +9,9 @@ $color-night-sky: #141852;
   display: flex;
   transform: scale(.8);
   margin-left: 2em;
-  top: 0;
 
   input {
     position: absolute;
-    right: -999rem;
 
     &:checked + .toggle {
       background-color: $color-night-sky;

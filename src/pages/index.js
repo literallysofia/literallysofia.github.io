@@ -1,20 +1,20 @@
 import React from "react"
 import { graphql } from "gatsby"
 import Layout from "../components/layout"
-import Banner from "../components/banner/banner"
+/* import Banner from "../components/banner/banner"
 import About from "../components/about/about"
 import Experience from "../components/experience/experience"
 import ExtraCurricular from "../components/extra-curricular/extra-curricular"
-import Portfolio from "../components/portfolio/portfolio"
+import Portfolio from "../components/portfolio/portfolio" */
 
 export default ({ data }) => (
   <Layout>
     <main>
-      <Banner data={data.hero.edges} />
+{/*       <Banner data={data.hero.edges} />
       <About data={data.about.edges} />
       <Experience data={data.experience.edges} />
       <ExtraCurricular data={data.extra.edges} />
-      <Portfolio data={data.portfolio.edges} />
+      <Portfolio data={data.portfolio.edges} /> */}
     </main>
   </Layout>
 )

@@ -8,13 +8,8 @@ import {
 } from "@fortawesome/free-brands-svg-icons"
 import { socialMedia } from "../../config"
 
-class Footer extends React.Component {
-  constructor(props) {
-    super(props)
-    this.renderSwitch = this.renderSwitch.bind(this)
-  }
-
-  renderSwitch(socialName) {
+const Footer = () => {
+  const socialIcon = socialName => {
     switch (socialName) {
       case "GitHub":
         return <FontAwesomeIcon icon={faGithub} />
@@ -27,23 +22,21 @@ class Footer extends React.Component {
     }
   }
 
-  render() {
-    return (
-      <footer>
-        <ul className="social-media">
-          {socialMedia &&
-            socialMedia.map(({ url, name }, i) => (
-              <li key={i}>
-                <a href={url} target="_blank" rel="noopener noreferrer">
-                  {this.renderSwitch(name)}
-                </a>
-              </li>
-            ))}
-        </ul>
-        <span>Built with Gatsby © 2020 Sofia Silva</span>
-      </footer>
-    )
-  }
+  return (
+    <footer>
+      <ul className="social-media">
+        {socialMedia &&
+          socialMedia.map(({ url, name }, i) => (
+            <li key={i}>
+              <a href={url} target="_blank" rel="noopener noreferrer">
+                {socialIcon(name)}
+              </a>
+            </li>
+          ))}
+      </ul>
+      <span>Built with Gatsby © 2020 Sofia Silva</span>
+    </footer>
+  )
 }
 
 export default Footer

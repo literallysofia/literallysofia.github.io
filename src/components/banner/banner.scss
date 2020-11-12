@@ -61,7 +61,7 @@ body.dark-mode {
   }
 }
 
-@include media-breakpoint-down(sm) {
+@media ($breakpoint-phone) {
   .banner {
     padding-top: 130px;
     .hero-inner .content {

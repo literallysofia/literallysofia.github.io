@@ -2,7 +2,6 @@ import React from "react"
 import "./about.scss"
 import { Container, Row, Col, Image } from "react-bootstrap"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import Emoji from "react-emoji-render"
 import PhotoOne from "../../images/about-1.jpg"
 import PhotoTwo from "../../images/about-2.jpg"
 import { faFile } from "@fortawesome/free-solid-svg-icons"
@@ -55,7 +54,7 @@ class About extends React.Component {
                       languages.map((item, i) => (
                         <div className="language" key={i}>
                           <div className="d-flex">
-                            <Emoji text={item.icon} />
+                            <i>{item.icon}</i>
                             <h4>{item.language}</h4>
                           </div>
                           <p>{item.level}</p>

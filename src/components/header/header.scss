@@ -1,64 +1,60 @@
 @import "../../utils/theme";
 
 body.light-mode {
-  .navbar.scroll {
+  header.scroll {
     background: $color-light;
   }
 
-  .navbar .navbar-brand {
+  header .navbar-brand {
     color: black;
     &::after {
       color: $color-primary;
     }
   }
 
-  .navbar .navbar-nav .nav-item {
+  header .navbar-nav a.nav-item {
+    color: black !important;
+
     &::after {
       background-color: black;
     }
-
-    a.nav-link {
-      color: black !important;
-    }
   }
 
-  @include media-breakpoint-down(md) {
-    .navbar {
+  @media ($breakpoint-tablet) {
+    header {
       background-color: $color-light;
     }
   }
 }
 
 body.dark-mode {
-  .navbar.scroll {
+  header.scroll {
     background: $color-dark;
   }
 
-  .navbar .navbar-brand {
+  header .navbar-brand {
     color: white;
     &::after {
       color: $color-secondary;
     }
   }
 
-  .navbar .navbar-nav .nav-item {
+  header .navbar-nav a.nav-item {
+    color: white !important;
+
     &::after {
       background-color: white;
     }
-
-    a.nav-link {
-      color: white !important;
-    }
   }
 
-  @include media-breakpoint-down(md) {
-    .navbar {
+  @media ($breakpoint-tablet) {
+    header {
       background-color: $color-dark;
     }
   }
 }
 
-.navbar {
+header {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -67,9 +63,15 @@ body.dark-mode {
   &.scroll {
     box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.1);
   }
+
+  .navbar-toggler,
+  .navbar-toggler:focus {
+    border: none;
+    outline: none;
+  }
 }
 
-.navbar .navbar-brand {
+header .navbar-brand {
   padding: 0 !important;
   margin: 0 !important;
   font-family: $font-playfair;
@@ -85,12 +87,13 @@ body.dark-mode {
     content: ".";
   }
 
-  @include media-breakpoint-down(sm) {
+  @media ($breakpoint-phone) {
     font-size: 4em;
   }
 }
 
-.navbar .navbar-collapse {
+header .navbar-collapse {
+  display: flex;
   padding-bottom: 2em;
 
   &.scroll {
@@ -98,10 +101,11 @@ body.dark-mode {
   }
 }
 
-.navbar .navbar-nav {
+header .navbar-nav {
+  display: flex;
   transition: $transition;
 
-  .nav-item {
+  a.nav-item {
     font-family: $font-raleway;
     text-transform: uppercase;
     margin-left: 3em;
@@ -123,23 +127,31 @@ body.dark-mode {
       width: 100%;
       opacity: 1;
     }
-
-    a.nav-link {
-      padding: 0;
-    }
   }
 }
 
-@include media-breakpoint-down(md) {
-  .navbar {
-    padding: 1em 2em;
+@media ($breakpoint-tablet) {
+  header {
+    padding: 1em 2em !important;
 
     .navbar-nav {
       padding-bottom: 0.5em !important;
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
 
-    .nav-item {
-      margin: 1em 0 !important;
+    .navbar-collapse {
+      height: 100vh;
+      transition: none;
+    }
+
+    #toggle-container {
+      margin-left: 0;
+    }
+
+    a.nav-item {
+      margin: 0 !important;
       font-size: 0.9em !important;
 
       &:before {
