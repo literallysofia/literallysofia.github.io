@@ -3,7 +3,7 @@ import "./toggle.scss"
 import useDarkMode from "use-dark-mode"
 import { useSpring, animated } from "react-spring"
 
-const DarkModeToggle = ({ mobile }) => {
+const DarkModeToggle = () => {
   const darkMode = useDarkMode(false)
 
   const darkModeToggleSpring = useSpring({
@@ -13,25 +13,25 @@ const DarkModeToggle = ({ mobile }) => {
   })
 
   return (
-    <animated.div style={darkModeToggleSpring} id="toggle">
+    <animated.div style={darkModeToggleSpring} id="toggle-container">
       <input
         type="checkbox"
         id="dn"
         checked={darkMode.value}
         onChange={darkMode.toggle}
       />
-      <label htmlFor="dn" id="cenita" className="toggle">
-        <span id="cena" className="toggle__handler">
-          <span className="crater crater--1" />
-          <span className="crater crater--2" />
-          <span className="crater crater--3" />
+      <label id="toggle" className="toggle" htmlFor="dn">
+        <span id="sun">
+          <span className="crater crater-1" />
+          <span className="crater crater-2" />
+          <span className="crater crater-3" />
         </span>
-        <span className="star star--1" />
-        <span className="star star--2" />
-        <span className="star star--3" />
-        <span className="star star--4" />
-        <span className="star star--5" />
-        <span className="star star--6" />
+        <span className="star star-1" />
+        <span className="star star-2" />
+        <span className="star star-3" />
+        <span className="star star-4" />
+        <span className="star star-5" />
+        <span className="star star-6" />
       </label>
     </animated.div>
   )

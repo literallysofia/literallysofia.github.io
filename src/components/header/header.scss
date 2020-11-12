@@ -62,8 +62,7 @@ body.dark-mode {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1em 8em;
-  transition: all 0.3s ease-in; //TODO fix transition
+  padding: 1em 8em !important;
 
   &.scroll {
     box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.1);
@@ -91,13 +90,16 @@ body.dark-mode {
   }
 }
 
-.navbar .navbar-nav {
+.navbar .navbar-collapse {
   padding-bottom: 2em;
-  transition: $transition;
 
   &.scroll {
     padding-bottom: 0 !important;
   }
+}
+
+.navbar .navbar-nav {
+  transition: $transition;
 
   .nav-item {
     font-family: $font-raleway;

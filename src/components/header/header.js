@@ -47,9 +47,9 @@ class Header extends React.Component {
           <BurgerSqueeze isOpen={this.state.isActive} />
         </Navbar.Toggle>
 
-        <Navbar.Collapse>
+        <Navbar.Collapse className={this.state.scrolled ? "scroll" : ""}>
           <Nav
-            className={this.state.scrolled ? "ml-auto scroll" : "ml-auto"}
+            className="ml-auto"
             onSelect={this.state.isActive ? this.handleClick : null}
           >
             {navLinks &&
