@@ -2,11 +2,14 @@ import React from "react"
 import styled from "styled-components"
 import { bool, func } from "prop-types"
 
-export const StyledBurger = styled.div`
+export const StyledBurger = styled.button`
+  background: none;
+  border: none;
+  outline: none;
   height: 3em;
   width: 3em;
   position: relative;
-  transform: scale(.7);
+  transform: scale(0.7);
   cursor: pointer;
 
   &:after {
@@ -21,7 +24,6 @@ export const StyledBurger = styled.div`
 
   .burger-lines:after {
     width: 2em;
-    background-color: black;
     left: ${({ open }) => (open ? "0.5em" : "0")};
     top: ${({ open }) => (open ? "0.5em" : "-1em")};
     transform: ${({ open }) => (open ? "rotate(-135deg)" : "rotate(0)")};
@@ -29,7 +31,6 @@ export const StyledBurger = styled.div`
 
   .burger-lines:before {
     width: 2em;
-    background-color: black;
     left: ${({ open }) => (open ? "0.5em" : "1em")};
     top: ${({ open }) => (open ? "0.5em" : "1em")};
     transform: ${({ open }) => (open ? "rotate(135deg)" : "rotate(0)")};
@@ -39,7 +40,7 @@ export const StyledBurger = styled.div`
     top: 50%;
     margin-top: -0.125em;
     width: 100%;
-    background-color: ${({ open }) => (open ? "transparent" : "black")};
+    background-color: ${({ open }) => (open ? "transparent !important" : "inherit")};
   }
 
   .burger-lines,
@@ -56,7 +57,7 @@ export const StyledBurger = styled.div`
 
 const Burger = ({ open, setOpen }) => {
   return (
-    <StyledBurger open={open} onClick={() => setOpen(!open)}>
+    <StyledBurger id="burger" open={open} onClick={() => setOpen(!open)}>
       <div className="burger-lines" />
     </StyledBurger>
   )

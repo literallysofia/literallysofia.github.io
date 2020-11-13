@@ -1,7 +1,7 @@
 @import "../../utils/theme";
 
 body.light-mode {
-  header.scroll {
+  header[scroll] {
     background: $color-light;
   }
 
@@ -12,7 +12,19 @@ body.light-mode {
     }
   }
 
-  header .navbar-nav a.nav-item {
+  header #burger {
+    *,
+    .burger-lines:after,
+    .burger-lines:before {
+      background-color: $color-primary;
+    }
+  }
+
+  header .menu {
+    background-color: $color-light;
+  }
+
+  header nav .nav-item a {
     color: black !important;
 
     &::after {
@@ -28,7 +40,7 @@ body.light-mode {
 }
 
 body.dark-mode {
-  header.scroll {
+  header[scroll] {
     background: $color-dark;
   }
 
@@ -39,7 +51,19 @@ body.dark-mode {
     }
   }
 
-  header .navbar-nav a.nav-item {
+  header #burger {
+    *,
+    .burger-lines:after,
+    .burger-lines:before {
+      background-color: white;
+    }
+  }
+
+  header .menu {
+    background-color: $color-dark;
+  }
+
+  header nav .nav-item a {
     color: white !important;
 
     &::after {
@@ -60,14 +84,8 @@ header {
   align-items: center;
   padding: 1em 8em !important;
 
-  &.scroll {
+  &[scroll] {
     box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.1);
-  }
-
-  .navbar-toggler,
-  .navbar-toggler:focus {
-    border: none;
-    outline: none;
   }
 }
 
@@ -76,12 +94,7 @@ header .navbar-brand {
   margin: 0 !important;
   font-family: $font-playfair;
   font-weight: 900;
-  font-size: 6em;
   transition: $transition;
-
-  &.scroll {
-    font-size: 3em;
-  }
 
   &::after {
     content: ".";
@@ -92,23 +105,12 @@ header .navbar-brand {
   }
 }
 
-header .navbar-collapse {
+header nav {
   display: flex;
-  padding-bottom: 2em;
 
-  &.scroll {
-    padding-bottom: 0 !important;
-  }
-}
-
-header .navbar-nav {
-  display: flex;
-  transition: $transition;
-
-  a.nav-item {
+  .nav-item a {
     font-family: $font-raleway;
     text-transform: uppercase;
-    margin-left: 3em;
     position: relative;
 
     &::after {
@@ -133,30 +135,5 @@ header .navbar-nav {
 @media ($breakpoint-tablet) {
   header {
     padding: 1em 2em !important;
-
-    .navbar-nav {
-      padding-bottom: 0.5em !important;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-
-    .navbar-collapse {
-      height: 100vh;
-      transition: none;
-    }
-
-    #toggle-container {
-      margin-left: 0;
-    }
-
-    a.nav-item {
-      margin: 0 !important;
-      font-size: 0.9em !important;
-
-      &:before {
-        font-size: 0.8em !important;
-      }
-    }
   }
 }
