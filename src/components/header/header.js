@@ -29,9 +29,11 @@ const Header = () => {
   })
 
   return (
-    <header className={scroll}>
-      <StyledBrand className={"navbar-brand"} scroll={scroll}>S</StyledBrand>
-      {mobile ? <MobileMenu /> : <DesktopMenu />}
+    <header scroll={scroll.toString()}>
+      <StyledBrand className={"navbar-brand"} scroll={scroll}>
+        S
+      </StyledBrand>
+      {mobile ? <MobileMenu /> : <DesktopMenu scroll={scroll} />}
     </header>
   )
 }

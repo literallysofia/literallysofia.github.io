@@ -1,7 +1,7 @@
 @import "../../utils/theme";
 
 body.light-mode {
-  header[scroll] {
+  header[scroll=true] {
     background: $color-light;
   }
 
@@ -40,7 +40,7 @@ body.light-mode {
 }
 
 body.dark-mode {
-  header[scroll] {
+  header[scroll=true] {
     background: $color-dark;
   }
 
@@ -79,12 +79,14 @@ body.dark-mode {
 }
 
 header {
+  position: sticky;
+  top: 0;
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 1em 8em !important;
 
-  &[scroll] {
+  &[scroll=true] {
     box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.1);
   }
 }

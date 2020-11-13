@@ -6,6 +6,7 @@ import Nav from "./nav"
 export const StyledMenu = styled.div`
   display: flex;
   padding-bottom: ${({ scroll }) => (scroll ? "0" : "2em")};
+  transition: all 0.4s ease-out;
 
   nav {
     .nav-item {
