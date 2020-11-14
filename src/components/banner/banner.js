@@ -2,8 +2,8 @@ import React from "react"
 import "./banner.scss"
 import { socialMedia } from "../../config"
 import Portrait from "../../images/test.png"
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { useSpring, animated, config } from "react-spring"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import {
   faGithub,
   faLinkedinIn,
@@ -30,7 +30,7 @@ const Banner = ({ data }) => {
   })
 
   const SubtitleSpring = useSpring({
-    config: config.wobbly,
+    config: config.gentle,
     delay: 200,
     opacity: 1,
     transform: "translateX(0px)",
@@ -38,7 +38,7 @@ const Banner = ({ data }) => {
   })
 
   const TitleSpring = useSpring({
-    config: config.wobbly,
+    config: config.gentle,
     delay: 300,
     opacity: 1,
     transform: "translateY(0px)",
@@ -46,7 +46,7 @@ const Banner = ({ data }) => {
   })
 
   const SloganSpring = useSpring({
-    config: config.wobbly,
+    config: config.gentle,
     delay: 400,
     opacity: 1,
     transform: "translateY(0px)",

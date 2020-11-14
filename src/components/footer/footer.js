@@ -34,7 +34,7 @@ const Footer = () => {
             </li>
           ))}
       </ul>
-      <span>Built with Gatsby © 2020 Sofia Silva</span>
+      <span>Made with love © 2020 Sofia Silva</span>
     </footer>
   )
 }

@@ -37,6 +37,7 @@
     "react-animate-on-scroll": "^2.1.5",
     "react-dom": "^16.14.0",
     "react-helmet": "^5.2.1",
+    "react-particles-js": "^3.4.1",
     "react-spring": "^8.0.27",
     "styled-components": "^5.2.1",
     "use-dark-mode": "^2.3.1"
