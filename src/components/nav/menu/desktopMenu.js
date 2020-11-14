@@ -8,10 +8,8 @@ export const StyledMenu = styled.div`
   padding-bottom: ${({ scroll }) => (scroll ? "0" : "2em")};
   transition: all 0.4s ease-out;
 
-  nav {
-    .nav-item {
-      margin-left: 3em;
-    }
+  nav .nav-item {
+    margin-left: 3em;
   }
 
   #toggle-container {
@@ -21,7 +19,7 @@ export const StyledMenu = styled.div`
 
 const DesktopMenu = ({ scroll }) => {
   return (
-    <StyledMenu scroll={scroll}>
+    <StyledMenu className="desktop-menu" scroll={scroll}>
       <Nav />
       <DarkModeToggle />
     </StyledMenu>

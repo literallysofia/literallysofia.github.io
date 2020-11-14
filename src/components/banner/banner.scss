@@ -1,60 +1,82 @@
 @import "../../utils/theme";
 
-body.light-mode {
-  .banner .social-media li a {
-    color: black !important;
-    &:hover {
-      color: $color-secondary !important;
+body.light-mode #banner .social-media li a {
+  color: black !important;
+  &:hover {
+    color: $color-secondary !important;
+  }
+}
+
+body.dark-mode #banner .social-media li a {
+  color: white !important;
+  &:hover {
+    color: $color-primary !important;
+  }
+}
+
+#banner {
+  display: flex;
+  flex-direction: column;
+  height: 100vh !important;
+  overflow: hidden;
+
+  .banner-content {
+    padding-top: 160px;
+    display: flex;
+    flex: 1;
+
+    .image-wrapper {
+      display: flex;
+      align-items: center;
+      padding-right: 3em;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+    }
+
+    .banner-intro {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start;
     }
   }
 }
 
-body.dark-mode {
-  .banner .social-media li a {
-    color: white !important;
-    &:hover {
-      color: $color-primary !important;
-    }
-  }
-}
-
-.banner {
-  min-height: 100vh !important;
-  padding-top: 160px;
+#banner {
   h1 {
     font-size: 5em;
-    padding: 0 0 0.2em 0;
+    margin: 0;
+    padding-bottom: 0.2em;
   }
+
   span {
     font-family: $font-raleway;
     font-size: 1.5em;
   }
+
   p {
     font-size: 1.25em;
     margin-bottom: 1.5em;
   }
 }
 
-.banner .banner-inner {
-  display: flex;
-  align-items: center;
-  flex: 1;
-  padding: 0;
-  .content {
-    padding-left: 2em;
-  }
-}
-
-.banner .social-media {
+#banner .social-media {
   display: flex;
   align-items: center;
   margin-bottom: 2em;
+  margin-left: auto;
+
   li {
     font-size: 1.6em;
     transition: $transition;
+
     &:not(:last-child) {
       margin-right: 1.2em;
     }
+
     &:hover {
       transform: translateY(-3px);
     }
@@ -62,14 +84,29 @@ body.dark-mode {
 }
 
 @media ($breakpoint-phone) {
-  .banner {
-    padding-top: 130px;
-    .hero-inner .content {
-      padding: 2em 1em 1em 1em;
+  #banner {
+    .banner-content {
+      padding-top: 140px;
+      flex-wrap: wrap;
     }
-    img {
-      max-width: 60%;
+
+    .image-wrapper {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding-right: 0 !important;
+      padding-bottom: 2em;
+      width: 100%;
+
+      img {
+        width: 50%;
+      }
     }
+
+    .banner-intro {
+      align-self: flex-start;
+    }
+
     h1 {
       font-size: 3em;
     }
@@ -80,15 +117,4 @@ body.dark-mode {
       font-size: 1em;
     }
   }
-}
-
-.burger {
-  font-size: 10px;
-}
-
-.burger .burger-lines,
-.burger .burger-lines:after,
-.burger .burger-lines:before {
-  background: $color-primary;
-  height: 2.8px;
 }
