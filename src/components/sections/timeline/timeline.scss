@@ -42,7 +42,7 @@
     font-weight: 600;
     line-height: 1.1em;
 
-    a:before {
+    a::before {
       content: " @ ";
     }
   }

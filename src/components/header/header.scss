@@ -7,15 +7,12 @@ body.light-mode {
 
   header .navbar-brand {
     color: black;
-    &::after {
-      color: $color-primary;
-    }
   }
 
   header #burger {
     *,
-    .burger-lines:after,
-    .burger-lines:before {
+    .burger-lines::after,
+    .burger-lines::before {
       background-color: $color-primary;
     }
   }
@@ -46,15 +43,12 @@ body.dark-mode {
 
   header .navbar-brand {
     color: white;
-    &::after {
-      color: $color-secondary;
-    }
   }
 
   header #burger {
     *,
-    .burger-lines:after,
-    .burger-lines:before {
+    .burger-lines::after,
+    .burger-lines::before {
       background-color: white;
     }
   }
@@ -102,6 +96,7 @@ header .navbar-brand {
 
   &::after {
     content: ".";
+    color: $color-primary;
   }
 
   @media ($breakpoint-phone) {
