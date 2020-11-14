@@ -1,8 +1,8 @@
 import React from "react"
 import "./about.scss"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import PhotoOne from "../../../images/about-1.jpg"
-import PhotoTwo from "../../../images/about-2.jpg"
+import PhotoOne from "../../../images/gallery-1.jpg"
+import PhotoTwo from "../../../images/gallery-2.jpg"
 import { faFile } from "@fortawesome/free-solid-svg-icons"
 
 const About = ({ data }) => {

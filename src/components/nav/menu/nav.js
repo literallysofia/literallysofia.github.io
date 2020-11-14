@@ -3,7 +3,7 @@ import { useTrail, animated, config } from "react-spring"
 import scrollTo from "gatsby-plugin-smoothscroll"
 import { navLinks } from "../../../config"
 
-const Nav = () => {
+const Nav = ({ setOpen }) => {
   const trail = useTrail(navLinks.length, {
     config: config.wobbly,
     delay: 200,
@@ -15,13 +15,18 @@ const Nav = () => {
     },
   })
 
+  const navigate = url => {
+    setOpen(false)
+    scrollTo(url)
+  }
+
   return (
     <nav>
       {trail.map((props, index) => (
         <animated.div className="nav-item" key={index} style={props}>
           <button
             eventkey={navLinks[index].name}
-            onClick={() => scrollTo(navLinks[index].url)}
+            onClick={() => navigate(navLinks[index].url)}
           >
             {navLinks[index].name}
           </button>

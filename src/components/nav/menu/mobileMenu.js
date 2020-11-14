@@ -48,7 +48,7 @@ const MobileMenu = () => {
         ({ item, key, props }) =>
           item && (
             <StyledMenu key={key} style={props} className="menu">
-              <Nav />
+              <Nav setOpen={setOpen}/>
               <DarkModeToggle />
             </StyledMenu>
           )

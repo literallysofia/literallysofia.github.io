@@ -1,7 +1,7 @@
 import React from "react"
 import "./banner.scss"
 import { socialMedia } from "../../config"
-import Portrait from "../../images/test.png"
+import Portrait from "../../images/portrait.png"
 import { useSpring, animated, config } from "react-spring"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import {
