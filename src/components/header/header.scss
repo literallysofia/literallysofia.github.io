@@ -58,12 +58,6 @@ body.dark-mode {
       background-color: white;
     }
   }
-
-  @media ($breakpoint-tablet) {
-    header {
-      background-color: $color-dark;
-    }
-  }
 }
 
 header {
