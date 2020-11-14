@@ -1,8 +1,9 @@
 import React from "react"
 import "./banner.scss"
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { socialMedia } from "../../config"
 import Portrait from "../../images/test.png"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { useSpring, animated, config } from "react-spring"
 import {
   faGithub,
   faLinkedinIn,
@@ -12,6 +13,45 @@ import {
 const Banner = ({ data }) => {
   const { frontmatter } = data[0].node
   const { title, subtitle, slogan } = frontmatter
+
+  const DefaultSpring = useSpring({
+    config: config.stiff,
+    delay: 600,
+    opacity: 1,
+    from: { opacity: 0 },
+  })
+
+  const ImageSpring = useSpring({
+    config: config.wobbly,
+    delay: 200,
+    opacity: 1,
+    transform: "translateY(0px)",
+    from: { opacity: 0, transform: "translateY(40px)" },
+  })
+
+  const SubtitleSpring = useSpring({
+    config: config.wobbly,
+    delay: 200,
+    opacity: 1,
+    transform: "translateX(0px)",
+    from: { opacity: 0, transform: "translateX(40px)" },
+  })
+
+  const TitleSpring = useSpring({
+    config: config.wobbly,
+    delay: 300,
+    opacity: 1,
+    transform: "translateY(0px)",
+    from: { opacity: 0, transform: "translateY(40px)" },
+  })
+
+  const SloganSpring = useSpring({
+    config: config.wobbly,
+    delay: 400,
+    opacity: 1,
+    transform: "translateY(0px)",
+    from: { opacity: 0, transform: "translateY(40px)" },
+  })
 
   const socialIcon = socialName => {
     switch (socialName) {
@@ -30,23 +70,29 @@ const Banner = ({ data }) => {
     <div id="banner">
       <div className="banner-content">
         <div className="image-wrapper">
-          <img src={Portrait} alt="Portrait" />
+          <animated.img style={ImageSpring} src={Portrait} alt="Portrait" />
         </div>
         <div className="banner-intro">
-          <span>{subtitle}</span>
-          <h1>{title}</h1>
-          <p>{slogan}</p>
-          <button className="default" href="mailto:sofialcfsilva@gmail.com">Say hello</button>
+          <animated.span style={SubtitleSpring}>{subtitle}</animated.span>
+          <animated.h1 style={TitleSpring}>{title}</animated.h1>
+          <animated.p style={SloganSpring}>{slogan}</animated.p>
+          <animated.button
+            style={DefaultSpring}
+            className="default"
+            href="mailto:sofialcfsilva@gmail.com"
+          >
+            Say hello
+          </animated.button>
         </div>
       </div>
       <ul className="social-media">
         {socialMedia &&
           socialMedia.map(({ url, name }, i) => (
-            <li key={i}>
+            <animated.li style={DefaultSpring} key={i}>
               <a href={url} target="_blank" rel="noopener noreferrer">
                 {socialIcon(name)}
               </a>
-            </li>
+            </animated.li>
           ))}
       </ul>
     </div>
