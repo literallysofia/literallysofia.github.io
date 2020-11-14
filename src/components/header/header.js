@@ -13,19 +13,21 @@ const Header = () => {
   const [scroll, setScroll] = useState(false)
 
   const setDevice = () => {
-    window.matchMedia("(max-width: 55em)").matches
-      ? setMobile(true)
-      : setMobile(false)
+    if (window.matchMedia("(max-width: 55em)").matches) setMobile(true)
+    else setMobile(false)
+  }
+
+  const setHeader = () => {
+    if (document.documentElement.scrollTop > 0) setScroll(true)
+    else setScroll(false)
   }
 
   useEffect(() => {
     setDevice()
     window.addEventListener("resize", setDevice)
 
-    window.onscroll = () => {
-      if (document.documentElement.scrollTop > 0) setScroll(true)
-      else setScroll(false)
-    }
+    setHeader()
+    window.addEventListener("scroll", setHeader)
   })
 
   return (
