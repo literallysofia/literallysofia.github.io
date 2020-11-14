@@ -16,7 +16,7 @@ const Nav = ({ setOpen }) => {
   })
 
   const navigate = url => {
-    setOpen(false)
+    if (setOpen) setOpen(false)
     scrollTo(url)
   }
 

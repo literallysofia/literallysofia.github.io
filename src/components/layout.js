@@ -4,7 +4,7 @@ import Head from "./head"
 import Header from "./header/header"
 import Footer from "./footer/footer"
 
-const Layout = ({ children }) => {
+const Layout = ({ isNotFound, children }) => {
   const [mobile, setMobile] = useState(null)
   const [tablet, setTablet] = useState(null)
 
@@ -58,10 +58,10 @@ const Layout = ({ children }) => {
       <Head />
       <Particles className="particles-js" params={bubbles} />
       <div>
-        <Header />
+        <Header isNotFound={isNotFound} />
         <div id="content">
           {children}
-          <Footer />
+          {!isNotFound && <Footer />}
         </div>
       </div>
     </div>

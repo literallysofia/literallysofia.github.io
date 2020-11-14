@@ -7,7 +7,7 @@ import Timeline from "../components/sections/timeline/timeline"
 import Portfolio from "../components/sections/portfolio/portfolio"
 
 export default ({ data }) => (
-  <Layout>
+  <Layout isNotFound={false}>
     <main>
       <Banner data={data.hero.edges} />
       <About data={data.about.edges} />

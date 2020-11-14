@@ -8,7 +8,7 @@ export const StyledBrand = styled.span`
   font-size: ${({ scroll }) => (scroll ? "3em" : "6em")};
 `
 
-const Header = () => {
+const Header = ({isNotFound}) => {
   const [mobile, setMobile] = useState(null)
   const [scroll, setScroll] = useState(false)
 
@@ -35,7 +35,7 @@ const Header = () => {
       <StyledBrand className={"navbar-brand"} scroll={scroll}>
         S
       </StyledBrand>
-      {mobile ? <MobileMenu /> : <DesktopMenu scroll={scroll} />}
+      {isNotFound ? null : mobile ? <MobileMenu /> : <DesktopMenu scroll={scroll} />}
     </header>
   )
 }
