@@ -3,39 +3,11 @@
 body.light-mode {
   background-color: $color-light;
   color: black;
-
-  button.default {
-    background: $color-primary !important;
-    &:hover {
-      background: $color-secondary !important;
-    }
-  }
-
-  a {
-    color: $color-primary !important;
-    &:hover {
-      color: $color-secondary !important;
-    }
-  }
 }
 
 body.dark-mode {
   background-color: $color-dark;
   color: white;
-
-  button.default {
-    background: $color-secondary !important;
-    &:hover {
-      background: $color-primary !important;
-    }
-  }
-
-  a {
-    color: $color-secondary !important;
-    &:hover {
-      color: $color-primary !important;
-    }
-  }
 }
 
 html,
@@ -70,6 +42,10 @@ p {
 a {
   text-decoration: none !important;
   transition: $transition !important;
+  color: $color-primary !important;
+  &:hover {
+    color: $color-secondary !important;
+  }
 }
 
 ul {
@@ -93,8 +69,10 @@ button.default {
   text-transform: uppercase;
   padding: 0.8em 2.5em;
   color: white !important;
+  background: $color-primary !important;
   &:hover {
     color: white !important;
+    background: $color-secondary !important;
   }
 }
 
@@ -105,7 +83,7 @@ section {
     font-size: 1.4em;
     font-weight: 400;
   }
-  
+
   h4 {
     font-size: 1.2em;
     font-weight: 600;

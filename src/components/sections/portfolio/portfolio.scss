@@ -11,10 +11,6 @@ body.light-mode #portfolio .portfolio-grid {
         color: $color-secondary !important;
       }
     }
-
-    ul.project-tags li {
-      color: $color-primary;
-    }
   }
 }
 
@@ -29,10 +25,6 @@ body.dark-mode #portfolio .portfolio-grid {
         color: $color-secondary !important;
       }
     }
-
-    ul.project-tags li {
-      color: $color-secondary;
-    }
   }
 }
 
@@ -41,6 +33,10 @@ body.dark-mode #portfolio .portfolio-grid {
   grid-template-columns: 1fr 1fr 1fr;
   column-gap: 1em;
   row-gap: 1em;
+
+  ul.project-tags li {
+    color: $color-primary;
+  }
 }
 
 @media ($breakpoint-tablet) {
