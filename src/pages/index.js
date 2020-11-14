@@ -3,8 +3,7 @@ import { graphql } from "gatsby"
 import Layout from "../components/layout"
 import Banner from "../components/banner/banner"
 import About from "../components/sections/about/about"
-/* import Experience from "../components/experience/experience"
-import ExtraCurricular from "../components/extra-curricular/extra-curricular" */
+import Timeline from "../components/sections/timeline/timeline"
 import Portfolio from "../components/sections/portfolio/portfolio"
 
 export default ({ data }) => (
@@ -12,8 +11,8 @@ export default ({ data }) => (
     <main>
       <Banner data={data.hero.edges} />
       <About data={data.about.edges} />
-      {/*       <Experience data={data.experience.edges} />
-      <ExtraCurricular data={data.extra.edges} />*/}
+      <Timeline data={data.experience.edges} />
+      <Timeline data={data.extra.edges} />
       <Portfolio data={data.portfolio.edges} />
     </main>
   </Layout>

@@ -1,6 +1,6 @@
-@import "../../utils/theme";
+@import "../../../utils/theme";
 
-#experience {
+.timeline {
   .card-list {
     margin-left: 0.6em;
     padding-left: 3em;
@@ -9,7 +9,15 @@
       padding-left: 2.8em;
     }
   }
+
   .card-item {
+    display: flex;
+    flex-direction: column !important;
+
+    span {
+      margin-top: 0.2em;
+    }
+
     &::before {
       content: "";
       position: absolute;
@@ -27,29 +35,15 @@
     &:not(:last-child) {
       margin-bottom: 2em;
     }
+  }
 
-    .card {
-      background-color: transparent;
-      border: none;
-      border-radius: 0;
+  .card-header {
+    font-size: 1.2em;
+    font-weight: 600;
+    line-height: 1.1em;
 
-      .card-title {
-        font-weight: 600;
-        margin: 0;
-      }
-
-      .card-body {
-        padding: 0;
-        margin-top: -2px;
-      }
-
-      a:before {
-        content: " @ ";
-      }
-
-      ul {
-        margin-top: 1em;
-      }
+    a:before {
+      content: " @ ";
     }
   }
 }
