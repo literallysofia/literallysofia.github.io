@@ -27,10 +27,10 @@ workbox.core.clientsClaim();
  */
 self.__precacheManifest = [
   {
-    "url": "webpack-runtime-b215aed8ff9e277cf203.js"
+    "url": "webpack-runtime-698b777b477a01b7bd00.js"
   },
   {
-    "url": "styles.750b999e663229a3c0f1.css"
+    "url": "styles.ae28ffb4279fc2f745b8.css"
   },
   {
     "url": "styles-407fe62976dc5310c43e.js"
@@ -43,23 +43,7 @@ self.__precacheManifest = [
   },
   {
     "url": "offline-plugin-app-shell-fallback/index.html",
-    "revision": "9c22cfcf6391351c361074d068fda332"
-  },
-  {
-    "url": "google-fonts/s/poppins/v15/pxiByp8kv8JHgFVrLCz7Z1xlFQ.woff2",
-    "revision": "f4f17fd53c7d040e56f91a3ecb692b22"
-  },
-  {
-    "url": "google-fonts/s/poppins/v15/pxiByp8kv8JHgFVrLEj6Z1xlFQ.woff2",
-    "revision": "087457026965f98466618a478c4b1b07"
-  },
-  {
-    "url": "google-fonts/s/poppins/v15/pxiDyp8kv8JHgFVrJJLmy15VF9eO.woff2",
-    "revision": "586bea02b1f51cf7dfd1a374111d51b8"
-  },
-  {
-    "url": "google-fonts/s/poppins/v15/pxiEyp8kv8JHgFVrJJfecg.woff2",
-    "revision": "9ed361bba8488aeb2797b82befda20f1"
+    "revision": "65bee1e5135cac846ba5c3b5d9cfcfcf"
   },
   {
     "url": "component---cache-caches-gatsby-plugin-offline-app-shell-js-241020a1cf7d0f317bbe.js"
