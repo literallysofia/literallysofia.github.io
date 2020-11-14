@@ -17,8 +17,7 @@ body.dark-mode #banner .social-media li a {
 #banner {
   display: flex;
   flex-direction: column;
-  height: 100vh !important;
-  overflow: hidden;
+  min-height: 100vh !important;
 
   .banner-content {
     padding-top: 160px;

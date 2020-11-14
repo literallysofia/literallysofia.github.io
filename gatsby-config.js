@@ -34,23 +34,15 @@ module.exports = {
       },
     },
     {
-      resolve: `gatsby-plugin-prefetch-google-fonts`,
+      resolve: `gatsby-plugin-google-fonts`,
       options: {
         fonts: [
-          {
-            family: `Playfair Display`,
-            variants: [`700`, `900`],
-          },
-          {
-            family: `Poppins`,
-            variants: [`400`, `400i`, `600`, `700`, `700i`],
-          },
-          {
-            family: `Raleway`,
-            variants: [`400`, `700`],
-          },
+          `playfair display\:700,900`,
+          `poppins\:400,400i,600,700,700i`,
+          `raleway\:400,700`,
         ],
-      },
-    },
+        display: 'swap'
+      }
+    }
   ],
 }

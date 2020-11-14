@@ -28,12 +28,6 @@ body.light-mode {
       background-color: black;
     }
   }
-
-  @media ($breakpoint-tablet) {
-    header {
-      background-color: $color-light;
-    }
-  }
 }
 
 body.dark-mode {

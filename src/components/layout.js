@@ -24,7 +24,7 @@ const Layout = ({ isNotFound, children }) => {
   const bubbles = {
     particles: {
       number: {
-        value: mobile ? 4 : 8,
+        value: 8,
       },
       size: {
         value: mobile ? 20 : 50,
