@@ -20,17 +20,17 @@ education: [
 languages: [
     {
         language: Portuguese,
-        icon: ":flag_portugal:",
+        icon: 🇵🇹,
         level: Native
     },
     {
         language: English,
-        icon: ":flag_united_kingdom:",
+        icon: 🇬🇧,
         level: Fluent
     },
     {
         language: Spanish,
-        icon: ":flag_spain:",
+        icon: 🇪🇸,
         level: Intermediate
     }
 ]
