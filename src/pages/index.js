@@ -4,8 +4,8 @@ import Layout from "../components/layout"
 import Banner from "../components/banner/banner"
 import About from "../components/sections/about/about"
 /* import Experience from "../components/experience/experience"
-import ExtraCurricular from "../components/extra-curricular/extra-curricular"
-import Portfolio from "../components/portfolio/portfolio" */
+import ExtraCurricular from "../components/extra-curricular/extra-curricular" */
+import Portfolio from "../components/sections/portfolio/portfolio"
 
 export default ({ data }) => (
   <Layout>
@@ -13,8 +13,8 @@ export default ({ data }) => (
       <Banner data={data.hero.edges} />
       <About data={data.about.edges} />
       {/*       <Experience data={data.experience.edges} />
-      <ExtraCurricular data={data.extra.edges} />
-      <Portfolio data={data.portfolio.edges} /> */}
+      <ExtraCurricular data={data.extra.edges} />*/}
+      <Portfolio data={data.portfolio.edges} />
     </main>
   </Layout>
 )
