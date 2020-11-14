@@ -3,6 +3,7 @@
 body.light-mode #portfolio .portfolio-grid {
   > div {
     background-color: white;
+    box-shadow: 0px 0px 10px 0px rgba(113, 167, 178, 0.2);
 
     ul.project-links li a {
       color: black !important;
@@ -19,7 +20,8 @@ body.light-mode #portfolio .portfolio-grid {
 
 body.dark-mode #portfolio .portfolio-grid {
   > div {
-    background-color: black;
+    background-color: rgb(25, 25, 25);
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.2);
 
     ul.project-links li a {
       color: white !important;

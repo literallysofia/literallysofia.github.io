@@ -6,7 +6,6 @@ import { faGithub, faBehance } from "@fortawesome/free-brands-svg-icons"
 export const StyledBox = styled.div`
   display: flex;
   flex-direction: column;
-  box-shadow: 0px 0px 10px 0px rgba(113, 167, 178, 0.2);
   padding: 2em 2.5em 1em 2.5em;
 
   h4 {
