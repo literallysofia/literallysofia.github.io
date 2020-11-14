@@ -24,7 +24,7 @@ body.light-mode {
     background-color: $color-light;
   }
 
-  header nav .nav-item a {
+  header nav .nav-item button {
     color: black !important;
 
     &::after {
@@ -63,7 +63,7 @@ body.dark-mode {
     background-color: $color-dark;
   }
 
-  header nav .nav-item a {
+  header nav .nav-item button {
     color: white !important;
 
     &::after {
@@ -112,10 +112,16 @@ header .navbar-brand {
 header nav {
   display: flex;
 
-  .nav-item a {
+  .nav-item button {
+    border: none;
+    outline: none;
+    background: none;
     font-family: $font-raleway;
+    font-size: 1em;
+    padding: 0 !important;
     text-transform: uppercase;
     position: relative;
+    cursor: pointer;
 
     &::after {
       content: "";

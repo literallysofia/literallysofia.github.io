@@ -19,13 +19,12 @@ const Nav = () => {
     <nav>
       {trail.map((props, index) => (
         <animated.div className="nav-item" key={index} style={props}>
-          <a
-            href="/#"
+          <button
             eventkey={navLinks[index].name}
             onClick={() => scrollTo(navLinks[index].url)}
           >
             {navLinks[index].name}
-          </a>
+          </button>
         </animated.div>
       ))}
     </nav>

@@ -4,9 +4,13 @@ import "./timeline.scss"
 const Timeline = ({ data }) => {
   const { frontmatter } = data[0].node
   const { title, jobs } = frontmatter
+  const id = title
+    .toLowerCase()
+    .split(" ")
+    .join("")
 
   return (
-    <section className="timeline target">
+    <section id={id} className="timeline target">
       <h2 className="heading">{title}</h2>
       <div className="card-list">
         {jobs &&
