@@ -66,6 +66,10 @@ const Banner = ({ data }) => {
     }
   }
 
+  const openMail = () => {
+    window.location.href = `mailto:sofialcfsilva@gmail.com`
+  }
+
   return (
     <div id="banner">
       <div className="banner-content">
@@ -79,7 +83,7 @@ const Banner = ({ data }) => {
           <animated.button
             style={DefaultSpring}
             className="default"
-            href="mailto:sofialcfsilva@gmail.com"
+            onClick={openMail}
           >
             Say hello
           </animated.button>
