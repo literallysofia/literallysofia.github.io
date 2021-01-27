@@ -22,7 +22,7 @@
     "@fortawesome/react-fontawesome": "^0.1.12",
     "babel-plugin-styled-components": "^1.11.1",
     "classnames": "^2.2.6",
-    "gatsby": "^2.26.1",
+    "gatsby": "^2.31.1",
     "gatsby-plugin-google-fonts": "^1.0.1",
     "gatsby-plugin-manifest": "^2.6.0",
     "gatsby-plugin-offline": "^3.4.0",
