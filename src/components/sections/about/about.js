@@ -5,7 +5,7 @@ import PhotoOne from "../../../images/gallery-1.jpg"
 import PhotoTwo from "../../../images/gallery-2.jpg"
 import { faFile } from "@fortawesome/free-solid-svg-icons"
 
-const About = ({ data }) => {
+export default function About({ data }) {
   const { frontmatter, html } = data[0].node
   const { title, education, languages } = frontmatter
 
@@ -77,5 +77,3 @@ const About = ({ data }) => {
     </section>
   )
 }
-
-export default About

@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react"
-import Particles from "react-particles-js"
+import Particles, { initParticlesEngine } from "@tsparticles/react"
 import Head from "./head"
 import Header from "./header/header"
 import Footer from "./footer/footer"
+import { loadSlim } from "@tsparticles/slim"
 
-const Layout = ({ isNotFound, children }) => {
+export default function Layout({ isNotFound, children }) {
   const [mobile, setMobile] = useState(null)
   const [tablet, setTablet] = useState(null)
 
@@ -21,30 +22,41 @@ const Layout = ({ isNotFound, children }) => {
     }
   }
 
-  const bubbles = {
+  const options = {
+    fpsLimit: 120,
     particles: {
-      number: {
-        value: 8,
-      },
-      size: {
-        value: mobile ? 20 : 50,
-        random: {
-          enable: true,
-          minimumValue: mobile || tablet ? 100 : 200,
-        },
-      },
       color: {
         value: "#71a7b2",
+      },
+      move: {
+        direction: "none",
+        enable: true,
+        outModes: {
+          default: "bounce",
+        },
+        random: true,
+        speed: 5,
+        straight: false,
+      },
+      number: {
+        value: 8,
       },
       opacity: {
         value: 0.1,
       },
-      links: {
-        enable: false,
+      shape: {
+        type: "circle",
       },
-      move: {
-        speed: 5,
+      size: {
+        value: {
+          max: mobile || tablet ? 100 : 200,
+          min: mobile ? 20 : 50,
+        },
       },
+    },
+    detectRetina: true,
+    fullScreen: {
+      enable: false,
     },
   }
 
@@ -53,10 +65,23 @@ const Layout = ({ isNotFound, children }) => {
     window.addEventListener("resize", setDevice)
   })
 
+  const [init, setInit] = useState(false)
+
+  // this should be run only once per application lifetime
+  useEffect(() => {
+    initParticlesEngine(async (engine) => {
+      await loadSlim(engine)
+    }).then(() => {
+      setInit(true)
+    })
+  }, [])
+
   return (
     <div id="root">
       <Head />
-      <Particles className="particles-js" params={bubbles} />
+
+      {init && <Particles id="tsparticles" options={options} />}
+
       <div>
         <Header isNotFound={isNotFound} />
         <div id="content">
@@ -67,5 +92,3 @@ const Layout = ({ isNotFound, children }) => {
     </div>
   )
 }
-
-export default Layout

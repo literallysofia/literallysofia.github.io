@@ -23,24 +23,24 @@ const StyledSpan = styled.span`
   margin-bottom: 2em;
 `
 
-const NotFoundPage = () => (
-  <Layout isNotFound={true}>
-    <StyledMain>
-      <StyledEmoji>
-        <span role="img" aria-label="Magnifying glass">
-          🔎
-        </span>
-        <span role="img" aria-label="Thinking face">
-          🤔
-        </span>
-      </StyledEmoji>
-      <h1>Page not found</h1>
-      <StyledSpan>Hold on... This page doesn't exist!</StyledSpan>
-      <Link to="/">
-        <button className="default">Go home</button>
-      </Link>
-    </StyledMain>
-  </Layout>
-)
-
-export default NotFoundPage
+export default function NotFoundPage() {
+  return (
+    <Layout isNotFound={true}>
+      <StyledMain>
+        <StyledEmoji>
+          <span role="img" aria-label="Magnifying glass">
+            🔎
+          </span>
+          <span role="img" aria-label="Thinking face">
+            🤔
+          </span>
+        </StyledEmoji>
+        <h1>Page not found</h1>
+        <StyledSpan>Hold on... This page doesn't exist!</StyledSpan>
+        <Link to="/">
+          <button className="default">Go home</button>
+        </Link>
+      </StyledMain>
+    </Layout>
+  )
+}

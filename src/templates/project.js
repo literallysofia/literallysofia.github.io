@@ -74,14 +74,14 @@ const Project = ({ project }) => {
         <ul className="project-links">
           {github && (
             <li>
-              <a href={github} target="_blank" rel="noopener noreferrer">
+              <a href={github} target="_blank" rel="noopener noreferrer" aria-label="GitHub link">
                 <FontAwesomeIcon icon={faGithub} />
               </a>
             </li>
           )}
           {behance && (
             <li>
-              <a href={behance} target="_blank" rel="noopener noreferrer">
+              <a href={behance} target="_blank" rel="noopener noreferrer" aria-label="Behance link">
                 <FontAwesomeIcon icon={faBehance} />
               </a>
             </li>

@@ -2,7 +2,7 @@ import React from "react"
 import "./portfolio.scss"
 import Project from "../../../templates/project"
 
-const Portfolio = ({ data }) => {
+export default function Portfolio({ data }) {
   const { frontmatter } = data[0].node
   const { title, projects } = frontmatter
 
@@ -16,5 +16,3 @@ const Portfolio = ({ data }) => {
     </section>
   )
 }
-
-export default Portfolio

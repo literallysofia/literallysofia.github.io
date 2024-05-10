@@ -5,10 +5,10 @@ import DesktopMenu from "../nav/menu/desktopMenu"
 import MobileMenu from "../nav/menu/mobileMenu"
 
 export const StyledBrand = styled.span`
-  font-size: ${({ scroll }) => (scroll ? "3em" : "6em")};
+  font-size: ${(props) => (props.$scroll ? "3em" : "6em")};
 `
 
-const Header = ({isNotFound}) => {
+export default function Header({ isNotFound }) {
   const [mobile, setMobile] = useState(null)
   const [scroll, setScroll] = useState(false)
 
@@ -32,12 +32,14 @@ const Header = ({isNotFound}) => {
 
   return (
     <header scroll={scroll.toString()}>
-      <StyledBrand className={"navbar-brand"} scroll={scroll}>
+      <StyledBrand className={"navbar-brand"} $scroll={scroll}>
         S
       </StyledBrand>
-      {isNotFound ? null : mobile ? <MobileMenu /> : <DesktopMenu scroll={scroll} />}
+      {isNotFound ? null : mobile ? (
+        <MobileMenu />
+      ) : (
+        <DesktopMenu scroll={scroll} />
+      )}
     </header>
   )
 }
-
-export default Header

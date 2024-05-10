@@ -40,7 +40,8 @@ export const StyledBurger = styled.button`
     top: 50%;
     margin-top: -0.125em;
     width: 100%;
-    background-color: ${({ open }) => (open ? "transparent !important" : "inherit")};
+    background-color: ${({ open }) =>
+      open ? "transparent !important" : "inherit"};
   }
 
   .burger-lines,
@@ -55,7 +56,7 @@ export const StyledBurger = styled.button`
   }
 `
 
-const Burger = ({ open, setOpen }) => {
+export default function Burger({ open, setOpen }) {
   return (
     <StyledBurger id="burger" open={open} onClick={() => setOpen(!open)}>
       <div className="burger-lines" />
@@ -67,5 +68,3 @@ Burger.propTypes = {
   open: bool.isRequired,
   setOpen: func.isRequired,
 }
-
-export default Burger

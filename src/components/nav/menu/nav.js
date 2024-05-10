@@ -3,7 +3,7 @@ import { useTrail, animated, config } from "react-spring"
 import scrollTo from "gatsby-plugin-smoothscroll"
 import { navLinks } from "../../../config"
 
-const Nav = ({ setOpen }) => {
+export default function Nav({ setOpen }) {
   const trail = useTrail(navLinks.length, {
     config: config.wobbly,
     delay: 200,
@@ -15,7 +15,7 @@ const Nav = ({ setOpen }) => {
     },
   })
 
-  const navigate = url => {
+  const navigate = (url) => {
     if (setOpen) setOpen(false)
     scrollTo(url)
   }
@@ -35,5 +35,3 @@ const Nav = ({ setOpen }) => {
     </nav>
   )
 }
-
-export default Nav

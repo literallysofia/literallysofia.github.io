@@ -10,7 +10,7 @@ import {
   faBehance,
 } from "@fortawesome/free-brands-svg-icons"
 
-const Banner = ({ data }) => {
+export default function Banner({ data }) {
   const { frontmatter } = data[0].node
   const { title, subtitle, slogan } = frontmatter
 
@@ -53,7 +53,7 @@ const Banner = ({ data }) => {
     from: { opacity: 0, transform: "translateY(40px)" },
   })
 
-  const socialIcon = socialName => {
+  const socialIcon = (socialName) => {
     switch (socialName) {
       case "GitHub":
         return <FontAwesomeIcon icon={faGithub} />
@@ -102,5 +102,3 @@ const Banner = ({ data }) => {
     </div>
   )
 }
-
-export default Banner

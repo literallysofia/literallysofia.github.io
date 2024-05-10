@@ -6,17 +6,19 @@ import About from "../components/sections/about/about"
 import Timeline from "../components/sections/timeline/timeline"
 import Portfolio from "../components/sections/portfolio/portfolio"
 
-export default ({ data }) => (
-  <Layout isNotFound={false}>
-    <main>
-      <Banner data={data.hero.edges} />
-      <About data={data.about.edges} />
-      <Timeline data={data.experience.edges} />
-      <Timeline data={data.extra.edges} />
-      <Portfolio data={data.portfolio.edges} />
-    </main>
-  </Layout>
-)
+export default function IndexPage({ data }) {
+  return (
+    <Layout isNotFound={false}>
+      <main>
+        <Banner data={data.hero.edges} />
+        <About data={data.about.edges} />
+        <Timeline data={data.experience.edges} />
+        <Timeline data={data.extra.edges} />
+        <Portfolio data={data.portfolio.edges} />
+      </main>
+    </Layout>
+  )
+}
 
 export const pageQuery = graphql`
   {

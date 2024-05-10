@@ -1,13 +1,10 @@
 import React from "react"
 import "./timeline.scss"
 
-const Timeline = ({ data }) => {
+export default function Timeline({ data }) {
   const { frontmatter } = data[0].node
   const { title, jobs } = frontmatter
-  const id = title
-    .toLowerCase()
-    .split(" ")
-    .join("")
+  const id = title.toLowerCase().split(" ").join("")
 
   return (
     <section id={id} className="timeline target">
@@ -34,5 +31,3 @@ const Timeline = ({ data }) => {
     </section>
   )
 }
-
-export default Timeline

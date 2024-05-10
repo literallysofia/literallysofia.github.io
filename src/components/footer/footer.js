@@ -8,8 +8,8 @@ import {
 } from "@fortawesome/free-brands-svg-icons"
 import { socialMedia } from "../../config"
 
-const Footer = () => {
-  const socialIcon = socialName => {
+export default function Footer() {
+  const socialIcon = (socialName) => {
     switch (socialName) {
       case "GitHub":
         return <FontAwesomeIcon icon={faGithub} />
@@ -34,9 +34,13 @@ const Footer = () => {
             </li>
           ))}
       </ul>
-      <span>Made with <span role="img" aria-label="Heart">❤️</span> © 2020 Sofia Silva</span>
+      <span>
+        Made with{" "}
+        <span role="img" aria-label="Heart">
+          ❤️
+        </span>{" "}
+        © 2024 Sofia Silva
+      </span>
     </footer>
   )
 }
-
-export default Footer

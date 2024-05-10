@@ -31,10 +31,10 @@ export const StyledMenu = styled(animated.div)`
   }
 `
 
-const MobileMenu = () => {
+export default function MobileMenu() {
   const [open, setOpen] = useState(false)
 
-  const transitions = useTransition(open, null, {
+  const transitions = useTransition(open, {
     config: config.stiff,
     from: { opacity: 0 },
     enter: { opacity: 1 },
@@ -44,11 +44,11 @@ const MobileMenu = () => {
   return (
     <>
       <Burger open={open} setOpen={setOpen} />
-      {transitions.map(
-        ({ item, key, props }) =>
+      {transitions(
+        (style, item) =>
           item && (
-            <StyledMenu key={key} style={props} className="menu">
-              <Nav setOpen={setOpen}/>
+            <StyledMenu key={item.key} style={style} className="menu">
+              <Nav setOpen={setOpen} />
               <DarkModeToggle />
             </StyledMenu>
           )
@@ -56,5 +56,3 @@ const MobileMenu = () => {
     </>
   )
 }
-
-export default MobileMenu

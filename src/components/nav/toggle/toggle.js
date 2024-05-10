@@ -1,10 +1,11 @@
-import React from "react"
-import "./toggle.scss"
-import useDarkMode from "use-dark-mode"
+import React, { useState, useEffect } from "react"
 import { useSpring, animated } from "react-spring"
+import "./toggle.scss"
 
-const DarkModeToggle = () => {
-  const darkMode = useDarkMode(false)
+export default function DarkModeToggle() {
+  const [isDark, setIsDark] = useState(
+    localStorage.getItem("darkMode") === "true"
+  )
 
   const darkModeToggleSpring = useSpring({
     delay: 200,
@@ -12,13 +13,22 @@ const DarkModeToggle = () => {
     from: { opacity: 0 },
   })
 
+  useEffect(() => {
+    var classNameDark = "dark-mode"
+    var classNameLight = "light-mode"
+    document.body.classList.add(isDark ? classNameDark : classNameLight)
+    document.body.classList.remove(isDark ? classNameLight : classNameDark)
+    localStorage.setItem("darkMode", isDark)
+  }, [isDark])
+
   return (
     <animated.div style={darkModeToggleSpring} id="toggle-container">
       <input
         type="checkbox"
         id="dn"
-        checked={darkMode.value}
-        onChange={darkMode.toggle}
+        aria-label="Dark mode toggle"
+        checked={isDark}
+        onChange={({ target }) => setIsDark(target.checked)}
       />
       <label id="toggle" className="toggle" htmlFor="dn">
         <span id="sun">
@@ -36,5 +46,3 @@ const DarkModeToggle = () => {
     </animated.div>
   )
 }
-
-export default DarkModeToggle
