@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkpersonal_website=self.webpackChunkpersonal_website||[]).push([[9813],{9813:function(e,n,t){t.d(n,{PolygonDrawer:function(){return r}});var s=t(8083);class r extends s.L{getCenter(e,n){return{x:-n/(e.sides/3.5),y:-n/.76}}getSidesData(e,n){const t=e.sides;return{count:{denominator:1,numerator:t},length:2.66*n/(t/3)}}}}}]);
+//# sourceMappingURL=9813-985fad7f02a6fc67ab43.js.map

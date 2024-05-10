@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkpersonal_website=self.webpackChunkpersonal_website||[]).push([[5609],{5609:function(e,n,t){t.d(n,{TriangleDrawer:function(){return s}});var r=t(8083);class s extends r.L{getCenter(e,n){return{x:-n,y:n/1.66}}getSidesCount(){return 3}getSidesData(e,n){return{count:{denominator:2,numerator:3},length:2*n}}}}}]);
+//# sourceMappingURL=5609-25ee32581d85c69a771a.js.map

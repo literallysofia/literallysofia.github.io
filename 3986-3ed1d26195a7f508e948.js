@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkpersonal_website=self.webpackChunkpersonal_website||[]).push([[3986],{3986:function(a,n,e){async function t(a,n=!0){await async function(a,n=!0){const{PolygonDrawer:t}=await Promise.all([e.e(906),e.e(9813)]).then(e.bind(e,9813));await a.addShape("polygon",new t,n)}(a,n),await async function(a,n=!0){const{TriangleDrawer:t}=await Promise.all([e.e(906),e.e(5609)]).then(e.bind(e,5609));await a.addShape("triangle",new t,n)}(a,n)}e.d(n,{loadPolygonShape:function(){return t}})}}]);
+//# sourceMappingURL=3986-3ed1d26195a7f508e948.js.map

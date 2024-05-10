@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkpersonal_website=self.webpackChunkpersonal_website||[]).push([[3747],{3747:function(a,e,n){async function r(a,e=!0){await a.addMover("parallax",(async()=>{const{ParallaxMover:a}=await n.e(4963).then(n.bind(n,4963));return new a}),e)}n.d(e,{loadParallaxMover:function(){return r}})}}]);
+//# sourceMappingURL=3747-9669f87d8d25f70cbbc0.js.map

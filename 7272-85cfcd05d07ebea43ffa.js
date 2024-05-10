@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkpersonal_website=self.webpackChunkpersonal_website||[]).push([[7272],{7272:function(n,e,s){s.d(e,{LinksPlugin:function(){return t}});class t{constructor(){this.id="links"}async getPlugin(n){const{LinkInstance:e}=await s.e(9021).then(s.bind(s,9021));return new e(n)}loadOptions(){}needsPlugin(){return!0}}}}]);
+//# sourceMappingURL=7272-85cfcd05d07ebea43ffa.js.map

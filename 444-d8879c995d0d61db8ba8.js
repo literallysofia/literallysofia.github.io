@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkpersonal_website=self.webpackChunkpersonal_website||[]).push([[444],{444:function(e,n,t){async function a(e,n=!0){await e.addParticleUpdater("life",(async e=>{const{LifeUpdater:n}=await t.e(3501).then(t.bind(t,3501));return new n(e)}),n)}t.d(n,{loadLifeUpdater:function(){return a}})}}]);
+//# sourceMappingURL=444-d8879c995d0d61db8ba8.js.map

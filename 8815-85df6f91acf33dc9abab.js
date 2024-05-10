@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkpersonal_website=self.webpackChunkpersonal_website||[]).push([[8815],{8815:function(e,n,a){a.d(n,{loadEasingQuadPlugin:function(){return u}});var s=a(8384);async function u(){(0,s.nL)("ease-in-quad",(e=>e**2)),(0,s.nL)("ease-out-quad",(e=>1-(1-e)**2)),(0,s.nL)("ease-in-out-quad",(e=>e<.5?2*e**2:1-(-2*e+2)**2/2)),await Promise.resolve()}}}]);
+//# sourceMappingURL=8815-85df6f91acf33dc9abab.js.map
