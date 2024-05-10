@@ -3,15 +3,17 @@ import { useSpring, animated } from "react-spring"
 import "./toggle.scss"
 
 export default function DarkModeToggle() {
-  const [isDark, setIsDark] = useState(
-    localStorage.getItem("darkMode") === "true"
-  )
+  const [isDark, setIsDark] = useState(undefined)
 
   const darkModeToggleSpring = useSpring({
     delay: 200,
     opacity: 1,
     from: { opacity: 0 },
   })
+
+  useEffect(() => {
+    setIsDark(localStorage.getItem('darkMode') === "true")
+  }, [])
 
   useEffect(() => {
     var classNameDark = "dark-mode"
