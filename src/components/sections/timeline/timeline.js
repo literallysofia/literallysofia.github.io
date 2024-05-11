@@ -22,9 +22,23 @@ export default function Timeline({ data }) {
                 )}
               </div>
               <span>{job.date}</span>
-              <ul>
-                {job.bio && job.bio.map((item, j) => <li key={j}>{item}</li>)}
-              </ul>
+              <p className="description">{job.description}</p>
+              {job.tasks && (
+                <ul>
+                  {job.tasks.map((item, j) => {
+                    var isSection = Array.from(item)[0] === "#"
+                    var text = isSection ? item.substring(2) : item
+                    return (
+                      <li
+                        key={j}
+                        className={isSection ? "section" : ""}
+                      >
+                        {text}
+                      </li>
+                    )
+                  })}
+                </ul>
+              )}
             </div>
           ))}
       </div>

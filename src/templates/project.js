@@ -1,6 +1,7 @@
 import React from "react"
 import styled from "styled-components"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faLink } from "@fortawesome/free-solid-svg-icons"
 import { faGithub, faBehance } from "@fortawesome/free-brands-svg-icons"
 
 export const StyledBox = styled.div`
@@ -65,7 +66,7 @@ export const StyledBox = styled.div`
 `
 
 const Project = ({ project }) => {
-  const { title, abstract, github, behance, keywords } = project
+  const { title, abstract, github, behance, website, keywords } = project
 
   return (
     <StyledBox>
@@ -83,6 +84,13 @@ const Project = ({ project }) => {
             <li>
               <a href={behance} target="_blank" rel="noopener noreferrer" aria-label="Behance link">
                 <FontAwesomeIcon icon={faBehance} />
+              </a>
+            </li>
+          )}
+          {website && (
+            <li>
+              <a href={website} target="_blank" rel="noopener noreferrer" aria-label="Website link">
+                <FontAwesomeIcon icon={faLink} />
               </a>
             </li>
           )}

@@ -71,7 +71,8 @@ export const pageQuery = graphql`
               title
               company
               web
-              bio
+              description
+              tasks
             }
           }
           html
@@ -90,7 +91,8 @@ export const pageQuery = graphql`
               title
               company
               web
-              bio
+              description
+              tasks
             }
           }
           html
@@ -109,6 +111,7 @@ export const pageQuery = graphql`
               abstract
               github
               behance
+              website
               keywords
             }
           }

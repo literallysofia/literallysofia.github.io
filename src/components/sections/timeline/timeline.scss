@@ -16,6 +16,12 @@
 
     span {
       margin-top: 0.2em;
+      font-size: 0.9em;
+    }
+
+    .description {
+      margin-top: 0.2em;
+      margin-bottom: 0;
     }
 
     &::before {
@@ -34,6 +40,14 @@
 
     &:not(:last-child) {
       margin-bottom: 2em;
+    }
+
+    .section {
+      font-weight: 600;
+
+      &:not(:first-child) {
+        margin-top: 0.8em;
+      }
     }
   }
 

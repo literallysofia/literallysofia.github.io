@@ -14,7 +14,7 @@ education: [
         degree: Erasmus+ Exchange Program,
         school: Universidad Politécnica de Madrid,
         web: https://www.fi.upm.es,
-        details: "Concentration in Human-Computer Interaction, Design, and Software Engineering."
+        details: "Concentration in Human-Computer Interaction, Design, and Software Engineering"
     }
 ]
 languages: [
@@ -36,6 +36,6 @@ languages: [
 ]
 ---
 
-Hello! I'm Sofia, a software engineer based in Porto, Portugal who enjoys building things that interact with people. Besides my passion for technology, I love to travel, music, tv shows, and movies! One of my life goals is to explore every unique location of planet earth.
+Hello! I'm Sofia, a software engineer based in Porto, Portugal who enjoys building things that interact with people. I've always been the go-to tech person in my family and started coding by customizing my Tumblr blog (good old times right?). Besides my passion for technology, I love to travel, music, tv shows, and probably a lot of other things I can't remember right now. When not working you can most likely find me outdoors mingling with other humans!
 
-In my free time, I like to practice yoga and hang out with both humans and animals. Recently, I've been trying to lead a more sustainable lifestyle.
+In my free time, I like to practice yoga and go to concerts from artists I love, wherever that may be! Also, my dog Boby is my best friend and we've been on a crazy ride together for 20 years now. If you don't like him then we can't be friends 🤠
