@@ -1,0 +1,41 @@
+/* Footer Styles */
+footer {
+  text-align: center;
+  padding: 1.5em 0;
+}
+
+footer .social-media {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 0.5em;
+}
+
+footer .social-media li {
+  font-size: 1.2em;
+  transition: var(--transition);
+}
+
+footer .social-media li:not(:last-child) {
+  margin-right: 1em;
+}
+
+footer .social-media li:hover {
+  transform: translateY(-3px);
+}
+
+body.light-mode footer .social-media li a {
+  color: var(--color-text);
+}
+
+body.light-mode footer .social-media li a:hover {
+  color: var(--color-secondary);
+}
+
+body.dark-mode footer .social-media li a {
+  color: var(--color-text);
+}
+
+body.dark-mode footer .social-media li a:hover {
+  color: var(--color-secondary);
+}

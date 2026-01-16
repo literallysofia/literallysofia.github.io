@@ -1,0 +1,118 @@
+/* Banner Styles */
+#banner {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+#banner .banner-content {
+  padding-top: 160px;
+  display: flex;
+  flex: 1;
+}
+
+#banner .banner-content .image-wrapper {
+  display: flex;
+  align-items: center;
+  padding-right: 3em;
+}
+
+#banner .banner-content img {
+  max-width: 500px;
+  height: auto;
+}
+
+#banner .banner-content .banner-intro {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+#banner h1 {
+  font-size: 5em;
+  margin: 0;
+  padding-bottom: 0.2em;
+}
+
+#banner span {
+  font-family: var(--font-raleway);
+  font-size: 1.5em;
+}
+
+#banner p {
+  font-size: 1.25em;
+  margin-bottom: 1.5em;
+}
+
+#banner .social-media {
+  display: flex;
+  align-items: center;
+  margin-bottom: 2em;
+  margin-left: auto;
+}
+
+#banner .social-media li {
+  font-size: 1.6em;
+  transition: var(--transition);
+}
+
+#banner .social-media li:not(:last-child) {
+  margin-right: 1.2em;
+}
+
+#banner .social-media li:hover {
+  transform: translateY(-3px);
+}
+
+body.light-mode #banner .social-media li a {
+  color: var(--color-text);
+}
+
+body.light-mode #banner .social-media li a:hover {
+  color: var(--color-secondary);
+}
+
+body.dark-mode #banner .social-media li a {
+  color: var(--color-text);
+}
+
+body.dark-mode #banner .social-media li a:hover {
+  color: var(--color-primary);
+}
+
+@media (max-width: 767.98px) {
+  #banner .banner-content {
+    padding-top: 140px;
+    flex-wrap: wrap;
+  }
+
+  #banner .image-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-right: 0;
+    padding-bottom: 2em;
+    width: 100%;
+  }
+
+  #banner .image-wrapper img {
+    width: 50%;
+  }
+
+  #banner .banner-intro {
+    align-self: flex-start;
+  }
+
+  #banner h1 {
+    font-size: 3em;
+  }
+
+  #banner span {
+    font-size: 1.2em;
+  }
+
+  #banner p {
+    font-size: 1em;
+  }
+}

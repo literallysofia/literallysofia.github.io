@@ -1,0 +1,57 @@
+---
+import { Image } from 'astro:assets';
+import { siteConfig } from '../config';
+import GitHubIcon from './icons/GitHub.astro';
+import LinkedInIcon from './icons/LinkedIn.astro';
+import BehanceIcon from './icons/Behance.astro';
+import FileIcon from './icons/File.astro';
+
+interface Props {
+  title: string;
+  subtitle: string;
+  slogan: string;
+  content: string;
+}
+
+const { title, subtitle, slogan, content } = Astro.props;
+const portraitImage = await import('../assets/portrait.jpg');
+---
+
+<section id="banner">
+  <div class="banner-content">
+    <div class="image-wrapper animate-fade-in">
+      <Image
+        src={portraitImage.default}
+        alt={title}
+        width={500}
+        height={500}
+        loading="eager"
+        quality={90}
+      />
+    </div>
+    <div class="banner-intro">
+      <span class="animate-fade-in-up animate-delay-1">{subtitle}</span>
+      <h1 class="animate-fade-in-up animate-delay-2">{title}</h1>
+      <p class="animate-fade-in-up animate-delay-3">{slogan}</p>
+      <a href={`mailto:${siteConfig.email}`} class="animate-fade-in-up animate-delay-4">
+        <button class="default">Get In Touch</button>
+      </a>
+    </div>
+  </div>
+  <ul class="social-media animate-fade-in-up animate-delay-5">
+    {siteConfig.socialMedia.map((social) => (
+      <li>
+        <a
+          href={social.url}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label={social.name}
+        >
+          {social.name === 'GitHub' && <GitHubIcon />}
+          {social.name === 'Linkedin' && <LinkedInIcon />}
+          {social.name === 'Behance' && <BehanceIcon />}
+        </a>
+      </li>
+    ))}
+  </ul>
+</section>

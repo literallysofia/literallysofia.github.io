@@ -1,0 +1,26 @@
+---
+import { siteConfig } from '../config';
+import GitHubIcon from './icons/GitHub.astro';
+import LinkedInIcon from './icons/LinkedIn.astro';
+import BehanceIcon from './icons/Behance.astro';
+---
+
+<footer>
+  <ul class="social-media">
+    {siteConfig.socialMedia.map((social) => (
+      <li>
+        <a
+          href={social.url}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label={social.name}
+        >
+          {social.name === 'GitHub' && <GitHubIcon />}
+          {social.name === 'Linkedin' && <LinkedInIcon />}
+          {social.name === 'Behance' && <BehanceIcon />}
+        </a>
+      </li>
+    ))}
+  </ul>
+  <p>Built with Astro + React</p>
+</footer>

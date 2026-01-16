@@ -1,0 +1,51 @@
+---
+import GitHubIcon from './icons/GitHub.astro';
+import BehanceIcon from './icons/Behance.astro';
+import LinkIcon from './icons/Link.astro';
+
+interface Props {
+  title: string;
+  abstract: string;
+  github?: string;
+  website?: string;
+  behance?: string;
+  keywords: string[];
+}
+
+const { title, abstract, github, website, behance, keywords } = Astro.props;
+---
+
+<div class="project-card">
+  <div class="project-header">
+    <h4>{title}</h4>
+    <ul class="project-links">
+      {github && (
+        <li>
+          <a href={github} target="_blank" rel="noopener noreferrer" aria-label="GitHub link">
+            <GitHubIcon />
+          </a>
+        </li>
+      )}
+      {behance && (
+        <li>
+          <a href={behance} target="_blank" rel="noopener noreferrer" aria-label="Behance link">
+            <BehanceIcon />
+          </a>
+        </li>
+      )}
+      {website && (
+        <li>
+          <a href={website} target="_blank" rel="noopener noreferrer" aria-label="Website link">
+            <LinkIcon />
+          </a>
+        </li>
+      )}
+    </ul>
+  </div>
+  <p>{abstract}</p>
+  <ul class="project-tags">
+    {keywords.map((keyword) => (
+      <li>{keyword}</li>
+    ))}
+  </ul>
+</div>

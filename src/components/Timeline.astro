@@ -1,0 +1,58 @@
+---
+interface Job {
+  date: string;
+  title: string;
+  company?: string;
+  web?: string;
+  description?: string;
+  tasks?: string[];
+}
+
+interface Props {
+  title: string;
+  jobs: Job[];
+}
+
+const { title, jobs } = Astro.props;
+
+function parseTaskSection(task: string): { isSection: boolean; content: string } {
+  if (task.startsWith('# ')) {
+    return { isSection: true, content: task.substring(2) };
+  }
+  return { isSection: false, content: task };
+}
+---
+
+<section id={title.toLowerCase().replace(' ', '')} class="target timeline">
+  <h2 class="heading">{title}</h2>
+  <div class="card-list">
+    {jobs.map((job) => (
+      <div class="card-item">
+        <span>{job.date}</span>
+        <div class="card-header">
+          {job.title}
+          {job.company && job.web && (
+            <>
+              <a href={job.web} target="_blank" rel="noopener noreferrer">
+                {job.company}
+              </a>
+            </>
+          )}
+          {job.company && !job.web && <span> @ {job.company}</span>}
+        </div>
+        {job.description && <p class="description">{job.description}</p>}
+        {job.tasks && job.tasks.length > 0 && (
+          <ul>
+            {job.tasks.map((task) => {
+              const parsed = parseTaskSection(task);
+              if (parsed.isSection) {
+                return <li class="section">{parsed.content}</li>;
+              }
+              return <li>{parsed.content}</li>;
+            })}
+          </ul>
+        )}
+      </div>
+    ))}
+  </div>
+</section>

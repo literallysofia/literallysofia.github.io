@@ -20,24 +20,24 @@ coverage
 # nyc test coverage
 .nyc_output
 
-# Grunt intermediate storage (http://gruntjs.com/creating-plugins#storing-task-files)
+# Grunt intermediate storage
 .grunt
 
-# Bower dependency directory (https://bower.io/)
+# Bower dependency directory
 bower_components
 
 # node-waf configuration
 .lock-wscript
 
-# Compiled binary addons (http://nodejs.org/api/addons.html)
+# Compiled binary addons
 build/Release
 
 # Dependency directories
 node_modules/
 jspm_packages/
 
-# Typescript v1 declaration files
-typings/
+# TypeScript cache
+*.tsbuildinfo
 
 # Optional npm cache directory
 .npm
@@ -53,10 +53,11 @@ typings/
 
 # dotenv environment variable files
 .env*
+!.env.example
 
-# gatsby files
-.cache/
-public
+# Astro build output
+dist/
+.astro/
 
 # Mac files
 .DS_Store
@@ -65,5 +66,12 @@ public
 yarn-error.log
 .pnp/
 .pnp.js
-# Yarn Integrity file
 .yarn-integrity
+
+# IDE
+.vscode/*
+!.vscode/extensions.json
+.idea/
+*.swp
+*.swo
+*~

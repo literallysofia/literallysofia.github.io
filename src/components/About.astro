@@ -1,0 +1,103 @@
+---
+import { Image } from 'astro:assets';
+
+interface Education {
+  date: string;
+  degree: string;
+  school: string;
+  web: string;
+  details?: string;
+  link?: string;
+}
+
+interface Language {
+  language: string;
+  icon: string;
+  level: string;
+}
+
+interface Props {
+  title: string;
+  education: Education[];
+  languages: Language[];
+  content: string;
+}
+
+const { title, education, languages, content } = Astro.props;
+const gallery1 = await import('../assets/gallery-1.jpg');
+const gallery2 = await import('../assets/gallery-2.jpg');
+---
+
+<section id="about" class="target">
+  <h2 class="heading">{title}</h2>
+  <div class="about-content">
+    <div class="about-details">
+      <div class="description">
+        <Fragment set:html={content} />
+      </div>
+      <div class="about-grid">
+        <div class="education-list">
+          <h3>Education</h3>
+          {education.map((edu) => (
+            <div class="education">
+              <span>{edu.date}</span>
+              <h4>{edu.degree}</h4>
+              <a href={edu.web} target="_blank" rel="noopener noreferrer">
+                {edu.school}
+              </a>
+              {edu.details && (
+                <p>
+                  {edu.details}
+                  {edu.link && (
+                    <>
+                      <a
+                        class="ref"
+                        href={edu.link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        (Link)
+                      </a>
+                    </>
+                  )}
+                </p>
+              )}
+            </div>
+          ))}
+        </div>
+        <div class="languages-list">
+          <h3>Languages</h3>
+          {languages.map((lang) => (
+            <div class="language">
+              <div class="language-heading">
+                <span>{lang.icon}</span>
+                <h4>{lang.language}</h4>
+              </div>
+              <p>{lang.level}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+    <div class="about-gallery">
+      <div class="image">
+        <Image
+          src={gallery1.default}
+          alt="Gallery image 1"
+          width={400}
+          height={600}
+          quality={85}
+        />
+      </div>
+      <div class="image">
+        <Image
+          src={gallery2.default}
+          alt="Gallery image 2"
+          width={400}
+          height={600}
+          quality={85}
+        />
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,111 @@
+/* Global Styles */
+html,
+body {
+  font: 100% var(--font-poppins);
+  margin: 0;
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  transition: var(--transition-mode);
+}
+
+main {
+  padding: 0 8em 5em 8em;
+}
+
+@media (max-width: 1024px) {
+  main {
+    padding: 0 2em 2em 2em;
+  }
+}
+
+h1,
+h2 {
+  font-family: var(--font-playfair);
+  font-weight: 700;
+}
+
+h3 {
+  font-family: var(--font-raleway);
+  text-transform: uppercase;
+}
+
+p {
+  font-size: 1.1em;
+}
+
+a {
+  text-decoration: none;
+  transition: var(--transition);
+  color: var(--color-primary);
+}
+
+a:hover {
+  color: var(--color-secondary);
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+.target {
+  padding-top: 120px;
+}
+
+button.default {
+  border: none;
+  outline: none;
+  cursor: pointer;
+  transition: var(--transition);
+  border-radius: 50px;
+  font-family: var(--font-raleway);
+  font-weight: 700;
+  font-size: 1em;
+  text-transform: uppercase;
+  padding: 0.8em 2.5em;
+  color: white;
+  background: var(--color-primary);
+}
+
+button.default:hover {
+  color: white;
+  background: var(--color-secondary);
+}
+
+section {
+  padding: 1em 0;
+}
+
+section h3 {
+  font-size: 1.4em;
+  font-weight: 400;
+}
+
+section h4 {
+  font-size: 1.2em;
+  font-weight: 600;
+}
+
+section li::before {
+  content: "-";
+  margin-right: 0.5em;
+}
+
+section .heading {
+  display: inline-block;
+  font-size: 2.6em;
+  margin-bottom: 1em;
+  position: relative;
+}
+
+section .heading::after {
+  content: "";
+  position: absolute;
+  z-index: -10;
+  bottom: -10%;
+  width: 100%;
+  height: 50%;
+  left: 0;
+  opacity: 0.1;
+  background-color: var(--color-secondary);
+}

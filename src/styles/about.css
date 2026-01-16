@@ -1,0 +1,143 @@
+/* About Section Styles */
+#about h3 {
+  margin-bottom: 1em;
+}
+
+#about .about-content {
+  display: flex;
+  width: 100%;
+}
+
+#about .about-details {
+  padding-right: 4em;
+}
+
+#about .about-details .description {
+  margin-bottom: 3em;
+}
+
+#about .about-details .description p:first-child {
+  margin-top: 0;
+}
+
+#about .about-gallery {
+  display: flex;
+  width: 100%;
+}
+
+#about .about-gallery .image {
+  max-width: 60%;
+  padding-left: 1em;
+}
+
+#about .about-gallery .image:first-child {
+  margin-top: -8em;
+  padding: 0 1em 0 0;
+}
+
+#about .about-gallery img {
+  height: auto;
+  max-width: 100%;
+}
+
+#about .about-grid {
+  display: grid;
+  grid-template-columns: 75% 25%;
+  column-gap: 3em;
+}
+
+#about .education:not(:last-child) {
+  margin-bottom: 2em;
+}
+
+#about .education a,
+#about .education span {
+  font-family: var(--font-poppins);
+}
+
+#about .education h4 {
+  margin: 0.2em 0 1em 0;
+}
+
+#about .education a:not(.ref)::before {
+  content: "@ ";
+}
+
+#about .education p {
+  font-size: 1em;
+}
+
+#about .language .language-heading {
+  display: flex;
+  align-items: center;
+}
+
+#about .language h4 {
+  margin: 0;
+}
+
+#about .language p {
+  font-size: 1em;
+  margin: 0;
+}
+
+#about .language span {
+  font-size: 1.5em;
+  margin-right: 0.3em;
+}
+
+#about .language:not(:last-child) {
+  margin-bottom: 2em;
+}
+
+@media (max-width: 1024px) and (orientation: portrait) {
+  #about .about-details {
+    padding-right: 3em;
+    max-width: 60%;
+  }
+
+  #about .about-gallery .image {
+    max-width: 55%;
+    padding-left: 0.5em;
+  }
+
+  #about .about-gallery .image:first-child {
+    margin-top: -4em;
+    padding: 0 0.5em 0 0;
+  }
+}
+
+@media (max-width: 1024px) and (orientation: landscape) {
+  #about .about-details {
+    padding-right: 3em;
+  }
+
+  #about .about-gallery .image {
+    max-width: 55%;
+    padding-left: 0.5em;
+  }
+
+  #about .about-gallery .image:first-child {
+    margin-top: -4em;
+    padding: 0 0.5em 0 0;
+  }
+}
+
+@media (max-width: 767.98px) {
+  #about .about-details {
+    padding-right: 0;
+    min-width: 100%;
+  }
+
+  #about .about-grid {
+    display: block;
+  }
+
+  #about .about-grid > :last-child {
+    margin-top: 3em;
+  }
+
+  #about .about-gallery {
+    display: none;
+  }
+}

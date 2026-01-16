@@ -1,0 +1,23 @@
+/* CSS Custom Properties (Theme Variables) */
+:root {
+  /* Fonts */
+  --font-playfair: "Playfair Display", serif;
+  --font-raleway: "Raleway", sans-serif;
+  --font-poppins: "Poppins", sans-serif;
+
+  /* Colors - Light Mode */
+  --color-bg: #f7f3f0;
+  --color-text: black;
+  --color-primary: #c38352;
+  --color-secondary: #71a7b2;
+
+  /* Transitions */
+  --transition: all 0.4s ease-out;
+  --transition-mode: background-color 0.3s ease;
+}
+
+/* Dark Mode */
+body.dark-mode {
+  --color-bg: #242424;
+  --color-text: white;
+}

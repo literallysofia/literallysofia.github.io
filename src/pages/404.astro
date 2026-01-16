@@ -1,0 +1,18 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/react/Header';
+
+const title = '404: Not Found';
+const description = 'Page not found';
+---
+
+<Layout title={title} description={description}>
+  <Header client:load isNotFound={true} />
+  <main style="display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 100vh; text-align: center; padding: 2em;">
+    <h1 style="font-size: 6em; margin: 0;">404</h1>
+    <p style="font-size: 1.5em; margin: 1em 0;">Page not found</p>
+    <a href="/">
+      <button class="default">Go Home</button>
+    </a>
+  </main>
+</Layout>

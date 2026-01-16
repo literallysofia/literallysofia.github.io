@@ -1,0 +1,113 @@
+/* Header Styles */
+header {
+  position: fixed;
+  left: 0;
+  right: 0;
+  z-index: 2;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1em 8em;
+  transition: var(--transition);
+}
+
+header[data-scroll="true"] {
+  box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.1);
+}
+
+body.light-mode header[data-scroll="true"] {
+  background: var(--color-bg);
+}
+
+body.dark-mode header[data-scroll="true"] {
+  background: var(--color-bg);
+}
+
+header .navbar-brand {
+  padding: 0;
+  margin: 0;
+  font-family: var(--font-playfair);
+  font-weight: 900;
+  transition: var(--transition);
+  color: var(--color-text);
+}
+
+header .navbar-brand::after {
+  content: ".";
+  color: var(--color-primary);
+}
+
+header nav {
+  display: flex;
+}
+
+header nav .nav-item button {
+  border: none;
+  outline: none;
+  background: none;
+  font-family: var(--font-raleway);
+  font-size: 1em;
+  padding: 0;
+  text-transform: uppercase;
+  position: relative;
+  cursor: pointer;
+  color: var(--color-text);
+}
+
+header nav .nav-item button::after {
+  content: "";
+  position: absolute;
+  bottom: -3px;
+  width: 0;
+  height: 3px;
+  left: 0;
+  transition: all 0.2s ease-in-out;
+  transition-duration: 0.75s;
+  opacity: 0;
+  background-color: var(--color-text);
+}
+
+header nav .nav-item button:hover::after {
+  width: 100%;
+  opacity: 1;
+}
+
+/* Burger Menu */
+#burger * {
+  background-color: var(--color-primary);
+}
+
+body.dark-mode #burger * {
+  background-color: white;
+}
+
+#burger .burger-lines::after,
+#burger .burger-lines::before {
+  background-color: var(--color-primary);
+}
+
+body.dark-mode #burger .burger-lines::after,
+body.dark-mode #burger .burger-lines::before {
+  background-color: white;
+}
+
+/* Mobile Menu */
+.menu {
+  background-color: var(--color-bg);
+}
+
+@media (max-width: 1024px) {
+  header {
+    padding: 1em 2em;
+  }
+
+  header .desktop-menu nav .nav-item {
+    margin-left: 2em;
+  }
+}
+
+@media (max-width: 767.98px) {
+  header .navbar-brand {
+    font-size: 4em;
+  }
+}

@@ -1,0 +1,35 @@
+---
+import ProjectCard from './ProjectCard.astro';
+
+interface Project {
+  title: string;
+  abstract: string;
+  github?: string;
+  website?: string;
+  behance?: string;
+  keywords: string[];
+}
+
+interface Props {
+  title: string;
+  projects: Project[];
+}
+
+const { title, projects } = Astro.props;
+---
+
+<section id="portfolio" class="target">
+  <h2 class="heading">{title}</h2>
+  <div class="portfolio-grid">
+    {projects.map((project) => (
+      <ProjectCard
+        title={project.title}
+        abstract={project.abstract}
+        github={project.github}
+        website={project.website}
+        behance={project.behance}
+        keywords={project.keywords}
+      />
+    ))}
+  </div>
+</section>
