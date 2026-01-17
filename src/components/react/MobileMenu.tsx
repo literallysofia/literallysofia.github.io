@@ -8,17 +8,15 @@ interface MobileMenuProps {
 }
 
 function Nav({ setOpen }: MobileMenuProps) {
-  const navigate = (url: string) => {
+  const handleClick = () => {
     if (setOpen) setOpen(false);
-    const element = document.querySelector(url);
-    element?.scrollIntoView({ behavior: 'smooth' });
   };
 
   return (
     <nav>
       {siteConfig.navLinks.map((link, index) => (
         <div className="nav-item" key={index}>
-          <button onClick={() => navigate(link.url)}>{link.name}</button>
+          <a href={link.url} onClick={handleClick}>{link.name}</a>
         </div>
       ))}
     </nav>

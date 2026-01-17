@@ -32,27 +32,12 @@ export default function DarkModeToggle() {
   if (isDark === undefined) return null;
 
   return (
-    <div id="toggle-container">
-      <input
-        type="checkbox"
-        id="dn"
-        aria-label="Dark mode toggle"
-        checked={isDark}
-        onChange={(e) => setIsDark(e.target.checked)}
-      />
-      <label id="toggle" className="toggle" htmlFor="dn">
-        <span id="sun">
-          <span className="crater crater-1" />
-          <span className="crater crater-2" />
-          <span className="crater crater-3" />
-        </span>
-        <span className="star star-1" />
-        <span className="star star-2" />
-        <span className="star star-3" />
-        <span className="star star-4" />
-        <span className="star star-5" />
-        <span className="star star-6" />
-      </label>
-    </div>
+    <button
+      onClick={() => setIsDark(!isDark)}
+      aria-label="Toggle dark mode"
+      className="dark-mode-toggle"
+    >
+      {isDark ? '☀️' : '🌙'}
+    </button>
   );
 }

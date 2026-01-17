@@ -1,58 +1,10 @@
 ---
-import { getCollection } from 'astro:content';
 import Layout from '../layouts/Layout.astro';
 import Header from '../components/react/Header';
-import Banner from '../components/Banner.astro';
-import About from '../components/About.astro';
-import Timeline from '../components/Timeline.astro';
-import Portfolio from '../components/Portfolio.astro';
-import Footer from '../components/Footer.astro';
-
-// Query content collections
-const heroCollection = await getCollection('hero');
-const aboutCollection = await getCollection('about');
-const experienceCollection = await getCollection('experience');
-const extraCurricularCollection = await getCollection('extra-curricular');
-const portfolioCollection = await getCollection('portfolio');
-
-// Get the first entry from each collection
-const hero = heroCollection[0];
-const about = aboutCollection[0];
-const experience = experienceCollection[0];
-const extraCurricular = extraCurricularCollection[0];
-const portfolio = portfolioCollection[0];
-
-// Render content
-const { Content: AboutContent } = await about.render();
 ---
 
 <Layout>
   <Header client:load />
   <main>
-    <Banner
-      title={hero.data.title}
-      subtitle={hero.data.subtitle}
-      slogan={hero.data.slogan}
-      content={hero.body}
-    />
-    <About
-      title={about.data.title}
-      education={about.data.education}
-      languages={about.data.languages}
-      content={about.body}
-    />
-    <Timeline
-      title={experience.data.title}
-      jobs={experience.data.jobs}
-    />
-    <Timeline
-      title={extraCurricular.data.title}
-      jobs={extraCurricular.data.jobs}
-    />
-    <Portfolio
-      title={portfolio.data.title}
-      projects={portfolio.data.projects}
-    />
   </main>
-  <Footer />
 </Layout>

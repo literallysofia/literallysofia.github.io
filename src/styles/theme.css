@@ -4,12 +4,13 @@
   --font-playfair: "Playfair Display", serif;
   --font-raleway: "Raleway", sans-serif;
   --font-poppins: "Poppins", sans-serif;
+  --font-noto: "Noto Sans", sans-serif;
 
   /* Colors - Light Mode */
-  --color-bg: #f7f3f0;
+  --color-bg: #DCBCCA;
   --color-text: black;
-  --color-primary: #c38352;
-  --color-secondary: #71a7b2;
+  --color-primary: #6290BC;
+  --color-secondary: #AABD8C;
 
   /* Transitions */
   --transition: all 0.4s ease-out;
@@ -17,7 +18,16 @@
 }
 
 /* Dark Mode */
+html.dark-mode,
 body.dark-mode {
-  --color-bg: #242424;
+  --color-bg: #28151E;
   --color-text: white;
 }
+
+/* 
+381D2A
+3E6990
+#AABD8C
+#E9E3B4
+#F39B6D
+*/

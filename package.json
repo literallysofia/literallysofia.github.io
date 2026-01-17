@@ -4,7 +4,7 @@
   "version": "2.0.0",
   "private": true,
   "description": "Personal Website - Astro + React",
-  "author": "Sofia Silva <sofialcfsilva@gmail.com>",
+  "author": "Sofia Silva",
   "license": "MIT",
   "scripts": {
     "dev": "astro dev",

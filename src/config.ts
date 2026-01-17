@@ -1,5 +1,5 @@
 export const siteConfig = {
-  siteTitle: "Sofia Silva | Software Engineer",
+  siteTitle: "sofia silva",
   siteDescription:
     "Sofia Silva is a software engineer based in Porto, Portugal who specializes in developing (and occasionally designing) exceptional, high-quality websites and applications.",
   siteKeywords:
@@ -26,20 +26,16 @@ export const siteConfig = {
   ],
   navLinks: [
     {
-      name: "About",
-      url: "#about",
+      name: "about",
+      url: "/about",
     },
     {
-      name: "Experience",
-      url: "#experience",
+      name: "work",
+      url: "/work",
     },
     {
-      name: "Extra Curricular",
-      url: "#extracurricular",
-    },
-    {
-      name: "Portfolio",
-      url: "#portfolio",
+      name: "misc",
+      url: "/misc",
     },
   ],
 };

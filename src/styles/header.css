@@ -1,35 +1,34 @@
 /* Header Styles */
+
 header {
-  position: fixed;
-  left: 0;
-  right: 0;
-  z-index: 2;
   display: flex;
-  justify-content: space-between;
+  flex-direction: row;
   align-items: center;
-  padding: 1em 8em;
+  justify-content: space-between;
+  padding: 1.5em 8em;
   transition: var(--transition);
-}
-
-header[data-scroll="true"] {
-  box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.1);
-}
-
-body.light-mode header[data-scroll="true"] {
-  background: var(--color-bg);
-}
-
-body.dark-mode header[data-scroll="true"] {
-  background: var(--color-bg);
 }
 
 header .navbar-brand {
-  padding: 0;
-  margin: 0;
+  flex: 1 1 0;
   font-family: var(--font-playfair);
-  font-weight: 900;
-  transition: var(--transition);
+  font-weight: 400;
+  font-size: 1.5em;
   color: var(--color-text);
+  transition: var(--transition);
+}
+
+header .desktop-nav {
+  flex: 1 1 0;
+  display: flex;
+  justify-content: center;
+}
+
+header .desktop-toggle {
+  flex: 1 1 0;
+  display: flex;
+  justify-content: flex-end;
+  cursor: pointer;
 }
 
 header .navbar-brand::after {
@@ -39,27 +38,31 @@ header .navbar-brand::after {
 
 header nav {
   display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 2em;
+  padding-top: 0.5em;
 }
 
-header nav .nav-item button {
+header nav .nav-item a {
   border: none;
   outline: none;
   background: none;
-  font-family: var(--font-raleway);
+  font-family: var(--font-noto);
   font-size: 1em;
   padding: 0;
-  text-transform: uppercase;
+  text-transform: lowercase;
   position: relative;
-  cursor: pointer;
   color: var(--color-text);
+  text-decoration: none;
 }
 
-header nav .nav-item button::after {
+header nav .nav-item a::after {
   content: "";
   position: absolute;
   bottom: -3px;
   width: 0;
-  height: 3px;
+  height: 1px;
   left: 0;
   transition: all 0.2s ease-in-out;
   transition-duration: 0.75s;
@@ -67,13 +70,13 @@ header nav .nav-item button::after {
   background-color: var(--color-text);
 }
 
-header nav .nav-item button:hover::after {
+header nav .nav-item a:hover::after {
   width: 100%;
-  opacity: 1;
+  opacity: 0.5;
 }
 
 /* Burger Menu */
-#burger * {
+/* #burger * {
   background-color: var(--color-primary);
 }
 
@@ -89,10 +92,10 @@ body.dark-mode #burger * {
 body.dark-mode #burger .burger-lines::after,
 body.dark-mode #burger .burger-lines::before {
   background-color: white;
-}
+} */
 
 /* Mobile Menu */
-.menu {
+/* .menu {
   background-color: var(--color-bg);
 }
 
@@ -101,7 +104,7 @@ body.dark-mode #burger .burger-lines::before {
     padding: 1em 2em;
   }
 
-  header .desktop-menu nav .nav-item {
+  header .desktop-nav nav .nav-item {
     margin-left: 2em;
   }
 }
@@ -110,4 +113,4 @@ body.dark-mode #burger .burger-lines::before {
   header .navbar-brand {
     font-size: 4em;
   }
-}
+} */
