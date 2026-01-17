@@ -4,6 +4,10 @@ footer {
   padding: 1.5em 0;
 }
 
+footer p {
+  font-size: 0.8em;
+}
+
 footer .social-media {
   display: flex;
   justify-content: center;

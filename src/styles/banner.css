@@ -2,11 +2,11 @@
 #banner {
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
+  flex: 1;
+  min-height: 0;
 }
 
 #banner .banner-content {
-  padding-top: 160px;
   display: flex;
   flex: 1;
 }
@@ -14,11 +14,12 @@
 #banner .banner-content .image-wrapper {
   display: flex;
   align-items: center;
-  padding-right: 3em;
+  padding-right: 6em;
 }
 
 #banner .banner-content img {
-  max-width: 500px;
+  width: 100%;
+  max-width: 600px;
   height: auto;
 }
 
@@ -30,74 +31,59 @@
 }
 
 #banner h1 {
-  font-size: 5em;
+  font-size: 3.5em;
+  font-weight: 600;
   margin: 0;
-  padding-bottom: 0.2em;
+  padding-bottom: 0.4em;
 }
 
 #banner span {
-  font-family: var(--font-raleway);
-  font-size: 1.5em;
+  font-family: var(--font-noto);
+  font-weight: 300;
+  font-size: 1.2em;
+  letter-spacing: 0.05em;
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+html.dark-mode #banner span,
+body.dark-mode #banner span {
+  background-color: rgba(250, 250, 250, 0.05);
 }
 
 #banner p {
-  font-size: 1.25em;
-  margin-bottom: 1.5em;
+  font-size: 1em;
+  font-weight: 300;
+  white-space: pre-line;
 }
 
-#banner .social-media {
-  display: flex;
-  align-items: center;
-  margin-bottom: 2em;
-  margin-left: auto;
+#banner p a {
+  color: inherit;
+  text-decoration: underline;
+  text-decoration-color: color-mix(in srgb, var(--color-text) 30%, transparent);
+  text-underline-offset: 0.2em;
+  transition: text-decoration-color 0.3s ease;
 }
 
-#banner .social-media li {
-  font-size: 1.6em;
-  transition: var(--transition);
+#banner p a:hover {
+  text-decoration-color: color-mix(in srgb, var(--color-text) 80%, transparent);
 }
 
-#banner .social-media li:not(:last-child) {
-  margin-right: 1.2em;
-}
-
-#banner .social-media li:hover {
-  transform: translateY(-3px);
-}
-
-body.light-mode #banner .social-media li a {
-  color: var(--color-text);
-}
-
-body.light-mode #banner .social-media li a:hover {
-  color: var(--color-secondary);
-}
-
-body.dark-mode #banner .social-media li a {
-  color: var(--color-text);
-}
-
-body.dark-mode #banner .social-media li a:hover {
-  color: var(--color-primary);
-}
-
-@media (max-width: 767.98px) {
+@media (max-width: 900px) {
   #banner .banner-content {
-    padding-top: 140px;
     flex-wrap: wrap;
   }
 
-  #banner .image-wrapper {
+  #banner .banner-content .image-wrapper {
     display: flex;
     align-items: center;
     justify-content: center;
-    padding-right: 0;
-    padding-bottom: 2em;
+    padding: 0;
     width: 100%;
   }
 
   #banner .image-wrapper img {
-    width: 50%;
+    width: 60%;
+    max-width: 400px;
   }
 
   #banner .banner-intro {
@@ -106,13 +92,5 @@ body.dark-mode #banner .social-media li a:hover {
 
   #banner h1 {
     font-size: 3em;
-  }
-
-  #banner span {
-    font-size: 1.2em;
-  }
-
-  #banner p {
-    font-size: 1em;
   }
 }

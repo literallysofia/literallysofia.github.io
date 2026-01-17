@@ -1,10 +1,16 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import Header from '../components/react/Header';
+import Banner from '../components/Banner.astro';
+import Footer from '../components/Footer.astro';
 ---
 
 <Layout>
-  <Header client:load />
-  <main>
-  </main>
+  <div class="home-container">
+    <Header client:load />
+    <main>
+      <Banner />
+    </main>
+    <Footer />
+  </div>
 </Layout>

@@ -1,7 +1,7 @@
 /* Global Styles */
 html,
 body {
-  font: 100% var(--font-poppins);
+  font: 100% var(--font-noto);
   margin: 0;
   background-color: var(--color-bg);
   color: var(--color-text);
@@ -12,9 +12,31 @@ main {
   padding: 0 8em 5em 8em;
 }
 
-@media (max-width: 1024px) {
+@media (max-width: 900px) {
   main {
     padding: 0 2em 2em 2em;
+  }
+}
+
+/* Home Container - No Scroll Layout */
+.home-container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.home-container main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 0 8em;
+  overflow: hidden;
+}
+
+@media (max-width: 900px) {
+  .home-container main {
+    padding: 0 2em;
   }
 }
 
@@ -25,7 +47,7 @@ h2 {
 }
 
 h3 {
-  font-family: var(--font-raleway);
+  font-family: var(--font-noto);
   text-transform: uppercase;
 }
 
@@ -58,7 +80,7 @@ button.default {
   cursor: pointer;
   transition: var(--transition);
   border-radius: 50px;
-  font-family: var(--font-raleway);
+  font-family: var(--font-noto);
   font-weight: 700;
   font-size: 1em;
   text-transform: uppercase;

@@ -2,12 +2,10 @@
 :root {
   /* Fonts */
   --font-playfair: "Playfair Display", serif;
-  --font-raleway: "Raleway", sans-serif;
-  --font-poppins: "Poppins", sans-serif;
   --font-noto: "Noto Sans", sans-serif;
 
   /* Colors - Light Mode */
-  --color-bg: #DCBCCA;
+  --color-bg: #EEEEEE;
   --color-text: black;
   --color-primary: #6290BC;
   --color-secondary: #AABD8C;
@@ -23,11 +21,3 @@ body.dark-mode {
   --color-bg: #28151E;
   --color-text: white;
 }
-
-/* 
-381D2A
-3E6990
-#AABD8C
-#E9E3B4
-#F39B6D
-*/
