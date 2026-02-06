@@ -28,18 +28,18 @@ footer .social-media li:hover {
   transform: translateY(-3px);
 }
 
-body.light-mode footer .social-media li a {
+html.light-mode footer .social-media li a {
   color: var(--color-text);
 }
 
-body.light-mode footer .social-media li a:hover {
+html.light-mode footer .social-media li a:hover {
   color: var(--color-secondary);
 }
 
-body.dark-mode footer .social-media li a {
+html.dark-mode footer .social-media li a {
   color: var(--color-text);
 }
 
-body.dark-mode footer .social-media li a:hover {
+html.dark-mode footer .social-media li a:hover {
   color: var(--color-secondary);
 }

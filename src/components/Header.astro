@@ -1,0 +1,186 @@
+---
+import { siteConfig } from "../config";
+import "../styles/header.css";
+
+interface Props {
+  isNotFound?: boolean;
+}
+
+const { isNotFound = false } = Astro.props;
+---
+
+<header>
+  <a href="/" class="navbar-brand"> sofia silva </a>
+  {
+    !isNotFound && (
+      <>
+        {/* Desktop Navigation */}
+        <div class="desktop-nav">
+          <nav>
+            {siteConfig.navLinks.map((link) => (
+              <div class="nav-item">
+                <a href={link.url}>{link.name}</a>
+              </div>
+            ))}
+          </nav>
+        </div>
+        <div class="desktop-toggle">
+          <button
+            id="dark-mode-toggle"
+            aria-label="Toggle dark mode"
+            class="dark-mode-toggle"
+          >
+            <span class="toggle-icon" />
+          </button>
+        </div>
+
+        {/* Mobile Navigation */}
+        <button id="burger" class="mobile-burger" aria-label="Toggle menu">
+          <div class="burger-lines">
+            <span />
+            <span />
+          </div>
+        </button>
+
+        <div id="mobile-menu" class="menu">
+          <nav>
+            {siteConfig.navLinks.map((link, index) => (
+              <div class="nav-item" data-delay={index + 1}>
+                <a href={link.url}>{link.name}</a>
+              </div>
+            ))}
+          </nav>
+          <button
+            id="dark-mode-toggle-mobile"
+            aria-label="Toggle dark mode"
+            class="dark-mode-toggle"
+            data-delay={siteConfig.navLinks.length + 1}
+          >
+            <span class="toggle-icon" />
+          </button>
+        </div>
+      </>
+    )
+  }
+</header>
+
+<script>
+  // Dark Mode Toggle
+  function initDarkMode() {
+    const toggleDesktop = document.getElementById("dark-mode-toggle");
+    const toggleMobile = document.getElementById("dark-mode-toggle-mobile");
+
+    function updateToggleIcons(isDark: boolean) {
+      const icon = isDark ? "☀️" : "🌙";
+      document.querySelectorAll(".toggle-icon").forEach((el) => {
+        el.textContent = icon;
+      });
+    }
+
+    function toggleDarkMode() {
+      const html = document.documentElement;
+      const body = document.body;
+      const isDark = html.classList.contains("dark-mode");
+
+      if (isDark) {
+        html.classList.remove("dark-mode");
+        html.classList.add("light-mode");
+        body.classList.remove("dark-mode");
+        body.classList.add("light-mode");
+        localStorage.setItem("theme", "light");
+        updateToggleIcons(false);
+      } else {
+        html.classList.remove("light-mode");
+        html.classList.add("dark-mode");
+        body.classList.remove("light-mode");
+        body.classList.add("dark-mode");
+        localStorage.setItem("theme", "dark");
+        updateToggleIcons(true);
+      }
+    }
+
+    // Initialize toggle icon on page load
+    const isDark = document.documentElement.classList.contains("dark-mode");
+    updateToggleIcons(isDark);
+
+    toggleDesktop?.addEventListener("click", toggleDarkMode);
+    toggleMobile?.addEventListener("click", toggleDarkMode);
+  }
+
+  // Mobile Menu Toggle
+  function initMobileMenu() {
+    const burger = document.getElementById("burger");
+    const menu = document.getElementById("mobile-menu");
+    const menuItems = menu?.querySelectorAll(".nav-item, .dark-mode-toggle");
+    const menuLinks = menu?.querySelectorAll("a");
+
+    function openMenu() {
+      burger?.classList.add("open");
+
+      // First make menu visible
+      if (menu) {
+        menu.style.display = "flex";
+      }
+
+      // Force reflow to ensure display change takes effect
+      menu?.offsetHeight;
+
+      // Then trigger fade-in
+      requestAnimationFrame(() => {
+        menu?.classList.add("open");
+
+        // Add staggered fade-in animations to menu items
+        menuItems?.forEach((item) => {
+          const delay = item.getAttribute("data-delay");
+          item.classList.add("menu-item-animate");
+          if (delay) {
+            item.style.animationDelay = `${parseInt(delay) * 0.1 + 0.2}s`;
+          }
+        });
+      });
+    }
+
+    function closeMenu() {
+      burger?.classList.remove("open");
+      menu?.classList.remove("open");
+
+      // Remove animations
+      menuItems?.forEach((item) => {
+        item.classList.remove("menu-item-animate");
+        item.style.animationDelay = "";
+      });
+
+      // Hide menu after fade-out completes
+      setTimeout(() => {
+        if (menu && !menu.classList.contains("open")) {
+          menu.style.display = "none";
+        }
+      }, 400);
+    }
+
+    function toggleMenu() {
+      if (burger?.classList.contains("open")) {
+        closeMenu();
+      } else {
+        openMenu();
+      }
+    }
+
+    burger?.addEventListener("click", toggleMenu);
+
+    // Close menu when clicking on a link
+    menuLinks?.forEach((link) => {
+      link.addEventListener("click", closeMenu);
+    });
+  }
+
+  // Initialize on page load
+  initDarkMode();
+  initMobileMenu();
+
+  // Re-initialize after page transitions (for Astro view transitions)
+  document.addEventListener("astro:after-swap", () => {
+    initDarkMode();
+    initMobileMenu();
+  });
+</script>

@@ -1,7 +1,7 @@
 ---
 import { getCollection } from "astro:content";
 import Layout from "../layouts/Layout.astro";
-import Header from "../components/react/Header";
+import Header from "../components/Header.astro";
 import About from "../components/About.astro";
 import Footer from "../components/Footer.astro";
 
@@ -11,7 +11,7 @@ const { Content } = await about.render();
 ---
 
 <Layout>
-  <Header client:load />
+  <Header />
   <main>
     <About
       title={about.data.title}
