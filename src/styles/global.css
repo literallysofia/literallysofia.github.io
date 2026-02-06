@@ -1,4 +1,7 @@
-/* Global Styles */
+/* ================================================
+   GLOBAL - BASE STYLES
+   ================================================ */
+
 html,
 body {
   font: 100% var(--font-noto);
@@ -9,17 +12,15 @@ body {
   transition: var(--transition-mode);
 }
 
+/* ================================================
+   GLOBAL - LAYOUT CONTAINERS
+   ================================================ */
+
 main {
   padding: 0 8em 5em 8em;
 }
 
-@media (max-width: 900px) {
-  main {
-    padding: 0 2em 2em 2em;
-  }
-}
-
-/* Home Container - No Scroll Layout */
+/* Home page - No scroll layout */
 .home-container {
   display: flex;
   flex-direction: column;
@@ -35,17 +36,9 @@ main {
   overflow: hidden;
 }
 
-@media (max-width: 900px) {
-  .home-container {
-    height: auto;
-    overflow: auto;
-  }
-
-  .home-container main {
-    padding: 0 2em;
-    overflow: auto;
-  }
-}
+/* ================================================
+   GLOBAL - TYPOGRAPHY
+   ================================================ */
 
 h1,
 h2 {
@@ -62,6 +55,10 @@ h3 {
 p {
   font-size: 1.1em;
 }
+
+/* ================================================
+   GLOBAL - LINKS
+   ================================================ */
 
 a {
   text-decoration: none;
@@ -81,10 +78,18 @@ a:focus {
   outline: none;
 }
 
+/* ================================================
+   GLOBAL - LISTS
+   ================================================ */
+
 ul {
   list-style: none;
   padding: 0;
 }
+
+/* ================================================
+   GLOBAL - BUTTONS
+   ================================================ */
 
 button.default {
   border: none;
@@ -106,6 +111,10 @@ button.default:hover {
   background: var(--color-secondary);
 }
 
+/* ================================================
+   GLOBAL - SECTIONS
+   ================================================ */
+
 section {
   padding: 1em 0;
 }
@@ -125,21 +134,43 @@ section li::before {
   margin-right: 0.5em;
 }
 
+/* Section headings with decorative underline */
 section .heading {
   display: inline-block;
   font-size: 2.6em;
   margin-bottom: 1em;
   position: relative;
+  z-index: 1;
 }
 
 section .heading::after {
   content: "";
   position: absolute;
-  z-index: -10;
-  bottom: -10%;
+  z-index: -1;
+  bottom: 0.02em;
   width: 100%;
-  height: 50%;
+  height: 0.4em;
   left: 0;
-  opacity: 0.1;
+  opacity: 0.5;
   background-color: var(--color-secondary);
+}
+
+/* ================================================
+   RESPONSIVE - MOBILE
+   ================================================ */
+
+@media (max-width: 900px) {
+  main {
+    padding: 0 2em 2em 2em;
+  }
+
+  .home-container {
+    height: auto;
+    overflow: auto;
+  }
+
+  .home-container main {
+    padding: 0 2em;
+    overflow: auto;
+  }
 }

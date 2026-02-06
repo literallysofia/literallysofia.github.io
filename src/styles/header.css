@@ -1,4 +1,6 @@
-/* Header Styles */
+/* ================================================
+   HEADER - BASE STYLES
+   ================================================ */
 
 header {
   display: flex;
@@ -12,6 +14,10 @@ header {
   background-color: var(--color-bg);
 }
 
+/* ================================================
+   HEADER - BRAND
+   ================================================ */
+
 header .navbar-brand {
   flex: 1 1 0;
   font-family: var(--font-playfair);
@@ -23,6 +29,16 @@ header .navbar-brand {
   z-index: 1001;
 }
 
+header .navbar-brand::after {
+  content: ".";
+  margin-left: -0.15em;
+  color: var(--color-primary);
+}
+
+/* ================================================
+   HEADER - DESKTOP NAVIGATION
+   ================================================ */
+
 header .desktop-nav {
   flex: 1 1 0;
   display: flex;
@@ -33,12 +49,6 @@ header .desktop-toggle {
   flex: 1 1 0;
   display: flex;
   justify-content: flex-end;
-}
-
-header .navbar-brand::after {
-  content: ".";
-  margin-left: -0.15em;
-  color: var(--color-primary);
 }
 
 header nav {
@@ -54,6 +64,7 @@ header nav .nav-item a {
   color: var(--color-text);
 }
 
+/* Nav link underline animation */
 header nav .nav-item a::after {
   content: "";
   position: absolute;
@@ -71,7 +82,11 @@ header nav .nav-item a:hover::after {
   opacity: 0.5;
 }
 
-/* Mobile burger styles - Plus sign that rotates to X */
+/* ================================================
+   HEADER - MOBILE BURGER MENU
+   (Plus sign that rotates to X)
+   ================================================ */
+
 .mobile-burger {
   display: none;
   background: none;
@@ -96,6 +111,7 @@ header nav .nav-item a:hover::after {
   background: none;
 }
 
+/* Burger lines container */
 .burger-lines {
   display: block;
   position: absolute;
@@ -137,7 +153,10 @@ header nav .nav-item a:hover::after {
   transform: translate(-50%, -50%);
 }
 
-/* Mobile menu styles */
+/* ================================================
+   HEADER - MOBILE MENU OVERLAY
+   ================================================ */
+
 .menu {
   display: none;
   position: fixed;
@@ -161,7 +180,7 @@ header nav .nav-item a:hover::after {
   pointer-events: auto;
 }
 
-/* Override nav styles for mobile menu */
+/* Mobile menu navigation styles */
 .menu nav {
   flex-direction: column;
   gap: 2em;
@@ -181,7 +200,10 @@ header nav .nav-item a:hover::after {
   font-size: 1.5em;
 }
 
-/* Menu item animations */
+/* ================================================
+   HEADER - MOBILE MENU ANIMATIONS
+   ================================================ */
+
 .menu .nav-item,
 .menu .dark-mode-toggle {
   opacity: 0;
@@ -203,7 +225,10 @@ header nav .nav-item a:hover::after {
   }
 }
 
-/* Responsive styles */
+/* ================================================
+   RESPONSIVE - MOBILE
+   ================================================ */
+
 @media (max-width: 900px) {
   header {
     padding: 1.5em 2em;
@@ -218,6 +243,10 @@ header nav .nav-item a:hover::after {
     display: block;
   }
 }
+
+/* ================================================
+   RESPONSIVE - DESKTOP
+   ================================================ */
 
 @media (min-width: 901px) {
   .mobile-burger,

@@ -1,4 +1,7 @@
-/* Footer Styles */
+/* ================================================
+   FOOTER - BASE STYLES
+   ================================================ */
+
 footer {
   text-align: center;
   padding: 1.5em 0;
@@ -7,6 +10,10 @@ footer {
 footer p {
   font-size: 0.8em;
 }
+
+/* ================================================
+   FOOTER - SOCIAL MEDIA LINKS
+   ================================================ */
 
 footer .social-media {
   display: flex;
@@ -24,10 +31,16 @@ footer .social-media li:not(:last-child) {
   margin-right: 1em;
 }
 
+/* Hover effect - lift up */
 footer .social-media li:hover {
   transform: translateY(-3px);
 }
 
+/* ================================================
+   FOOTER - THEME-SPECIFIC COLORS
+   ================================================ */
+
+/* Light mode social links */
 html.light-mode footer .social-media li a {
   color: var(--color-text);
 }
@@ -36,6 +49,7 @@ html.light-mode footer .social-media li a:hover {
   color: var(--color-secondary);
 }
 
+/* Dark mode social links */
 html.dark-mode footer .social-media li a {
   color: var(--color-text);
 }

@@ -1,4 +1,7 @@
-/* Dark Mode Toggle Styles */
+/* ================================================
+   DARK MODE TOGGLE - BASE STYLES
+   ================================================ */
+
 .dark-mode-toggle {
   background: none;
   border: none;
@@ -11,11 +14,16 @@
   user-select: none;
 }
 
+/* ================================================
+   DARK MODE TOGGLE - ICON ANIMATION
+   ================================================ */
+
 .toggle-icon {
   display: inline-block;
   transition: transform 0.3s ease, opacity 0.2s ease;
 }
 
+/* Active state - slight rotation and scale */
 .dark-mode-toggle:active .toggle-icon {
   transform: rotate(20deg) scale(0.95);
 }
