@@ -23,9 +23,34 @@ interface Props {
 }
 
 const { title, education, languages } = Astro.props;
-const gallery1 = await import('../assets/gallery-1.jpg');
-const gallery2 = await import('../assets/gallery-2.jpg');
-const gallery3 = await import('../assets/gallery-1.jpg'); // Replace with gallery-3.jpg when available
+
+const galleryImages = [
+  { src: '../assets/gallery-1.jpg', alt: 'childhood beach' },
+  { src: '../assets/gallery-2.jpg', alt: 'new york' },
+  { src: '../assets/gallery-3.png', alt: 'paris' },
+  { src: '../assets/gallery-4.png', alt: 'cozy home' },
+  { src: '../assets/gallery-5.png', alt: 'paramore' },
+  { src: '../assets/gallery-6.png', alt: 'porto' },
+  { src: '../assets/gallery-7.png', alt: 'london' },
+  { src: '../assets/gallery-8.png', alt: 'twenty one pilots' },
+  { src: '../assets/gallery-9.jpg', alt: 'nico, wfh buddy' },
+];
+
+const galleryImports = await Promise.all(
+  galleryImages.map(img => import(img.src))
+);
+
+const gallery = galleryImages.map((img, index) => ({
+  ...img,
+  module: galleryImports[index].default,
+}));
+
+const imageProps = {
+  width: 400,
+  quality: 75,
+  format: 'webp',
+  loading: 'lazy' as const
+};
 ---
 
 <section id="about">
@@ -81,35 +106,28 @@ const gallery3 = await import('../assets/gallery-1.jpg'); // Replace with galler
     </div>
     <div class="about-gallery">
       <div class="gallery-column">
-        <div class="image">
-          <Image
-            src={gallery1.default}
-            alt="Gallery image 1"
-            width={400}
-            height={600}
-            quality={85}
-          />
-        </div>
-        <div class="image">
-          <Image
-            src={gallery3.default}
-            alt="Gallery image 3"
-            width={400}
-            height={600}
-            quality={85}
-          />
-        </div>
+        {[0, 2, 4, 6, 8].map((index) => (
+          <div class="image">
+            <Image
+              src={gallery[index].module}
+              alt={gallery[index].alt}
+              {...imageProps}
+            />
+            <span class="image-caption">{gallery[index].alt}</span>
+          </div>
+        ))}
       </div>
       <div class="gallery-column">
-        <div class="image">
-          <Image
-            src={gallery2.default}
-            alt="Gallery image 2"
-            width={400}
-            height={600}
-            quality={85}
-          />
-        </div>
+        {[1, 3, 5, 7].map((index) => (
+          <div class="image">
+            <Image
+              src={gallery[index].module}
+              alt={gallery[index].alt}
+              {...imageProps}
+            />
+            <span class="image-caption">{gallery[index].alt}</span>
+          </div>
+        ))}
       </div>
     </div>
   </div>

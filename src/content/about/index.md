@@ -44,6 +44,8 @@ I began my professional career as a frontend web engineer, but the mobile world 
 
 Since then, I’ve worked with teams across major tech markets in the **UK, Germany, and France**, and I’ve been fully remote by the ocean since 2020. I thrive in collaborative environments and I’m often the person connecting people, keeping projects moving, and bringing positive energy to the team 🐬
 
-When I’m not coding, you’ll probably find me on a yoga mat or sipping matcha — I'm my own barista. I also love traveling, concerts, TV shows, fashion, any form of art really! Also being outdoors and dogs, a lifelong obsession that started with 101 Dalmatians 🐶
+When I’m not coding, you’ll probably find me on a yoga mat or sipping matcha — I'm my own barista. I also love traveling, concerts, TV shows, fashion, architecture, any form of art really! Also being outdoors and dogs, a lifelong obsession that started with 101 Dalmatians 🐶
 
 Yoga is a big part of my life. It keeps me grounded, focused, and sane in a very tech-shaped world. I practice regularly and genuinely structure my days around it 🧘‍♀️✨ 
+
+📍 either in porto or paris

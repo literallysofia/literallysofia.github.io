@@ -7,6 +7,7 @@
   /* Colors - Light Mode */
   --color-bg: #EEEEEE;
   --color-text: black;
+  --color-text-inverse: white;
   --color-primary: #6290BC;
   --color-secondary: #AABD8C;
 
@@ -20,4 +21,5 @@ html.dark-mode,
 body.dark-mode {
   --color-bg: #28151E;
   --color-text: white;
+  --color-text-inverse: black;
 }
