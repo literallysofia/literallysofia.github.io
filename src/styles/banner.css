@@ -39,7 +39,6 @@
 
 #banner span {
   font-family: var(--font-noto);
-  font-weight: 300;
   font-size: 1.2em;
   letter-spacing: 0.05em;
   background-color: rgba(0, 0, 0, 0.05);
@@ -52,7 +51,6 @@ body.dark-mode #banner span {
 
 #banner p {
   font-size: 1em;
-  font-weight: 300;
   white-space: pre-line;
 }
 

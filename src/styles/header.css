@@ -7,6 +7,10 @@ header {
   justify-content: space-between;
   padding: 1.5em 8em;
   transition: var(--transition);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background-color: var(--color-bg);
 }
 
 header .navbar-brand {

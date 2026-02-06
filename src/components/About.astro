@@ -20,10 +20,9 @@ interface Props {
   title: string;
   education: Education[];
   languages: Language[];
-  content: string;
 }
 
-const { title, education, languages, content } = Astro.props;
+const { title, education, languages } = Astro.props;
 const gallery1 = await import('../assets/gallery-1.jpg');
 const gallery2 = await import('../assets/gallery-2.jpg');
 ---
@@ -33,7 +32,7 @@ const gallery2 = await import('../assets/gallery-2.jpg');
   <div class="about-content">
     <div class="about-details">
       <div class="description">
-        <Fragment set:html={content} />
+        <slot />
       </div>
       <div class="about-grid">
         <div class="education-list">

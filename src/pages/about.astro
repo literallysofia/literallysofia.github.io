@@ -1,0 +1,25 @@
+---
+import { getCollection } from "astro:content";
+import Layout from "../layouts/Layout.astro";
+import Header from "../components/react/Header";
+import About from "../components/About.astro";
+import Footer from "../components/Footer.astro";
+
+const aboutCollection = await getCollection("about");
+const about = aboutCollection[0];
+const { Content } = await about.render();
+---
+
+<Layout>
+  <Header client:load />
+  <main>
+    <About
+      title={about.data.title}
+      education={about.data.education}
+      languages={about.data.languages}
+    >
+      <Content />
+    </About>
+  </main>
+  <Footer />
+</Layout>

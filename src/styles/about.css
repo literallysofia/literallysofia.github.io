@@ -50,11 +50,6 @@
   margin-bottom: 2em;
 }
 
-#about .education a,
-#about .education span {
-  font-family: var(--font-poppins);
-}
-
 #about .education h4 {
   margin: 0.2em 0 1em 0;
 }

@@ -2,6 +2,7 @@
 html,
 body {
   font: 100% var(--font-noto);
+  font-weight: 300;
   margin: 0;
   background-color: var(--color-bg);
   color: var(--color-text);
@@ -48,6 +49,7 @@ h2 {
 
 h3 {
   font-family: var(--font-noto);
+  font-weight: 300;
   text-transform: uppercase;
 }
 
@@ -59,6 +61,7 @@ a {
   text-decoration: none;
   transition: var(--transition);
   color: var(--color-primary);
+  font-weight: 400;
 }
 
 a:hover {

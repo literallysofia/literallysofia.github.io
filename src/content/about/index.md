@@ -36,6 +36,14 @@ languages: [
 ]
 ---
 
-Hello! I'm Sofia, a software engineer based in Porto, Portugal who enjoys building things that interact with people. I've always been the go-to tech person in my family and started coding by customizing my Tumblr blog (good old times right?). Besides my passion for technology, I love to travel, music, tv shows, and probably a lot of other things I can't remember right now. When not working you can most likely find me outdoors mingling with other humans!
+Hello! I’m Sofia, a software engineer based in **Porto, Portugal**, building digital experiences for real people (not just pixels).
 
-In my free time, I like to practice yoga and go to concerts from artists I love, wherever that may be! Also, my dog Boby is my best friend and we've been on a crazy ride together for 20 years now. If you don't like him then we can't be friends 🤠
+My journey into tech started by customizing my old Tumblr blog (*yes, those good ol' days*). Today, I work at the intersection of engineering and UI/UX, with a current focus on product-driven iOS development, and I’m absolutely loving it.
+
+I began my professional career as a frontend web engineer, but the mobile world 📞 *called me* 📞
+
+Since then, I’ve worked with teams across major tech markets in the **UK, Germany, and France**, and I’ve been fully remote by the ocean since 2020. I thrive in collaborative environments and I’m often the person connecting people, keeping projects moving, and bringing positive energy to the team 🐬
+
+When I’m not coding, you’ll probably find me on a yoga mat or sipping matcha — I'm my own barista. I also love traveling, concerts, TV shows, fashion, any form of art really! Also being outdoors and dogs, a lifelong obsession that started with 101 Dalmatians 🐶
+
+Yoga is a big part of my life. It keeps me grounded, focused, and sane in a very tech-shaped world. I practice regularly and genuinely structure my days around it 🧘‍♀️✨ 
