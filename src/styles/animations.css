@@ -48,7 +48,7 @@
 }
 
 .animate-fade-in {
-  animation: fadeIn 0.8s ease-out forwards;
+  animation: fadeIn 1.5s ease-out forwards;
 }
 
 .animate-slide-in-left {
