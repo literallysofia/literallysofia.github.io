@@ -3,10 +3,17 @@ import { siteConfig } from '../config';
 import GitHubIcon from './icons/GitHub.astro';
 import LinkedInIcon from './icons/LinkedIn.astro';
 import BehanceIcon from './icons/Behance.astro';
+
+interface Props {
+  animate?: boolean;
+}
+
+const { animate = false } = Astro.props;
+const animationClass = animate ? 'animate-fade-in-up animate-delay-5' : '';
 ---
 
 <footer>
-  <ul class="social-media animate-fade-in-up animate-delay-5">
+  <ul class:list={['social-media', animationClass]}>
     {siteConfig.socialMedia.map((social) => (
       <li>
         <a
@@ -22,5 +29,5 @@ import BehanceIcon from './icons/Behance.astro';
       </li>
     ))}
   </ul>
-  <p class="animate-fade-in-up animate-delay-5">Crafted with 💜 © 2026 Sofia Silva</p>
+  <p class:list={[animationClass]}>Crafted with 💜 © 2026 Sofia Silva</p>
 </footer>

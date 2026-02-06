@@ -1,4 +1,5 @@
 ---
+import { ViewTransitions } from 'astro:transitions';
 import { siteConfig } from '../config';
 
 interface Props {
@@ -38,14 +39,29 @@ const { title = siteConfig.siteTitle, description = siteConfig.siteDescription }
 
     <title>{title}</title>
 
+    <ViewTransitions />
+
     <!-- Dark Mode Initialization (runs before render to prevent flash) -->
     <script is:inline>
-      const theme = localStorage.getItem('theme');
-      if (theme === 'dark' || (!theme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-        document.documentElement.classList.add('dark-mode');
-      } else {
-        document.documentElement.classList.add('light-mode');
+      // Function to apply theme
+      function setTheme() {
+        const theme = localStorage.getItem('theme');
+        const isDark = theme === 'dark' || (!theme && window.matchMedia('(prefers-color-scheme: dark)').matches);
+
+        if (isDark) {
+          document.documentElement.classList.remove('light-mode');
+          document.documentElement.classList.add('dark-mode');
+        } else {
+          document.documentElement.classList.remove('dark-mode');
+          document.documentElement.classList.add('light-mode');
+        }
       }
+
+      // Apply on initial load
+      setTheme();
+
+      // Persist theme across page transitions
+      document.addEventListener('astro:after-swap', setTheme);
     </script>
   </head>
   <body>

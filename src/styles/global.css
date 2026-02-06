@@ -36,8 +36,14 @@ main {
 }
 
 @media (max-width: 900px) {
+  .home-container {
+    height: auto;
+    overflow: auto;
+  }
+
   .home-container main {
     padding: 0 2em;
+    overflow: auto;
   }
 }
 
@@ -62,19 +68,22 @@ a {
   transition: var(--transition);
   color: var(--color-primary);
   font-weight: 400;
+  -webkit-tap-highlight-color: transparent;
 }
 
 a:hover {
   color: var(--color-secondary);
 }
 
+a:active,
+a:focus {
+  background-color: transparent;
+  outline: none;
+}
+
 ul {
   list-style: none;
   padding: 0;
-}
-
-.target {
-  padding-top: 120px;
 }
 
 button.default {

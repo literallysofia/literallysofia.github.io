@@ -25,9 +25,10 @@ interface Props {
 const { title, education, languages } = Astro.props;
 const gallery1 = await import('../assets/gallery-1.jpg');
 const gallery2 = await import('../assets/gallery-2.jpg');
+const gallery3 = await import('../assets/gallery-1.jpg'); // Replace with gallery-3.jpg when available
 ---
 
-<section id="about" class="target">
+<section id="about">
   <h2 class="heading">{title}</h2>
   <div class="about-content">
     <div class="about-details">
@@ -79,23 +80,36 @@ const gallery2 = await import('../assets/gallery-2.jpg');
       </div>
     </div>
     <div class="about-gallery">
-      <div class="image">
-        <Image
-          src={gallery1.default}
-          alt="Gallery image 1"
-          width={400}
-          height={600}
-          quality={85}
-        />
+      <div class="gallery-column">
+        <div class="image">
+          <Image
+            src={gallery1.default}
+            alt="Gallery image 1"
+            width={400}
+            height={600}
+            quality={85}
+          />
+        </div>
+        <div class="image">
+          <Image
+            src={gallery3.default}
+            alt="Gallery image 3"
+            width={400}
+            height={600}
+            quality={85}
+          />
+        </div>
       </div>
-      <div class="image">
-        <Image
-          src={gallery2.default}
-          alt="Gallery image 2"
-          width={400}
-          height={600}
-          quality={85}
-        />
+      <div class="gallery-column">
+        <div class="image">
+          <Image
+            src={gallery2.default}
+            alt="Gallery image 2"
+            width={400}
+            height={600}
+            quality={85}
+          />
+        </div>
       </div>
     </div>
   </div>
