@@ -32,6 +32,8 @@ jobs:
 
       - name: Build with Astro
         run: npm run build
+        env:
+          PUBLIC_SITE_PASSWORD: ${{ secrets.SITE_PASSWORD }}
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3

@@ -15,9 +15,13 @@ import { siteConfig } from '../config';
 interface Props {
   title?: string;
   description?: string;
+  protected?: boolean;
 }
 
-const { title = siteConfig.siteTitle, description = siteConfig.siteDescription } = Astro.props;
+const { title = siteConfig.siteTitle, description = siteConfig.siteDescription, protected: isProtected = true } = Astro.props;
+
+const sitePassword = import.meta.env.PUBLIC_SITE_PASSWORD || '';
+const showGate = isProtected && !!sitePassword;
 ---
 
 <!doctype html>
@@ -73,9 +77,61 @@ const { title = siteConfig.siteTitle, description = siteConfig.siteDescription }
       // Persist theme across page transitions
       document.addEventListener('astro:after-swap', setTheme);
     </script>
+
   </head>
   <body>
+    {showGate && (
+      <div class="password-gate" id="password-gate">
+        <div class="password-gate-form">
+          <input
+            type="password"
+            class="password-gate-input"
+            id="password-gate-input"
+            placeholder="Password"
+            autocomplete="off"
+          />
+          <button class="btn" id="password-gate-btn" type="button">Enter</button>
+        </div>
+        <p class="password-gate-error" id="password-gate-error">Wrong password</p>
+      </div>
+    )}
     <slot />
+    <script is:inline define:vars={{ sitePassword }}>
+      function initPasswordGate() {
+        if (!sitePassword) return;
+
+        var gate = document.getElementById('password-gate');
+        if (!gate) return;
+
+        if (sessionStorage.getItem('site-authenticated') === 'true') {
+          gate.remove();
+          return;
+        }
+
+        var input = document.getElementById('password-gate-input');
+        var btn = document.getElementById('password-gate-btn');
+        var error = document.getElementById('password-gate-error');
+
+        function submit() {
+          if (input.value === sitePassword) {
+            sessionStorage.setItem('site-authenticated', 'true');
+            gate.classList.add('hidden');
+            setTimeout(function() { gate.remove(); }, 600);
+          } else {
+            error.classList.add('visible');
+            input.value = '';
+          }
+        }
+
+        btn.addEventListener('click', submit);
+        input.addEventListener('keydown', function(e) {
+          if (e.key === 'Enter') submit();
+        });
+      }
+
+      initPasswordGate();
+      document.addEventListener('astro:after-swap', initPasswordGate);
+    </script>
   </body>
 </html>
 
@@ -91,4 +147,5 @@ const { title = siteConfig.siteTitle, description = siteConfig.siteDescription }
   @import '../styles/footer.css';
   @import '../styles/toggle.css';
   @import '../styles/404.css';
+  @import '../styles/password-gate.css';
 </style>
