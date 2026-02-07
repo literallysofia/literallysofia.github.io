@@ -59,6 +59,9 @@ jspm_packages/
 dist/
 .astro/
 
+# Unencrypted CV (only the encrypted cv.enc should be committed)
+cv.pdf
+
 # Mac files
 .DS_Store
 

@@ -1,0 +1,156 @@
+/* ================================================
+   DOWNLOAD CV
+   ================================================
+   Timeline header layout and password dialog
+   for the encrypted CV download feature.
+   ================================================ */
+
+/* ================================================
+   TIMELINE HEADER - FLEX ROW
+   ================================================ */
+
+.timeline-header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: var(--spacing-sm);
+}
+
+/* ================================================
+   DOWNLOAD BUTTON
+   ================================================ */
+
+.download-cv-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4em;
+  white-space: nowrap;
+}
+
+/* ================================================
+   DIALOG
+   ================================================ */
+
+.download-cv-dialog {
+  background-color: color-mix(in srgb, var(--color-bg) 85%, transparent);
+  backdrop-filter: blur(16px);
+  color: var(--color-text);
+  border: 1px solid color-mix(in srgb, var(--color-text) 25%, transparent);
+  border-radius: 1.5em;
+  padding: 4em 4em 4em 4em;
+  min-width: 280px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: var(--shadow-card-light);
+
+  /* Animation */
+  opacity: 0;
+  scale: 0.9;
+  transition:
+    opacity var(--duration-fast) var(--timing-smooth),
+    scale var(--duration-fast) var(--timing-smooth),
+    overlay var(--duration-fast) var(--timing-smooth) allow-discrete,
+    display var(--duration-fast) var(--timing-smooth) allow-discrete;
+}
+
+.download-cv-dialog[open] {
+  opacity: 1;
+  scale: 1;
+  transition:
+    opacity var(--duration-fast) var(--timing-bounce),
+    scale var(--duration-fast) var(--timing-bounce),
+    overlay var(--duration-fast) var(--timing-bounce) allow-discrete,
+    display var(--duration-fast) var(--timing-bounce) allow-discrete;
+}
+
+@starting-style {
+  .download-cv-dialog[open] {
+    opacity: 0;
+    scale: 0.9;
+  }
+}
+
+.download-cv-dialog::backdrop {
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(4px);
+  opacity: 0;
+  transition:
+    opacity var(--duration-fast) var(--timing-smooth),
+    overlay var(--duration-fast) var(--timing-smooth) allow-discrete,
+    display var(--duration-fast) var(--timing-smooth) allow-discrete;
+}
+
+.download-cv-dialog[open]::backdrop {
+  opacity: 1;
+}
+
+@starting-style {
+  .download-cv-dialog[open]::backdrop {
+    opacity: 0;
+  }
+}
+
+/* ================================================
+   CLOSE BUTTON
+   ================================================ */
+
+.download-cv-close {
+  position: absolute;
+  top: 0.6em;
+  right: 0.8em;
+  background: none;
+  border: none;
+  font-size: 1.4em;
+  color: var(--color-text);
+  cursor: pointer;
+  line-height: 1;
+  padding: 0;
+  opacity: 0.6;
+  transition: opacity var(--duration-fast) var(--timing-smooth);
+}
+
+.download-cv-close:hover {
+  opacity: 1;
+}
+
+/* ================================================
+   DIALOG FORM
+   ================================================ */
+
+.download-cv-form {
+  display: flex;
+  justify-content: center;
+  gap: var(--spacing-xs);
+}
+
+.download-cv-dialog .password-gate-error {
+  height: 0;
+  margin: 0;
+  padding-left: 1.4em;
+  overflow: hidden;
+  transition:
+    height var(--duration-fast) var(--timing-smooth),
+    opacity var(--duration-fast) var(--timing-smooth);
+}
+
+.download-cv-dialog .password-gate-error.visible {
+  height: 1.4em;
+  margin-top: 0.5em;
+}
+
+/* ================================================
+   RESPONSIVE - MOBILE
+   ================================================ */
+
+@media (max-width: 900px) {
+  .timeline-header {
+    flex-direction: column;
+    gap: 0;
+    margin-bottom: var(--spacing-lg);
+  }
+
+  .download-cv-form {
+    flex-direction: column;
+  }
+}

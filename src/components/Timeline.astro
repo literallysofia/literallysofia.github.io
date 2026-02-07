@@ -46,7 +46,10 @@ const sectionId = generateId(title);
 ---
 
 <section id={sectionId} class="target timeline" aria-labelledby={`${sectionId}-heading`}>
-  <h2 id={`${sectionId}-heading`} class="heading">{title}</h2>
+  <div class="timeline-header">
+    <h2 id={`${sectionId}-heading`} class="heading">{title}</h2>
+    <slot name="action" />
+  </div>
 
   <ol class="card-list" role="list">
     {jobs.map((job, index) => (

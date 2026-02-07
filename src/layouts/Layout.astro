@@ -21,7 +21,13 @@ interface Props {
 const { title = siteConfig.siteTitle, description = siteConfig.siteDescription, protected: isProtected = true } = Astro.props;
 
 const sitePassword = import.meta.env.PUBLIC_SITE_PASSWORD || '';
-const showGate = isProtected && !!sitePassword;
+const isDev = import.meta.env.DEV;
+const forceEnableGate = import.meta.env.PUBLIC_ENABLE_PASSWORD_GATE === 'true';
+
+// Show gate only if:
+// - Page is protected AND password is set
+// - AND (in production OR explicitly enabled in dev)
+const showGate = isProtected && !!sitePassword && (!isDev || forceEnableGate);
 ---
 
 <!doctype html>
@@ -148,4 +154,5 @@ const showGate = isProtected && !!sitePassword;
   @import '../styles/toggle.css';
   @import '../styles/404.css';
   @import '../styles/password-gate.css';
+  @import '../styles/download-cv.css';
 </style>

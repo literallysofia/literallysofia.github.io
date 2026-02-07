@@ -1,0 +1,146 @@
+---
+/**
+ * Download CV Component
+ * Button that opens a password dialog and decrypts the CV using Web Crypto API.
+ * The encrypted file (cv.enc) is decrypted client-side with AES-256-GCM + PBKDF2.
+ */
+
+import File from './icons/File.astro';
+---
+
+<button class="btn download-cv-btn" type="button" id="download-cv-btn">
+  <File />
+  Download CV
+</button>
+
+<dialog class="download-cv-dialog" id="download-cv-dialog">
+  <button class="download-cv-close" type="button" id="download-cv-close" aria-label="Close">&times;</button>
+  <div class="download-cv-form">
+    <input
+      type="password"
+      class="password-gate-input"
+      id="download-cv-input"
+      placeholder="Password"
+      autocomplete="off"
+    />
+    <button class="btn" id="download-cv-submit" type="button">Download</button>
+  </div>
+  <p class="password-gate-error" id="download-cv-error">🔥 wrong password</p>
+</dialog>
+
+<script>
+  function initDownloadCV(): void {
+    const btn = document.getElementById('download-cv-btn') as HTMLButtonElement | null;
+    const dialog = document.getElementById('download-cv-dialog') as HTMLDialogElement | null;
+    const closeBtn = document.getElementById('download-cv-close') as HTMLButtonElement | null;
+    const input = document.getElementById('download-cv-input') as HTMLInputElement | null;
+    const submitBtn = document.getElementById('download-cv-submit') as HTMLButtonElement | null;
+    const error = document.getElementById('download-cv-error') as HTMLParagraphElement | null;
+
+    if (!btn || !dialog || !closeBtn || !input || !submitBtn || !error) return;
+
+    function resetDialog(): void {
+      input!.value = '';
+      error!.classList.remove('visible');
+      submitBtn!.textContent = 'Download';
+      submitBtn!.disabled = false;
+      input!.disabled = false;
+    }
+
+    btn.addEventListener('click', () => {
+      resetDialog();
+      dialog!.showModal();
+      input!.focus();
+    });
+
+    closeBtn.addEventListener('click', () => {
+      dialog!.close();
+    });
+
+    dialog.addEventListener('click', (e) => {
+      const rect = dialog!.getBoundingClientRect();
+      const clickedOutside =
+        e.clientX < rect.left ||
+        e.clientX > rect.right ||
+        e.clientY < rect.top ||
+        e.clientY > rect.bottom;
+      if (clickedOutside) dialog!.close();
+    });
+
+    async function decrypt(): Promise<void> {
+      const password = input!.value;
+      if (!password) return;
+
+      error!.classList.remove('visible');
+      submitBtn!.textContent = 'Decrypting...';
+      submitBtn!.disabled = true;
+      input!.disabled = true;
+
+      try {
+        const res = await fetch('/cv.enc');
+        if (!res.ok) throw new Error('fetch');
+
+        const data = new Uint8Array(await res.arrayBuffer());
+
+        // Parse: salt (32) + iv (12) + ciphertext + authTag (16)
+        const salt = data.slice(0, 32);
+        const iv = data.slice(32, 44);
+        const ciphertext = data.slice(44);
+
+        // Derive key with PBKDF2 (must match encryption script)
+        const enc = new TextEncoder();
+        const keyMaterial = await crypto.subtle.importKey(
+          'raw',
+          enc.encode(password),
+          'PBKDF2',
+          false,
+          ['deriveKey']
+        );
+
+        const key = await crypto.subtle.deriveKey(
+          { name: 'PBKDF2', salt, iterations: 600_000, hash: 'SHA-256' },
+          keyMaterial,
+          { name: 'AES-GCM', length: 256 },
+          false,
+          ['decrypt']
+        );
+
+        // Decrypt (AES-GCM handles auth tag verification internally)
+        const plaintext = await crypto.subtle.decrypt(
+          { name: 'AES-GCM', iv },
+          key,
+          ciphertext
+        );
+
+        // Trigger download
+        const blob = new Blob([plaintext], { type: 'application/pdf' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = 'cv.pdf';
+        a.click();
+        URL.revokeObjectURL(url);
+
+        dialog!.close();
+      } catch {
+        error!.classList.add('visible');
+        submitBtn!.textContent = 'Download';
+        submitBtn!.disabled = false;
+        input!.disabled = false;
+        input!.value = '';
+        input!.focus();
+      }
+    }
+
+    submitBtn.addEventListener('click', decrypt);
+    input.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') decrypt();
+    });
+  }
+
+  // Run on initial load
+  initDownloadCV();
+
+  // Run on Astro view transitions
+  document.addEventListener('astro:page-load', initDownloadCV);
+</script>
