@@ -21,6 +21,21 @@ header {
   top: 0;
   z-index: 100;
   background-color: var(--color-bg);
+  border-bottom: 1px solid transparent;
+}
+
+header.scrolled {
+  border-bottom-color: color-mix(in srgb, var(--color-text) 30%, transparent);
+  animation: borderFadeIn 0.3s ease-in-out;
+}
+
+@keyframes borderFadeIn {
+  from {
+    border-bottom-color: transparent;
+  }
+  to {
+    border-bottom-color: color-mix(in srgb, var(--color-text) 30%, transparent);
+  }
 }
 
 /* ================================================
@@ -238,7 +253,7 @@ header nav .nav-item a:hover::after {
    RESPONSIVE - MOBILE
    ================================================ */
 
-@media (max-width: var(--breakpoint-mobile)) {
+@media (max-width: 900px) {
   header {
     padding: 1.5em var(--spacing-md);
   }

@@ -146,7 +146,7 @@
    RESPONSIVE - MOBILE
    ================================================ */
 
-@media (max-width: var(--breakpoint-mobile)) {
+@media (max-width: 900px) {
   /* Reduce padding on smaller screens */
   .timeline .card-list {
     padding-left: 2.8em;

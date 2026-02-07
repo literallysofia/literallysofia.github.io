@@ -231,6 +231,38 @@ const { isNotFound = false } = Astro.props;
 
   /**
    * ================================================
+   * SCROLL BORDER EFFECT
+   * ================================================
+   * Shows a bottom border on the header when user scrolls down
+   * Fades in/out smoothly based on scroll position
+   */
+  function initScrollBorder(): void {
+    const header = document.querySelector("header");
+    let ticking = false;
+
+    /**
+     * Handle scroll events with throttling for performance
+     */
+    function handleScroll(): void {
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          const scrolled = window.scrollY > 0;
+          header?.classList.toggle("scrolled", scrolled);
+          ticking = false;
+        });
+        ticking = true;
+      }
+    }
+
+    // Attach scroll listener
+    window.addEventListener("scroll", handleScroll, { passive: true });
+
+    // Set initial state
+    handleScroll();
+  }
+
+  /**
+   * ================================================
    * INITIALIZATION
    * ================================================
    */
@@ -238,10 +270,12 @@ const { isNotFound = false } = Astro.props;
   // Initialize all features on page load
   initDarkMode();
   initMobileMenu();
+  initScrollBorder();
 
   // Re-initialize after Astro view transitions (SPA navigation)
   document.addEventListener("astro:after-swap", () => {
     initDarkMode();
     initMobileMenu();
+    initScrollBorder();
   });
 </script>

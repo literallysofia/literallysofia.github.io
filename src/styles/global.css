@@ -178,7 +178,7 @@ section .heading::after {
    RESPONSIVE - MOBILE
    ================================================ */
 
-@media (max-width: var(--breakpoint-mobile)) {
+@media (max-width: 900px) {
   main {
     padding: 0 var(--spacing-md) var(--spacing-md) var(--spacing-md);
   }

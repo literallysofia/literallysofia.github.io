@@ -22,10 +22,6 @@
   --transition: all 0.4s ease-out;
   --transition-mode: background-color 0.3s ease;
 
-  /* Breakpoints */
-  --breakpoint-mobile: 900px;
-  --breakpoint-tablet: 600px;
-
   /* Animation timing functions */
   --timing-smooth: cubic-bezier(0.4, 0, 0.2, 1);
   --timing-bounce: cubic-bezier(0.34, 1.56, 0.64, 1);

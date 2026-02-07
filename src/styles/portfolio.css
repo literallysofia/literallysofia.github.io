@@ -156,7 +156,7 @@ html.dark-mode .project-card {
    RESPONSIVE
    ================================================ */
 
-@media (max-width: var(--breakpoint-mobile)) {
+@media (max-width: 900px) {
   .portfolio-grid {
     grid-template-columns: repeat(2, 1fr);
   }
@@ -166,7 +166,7 @@ html.dark-mode .project-card {
   }
 }
 
-@media (max-width: var(--breakpoint-tablet)) {
+@media (max-width: 600px) {
   .portfolio-grid {
     grid-template-columns: 1fr;
   }

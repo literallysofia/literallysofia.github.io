@@ -238,7 +238,7 @@
    RESPONSIVE - TABLET PORTRAIT
    ================================================ */
 
-@media (max-width: var(--breakpoint-mobile)) and (orientation: portrait) {
+@media (max-width: 900px) and (orientation: portrait) {
   .about .about-details {
     padding-right: 3em;
     max-width: 60%;
@@ -278,7 +278,7 @@
    RESPONSIVE - TABLET LANDSCAPE
    ================================================ */
 
-@media (max-width: var(--breakpoint-mobile)) and (orientation: landscape) {
+@media (max-width: 900px) and (orientation: landscape) {
   .about .about-details {
     padding-right: 3em;
   }
@@ -317,7 +317,7 @@
    RESPONSIVE - MOBILE
    ================================================ */
 
-@media (max-width: var(--breakpoint-mobile)) {
+@media (max-width: 900px) {
   /* Stack content vertically */
   .about .about-content {
     flex-direction: column;

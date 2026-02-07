@@ -94,7 +94,7 @@
    RESPONSIVE - MOBILE
    ================================================ */
 
-@media (max-width: var(--breakpoint-mobile)) {
+@media (max-width: 900px) {
   .banner .banner-content {
     flex-wrap: wrap;
   }
