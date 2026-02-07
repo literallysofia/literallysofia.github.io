@@ -109,6 +109,7 @@
 #about .about-gallery .image {
   max-width: 100%;
   position: relative;
+  margin: 0;
 }
 
 #about .about-gallery .image img,

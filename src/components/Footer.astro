@@ -1,27 +1,41 @@
 ---
+/**
+ * Footer Component
+ * Site-wide footer with social media links and copyright
+ * Features:
+ * - Dynamic social media icon rendering
+ * - Optional fade-in animation for home page
+ * - Accessible external links with proper ARIA labels
+ */
+
 import { siteConfig } from '../config';
 import GitHubIcon from './icons/GitHub.astro';
 import LinkedInIcon from './icons/LinkedIn.astro';
 import BehanceIcon from './icons/Behance.astro';
 
 interface Props {
+  /** Enable fade-in animation (used on home page) */
   animate?: boolean;
 }
 
 const { animate = false } = Astro.props;
+
+// Apply animation classes if enabled
 const animationClass = animate ? 'animate-fade-in-up animate-delay-5' : '';
 ---
 
 <footer>
-  <ul class:list={['social-media', animationClass]}>
+  {/* Social Media Links */}
+  <ul class:list={['social-media', animationClass]} role="list">
     {siteConfig.socialMedia.map((social) => (
       <li>
         <a
           href={social.url}
           target="_blank"
           rel="noopener noreferrer"
-          aria-label={social.name}
+          aria-label={`Visit ${social.name} profile`}
         >
+          {/* Dynamically render icon based on platform */}
           {social.name === 'GitHub' && <GitHubIcon />}
           {social.name === 'Linkedin' && <LinkedInIcon />}
           {social.name === 'Behance' && <BehanceIcon />}
@@ -29,5 +43,9 @@ const animationClass = animate ? 'animate-fade-in-up animate-delay-5' : '';
       </li>
     ))}
   </ul>
-  <p class:list={[animationClass]}>Crafted with 💜 © 2026 Sofia Silva</p>
+
+  {/* Copyright */}
+  <p class:list={[animationClass]}>
+    Crafted with 💜 © {new Date().getFullYear()} Sofia Silva
+  </p>
 </footer>

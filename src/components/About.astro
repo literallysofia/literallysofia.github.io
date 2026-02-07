@@ -1,4 +1,15 @@
 ---
+/**
+ * About Component
+ * Displays personal information, education, languages, and photo gallery
+ * Features:
+ * - Education history with external school links
+ * - Language proficiency list
+ * - Two-column quirky photo gallery with hover effects
+ * - Optimized images (WebP format, lazy loading)
+ * - Responsive layout (side-by-side desktop, stacked mobile)
+ */
+
 import { Image } from 'astro:assets';
 
 interface Education {
@@ -24,6 +35,10 @@ interface Props {
 
 const { title, education, languages } = Astro.props;
 
+/**
+ * Gallery image configuration
+ * Images are split into two columns for quirky staggered layout
+ */
 const galleryImages = [
   { src: '../assets/gallery-1.jpg', alt: 'childhood beach' },
   { src: '../assets/gallery-2.jpg', alt: 'new york' },
@@ -36,97 +51,121 @@ const galleryImages = [
   { src: '../assets/gallery-9.jpg', alt: 'nico, wfh buddy' },
 ];
 
+// Dynamically import all gallery images
 const galleryImports = await Promise.all(
   galleryImages.map(img => import(img.src))
 );
 
+// Combine image metadata with imported modules
 const gallery = galleryImages.map((img, index) => ({
   ...img,
   module: galleryImports[index].default,
 }));
 
+// Shared image optimization properties
 const imageProps = {
   width: 400,
   quality: 75,
-  format: 'webp',
+  format: 'webp' as const,
   loading: 'lazy' as const
 };
 ---
 
-<section id="about">
-  <h2 class="heading">{title}</h2>
+<section id="about" aria-labelledby="about-heading">
+  <h2 id="about-heading" class="heading">{title}</h2>
+
   <div class="about-content">
+    {/* Left Column - Personal Info, Education, Languages */}
     <div class="about-details">
+      {/* Personal Description - Content from slot */}
       <div class="description">
         <slot />
       </div>
+
+      {/* Education & Languages Grid */}
       <div class="about-grid">
+        {/* Education Section */}
         <div class="education-list">
           <h3>Education</h3>
           {education.map((edu) => (
-            <div class="education">
-              <span>{edu.date}</span>
+            <article class="education">
+              <time datetime={edu.date}>{edu.date}</time>
               <h4>{edu.degree}</h4>
-              <a href={edu.web} target="_blank" rel="noopener noreferrer">
+              <a
+                href={edu.web}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={`Visit ${edu.school} website`}
+              >
                 {edu.school}
               </a>
               {edu.details && (
                 <p>
                   {edu.details}
                   {edu.link && (
-                    <>
-                      <a
-                        class="ref"
-                        href={edu.link}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        (Link)
-                      </a>
-                    </>
+                    <a
+                      class="ref"
+                      href={edu.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label="View related link"
+                    >
+                      (Link)
+                    </a>
                   )}
                 </p>
               )}
-            </div>
+            </article>
           ))}
         </div>
+
+        {/* Languages Section */}
         <div class="languages-list">
           <h3>Languages</h3>
           {languages.map((lang) => (
-            <div class="language">
+            <article class="language">
               <div class="language-heading">
-                <span>{lang.icon}</span>
+                <span aria-hidden="true">{lang.icon}</span>
                 <h4>{lang.language}</h4>
               </div>
               <p>{lang.level}</p>
-            </div>
+            </article>
           ))}
         </div>
       </div>
     </div>
-    <div class="about-gallery">
+
+    {/* Right Column - Photo Gallery */}
+    <div class="about-gallery" role="region" aria-label="Photo gallery">
+      {/* Left Gallery Column (odd indices) */}
       <div class="gallery-column">
         {[0, 2, 4, 6, 8].map((index) => (
-          <div class="image">
+          <figure class="image">
             <Image
               src={gallery[index].module}
               alt={gallery[index].alt}
               {...imageProps}
             />
-            <span class="image-caption">{gallery[index].alt}</span>
-          </div>
+            <figcaption class="image-caption">
+              {gallery[index].alt}
+            </figcaption>
+          </figure>
         ))}
       </div>
+
+      {/* Right Gallery Column (even indices) */}
       <div class="gallery-column">
         {[1, 3, 5, 7].map((index) => (
-          <div class="image">
+          <figure class="image">
             <Image
               src={gallery[index].module}
               alt={gallery[index].alt}
               {...imageProps}
             />
-            <span class="image-caption">{gallery[index].alt}</span>
-          </div>
+            <figcaption class="image-caption">
+              {gallery[index].alt}
+            </figcaption>
+          </figure>
         ))}
       </div>
     </div>

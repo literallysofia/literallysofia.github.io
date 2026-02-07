@@ -1,11 +1,26 @@
 ---
+/**
+ * Banner Component
+ * Hero section for the home page with portrait and introduction
+ * Features:
+ * - Portrait image with fade-in animation
+ * - Staggered text animations for title, subtitle, and description
+ * - Dynamic job position with company link
+ * - Fully customizable content via props
+ */
+
 import { Image } from 'astro:assets';
 
 interface Props {
+  /** Main greeting/title */
   title?: string;
+  /** Role/profession subtitle */
   subtitle?: string;
+  /** Personal tagline/slogan */
   slogan?: string;
+  /** Current job position text */
   jobPosition?: string;
+  /** Company website URL */
   jobPositionLink?: string;
 }
 
@@ -17,24 +32,50 @@ const {
   jobPositionLink = "https://qonto.com"
 } = Astro.props;
 
+// Import portrait image
 const portraitImage = await import('../assets/portrait.jpg');
+
+/**
+ * Generate HTML for job position with embedded company link
+ * @returns HTML string with company name linked
+ */
+const jobPositionHTML = jobPosition.replace(
+  'qonto',
+  `<a href="${jobPositionLink}" target="_blank" rel="noopener noreferrer">qonto</a>`
+);
 ---
 
-<section id="banner">
+<section id="banner" aria-labelledby="banner-title">
   <div class="banner-content">
+    {/* Portrait Image */}
     <div class="image-wrapper animate-fade-in">
       <Image
         src={portraitImage.default}
-        alt={title}
+        alt={`Portrait of ${title}`}
         loading="eager"
         quality={90}
       />
     </div>
+
+    {/* Introduction Text */}
     <div class="banner-intro">
-      <span class="animate-fade-in-up animate-delay-1">{subtitle}</span>
-      <h1 class="animate-fade-in-up animate-delay-2">{title}</h1>
-      <p class="animate-fade-in-up animate-delay-3">{slogan}</p>
-      <p class="animate-fade-in-up animate-delay-4" set:html={jobPosition.replace('qonto', `<a href="${jobPositionLink}" target="_blank" rel="noopener noreferrer">qonto</a>`)} />
+      {/* Subtitle/Role */}
+      <span class="animate-fade-in-up animate-delay-1">
+        {subtitle}
+      </span>
+
+      {/* Main Title */}
+      <h1 id="banner-title" class="animate-fade-in-up animate-delay-2">
+        {title}
+      </h1>
+
+      {/* Tagline/Slogan */}
+      <p class="animate-fade-in-up animate-delay-3">
+        {slogan}
+      </p>
+
+      {/* Current Position */}
+      <p class="animate-fade-in-up animate-delay-4" set:html={jobPositionHTML} />
     </div>
   </div>
 </section>
