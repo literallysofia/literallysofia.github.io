@@ -221,7 +221,7 @@
    RESPONSIVE - TABLET PORTRAIT
    ================================================ */
 
-@media (max-width: 1024px) and (orientation: portrait) {
+@media (max-width: 900px) and (orientation: portrait) {
   #about .about-details {
     padding-right: 3em;
     max-width: 60%;
@@ -261,7 +261,7 @@
    RESPONSIVE - TABLET LANDSCAPE
    ================================================ */
 
-@media (max-width: 1024px) and (orientation: landscape) {
+@media (max-width: 900px) and (orientation: landscape) {
   #about .about-details {
     padding-right: 3em;
   }

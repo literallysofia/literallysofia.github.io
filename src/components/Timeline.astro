@@ -1,4 +1,9 @@
 ---
+/**
+ * Timeline Component
+ * Displays a vertical timeline of work experience with animated entries
+ */
+
 interface Job {
   date: string;
   title: string;
@@ -15,44 +20,142 @@ interface Props {
 
 const { title, jobs } = Astro.props;
 
+/**
+ * Parse task strings to identify section headers (prefixed with '# ')
+ * @param task - Task string to parse
+ * @returns Object with isSection flag and cleaned content
+ */
 function parseTaskSection(task: string): { isSection: boolean; content: string } {
-  if (task.startsWith('# ')) {
-    return { isSection: true, content: task.substring(2) };
+  const trimmedTask = task.trim();
+  if (trimmedTask.startsWith('# ')) {
+    return { isSection: true, content: trimmedTask.slice(2) };
   }
-  return { isSection: false, content: task };
+  return { isSection: false, content: trimmedTask };
 }
+
+/**
+ * Generate a valid HTML ID from the title
+ * @param text - Text to convert to ID
+ * @returns Lowercase, hyphenated string suitable for use as an ID
+ */
+function generateId(text: string): string {
+  return text.toLowerCase().replace(/\s+/g, '-');
+}
+
+const sectionId = generateId(title);
 ---
 
-<section id={title.toLowerCase().replace(' ', '')} class="target timeline">
-  <h2 class="heading">{title}</h2>
-  <div class="card-list">
-    {jobs.map((job) => (
-      <div class="card-item">
-        <span>{job.date}</span>
-        <div class="card-header">
-          {job.title}
-          {job.company && job.web && (
-            <>
-              <a href={job.web} target="_blank" rel="noopener noreferrer">
-                {job.company}
-              </a>
-            </>
-          )}
-          {job.company && !job.web && <span> @ {job.company}</span>}
-        </div>
+<section id={sectionId} class="target timeline" aria-labelledby={`${sectionId}-heading`}>
+  <h2 id={`${sectionId}-heading`} class="heading">{title}</h2>
+
+  <ol class="card-list" role="list">
+    {jobs.map((job, index) => (
+      <li class="card-item timeline-item" data-index={index}>
+        {/* Date */}
+        <time datetime={job.date} class="job-date">{job.date}</time>
+
+        {/* Job Title & Company */}
+        <h3 class="card-header">
+          <span class="job-title">{job.title}</span>
+          {job.company && job.web ? (
+            <a
+              href={job.web}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={`Visit ${job.company} website`}
+            >
+              {job.company}
+            </a>
+          ) : job.company ? (
+            <span class="job-company"> @ {job.company}</span>
+          ) : null}
+        </h3>
+
+        {/* Job Description */}
         {job.description && <p class="description">{job.description}</p>}
+
+        {/* Job Tasks/Responsibilities */}
         {job.tasks && job.tasks.length > 0 && (
-          <ul>
+          <ul class="task-list" aria-label="Job responsibilities">
             {job.tasks.map((task) => {
               const parsed = parseTaskSection(task);
-              if (parsed.isSection) {
-                return <li class="section">{parsed.content}</li>;
-              }
-              return <li>{parsed.content}</li>;
+              return (
+                <li class={parsed.isSection ? 'section' : ''}>
+                  {parsed.content}
+                </li>
+              );
             })}
           </ul>
         )}
-      </div>
+      </li>
     ))}
-  </div>
+  </ol>
 </section>
+
+<script>
+  /**
+   * Initialize timeline scroll animations with staggered entrance effects
+   */
+  function initTimelineAnimation(): void {
+    const timelineItems = document.querySelectorAll<HTMLElement>('.timeline-item');
+
+    // Exit early if no timeline items found
+    if (timelineItems.length === 0) return;
+
+    // Configuration
+    const STAGGER_DELAY = 100; // ms between each item animation
+    const VISIBILITY_THRESHOLD = 0.15; // 15% of item must be visible
+
+    let animationCount = 0;
+
+    /**
+     * Animate a timeline item with staggered delay
+     */
+    function animateItem(item: HTMLElement): void {
+      const delay = animationCount * STAGGER_DELAY;
+
+      setTimeout(() => {
+        item.classList.add('is-visible');
+      }, delay);
+
+      animationCount++;
+    }
+
+    // Create intersection observer for scroll-triggered animations
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting && !entry.target.classList.contains('is-visible')) {
+            animateItem(entry.target as HTMLElement);
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      {
+        root: null,
+        rootMargin: '0px',
+        threshold: VISIBILITY_THRESHOLD,
+      }
+    );
+
+    // Observe all timeline items
+    timelineItems.forEach((item) => observer.observe(item));
+  }
+
+  /**
+   * Initialize animations when DOM is ready
+   */
+  function init(): void {
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initTimelineAnimation);
+    } else {
+      initTimelineAnimation();
+    }
+  }
+
+  // Run on initial load
+  init();
+
+  // Run on Astro view transitions (SPA navigation)
+  document.addEventListener('astro:page-load', initTimelineAnimation);
+</script>

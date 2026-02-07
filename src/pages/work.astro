@@ -5,10 +5,7 @@ import Header from '../components/Header.astro';
 import Timeline from '../components/Timeline.astro';
 import Footer from '../components/Footer.astro';
 
-// Query content collections
 const experienceCollection = await getCollection('experience');
-
-// Get the first entry from each collection
 const experience = experienceCollection[0];
 ---
 

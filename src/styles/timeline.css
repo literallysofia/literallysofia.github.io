@@ -1,66 +1,153 @@
-/* Timeline Styles */
+/* ================================================
+   TIMELINE / WORK EXPERIENCE SECTION
+   ================================================
+   This stylesheet manages the vertical timeline
+   layout for the work experience page, including
+   animated entry effects and timeline indicators.
+   ================================================ */
+
+/* ================================================
+   TIMELINE CONTAINER
+   ================================================ */
+
+/* Main timeline list container with vertical line */
 .timeline .card-list {
   margin-left: 0.6em;
   padding-left: 3em;
   border-left: 1px solid #d6d3d0;
+  list-style: none;
+  counter-reset: none;
 }
 
+/* ================================================
+   TIMELINE CARDS - BASE LAYOUT
+   ================================================ */
+
+/* Individual timeline card/job entry */
 .timeline .card-item {
   display: flex;
   flex-direction: column;
   position: relative;
+  list-style: none;
+  /* Initial state for scroll animation */
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1),
+              transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.timeline .card-item span {
-  margin-top: 0.2em;
-  margin-bottom: 0.2em;
-  font-size: 0.9em;
+/* Visible state after scroll animation triggers */
+.timeline .card-item.is-visible {
+  opacity: 1;
+  transform: translateY(0);
 }
 
-.timeline .card-item .description {
-  margin-top: 1em;
-  margin-bottom: 0;
+/* Spacing between timeline items */
+.timeline .card-item:not(:last-child) {
+  margin-bottom: 2em;
 }
 
+/* ================================================
+   TIMELINE INDICATORS (DOTS)
+   ================================================ */
+
+/* Circular dot on the timeline */
 .timeline .card-item::before {
   content: "";
   position: absolute;
   width: 23px;
   height: 23px;
   background-color: var(--color-primary);
-  margin-left: -3.74em;
+  /* Position dot on the vertical line */
+  margin-left: calc(-3em - 11.5px);
   border-radius: 50%;
   z-index: 1;
+  /* Initial state: hidden (scale 0) */
+  transform: scale(0);
+  /* Bouncy animation with delay */
+  transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) 0.2s;
 }
 
-.timeline .card-item:not(:last-child) {
-  margin-bottom: 2em;
+/* Animate dot when card becomes visible */
+.timeline .card-item.is-visible::before {
+  transform: scale(1);
 }
 
-.timeline .card-item .section {
-  font-weight: 600;
+/* ================================================
+   CARD CONTENT - TEXT ELEMENTS
+   ================================================ */
+
+/* Date text at top of each card */
+.timeline .job-date {
+  display: block;
+  margin-top: 0.2em;
+  margin-bottom: 0.2em;
+  font-size: 0.9em;
+  font-style: normal;
 }
 
-.timeline .card-item .section:not(:first-child) {
-  margin-top: 0.8em;
-}
-
+/* Job title and company header */
 .timeline .card-header {
   font-size: 1.2em;
   font-weight: 600;
   line-height: 1.1em;
+  margin: 0;
+  font-family: var(--font-noto);
+  text-transform: none;
 }
 
+/* Job title styling */
+.timeline .job-title {
+  font-weight: 600;
+}
+
+/* Company name when no link */
+.timeline .job-company {
+  font-weight: 400;
+}
+
+/* Add @ symbol before company link */
 .timeline .card-header a::before {
   content: " @ ";
 }
 
-@media (max-width: 767.98px) {
+/* Job description paragraph */
+.timeline .card-item .description {
+  margin-top: 1em;
+  margin-bottom: 0;
+}
+
+/* ================================================
+   TASK LISTS & SECTIONS
+   ================================================ */
+
+/* Task/responsibilities list */
+.timeline .task-list {
+  margin-top: 1em;
+}
+
+/* Section headers within task lists */
+.timeline .task-list .section {
+  font-weight: 600;
+}
+
+/* Add spacing between multiple sections */
+.timeline .task-list .section:not(:first-child) {
+  margin-top: 0.8em;
+}
+
+/* ================================================
+   RESPONSIVE - MOBILE
+   ================================================ */
+
+@media (max-width: 900px) {
+  /* Reduce padding on smaller screens */
   .timeline .card-list {
     padding-left: 2.8em;
   }
 
+  /* Adjust dot position for reduced padding */
   .timeline .card-item::before {
-    margin-left: -3.7em;
+    margin-left: calc(-2.8em - 11.5px);
   }
 }
