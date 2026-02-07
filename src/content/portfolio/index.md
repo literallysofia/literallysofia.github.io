@@ -3,6 +3,12 @@ title: Portfolio
 projects:
   [
     {
+      title: Qonto,
+      abstract: "Business finance app - makes day-to-day banking easier for SMEs and freelancers, thanks to an online business account combined with invoicing, bookkeeping and spend management tools. With an innovative product, highly responsive 24/7 customer service and clear pricing, Qonto has become the European leader in its category.",
+      website: "https://apps.apple.com/us/app/qonto-business-finance-app/id1214811644",
+      keywords: ["Swift", "UIKit", "XCTest", "Tuist", "MVP", "Lottie", "Alamofire", "Apollo", "GraphQL", "Realm", "Segment", "Firebase", "SnapshotTesting"]
+    },
+    {
       title: Amie,
       abstract: "A joyful productivity app for todos, email and calendar, all in one. With HealthKit and Spotify integration so that you don't miss a thing of your everyday life.",
       website: "https://apps.apple.com/us/app/amie-calendar-and-todos/id1548277133",

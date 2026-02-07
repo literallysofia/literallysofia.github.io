@@ -1,4 +1,18 @@
 ---
+/**
+ * Misc Page
+ * Displays extra-curricular activities and side projects
+ *
+ * Content Structure:
+ * - Extra-curricular timeline (volunteering, teaching, speaking)
+ * - Portfolio grid (side projects, design work, experiments)
+ *
+ * Content Source:
+ * - Data fetched from Astro content collections
+ * - Extra-curricular: src/content/extra-curricular/
+ * - Portfolio: src/content/portfolio/
+ */
+
 import { getCollection } from 'astro:content';
 import Layout from '../layouts/Layout.astro';
 import Header from '../components/Header.astro';
@@ -6,11 +20,11 @@ import Timeline from '../components/Timeline.astro';
 import Portfolio from '../components/Portfolio.astro';
 import Footer from '../components/Footer.astro';
 
-// Query content collections
+// Fetch content collections
 const extraCurricularCollection = await getCollection('extra-curricular');
 const portfolioCollection = await getCollection('portfolio');
 
-// Get the first entry from each collection
+// Extract first entry from each collection
 const extraCurricular = extraCurricularCollection[0];
 const portfolio = portfolioCollection[0];
 ---
@@ -18,10 +32,13 @@ const portfolio = portfolioCollection[0];
 <Layout>
   <Header />
   <main>
+    {/* Extra-curricular Activities Timeline */}
     <Timeline
       title={extraCurricular.data.title}
       jobs={extraCurricular.data.jobs}
     />
+
+    {/* Side Projects Portfolio */}
     <Portfolio
       title={portfolio.data.title}
       projects={portfolio.data.projects}

@@ -1,51 +1,100 @@
 ---
+/**
+ * ProjectCard Component
+ * Individual project card for portfolio grid
+ * Features:
+ * - Project title and description
+ * - External links (GitHub, Behance, website) with icons
+ * - Technology/skill tags
+ * - Hover animations
+ */
+
 import GitHubIcon from './icons/GitHub.astro';
 import BehanceIcon from './icons/Behance.astro';
 import LinkIcon from './icons/Link.astro';
 
 interface Props {
+  /** Project title */
   title: string;
+  /** Project description */
   abstract: string;
+  /** Optional GitHub repository URL */
   github?: string;
+  /** Optional live website URL */
   website?: string;
+  /** Optional Behance project URL */
   behance?: string;
+  /** Technology or skill keywords */
   keywords: string[];
 }
 
 const { title, abstract, github, website, behance, keywords } = Astro.props;
+
+/**
+ * Check if project has any external links
+ */
+const hasLinks = github || website || behance;
 ---
 
-<div class="project-card">
-  <div class="project-header">
-    <h4>{title}</h4>
-    <ul class="project-links">
-      {github && (
-        <li>
-          <a href={github} target="_blank" rel="noopener noreferrer" aria-label="GitHub link">
-            <GitHubIcon />
-          </a>
-        </li>
-      )}
-      {behance && (
-        <li>
-          <a href={behance} target="_blank" rel="noopener noreferrer" aria-label="Behance link">
-            <BehanceIcon />
-          </a>
-        </li>
-      )}
-      {website && (
-        <li>
-          <a href={website} target="_blank" rel="noopener noreferrer" aria-label="Website link">
-            <LinkIcon />
-          </a>
-        </li>
-      )}
-    </ul>
-  </div>
-  <p>{abstract}</p>
-  <ul class="project-tags">
+<article class="project-card" role="listitem">
+  {/* Card Header - Title & Links */}
+  <header class="project-header">
+    <h3>{title}</h3>
+
+    {hasLinks && (
+      <ul class="project-links" role="list" aria-label="Project links">
+        {/* GitHub Repository Link */}
+        {github && (
+          <li>
+            <a
+              href={github}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={`View ${title} on GitHub`}
+            >
+              <GitHubIcon />
+            </a>
+          </li>
+        )}
+
+        {/* Behance Project Link */}
+        {behance && (
+          <li>
+            <a
+              href={behance}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={`View ${title} on Behance`}
+            >
+              <BehanceIcon />
+            </a>
+          </li>
+        )}
+
+        {/* Live Website Link */}
+        {website && (
+          <li>
+            <a
+              href={website}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={`Visit ${title} website`}
+            >
+              <LinkIcon />
+            </a>
+          </li>
+        )}
+      </ul>
+    )}
+  </header>
+
+  {/* Project Description */}
+  <p class="project-abstract">{abstract}</p>
+
+  {/* Technology/Skill Tags */}
+  <ul class="project-tags" role="list" aria-label="Technologies used">
     {keywords.map((keyword) => (
       <li>{keyword}</li>
     ))}
   </ul>
-</div>
+</article>

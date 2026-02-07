@@ -1,4 +1,9 @@
 ---
+/**
+ * Portfolio Component
+ * Grid of project cards with pagination
+ */
+
 import ProjectCard from './ProjectCard.astro';
 
 interface Project {
@@ -16,11 +21,13 @@ interface Props {
 }
 
 const { title, projects } = Astro.props;
+const sectionId = title.toLowerCase().replace(/\s+/g, '-');
 ---
 
-<section id="portfolio" class="target">
-  <h2 class="heading">{title}</h2>
-  <div class="portfolio-grid">
+<section id={sectionId} class="portfolio-section target" aria-labelledby={`${sectionId}-heading`}>
+  <h2 id={`${sectionId}-heading`} class="heading">{title}</h2>
+
+  <div class="portfolio-grid" role="list">
     {projects.map((project) => (
       <ProjectCard
         title={project.title}
@@ -32,4 +39,101 @@ const { title, projects } = Astro.props;
       />
     ))}
   </div>
+
+  {projects.length > 6 && (
+    <div class="load-more-container">
+      <button class="default load-more-btn">Load More</button>
+    </div>
+  )}
 </section>
+
+<script>
+  const CARDS_PER_PAGE = 6;
+  const STAGGER_DELAY = 70;
+  const THRESHOLD = 0.15;
+
+  function createObserver(callback: IntersectionObserverCallback) {
+    return new IntersectionObserver(callback, {
+      threshold: THRESHOLD,
+    });
+  }
+
+  function initPagination(): void {
+    document.querySelectorAll('.portfolio-section').forEach((section) => {
+      const cards = section.querySelectorAll<HTMLElement>('.project-card');
+      const btn = section.querySelector<HTMLButtonElement>('.load-more-btn');
+
+      if (!cards.length) return;
+
+      let showing = CARDS_PER_PAGE;
+      cards.forEach((card, i) => {
+        if (i >= CARDS_PER_PAGE) card.style.display = 'none';
+      });
+
+      btn?.addEventListener('click', () => {
+        const next = showing + CARDS_PER_PAGE;
+        Array.from(cards).slice(showing, next).forEach((card) => {
+          card.style.display = 'block';
+        });
+        showing = next;
+
+        if (showing >= cards.length) {
+          btn.closest<HTMLElement>('.load-more-container')!.style.display = 'none';
+        }
+        initCardAnimation();
+      });
+    });
+  }
+
+  function initCardAnimation(): void {
+    const cards = document.querySelectorAll<HTMLElement>('.project-card');
+    if (!cards.length) return;
+
+    let count = 0;
+    const observer = createObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting && !entry.target.classList.contains('is-visible')) {
+          const card = entry.target as HTMLElement;
+          if (card.style.display !== 'none') {
+            setTimeout(() => card.classList.add('is-visible'), count++ * STAGGER_DELAY);
+            observer.unobserve(entry.target);
+          }
+        }
+      });
+    });
+
+    cards.forEach((card) => {
+      if (card.style.display !== 'none') observer.observe(card);
+    });
+  }
+
+  function initButtonAnimation(): void {
+    const containers = document.querySelectorAll<HTMLElement>('.load-more-container');
+    if (!containers.length) return;
+
+    const observer = createObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting && !entry.target.classList.contains('is-visible')) {
+          setTimeout(() => entry.target.classList.add('is-visible'), STAGGER_DELAY * 6);
+          observer.unobserve(entry.target);
+        }
+      });
+    });
+
+    containers.forEach((container) => observer.observe(container));
+  }
+
+  function init(): void {
+    initPagination();
+    initCardAnimation();
+    initButtonAnimation();
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
+
+  document.addEventListener('astro:page-load', init);
+</script>
