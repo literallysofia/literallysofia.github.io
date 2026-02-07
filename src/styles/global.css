@@ -144,34 +144,20 @@ section .heading::after {
   font-family: var(--font-noto);
   font-size: 1em;
   font-weight: 400;
-  border: none;
+  color: var(--color-text);
+  background-color: color-mix(in srgb, var(--color-primary) 60%, transparent);
+  border: 1px solid color-mix(in srgb, var(--color-text) 60%, transparent);
   border-radius: var(--radius-md);
-  padding: 0.8em 2.5em;
+  padding: 0.6em 1.4em;
   cursor: pointer;
   transition: var(--transition);
   -webkit-tap-highlight-color: transparent;
+  backdrop-filter: blur(10px);
 }
 
-.btn-primary {
-  font-weight: 700;
-  text-transform: uppercase;
-  color: white;
-  background: var(--color-primary);
-}
-
-.btn-primary:hover {
-  background: var(--color-secondary);
-}
-
-.btn-outline {
-  font-weight: 400;
-  color: var(--color-text);
-  background-color: transparent;
-  border: 1px solid var(--color-text);
-}
-
-.btn-outline:hover {
-  transform: scale(1.05);
+.btn:hover {
+  background-color: color-mix(in srgb, var(--color-text) 15%, transparent);
+  border-color: color-mix(in srgb, var(--color-text) 50%, transparent);
 }
 
 /* ================================================
