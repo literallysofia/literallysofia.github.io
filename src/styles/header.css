@@ -51,6 +51,7 @@ header .navbar-brand {
   transition: var(--transition);
   position: relative;
   z-index: 1001;
+  cursor: pointer;
 }
 
 header .navbar-brand::after {
