@@ -3,18 +3,13 @@ import { getCollection } from 'astro:content';
 import Layout from '../layouts/Layout.astro';
 import Header from '../components/Header.astro';
 import Timeline from '../components/Timeline.astro';
-import Portfolio from '../components/Portfolio.astro';
 import Footer from '../components/Footer.astro';
 
 // Query content collections
 const experienceCollection = await getCollection('experience');
-const extraCurricularCollection = await getCollection('extra-curricular');
-const portfolioCollection = await getCollection('portfolio');
 
 // Get the first entry from each collection
 const experience = experienceCollection[0];
-const extraCurricular = extraCurricularCollection[0];
-const portfolio = portfolioCollection[0];
 ---
 
 <Layout>
@@ -23,14 +18,6 @@ const portfolio = portfolioCollection[0];
     <Timeline
       title={experience.data.title}
       jobs={experience.data.jobs}
-    />
-    <Timeline
-      title={extraCurricular.data.title}
-      jobs={extraCurricular.data.jobs}
-    />
-    <Portfolio
-      title={portfolio.data.title}
-      projects={portfolio.data.projects}
     />
   </main>
   <Footer />

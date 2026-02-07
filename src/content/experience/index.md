@@ -3,11 +3,22 @@ title: Experience
 jobs:
   [
     {
-      date: May 2024 - Present,
+      date: Jul 2025 - Present,
+      title: Senior iOS Engineer,
+      company: Qonto,
+      web: https://qonto.com/en,
+      description: "Qonto is the leading European business finance solution. It simplifies everything from everyday banking and financing, to bookkeeping and spending management. Qonto energizes SMEs and freelancers so that they can achieve more.",
+      tasks:
+        [
+          "Part of Pricing cross-functional team within Systems & Monetization domain",
+          "Work on strategic pricing initiatives critical to company revenue goals"
+        ],
+    },
+    {
+      date: May 2024 - Jul 2025,
       title: iOS Engineer,
       company: Qonto,
       web: https://qonto.com/en,
-      description: "Qonto is the leading European business finance solution. It simplifies everything from everyday banking and financing, to bookkeeping and spending management. Qonto energizes SMEs and freelancers so that they can achieve more."
     },
     {
       date: Jul 2022 - Apr 2024,

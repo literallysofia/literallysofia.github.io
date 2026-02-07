@@ -13,11 +13,12 @@
 
 .timeline .card-item span {
   margin-top: 0.2em;
+  margin-bottom: 0.2em;
   font-size: 0.9em;
 }
 
 .timeline .card-item .description {
-  margin-top: 0.2em;
+  margin-top: 1em;
   margin-bottom: 0;
 }
 
