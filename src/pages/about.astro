@@ -1,25 +1,31 @@
 ---
+/**
+ * About Page
+ * Personal information page with education, languages, and photo gallery.
+ * Content loaded from Astro content collections.
+ */
+
 import { getCollection } from "astro:content";
 import Layout from "../layouts/Layout.astro";
 import Header from "../components/Header.astro";
-import About from "../components/About.astro";
+import AboutComponent from "../components/About.astro";
 import Footer from "../components/Footer.astro";
 
 const aboutCollection = await getCollection("about");
-const about = aboutCollection[0];
-const { Content } = await about.render();
+const aboutData = aboutCollection[0];
+const { Content } = await aboutData.render();
 ---
 
 <Layout>
   <Header />
   <main>
-    <About
-      title={about.data.title}
-      education={about.data.education}
-      languages={about.data.languages}
+    <AboutComponent
+      title={aboutData.data.title}
+      education={aboutData.data.education}
+      languages={aboutData.data.languages}
     >
       <Content />
-    </About>
+    </AboutComponent>
   </main>
   <Footer />
 </Layout>

@@ -1,4 +1,12 @@
 /* ================================================
+   FOOTER - SITE FOOTER
+   ================================================
+   Simple centered footer with social media links
+   and copyright text. Social icons have hover
+   lift effect for better interactivity.
+   ================================================ */
+
+/* ================================================
    FOOTER - BASE STYLES
    ================================================ */
 
@@ -37,23 +45,13 @@ footer .social-media li:hover {
 }
 
 /* ================================================
-   FOOTER - THEME-SPECIFIC COLORS
+   FOOTER - SOCIAL LINK COLORS
    ================================================ */
 
-/* Light mode social links */
-html.light-mode footer .social-media li a {
+footer .social-media li a {
   color: var(--color-text);
 }
 
-html.light-mode footer .social-media li a:hover {
-  color: var(--color-secondary);
-}
-
-/* Dark mode social links */
-html.dark-mode footer .social-media li a {
-  color: var(--color-text);
-}
-
-html.dark-mode footer .social-media li a:hover {
+footer .social-media li a:hover {
   color: var(--color-secondary);
 }

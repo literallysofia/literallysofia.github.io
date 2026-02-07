@@ -178,7 +178,7 @@ const { isNotFound = false } = Astro.props;
         menuItems?.forEach((item) => {
           const delay = item.getAttribute("data-delay");
           item.classList.add("menu-item-animate");
-          if (delay) {
+          if (delay && item instanceof HTMLElement) {
             item.style.animationDelay = `${parseInt(delay) * 0.1 + 0.2}s`;
           }
         });
@@ -196,7 +196,9 @@ const { isNotFound = false } = Astro.props;
       // Remove animation classes
       menuItems?.forEach((item) => {
         item.classList.remove("menu-item-animate");
-        item.style.animationDelay = "";
+        if (item instanceof HTMLElement) {
+          item.style.animationDelay = "";
+        }
       });
 
       // Hide menu after fade-out animation completes

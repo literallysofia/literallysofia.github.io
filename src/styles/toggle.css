@@ -1,4 +1,13 @@
 /* ================================================
+   DARK MODE TOGGLE
+   ================================================
+   Theme switcher button with sun/moon icon.
+   Features smooth icon transitions and active
+   state animations. Works with dark mode script
+   in Layout component.
+   ================================================ */
+
+/* ================================================
    DARK MODE TOGGLE - BASE STYLES
    ================================================ */
 
@@ -20,7 +29,7 @@
 
 .toggle-icon {
   display: inline-block;
-  transition: transform 0.3s ease, opacity 0.2s ease;
+  transition: transform var(--duration-fast) ease, opacity 0.2s ease;
 }
 
 /* Active state - slight rotation and scale */

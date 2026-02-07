@@ -1,7 +1,12 @@
 ---
 /**
  * Portfolio Component
- * Grid of project cards with pagination
+ * Displays project showcase in responsive grid layout with pagination.
+ * Features:
+ * - Responsive grid: 3 columns (desktop) → 2 (tablet) → 1 (mobile)
+ * - Scroll-triggered animations for card entrance effects
+ * - Pagination: Shows 6 projects initially, "Load More" button reveals rest
+ * - Project cards include title, description, links, and technology tags
  */
 
 import ProjectCard from './ProjectCard.astro';
@@ -42,7 +47,7 @@ const sectionId = title.toLowerCase().replace(/\s+/g, '-');
 
   {projects.length > 6 && (
     <div class="load-more-container">
-      <button class="default load-more-btn">Load More</button>
+      <button class="btn btn-primary load-more-btn">Load More</button>
     </div>
   )}
 </section>

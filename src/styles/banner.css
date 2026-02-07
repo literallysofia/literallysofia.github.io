@@ -1,15 +1,24 @@
 /* ================================================
+   BANNER - HOME PAGE HERO SECTION
+   ================================================
+   Two-column layout with portrait image and
+   introduction text. Features staggered fade-in
+   animations for text elements and responsive
+   layout for mobile devices.
+   ================================================ */
+
+/* ================================================
    BANNER - BASE LAYOUT
    ================================================ */
 
-#banner {
+.banner {
   display: flex;
   flex-direction: column;
   flex: 1;
   min-height: 0;
 }
 
-#banner .banner-content {
+.banner .banner-content {
   display: flex;
   flex: 1;
 }
@@ -18,13 +27,13 @@
    BANNER - IMAGE
    ================================================ */
 
-#banner .banner-content .image-wrapper {
+.banner .banner-content .image-wrapper {
   display: flex;
   align-items: center;
-  padding-right: 6em;
+  padding-right: var(--spacing-xl);
 }
 
-#banner .banner-content img {
+.banner .banner-content img {
   width: 100%;
   max-width: 600px;
   height: auto;
@@ -34,34 +43,33 @@
    BANNER - TEXT CONTENT
    ================================================ */
 
-#banner .banner-content .banner-intro {
+.banner .banner-content .banner-intro {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
 }
 
-#banner h1 {
+.banner h1 {
   font-size: 3.5em;
   font-weight: 600;
   margin: 0;
   padding-bottom: 0.4em;
 }
 
-#banner span {
+.banner .banner-subtitle {
   font-family: var(--font-noto);
   font-size: 1.2em;
   letter-spacing: 0.05em;
   background-color: rgba(0, 0, 0, 0.05);
 }
 
-/* Dark mode span background */
-html.dark-mode #banner span,
-body.dark-mode #banner span {
+/* Dark mode subtitle background */
+.dark-mode .banner .banner-subtitle {
   background-color: rgba(250, 250, 250, 0.05);
 }
 
-#banner p {
+.banner p {
   font-size: 1em;
   white-space: pre-line;
 }
@@ -70,7 +78,7 @@ body.dark-mode #banner span {
    BANNER - LINKS
    ================================================ */
 
-#banner p a {
+.banner p a {
   color: inherit;
   text-decoration: underline;
   text-decoration-color: color-mix(in srgb, var(--color-text) 30%, transparent);
@@ -78,7 +86,7 @@ body.dark-mode #banner span {
   transition: text-decoration-color 0.3s ease;
 }
 
-#banner p a:hover {
+.banner p a:hover {
   text-decoration-color: color-mix(in srgb, var(--color-text) 80%, transparent);
 }
 
@@ -86,30 +94,30 @@ body.dark-mode #banner span {
    RESPONSIVE - MOBILE
    ================================================ */
 
-@media (max-width: 900px) {
-  #banner .banner-content {
+@media (max-width: var(--breakpoint-mobile)) {
+  .banner .banner-content {
     flex-wrap: wrap;
   }
 
-  #banner .banner-content .image-wrapper {
+  .banner .banner-content .image-wrapper {
     display: flex;
     align-items: center;
     justify-content: center;
     padding: 0;
     width: 100%;
-    margin-bottom: 3em;
+    margin-bottom: var(--spacing-lg);
   }
 
-  #banner .image-wrapper img {
+  .banner .image-wrapper img {
     width: 60%;
     max-width: 400px;
   }
 
-  #banner .banner-intro {
+  .banner .banner-intro {
     align-self: flex-start;
   }
 
-  #banner h1 {
+  .banner h1 {
     font-size: 3em;
   }
 }

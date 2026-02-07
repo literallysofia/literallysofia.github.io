@@ -39,28 +39,27 @@ const { title, education, languages } = Astro.props;
  * Gallery image configuration
  * Images are split into two columns for quirky staggered layout
  */
-const galleryImages = [
-  { src: '../assets/gallery-1.jpg', alt: 'childhood beach' },
-  { src: '../assets/gallery-2.jpg', alt: 'new york' },
-  { src: '../assets/gallery-3.png', alt: 'paris' },
-  { src: '../assets/gallery-4.png', alt: 'cozy home' },
-  { src: '../assets/gallery-5.png', alt: 'paramore' },
-  { src: '../assets/gallery-6.png', alt: 'porto' },
-  { src: '../assets/gallery-7.png', alt: 'london' },
-  { src: '../assets/gallery-8.png', alt: 'twenty one pilots' },
-  { src: '../assets/gallery-9.jpg', alt: 'nico, wfh buddy' },
+import gallery1 from '../assets/gallery-1.jpg';
+import gallery2 from '../assets/gallery-2.jpg';
+import gallery3 from '../assets/gallery-3.png';
+import gallery4 from '../assets/gallery-4.png';
+import gallery5 from '../assets/gallery-5.png';
+import gallery6 from '../assets/gallery-6.png';
+import gallery7 from '../assets/gallery-7.png';
+import gallery8 from '../assets/gallery-8.png';
+import gallery9 from '../assets/gallery-9.jpg';
+
+const gallery = [
+  { module: gallery1, alt: 'childhood beach' },
+  { module: gallery2, alt: 'new york' },
+  { module: gallery3, alt: 'paris' },
+  { module: gallery4, alt: 'cozy home' },
+  { module: gallery5, alt: 'paramore' },
+  { module: gallery6, alt: 'porto' },
+  { module: gallery7, alt: 'london' },
+  { module: gallery8, alt: 'twenty one pilots' },
+  { module: gallery9, alt: 'nico, wfh buddy' },
 ];
-
-// Dynamically import all gallery images
-const galleryImports = await Promise.all(
-  galleryImages.map(img => import(img.src))
-);
-
-// Combine image metadata with imported modules
-const gallery = galleryImages.map((img, index) => ({
-  ...img,
-  module: galleryImports[index].default,
-}));
 
 // Shared image optimization properties
 const imageProps = {
@@ -71,7 +70,7 @@ const imageProps = {
 };
 ---
 
-<section id="about" aria-labelledby="about-heading">
+<section id="about" class="about" aria-labelledby="about-heading">
   <h2 id="about-heading" class="heading">{title}</h2>
 
   <div class="about-content">

@@ -1,4 +1,11 @@
-/* CSS Custom Properties (Theme Variables) */
+/* ================================================
+   THEME - CSS CUSTOM PROPERTIES
+   ================================================
+   Centralized design tokens for colors, fonts,
+   spacing, animations, and more. These variables
+   enable consistent styling and easy theme-wide
+   changes across the entire application.
+   ================================================ */
 :root {
   /* Fonts */
   --font-playfair: "Playfair Display", serif;
@@ -14,12 +21,45 @@
   /* Transitions */
   --transition: all 0.4s ease-out;
   --transition-mode: background-color 0.3s ease;
+
+  /* Breakpoints */
+  --breakpoint-mobile: 900px;
+  --breakpoint-tablet: 600px;
+
+  /* Animation timing functions */
+  --timing-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+  --timing-bounce: cubic-bezier(0.34, 1.56, 0.64, 1);
+
+  /* Animation durations */
+  --duration-fast: 0.3s;
+  --duration-normal: 0.4s;
+  --duration-slow: 0.6s;
+  --duration-slower: 0.7s;
+
+  /* Spacing */
+  --spacing-xs: 0.5em;
+  --spacing-sm: 1em;
+  --spacing-md: 2em;
+  --spacing-lg: 3em;
+  --spacing-xl: 6em;
+
+  /* Border radius */
+  --radius-sm: 4px;
+  --radius-md: 50px;
+
+  /* Shadows */
+  --shadow-card-light: 0px 0px 10px 0px rgba(113, 167, 178, 0.2);
+  --shadow-card-dark: 0px 0px 10px 0px rgba(0, 0, 0, 0.2);
+
+  /* Card backgrounds */
+  --card-bg: white;
+  --card-bg-dark: rgb(25, 25, 25);
 }
 
 /* Dark Mode */
-html.dark-mode,
-body.dark-mode {
+html.dark-mode {
   --color-bg: #28151E;
   --color-text: white;
   --color-text-inverse: black;
+  --card-bg: var(--card-bg-dark);
 }

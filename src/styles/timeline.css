@@ -13,7 +13,7 @@
 /* Main timeline list container with vertical line */
 .timeline .card-list {
   margin-left: 0.6em;
-  padding-left: 3em;
+  padding-left: var(--spacing-lg);
   border-left: 1px solid #d6d3d0;
   list-style: none;
   counter-reset: none;
@@ -32,8 +32,8 @@
   /* Initial state for scroll animation */
   opacity: 0;
   transform: translateY(30px);
-  transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1),
-              transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: opacity var(--duration-slow) var(--timing-smooth),
+              transform var(--duration-slow) var(--timing-smooth);
 }
 
 /* Visible state after scroll animation triggers */
@@ -44,7 +44,7 @@
 
 /* Spacing between timeline items */
 .timeline .card-item:not(:last-child) {
-  margin-bottom: 2em;
+  margin-bottom: var(--spacing-md);
 }
 
 /* ================================================
@@ -65,7 +65,7 @@
   /* Initial state: hidden (scale 0) */
   transform: scale(0);
   /* Bouncy animation with delay */
-  transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) 0.2s;
+  transition: transform var(--duration-normal) var(--timing-bounce) 0.2s;
 }
 
 /* Animate dot when card becomes visible */
@@ -113,7 +113,7 @@
 
 /* Job description paragraph */
 .timeline .card-item .description {
-  margin-top: 1em;
+  margin-top: var(--spacing-sm);
   margin-bottom: 0;
 }
 
@@ -123,7 +123,13 @@
 
 /* Task/responsibilities list */
 .timeline .task-list {
-  margin-top: 1em;
+  margin-top: var(--spacing-sm);
+}
+
+/* List markers for task items */
+.timeline .task-list li:not(.section)::before {
+  content: "-";
+  margin-right: var(--spacing-xs);
 }
 
 /* Section headers within task lists */
@@ -140,7 +146,7 @@
    RESPONSIVE - MOBILE
    ================================================ */
 
-@media (max-width: 900px) {
+@media (max-width: var(--breakpoint-mobile)) {
   /* Reduce padding on smaller screens */
   .timeline .card-list {
     padding-left: 2.8em;

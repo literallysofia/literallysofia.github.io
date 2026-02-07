@@ -1,4 +1,13 @@
 /* ================================================
+   HEADER - SITE NAVIGATION
+   ================================================
+   Sticky header with brand logo, desktop nav,
+   dark mode toggle, and mobile burger menu.
+   Includes animated mobile overlay with staggered
+   menu item entrance effects.
+   ================================================ */
+
+/* ================================================
    HEADER - BASE STYLES
    ================================================ */
 
@@ -7,7 +16,7 @@ header {
   align-items: center;
   justify-content: space-between;
   padding: 1.5em 8em;
-  transition: var(--transition), background-color 0.3s ease;
+  transition: var(--transition), background-color var(--duration-fast) ease;
   position: sticky;
   top: 0;
   z-index: 100;
@@ -54,8 +63,8 @@ header .desktop-toggle {
 header nav {
   display: flex;
   align-items: center;
-  gap: 2em;
-  padding-top: 0.5em;
+  gap: var(--spacing-md);
+  padding-top: var(--spacing-xs);
 }
 
 header nav .nav-item a {
@@ -120,7 +129,7 @@ header nav .nav-item a:hover::after {
   transform: translate(-50%, -50%);
   width: 100%;
   height: 100%;
-  transition: transform 0.3s ease-in-out;
+  transition: transform var(--duration-fast) ease-in-out;
 }
 
 .mobile-burger.open .burger-lines {
@@ -132,7 +141,7 @@ header nav .nav-item a:hover::after {
   border-radius: 0.25em;
   position: absolute;
   background-color: currentColor;
-  transition: all 0.3s ease-in-out;
+  transition: all var(--duration-fast) ease-in-out;
 }
 
 /* Horizontal line of the plus */
@@ -163,14 +172,14 @@ header nav .nav-item a:hover::after {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 2em;
+  gap: var(--spacing-md);
   width: 100vw;
   height: 100vh;
   z-index: 999;
   top: 0;
   left: 0;
   opacity: 0;
-  transition: opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.3s ease;
+  transition: opacity var(--duration-normal) var(--timing-smooth), background-color var(--duration-fast) ease;
   pointer-events: none;
   background-color: var(--color-bg);
 }
@@ -183,7 +192,7 @@ header nav .nav-item a:hover::after {
 /* Mobile menu navigation styles */
 .menu nav {
   flex-direction: column;
-  gap: 2em;
+  gap: var(--spacing-md);
   padding: 0;
 }
 
@@ -211,7 +220,7 @@ header nav .nav-item a:hover::after {
 }
 
 .menu-item-animate {
-  animation: menuItemFadeIn 0.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  animation: menuItemFadeIn 0.5s var(--timing-smooth) forwards;
 }
 
 @keyframes menuItemFadeIn {
@@ -229,9 +238,9 @@ header nav .nav-item a:hover::after {
    RESPONSIVE - MOBILE
    ================================================ */
 
-@media (max-width: 900px) {
+@media (max-width: var(--breakpoint-mobile)) {
   header {
-    padding: 1.5em 2em;
+    padding: 1.5em var(--spacing-md);
   }
 
   header .desktop-nav,

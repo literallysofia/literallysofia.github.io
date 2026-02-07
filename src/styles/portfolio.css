@@ -1,11 +1,20 @@
 /* ================================================
+   PORTFOLIO - PROJECT SHOWCASE
+   ================================================
+   Responsive grid layout for project cards with
+   scroll animations. Grid adapts from 3 columns
+   (desktop) to 2 (tablet) to 1 (mobile). Cards
+   feature project info, links, and technology tags.
+   ================================================ */
+
+/* ================================================
    PORTFOLIO GRID
    ================================================ */
 
 .portfolio-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 1em;
+  gap: var(--spacing-sm);
 }
 
 /* ================================================
@@ -15,14 +24,14 @@
 .project-card {
   display: flex;
   flex-direction: column;
-  padding: 2em 2.5em 1em;
+  padding: var(--spacing-md) 2.5em var(--spacing-sm);
   margin: 0;
   position: relative;
   z-index: 1;
   opacity: 0;
   transform: translateY(30px);
-  transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1),
-              transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: opacity var(--duration-slow) var(--timing-smooth),
+              transform var(--duration-slow) var(--timing-smooth);
 }
 
 .project-card.is-visible {
@@ -30,14 +39,13 @@
   transform: translateY(0);
 }
 
-.light-mode .project-card {
-  background-color: white;
-  box-shadow: 0px 0px 10px 0px rgba(113, 167, 178, 0.2);
+.project-card {
+  background-color: var(--card-bg);
+  box-shadow: var(--shadow-card-light);
 }
 
-.dark-mode .project-card {
-  background-color: rgb(25, 25, 25);
-  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.2);
+html.dark-mode .project-card {
+  box-shadow: var(--shadow-card-dark);
 }
 
 /* ================================================
@@ -79,11 +87,11 @@
 }
 
 .project-links li:not(:last-child) {
-  margin-right: 1em;
+  margin-right: var(--spacing-sm);
 }
 
 .project-links li {
-  transition: all 0.4s ease-out;
+  transition: all var(--duration-normal) ease-out;
 }
 
 .project-links li:hover {
@@ -121,7 +129,7 @@
 }
 
 .project-tags li:not(:last-child) {
-  margin-right: 1em;
+  margin-right: var(--spacing-sm);
 }
 
 /* ================================================
@@ -131,12 +139,12 @@
 .load-more-container {
   display: flex;
   justify-content: center;
-  margin-top: 2em;
-  padding: 1em 0;
+  margin-top: var(--spacing-md);
+  padding: var(--spacing-sm) 0;
   opacity: 0;
   transform: translateY(30px);
-  transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1),
-              transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: opacity var(--duration-slow) var(--timing-smooth),
+              transform var(--duration-slow) var(--timing-smooth);
 }
 
 .load-more-container.is-visible {
@@ -148,17 +156,17 @@
    RESPONSIVE
    ================================================ */
 
-@media (max-width: 900px) {
+@media (max-width: var(--breakpoint-mobile)) {
   .portfolio-grid {
     grid-template-columns: repeat(2, 1fr);
   }
 
   .project-links li:not(:last-child) {
-    margin-right: 0.5em;
+    margin-right: var(--spacing-xs);
   }
 }
 
-@media (max-width: 600px) {
+@media (max-width: var(--breakpoint-tablet)) {
   .portfolio-grid {
     grid-template-columns: 1fr;
   }

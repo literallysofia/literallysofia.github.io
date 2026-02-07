@@ -1,4 +1,14 @@
-/* CSS Animations to replace react-spring */
+/* ================================================
+   ANIMATIONS
+   ================================================
+   CSS animation classes for page load and scroll
+   reveal effects. These replaced react-spring to
+   improve performance and reduce bundle size.
+   ================================================ */
+
+/* ================================================
+   KEYFRAME DEFINITIONS
+   ================================================ */
 
 @keyframes fadeInUp {
   from {
@@ -20,46 +30,28 @@
   }
 }
 
-@keyframes slideInLeft {
-  from {
-    opacity: 0;
-    transform: translateX(-50px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
 
-@keyframes slideInRight {
-  from {
-    opacity: 0;
-    transform: translateX(50px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-
-/* Animation Classes */
+/* ================================================
+   ANIMATION CLASSES
+   ================================================
+   Apply these classes to trigger animations.
+   Used primarily in Banner component for
+   staggered entrance effects.
+   ================================================ */
 .animate-fade-in-up {
-  animation: fadeInUp 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  animation: fadeInUp var(--duration-slow) var(--timing-smooth) forwards;
 }
 
 .animate-fade-in {
   animation: fadeIn 1.5s ease-out forwards;
 }
 
-.animate-slide-in-left {
-  animation: slideInLeft 0.7s cubic-bezier(0.4, 0, 0.2, 1) forwards;
-}
-
-.animate-slide-in-right {
-  animation: slideInRight 0.7s cubic-bezier(0.4, 0, 0.2, 1) forwards;
-}
-
-/* Stagger animations with delays */
+/* ================================================
+   STAGGERED ANIMATION DELAYS
+   ================================================
+   Combine with animation classes above to create
+   sequential entrance effects (e.g., banner text)
+   ================================================ */
 .animate-delay-1 {
   animation-delay: 0.1s;
 }
@@ -81,8 +73,25 @@
 }
 
 /* Initial hidden state for elements that will animate */
-.animate-fade-in-up,
-.animate-slide-in-left,
-.animate-slide-in-right {
+.animate-fade-in-up {
   opacity: 0;
+}
+
+/* ================================================
+   SCROLL REVEAL ANIMATION
+   ================================================
+   Shared utility for elements that animate into
+   view on scroll (used in timeline and portfolio)
+   ================================================ */
+
+.scroll-reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity var(--duration-slow) var(--timing-smooth),
+              transform var(--duration-slow) var(--timing-smooth);
+}
+
+.scroll-reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
 }

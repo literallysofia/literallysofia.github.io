@@ -1,4 +1,14 @@
 /* ================================================
+   GLOBAL STYLES
+   ================================================
+   Base styles and resets applied site-wide.
+   Includes typography defaults, layout containers,
+   link styling, and responsive utilities.
+   Uses CSS variables from theme.css for consistent
+   design tokens across the application.
+   ================================================ */
+
+/* ================================================
    GLOBAL - BASE STYLES
    ================================================ */
 
@@ -88,35 +98,11 @@ ul {
 }
 
 /* ================================================
-   GLOBAL - BUTTONS
-   ================================================ */
-
-button.default {
-  border: none;
-  outline: none;
-  cursor: pointer;
-  transition: var(--transition);
-  border-radius: 50px;
-  font-family: var(--font-noto);
-  font-weight: 700;
-  font-size: 1em;
-  text-transform: uppercase;
-  padding: 0.8em 2.5em;
-  color: white;
-  background: var(--color-primary);
-}
-
-button.default:hover {
-  color: white;
-  background: var(--color-secondary);
-}
-
-/* ================================================
    GLOBAL - SECTIONS
    ================================================ */
 
 section {
-  padding: 1em 0;
+  padding: var(--spacing-sm) 0;
 }
 
 section h3 {
@@ -129,16 +115,11 @@ section h4 {
   font-weight: 600;
 }
 
-section li::before {
-  content: "-";
-  margin-right: 0.5em;
-}
-
 /* Section headings with decorative underline */
 section .heading {
   display: inline-block;
   font-size: 2.6em;
-  margin-bottom: 1em;
+  margin-bottom: var(--spacing-sm);
   position: relative;
   z-index: 1;
 }
@@ -156,12 +137,50 @@ section .heading::after {
 }
 
 /* ================================================
+   GLOBAL - BUTTONS
+   ================================================ */
+
+.btn {
+  font-family: var(--font-noto);
+  font-size: 1em;
+  font-weight: 400;
+  border: none;
+  border-radius: var(--radius-md);
+  padding: 0.8em 2.5em;
+  cursor: pointer;
+  transition: var(--transition);
+  -webkit-tap-highlight-color: transparent;
+}
+
+.btn-primary {
+  font-weight: 700;
+  text-transform: uppercase;
+  color: white;
+  background: var(--color-primary);
+}
+
+.btn-primary:hover {
+  background: var(--color-secondary);
+}
+
+.btn-outline {
+  font-weight: 400;
+  color: var(--color-text);
+  background-color: transparent;
+  border: 1px solid var(--color-text);
+}
+
+.btn-outline:hover {
+  transform: scale(1.05);
+}
+
+/* ================================================
    RESPONSIVE - MOBILE
    ================================================ */
 
-@media (max-width: 900px) {
+@media (max-width: var(--breakpoint-mobile)) {
   main {
-    padding: 0 2em 2em 2em;
+    padding: 0 var(--spacing-md) var(--spacing-md) var(--spacing-md);
   }
 
   .home-container {
@@ -170,7 +189,7 @@ section .heading::after {
   }
 
   .home-container main {
-    padding: 0 2em;
+    padding: 0 var(--spacing-md);
     overflow: auto;
   }
 }

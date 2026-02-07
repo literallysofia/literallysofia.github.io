@@ -1,4 +1,14 @@
 ---
+/**
+ * Base Layout Component
+ * Provides HTML structure, meta tags, and global styles for all pages.
+ * Handles dark mode initialization to prevent flash on page load.
+ * Supports Astro view transitions for smooth page navigation.
+ *
+ * @prop {string} title - Page title (defaults to site title from config)
+ * @prop {string} description - Page description for meta tags (defaults to site description)
+ */
+
 import { ViewTransitions } from 'astro:transitions';
 import { siteConfig } from '../config';
 
