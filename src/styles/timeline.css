@@ -34,12 +34,18 @@
   transform: translateY(30px);
   transition: opacity var(--duration-slow) var(--timing-smooth),
               transform var(--duration-slow) var(--timing-smooth);
+  /* GPU compositing hints to prevent Safari flickering */
+  will-change: opacity, transform;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
 }
 
 /* Visible state after scroll animation triggers */
 .timeline .card-item.is-visible {
   opacity: 1;
   transform: translateY(0);
+  /* Release GPU layer after animation completes */
+  will-change: auto;
 }
 
 /* Spacing between timeline items */
@@ -66,6 +72,9 @@
   transform: scale(0);
   /* Bouncy animation with delay */
   transition: transform var(--duration-normal) var(--timing-bounce) 0.2s;
+  /* Prevent Safari flickering during scale animation */
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
 }
 
 /* Animate dot when card becomes visible */

@@ -2,11 +2,12 @@
 /**
  * Base Layout Component
  * Provides HTML structure, meta tags, and global styles for all pages.
- * Handles dark mode initialization to prevent flash on page load.
+ * Handles theme initialization to prevent flash on page load.
  * Supports Astro view transitions for smooth page navigation.
  *
  * @prop {string} title - Page title (defaults to site title from config)
  * @prop {string} description - Page description for meta tags (defaults to site description)
+ * @prop {boolean} protected - Whether the page requires password authentication (defaults to true)
  */
 
 import { ViewTransitions } from 'astro:transitions';
@@ -31,7 +32,7 @@ const showGate = isProtected && !!sitePassword && (!isDev || forceEnableGate);
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="en" class="dark-mode">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -51,6 +52,7 @@ const showGate = isProtected && !!sitePassword && (!isDev || forceEnableGate);
     <meta property="twitter:title" content={title} />
     <meta property="twitter:description" content={description} />
 
+    <meta name="theme-color" content="#28151E" />
     <link rel="icon" type="image/png" href="/icon.png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -63,25 +65,35 @@ const showGate = isProtected && !!sitePassword && (!isDev || forceEnableGate);
 
     <!-- Dark Mode Initialization (runs before render to prevent flash) -->
     <script is:inline>
-      // Function to apply theme
-      function setTheme() {
-        const theme = localStorage.getItem('theme');
-        const isDark = theme === 'dark' || (!theme && window.matchMedia('(prefers-color-scheme: dark)').matches);
-
-        if (isDark) {
-          document.documentElement.classList.remove('light-mode');
-          document.documentElement.classList.add('dark-mode');
-        } else {
-          document.documentElement.classList.remove('dark-mode');
-          document.documentElement.classList.add('light-mode');
-        }
+      function getIsDark() {
+        var theme = localStorage.getItem('theme');
+        return theme !== 'light';
       }
 
-      // Apply on initial load
-      setTheme();
+      function applyTheme(doc) {
+        var isDark = getIsDark();
+        if (isDark) {
+          doc.documentElement.classList.remove('light-mode');
+          doc.documentElement.classList.add('dark-mode');
+        } else {
+          doc.documentElement.classList.remove('dark-mode');
+          doc.documentElement.classList.add('light-mode');
+        }
+        doc.documentElement.style.colorScheme = isDark ? 'dark' : 'light';
+        var meta = doc.querySelector('meta[name="theme-color"]');
+        if (meta) meta.setAttribute('content', isDark ? '#28151E' : '#EEEEEE');
+      }
 
-      // Persist theme across page transitions
-      document.addEventListener('astro:after-swap', setTheme);
+      applyTheme(document);
+
+      document.addEventListener('astro:before-swap', function(e) {
+        applyTheme(e.newDocument);
+
+        e.newDocument.querySelectorAll('.timeline-item').forEach(function(item) {
+          item.classList.add('is-visible');
+          item.style.transition = 'none';
+        });
+      });
     </script>
 
   </head>
@@ -151,7 +163,7 @@ const showGate = isProtected && !!sitePassword && (!isDev || forceEnableGate);
   @import '../styles/timeline.css';
   @import '../styles/portfolio.css';
   @import '../styles/footer.css';
-  @import '../styles/toggle.css';
+  @import '../styles/theme-toggle.css';
   @import '../styles/404.css';
   @import '../styles/password-gate.css';
   @import '../styles/download-cv.css';

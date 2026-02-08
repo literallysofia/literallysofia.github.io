@@ -1,0 +1,64 @@
+---
+/**
+ * ThemeToggle Component
+ * Dark/light mode toggle button with sun/moon icon.
+ * Can be used multiple times on a page — Astro deduplicates the script.
+ */
+---
+
+<button aria-label="Toggle theme" class="theme-toggle">
+  <span class="toggle-icon" aria-hidden="true"></span>
+</button>
+
+<script>
+  /**
+   * Theme toggle logic.
+   * Queries all .theme-toggle buttons, syncs icons, and handles toggling.
+   * Runs once even if the component is used multiple times (Astro deduplicates scripts).
+   */
+  function initThemeToggle(): void {
+    const toggleButtons = document.querySelectorAll<HTMLButtonElement>(".theme-toggle");
+
+    function updateToggleIcons(isDark: boolean): void {
+      const icon = isDark ? "☀️" : "🌙";
+      document.querySelectorAll(".toggle-icon").forEach((el) => {
+        el.textContent = icon;
+      });
+    }
+
+    function toggleTheme(): void {
+      const html = document.documentElement;
+      const body = document.body;
+      const isDark = html.classList.contains("dark-mode");
+      const nowLight = isDark;
+
+      // Update browser UI FIRST (before any CSS transition starts)
+      html.style.colorScheme = nowLight ? "light" : "dark";
+      const meta = document.querySelector('meta[name="theme-color"]');
+      if (meta) meta.setAttribute("content", nowLight ? "#EEEEEE" : "#28151E");
+
+      // Then toggle classes (body transition begins, but toolbar is already correct)
+      html.classList.toggle("dark-mode", !nowLight);
+      html.classList.toggle("light-mode", nowLight);
+      body.classList.toggle("dark-mode", !nowLight);
+      body.classList.toggle("light-mode", nowLight);
+
+      localStorage.setItem("theme", nowLight ? "light" : "dark");
+      updateToggleIcons(!nowLight);
+    }
+
+    // Initialize icons based on current theme
+    const isDark = document.documentElement.classList.contains("dark-mode");
+    updateToggleIcons(isDark);
+
+    // Attach click listeners to all toggle buttons
+    toggleButtons.forEach((btn) => {
+      btn.addEventListener("click", toggleTheme);
+    });
+  }
+
+  initThemeToggle();
+
+  // Re-initialize after Astro view transitions
+  document.addEventListener("astro:after-swap", initThemeToggle);
+</script>

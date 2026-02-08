@@ -2,7 +2,7 @@
    HEADER - SITE NAVIGATION
    ================================================
    Sticky header with brand logo, desktop nav,
-   dark mode toggle, and mobile burger menu.
+   theme toggle, and mobile burger menu.
    Includes animated mobile overlay with staggered
    menu item entrance effects.
    ================================================ */
@@ -16,7 +16,7 @@ header {
   align-items: center;
   justify-content: space-between;
   padding: 1.5em 8em;
-  transition: var(--transition), background-color var(--duration-fast) ease;
+  transition: var(--transition), background-color 0s;
   position: sticky;
   top: 0;
   z-index: 100;
@@ -195,7 +195,7 @@ header nav .nav-item a:hover::after {
   top: 0;
   left: 0;
   opacity: 0;
-  transition: opacity var(--duration-normal) var(--timing-smooth), background-color var(--duration-fast) ease;
+  transition: opacity var(--duration-normal) var(--timing-smooth);
   pointer-events: none;
   background-color: var(--color-bg);
 }
@@ -221,7 +221,7 @@ header nav .nav-item a:hover::after {
   background-color: var(--color-text);
 }
 
-.menu .dark-mode-toggle .toggle-icon {
+.menu .mobile-toggle .toggle-icon {
   font-size: 1.5em;
 }
 
@@ -230,7 +230,7 @@ header nav .nav-item a:hover::after {
    ================================================ */
 
 .menu .nav-item,
-.menu .dark-mode-toggle {
+.menu .mobile-toggle {
   opacity: 0;
   transform: translateY(20px);
 }

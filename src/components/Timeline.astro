@@ -97,7 +97,12 @@ const sectionId = generateId(title);
 
 <script>
   /**
-   * Initialize timeline scroll animations with staggered entrance effects
+   * Initialize timeline scroll animations with staggered entrance effects.
+   *
+   * Handles three item states:
+   * - Pre-shown (has is-visible) + in viewport: keep visible, clear inline transition
+   * - Pre-shown (has is-visible) + below fold: silently reset to hidden, observe for scroll
+   * - No is-visible (initial page load): observe for staggered scroll animation
    */
   function initTimelineAnimation(): void {
     const timelineItems = document.querySelectorAll<HTMLElement>('.timeline-item');
@@ -111,9 +116,7 @@ const sectionId = generateId(title);
 
     let animationCount = 0;
 
-    /**
-     * Animate a timeline item with staggered delay
-     */
+    /** Animate a timeline item with staggered delay */
     function animateItem(item: HTMLElement): void {
       const delay = animationCount * STAGGER_DELAY;
 
@@ -141,24 +144,27 @@ const sectionId = generateId(title);
       }
     );
 
-    // Observe all timeline items
-    timelineItems.forEach((item) => observer.observe(item));
+    timelineItems.forEach((item) => {
+      if (item.classList.contains('is-visible')) {
+        // Pre-shown by astro:before-swap
+        const rect = item.getBoundingClientRect();
+        if (rect.top < window.innerHeight && rect.bottom > 0) {
+          // In viewport — keep visible, clear inline transition override
+          item.style.transition = '';
+        } else {
+          // Below fold — silently reset to hidden for scroll animation
+          item.style.transition = 'none';
+          item.classList.remove('is-visible');
+          void item.offsetHeight; // force reflow
+          item.style.transition = '';
+          observer.observe(item);
+        }
+      } else {
+        // Initial page load — observe for staggered animation
+        observer.observe(item);
+      }
+    });
   }
 
-  /**
-   * Initialize animations when DOM is ready
-   */
-  function init(): void {
-    if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', initTimelineAnimation);
-    } else {
-      initTimelineAnimation();
-    }
-  }
-
-  // Run on initial load
-  init();
-
-  // Run on Astro view transitions (SPA navigation)
   document.addEventListener('astro:page-load', initTimelineAnimation);
 </script>

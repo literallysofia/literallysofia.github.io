@@ -1,15 +1,16 @@
 ---
 /**
  * Header Component
- * Site-wide header with responsive navigation and dark mode toggle
+ * Site-wide header with responsive navigation
  * Features:
  * - Desktop horizontal navigation
  * - Mobile hamburger menu with animated slide-in
- * - Dark/light mode toggle (desktop & mobile)
+ * - Theme toggle via ThemeToggle component
  * - Conditional rendering for 404 pages
  */
 
 import { siteConfig } from "../config";
+import ThemeToggle from "./ThemeToggle.astro";
 import "../styles/header.css";
 
 interface Props {
@@ -37,15 +38,9 @@ const { isNotFound = false } = Astro.props;
         </nav>
       </div>
 
-      {/* Desktop Dark Mode Toggle */}
+      {/* Desktop Theme Toggle */}
       <div class="desktop-toggle">
-        <button
-          id="dark-mode-toggle"
-          aria-label="Toggle dark mode"
-          class="dark-mode-toggle"
-        >
-          <span class="toggle-icon" aria-hidden="true" />
-        </button>
+        <ThemeToggle />
       </div>
 
       {/* Mobile Menu Toggle Button */}
@@ -66,81 +61,16 @@ const { isNotFound = false } = Astro.props;
           ))}
         </nav>
 
-        {/* Mobile Dark Mode Toggle */}
-        <button
-          id="dark-mode-toggle-mobile"
-          aria-label="Toggle dark mode"
-          class="dark-mode-toggle"
-          data-delay={siteConfig.navLinks.length + 1}
-        >
-          <span class="toggle-icon" aria-hidden="true" />
-        </button>
+        {/* Mobile Theme Toggle */}
+        <div class="mobile-toggle" data-delay={siteConfig.navLinks.length + 1}>
+          <ThemeToggle />
+        </div>
       </div>
     </>
   )}
 </header>
 
 <script>
-  /**
-   * ================================================
-   * DARK MODE TOGGLE
-   * ================================================
-   * Manages theme switching between light and dark modes
-   * Persists preference to localStorage
-   * Syncs icon state across desktop and mobile toggles
-   */
-  function initDarkMode(): void {
-    const toggleDesktop = document.getElementById("dark-mode-toggle");
-    const toggleMobile = document.getElementById("dark-mode-toggle-mobile");
-
-    /**
-     * Update toggle button icons based on current theme
-     * @param isDark - Whether dark mode is active
-     */
-    function updateToggleIcons(isDark: boolean): void {
-      const icon = isDark ? "☀️" : "🌙";
-      document.querySelectorAll(".toggle-icon").forEach((el) => {
-        el.textContent = icon;
-      });
-    }
-
-    /**
-     * Toggle between light and dark mode
-     * Updates DOM classes and localStorage preference
-     */
-    function toggleDarkMode(): void {
-      const html = document.documentElement;
-      const body = document.body;
-      const isDark = html.classList.contains("dark-mode");
-
-      if (isDark) {
-        // Switch to light mode
-        html.classList.remove("dark-mode");
-        html.classList.add("light-mode");
-        body.classList.remove("dark-mode");
-        body.classList.add("light-mode");
-        localStorage.setItem("theme", "light");
-        updateToggleIcons(false);
-      } else {
-        // Switch to dark mode
-        html.classList.remove("light-mode");
-        html.classList.add("dark-mode");
-        body.classList.remove("light-mode");
-        body.classList.add("dark-mode");
-        localStorage.setItem("theme", "dark");
-        updateToggleIcons(true);
-      }
-    }
-
-    // Initialize toggle icons based on current theme
-    const isDark = document.documentElement.classList.contains("dark-mode");
-    updateToggleIcons(isDark);
-
-    // Attach event listeners to both desktop and mobile toggles
-    toggleDesktop?.addEventListener("click", toggleDarkMode);
-    toggleMobile?.addEventListener("click", toggleDarkMode);
-  }
-
   /**
    * ================================================
    * MOBILE MENU TOGGLE
@@ -152,7 +82,7 @@ const { isNotFound = false } = Astro.props;
   function initMobileMenu(): void {
     const burger = document.getElementById("burger");
     const menu = document.getElementById("mobile-menu");
-    const menuItems = menu?.querySelectorAll(".nav-item, .dark-mode-toggle");
+    const menuItems = menu?.querySelectorAll(".nav-item, .mobile-toggle");
     const menuLinks = menu?.querySelectorAll("a");
 
     /**
@@ -279,13 +209,11 @@ const { isNotFound = false } = Astro.props;
    */
 
   // Initialize all features on page load
-  initDarkMode();
   initMobileMenu();
   initScrollBorder();
 
   // Re-initialize after Astro view transitions (SPA navigation)
   document.addEventListener("astro:after-swap", () => {
-    initDarkMode();
     initMobileMenu();
     initScrollBorder();
   });

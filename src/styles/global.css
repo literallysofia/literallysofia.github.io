@@ -12,14 +12,24 @@
    GLOBAL - BASE STYLES
    ================================================ */
 
+/* Set background-color on html to prevent white flash during theme
+   initialization — html renders before body, so this covers the gap
+   before body styles apply */
+html {
+  background-color: var(--color-bg);
+  color: var(--color-text);
+}
+
 html,
 body {
   font: 100% var(--font-noto);
   font-weight: 300;
   margin: 0;
+}
+
+body {
   background-color: var(--color-bg);
   color: var(--color-text);
-  transition: var(--transition-mode);
 }
 
 /* ================================================

@@ -7,6 +7,10 @@
    changes across the entire application.
    ================================================ */
 :root {
+  /* Site defaults to dark mode — set color-scheme to dark so browser UI
+     (scrollbars, form controls) matches before JS applies the saved theme */
+  color-scheme: dark;
+
   /* Fonts */
   --font-playfair: "Playfair Display", serif;
   --font-noto: "Noto Sans", sans-serif;
@@ -54,6 +58,7 @@
 
 /* Dark Mode */
 html.dark-mode {
+  color-scheme: dark;
   --color-bg: #28151E;
   --color-text: white;
   --color-text-inverse: black;

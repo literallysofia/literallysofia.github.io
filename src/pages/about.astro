@@ -16,7 +16,7 @@ const aboutData = aboutCollection[0];
 const { Content } = await aboutData.render();
 ---
 
-<Layout>
+<Layout protected={false}>
   <Header />
   <main>
     <AboutComponent
