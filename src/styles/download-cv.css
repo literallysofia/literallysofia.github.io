@@ -47,11 +47,6 @@
   /* Animation */
   opacity: 0;
   scale: 0.9;
-  transition:
-    opacity var(--duration-fast) var(--timing-smooth),
-    scale var(--duration-fast) var(--timing-smooth),
-    overlay var(--duration-fast) var(--timing-smooth) allow-discrete,
-    display var(--duration-fast) var(--timing-smooth) allow-discrete;
 }
 
 .download-cv-dialog[open] {
@@ -73,12 +68,7 @@
 
 .download-cv-dialog::backdrop {
   background: rgba(0, 0, 0, 0.5);
-  backdrop-filter: blur(4px);
   opacity: 0;
-  transition:
-    opacity var(--duration-fast) var(--timing-smooth),
-    overlay var(--duration-fast) var(--timing-smooth) allow-discrete,
-    display var(--duration-fast) var(--timing-smooth) allow-discrete;
 }
 
 .download-cv-dialog[open]::backdrop {
@@ -88,6 +78,23 @@
 @starting-style {
   .download-cv-dialog[open]::backdrop {
     opacity: 0;
+  }
+}
+
+@supports (overlay: auto) {
+  .download-cv-dialog {
+    transition:
+      opacity var(--duration-fast) var(--timing-smooth),
+      scale var(--duration-fast) var(--timing-smooth),
+      overlay var(--duration-fast) var(--timing-smooth) allow-discrete,
+      display var(--duration-fast) var(--timing-smooth) allow-discrete;
+  }
+
+  .download-cv-dialog::backdrop {
+    transition:
+      opacity var(--duration-fast) var(--timing-smooth),
+      overlay var(--duration-fast) var(--timing-smooth) allow-discrete,
+      display var(--duration-fast) var(--timing-smooth) allow-discrete;
   }
 }
 
@@ -135,7 +142,7 @@
 }
 
 .download-cv-dialog .password-gate-error.visible {
-  height: 1.4em;
+  height: 1.6em;
   margin-top: 0.5em;
 }
 
