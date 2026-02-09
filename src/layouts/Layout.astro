@@ -10,7 +10,7 @@
  * @prop {boolean} protected - Whether the page requires password authentication (defaults to true)
  */
 
-import { ViewTransitions } from 'astro:transitions';
+import { ClientRouter } from 'astro:transitions';
 import { siteConfig } from '../config';
 
 interface Props {
@@ -61,7 +61,7 @@ const showGate = isProtected && !!sitePassword && (!isDev || forceEnableGate);
 
     <title>{title}</title>
 
-    <ViewTransitions />
+    <ClientRouter />
 
     <!-- Dark Mode Initialization (runs before render to prevent flash) -->
     <script is:inline>

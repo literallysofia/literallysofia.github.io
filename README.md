@@ -1,72 +1,77 @@
-# Sofia Silva - Portfolio Website
+# literallysofia.github.io
 
-A personal portfolio website built with Astro + React, showcasing my work as a software engineer.
+Personal portfolio website built with [Astro](https://astro.build), showcasing my work as a software engineer and designer. ✨
 
-## Tech Stack
+🔗 **Live:** [literallysofia.github.io](https://literallysofia.github.io)
 
-- **Framework:** Astro 4.x
-- **UI Library:** React 18 (Islands Architecture)
-- **Styling:** Vanilla CSS with CSS Custom Properties
-- **Deployment:** GitHub Actions → GitHub Pages
-- **Image Optimization:** Astro Image + Sharp
+## 🛠️ Tech Stack
 
-## Key Features
+| Layer | Technology |
+|-------|-----------|
+| Framework | Astro 5.x |
+| Styling | Vanilla CSS + Custom Properties |
+| Images | Astro Image + Sharp |
+| Deployment | GitHub Actions &rarr; GitHub Pages |
 
-- ⚡ Fast static site generation with minimal JavaScript
-- 🎨 Dark/light mode toggle with localStorage persistence
-- 📱 Fully responsive design
-- ♿ Accessible navigation and smooth scrolling
-- 🖼️ Optimized images with automatic WebP conversion
-- 🎭 CSS animations (no heavy animation libraries)
-- 🔧 Type-safe content collections
+## ⚡ Features
 
-## Architecture Highlights
+- 🌗 Dark/light mode with `localStorage` persistence
+- 📱 Responsive design across all breakpoints
+- 🖼️ Optimized images with automatic WebP conversion and lazy loading
+- 🎨 CSS-only animations (no heavy libraries)
+- 🔒 Type-safe content collections with Zod schemas
+- 🔀 View transitions for smooth page navigation
+- 🔐 Optional password-protected access gate
+- 📄 Encrypted CV download (AES-256-GCM + PBKDF2)
+- 📜 Scroll-triggered timeline animations
 
-### Dependency Minimalism
-Only **5 production dependencies** (79% reduction from previous Gatsby build):
-- `astro`
-- `react`
-- `react-dom`
-- `sharp` (for image optimization)
-- `@astrojs/react` (dev dependency)
-
-### Component Strategy
-- **React Islands** (interactive): Header, MobileMenu, DarkModeToggle
-- **Astro Components** (static): Banner, About, Timeline, Portfolio, Footer
-- **SVG Icons** (inline): GitHub, LinkedIn, Behance, Link
-
-## Project Structure
+## 📁 Project Structure
 
 ```
 /
-├── public/              # Static assets (favicon, etc.)
+├── .github/workflows/
+│   └── deploy.yml              # GitHub Actions deployment
+├── public/                     # Static assets (favicon, encrypted CV)
+├── scripts/
+│   └── encrypt-cv.mjs          # CV encryption utility
 ├── src/
-│   ├── assets/         # Images (processed by Astro)
+│   ├── assets/                 # Images (processed by Astro)
 │   ├── components/
-│   │   ├── react/      # React island components
-│   │   ├── icons/      # SVG icon components
-│   │   └── *.astro     # Static Astro components
-│   ├── content/        # Content collections (markdown)
-│   │   ├── hero/
-│   │   ├── about/
-│   │   ├── experience/
-│   │   ├── extra-curricular/
-│   │   └── portfolio/
+│   │   ├── *.astro             # Astro components
+│   │   └── icons/              # SVG icon components
+│   ├── content/                # Content collections
+│   │   ├── hero/               # Homepage hero
+│   │   ├── about/              # Education, languages
+│   │   ├── experience/         # Work timeline
+│   │   ├── extra-curricular/   # Volunteering, speaking
+│   │   ├── portfolio/          # Side projects
+│   │   └── *.md                 # Collection markdown files
 │   ├── layouts/
-│   │   └── Layout.astro
+│   │   └── Layout.astro        # Base layout
 │   ├── pages/
-│   │   ├── index.astro
-│   │   └── 404.astro
-│   ├── styles/         # Vanilla CSS modules
-│   └── config.ts       # Site configuration
+│   │   ├── index.astro         # Home
+│   │   ├── about.astro         # About
+│   │   ├── work.astro          # Work experience
+│   │   ├── misc.astro          # Extra-curricular & projects
+│   │   └── 404.astro           # Not found
+│   ├── styles/                 # CSS modules
+│   │   ├── theme.css           # Design tokens & dark/light mode
+│   │   ├── global.css          # Global styles
+│   │   ├── animations.css      # Animation definitions
+│   │   └── ...                 # Component styles
+│   ├── content.config.ts       # Collection schemas (glob loaders)
+│   └── config.ts               # Site metadata
+├── astro.config.mjs
+├── tsconfig.json
 └── package.json
 ```
 
-## Development
+## 🚀 Development
 
 ### Prerequisites
-- Node.js 18.x or higher
-- npm 9.x or higher
+
+- Node.js 18+
+- npm 9+
 
 ### Setup
 
@@ -74,82 +79,46 @@ Only **5 production dependencies** (79% reduction from previous Gatsby build):
 # Install dependencies
 npm install
 
-# Start development server
+# Copy environment variables
+cp .env.example .env
+
+# Start dev server
 npm run dev
-
-# Build for production
-npm run build
-
-# Preview production build
-npm run preview
 ```
 
-### Content Management
+### 📋 Available Scripts
 
-Content is managed through Astro Content Collections in the `src/content/` directory. Each collection has:
-- Type-safe schemas defined in `src/content/config.ts`
-- Markdown files with frontmatter for structured data
-- Automatic validation and TypeScript types
+| Script | Description |
+|--------|------------|
+| `npm run dev` | Start development server |
+| `npm run build` | Type-check and build for production |
+| `npm run preview` | Preview production build locally |
+| `npm run encrypt-cv` | Encrypt CV PDF (requires `CV_PASSWORD` env var) |
 
-To update content:
-1. Edit the markdown files in `src/content/{collection}/index.md`
-2. Follow the existing frontmatter structure
-3. Run `npm run dev` to see changes instantly
+### 🔑 Environment Variables
 
-## Deployment
+See `.env.example` for available options:
 
-The site automatically deploys to GitHub Pages via GitHub Actions when you push to the `source` branch.
+- `PUBLIC_SITE_PASSWORD` &mdash; password for the access gate
+- `PUBLIC_ENABLE_PASSWORD_GATE` &mdash; force-enable gate in dev mode
+- `CV_PASSWORD` &mdash; password for CV encryption/decryption
 
-### GitHub Pages Setup
+### ✏️ Content Management
 
-1. Go to repository Settings → Pages
-2. Set Source to "GitHub Actions"
-3. Push to `source` branch to trigger deployment
+Content lives in `src/content/` as Markdown files with typed frontmatter. Schemas are defined in `src/content.config.ts`.
 
-The workflow is defined in `.github/workflows/deploy.yml`.
+To update content, edit the Markdown files under the relevant collection directory and changes will reflect immediately in dev mode.
 
-## Styling
+## 🌐 Deployment
 
-Uses vanilla CSS with CSS Custom Properties for:
-- Zero build dependencies for styles
-- Future-proof CSS that works forever
-- Easy theme customization via CSS variables
-- Responsive design with standard media queries
+Pushes to the `source` branch trigger a GitHub Actions workflow that builds and deploys to GitHub Pages.
 
-Theme variables are defined in `src/styles/theme.css`:
-```css
-:root {
-  --font-playfair: "Playfair Display", serif;
-  --color-primary: #c38352;
-  --color-secondary: #71a7b2;
-  /* ... */
-}
-```
+To set up:
 
-## Browser Support
+1. Go to repository **Settings** &rarr; **Pages**
+2. Set Source to **GitHub Actions**
+3. Add `PUBLIC_SITE_PASSWORD` as a repository secret (if using the password gate)
 
-- Chrome/Edge (last 2 versions)
-- Firefox (last 2 versions)
-- Safari (last 2 versions)
-- Mobile browsers (iOS Safari, Chrome Mobile)
-
-## Performance
-
-- Lighthouse scores: 95+ performance, 100 accessibility/best-practices/SEO
-- Minimal JavaScript (< 150KB total, mostly React islands)
-- Optimized images with responsive srcsets
-- Fast initial page load with static HTML
-
-## License
+## 📝 License
 
 MIT
-
-## Contact
-
-- Email: sofialcfsilva@gmail.com
-- GitHub: [@literallysofia](https://github.com/literallysofia)
-- LinkedIn: [sofialcfsilva](https://www.linkedin.com/in/sofialcfsilva)
-
----
-
-Built with [Astro](https://astro.build) and ❤️

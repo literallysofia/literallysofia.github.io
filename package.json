@@ -15,17 +15,10 @@
     "encrypt-cv": "node scripts/encrypt-cv.mjs"
   },
   "dependencies": {
-    "astro": "^4.16.18",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "sharp": "^0.34.5"
+    "astro": "^5.17.1"
   },
   "devDependencies": {
-    "@astrojs/check": "^0.9.4",
-    "@astrojs/react": "^3.6.2",
-    "@types/react": "^18.2.45",
-    "@types/react-dom": "^18.2.18",
-    "prettier-plugin-astro": "^0.14.1",
-    "typescript": "^5.3.3"
+    "@astrojs/check": "^0.9.6",
+    "typescript": "^5.9.3"
   }
 }

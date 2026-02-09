@@ -1,7 +1,8 @@
 import { defineCollection, z } from 'astro:content';
+import { glob } from 'astro/loaders';
 
 const heroCollection = defineCollection({
-  type: 'content',
+  loader: glob({ pattern: '**/[^_]*.md', base: './src/content/hero' }),
   schema: z.object({
     title: z.string(),
     subtitle: z.string(),
@@ -10,7 +11,7 @@ const heroCollection = defineCollection({
 });
 
 const aboutCollection = defineCollection({
-  type: 'content',
+  loader: glob({ pattern: '**/[^_]*.md', base: './src/content/about' }),
   schema: z.object({
     title: z.string(),
     education: z.array(
@@ -34,7 +35,7 @@ const aboutCollection = defineCollection({
 });
 
 const experienceCollection = defineCollection({
-  type: 'content',
+  loader: glob({ pattern: '**/[^_]*.md', base: './src/content/experience' }),
   schema: z.object({
     title: z.string(),
     jobs: z.array(
@@ -51,7 +52,7 @@ const experienceCollection = defineCollection({
 });
 
 const extraCurricularCollection = defineCollection({
-  type: 'content',
+  loader: glob({ pattern: '**/[^_]*.md', base: './src/content/extra-curricular' }),
   schema: z.object({
     title: z.string(),
     jobs: z.array(
@@ -67,7 +68,7 @@ const extraCurricularCollection = defineCollection({
 });
 
 const portfolioCollection = defineCollection({
-  type: 'content',
+  loader: glob({ pattern: '**/[^_]*.md', base: './src/content/portfolio' }),
   schema: z.object({
     title: z.string(),
     projects: z.array(
