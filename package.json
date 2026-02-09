@@ -15,7 +15,7 @@
     "encrypt-cv": "node scripts/encrypt-cv.mjs"
   },
   "dependencies": {
-    "astro": "^4.16.18",
+    "astro": "^5.15.9",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "sharp": "^0.34.5"
