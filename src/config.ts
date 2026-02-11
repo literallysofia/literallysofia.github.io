@@ -1,9 +1,9 @@
 export const siteConfig = {
   siteTitle: "sofia silva",
   siteDescription:
-    "Sofia Silva is a software engineer based in Porto, Portugal who specializes in developing (and occasionally designing) exceptional, high-quality websites and applications.",
+    "Sofia is a software engineer in Porto building iOS products. Yoga lover who structures her days around her practice, occasional designer, and advocate for human-centered development.",
   siteKeywords:
-    "Sofia Silva, Sofia, Silva, sofialcfsilva, software engineer, front-end engineer, web developer",
+    "Sofia Silva, Sofia, Silva, literallysofia, software engineer, front-end engineer, ios engineer",
   siteUrl: "https://literallysofia.github.io",
   siteLanguage: "en_US",
   name: "Sofia Silva",
