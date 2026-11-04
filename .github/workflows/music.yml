@@ -1,0 +1,51 @@
+name: Refresh music recap
+
+# Weekly stats.fm snapshot for the current year, plus a manual run
+# for any past year. Commits src/data/music/<year>.json; deploy.yml
+# redeploys after this workflow (via workflow_run).
+# Uses the public stats.fm profile "literallysofia" (override with the
+# repository variable STATSFM_USER). Also syncs concerts from Notion when
+# the NOTION_TOKEN secret is set.
+on:
+  schedule:
+    - cron: "0 6 * * 1"
+  workflow_dispatch:
+    inputs:
+      year:
+        description: "Year to snapshot (defaults to the current year)"
+        required: false
+
+permissions:
+  contents: write
+
+jobs:
+  snapshot:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Fetch stats.fm snapshot
+        env:
+          STATSFM_USER: ${{ vars.STATSFM_USER || 'literallysofia' }}
+        run: node scripts/fetch-statsfm.mjs ${{ inputs.year && format('--year {0}', inputs.year) || '' }}
+
+      # Skipped until the NOTION_TOKEN secret exists
+      - name: Sync concerts from Notion
+        env:
+          NOTION_TOKEN: ${{ secrets.NOTION_TOKEN }}
+        if: env.NOTION_TOKEN != ''
+        run: node scripts/fetch-notion-concerts.mjs
+
+      - name: Commit if changed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add src/data/music src/data/concerts.json
+          git diff --cached --quiet || git commit -m "chore: refresh music recap"
+          git push

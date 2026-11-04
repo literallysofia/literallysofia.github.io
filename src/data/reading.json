@@ -1,0 +1,16 @@
+{
+  "books": [
+    {
+      "title": "Queen of Shadows",
+      "series": "Throne of Glass, #4",
+      "author": "Sarah J. Maas",
+      "url": "https://www.goodreads.com/book/show/123004944-queen-of-shadows"
+    },
+    {
+      "title": "A Court of Splintered Harmony",
+      "series": "A Court of Thorns and Roses, #6",
+      "author": "Sarah J. Maas",
+      "url": "https://www.goodreads.com/book/show/31050358-a-court-of-splintered-harmony"
+    }
+  ]
+}

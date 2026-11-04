@@ -1,0 +1,98 @@
+{
+  "year": 2026,
+  "fetchedAt": "2026-11-03T20:06:04.463Z",
+  "minutes": 10859,
+  "topGenre": "alternative",
+  "artists": 650,
+  "topAlbums": [
+    {
+      "name": "Ego Death At A Bachelorette Party",
+      "artist": "Hayley Williams",
+      "image": "https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/25/67/85/2567853a-dfde-a051-6ab6-3ae574d49639/57942.jpg/768x768bb.jpg",
+      "url": "https://open.spotify.com/album/0U0Qv2jYtsgGxFDpQJKAxQ"
+    },
+    {
+      "name": "Breach",
+      "artist": "Twenty One Pilots",
+      "image": "https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/1a/13/dc/1a13dc15-b07d-c302-4f04-080b67591628/075679609908.jpg/768x768bb.jpg",
+      "url": "https://open.spotify.com/album/1El3k8dU3sKyoGUeuyrolH"
+    },
+    {
+      "name": "MAYHEM",
+      "artist": "Lady Gaga",
+      "image": "https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/e2/84/91/e28491e5-be96-fab8-7968-b3e972a1a5da/25UMGIM07433.rgb.jpg/768x768bb.jpg",
+      "url": "https://open.spotify.com/album/2MHUaRi9OCyTN02SoyRRBJ"
+    },
+    {
+      "name": "petal",
+      "artist": "Ariana Grande",
+      "image": "https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/7e/e6/82/7ee682bd-1b17-6adc-be63-b5af1bdff369/26UMGIM51126.rgb.jpg/768x768bb.jpg",
+      "url": null
+    },
+    {
+      "name": "La La Land (Original Motion Picture Soundtrack)",
+      "artist": "",
+      "image": "https://is1-ssl.mzstatic.com/image/thumb/Music128/v4/71/02/80/7102805a-3fe3-72e7-86ff-a20f71b5ba33/00602557312201.rgb.jpg/768x768bb.jpg",
+      "url": null
+    }
+  ],
+  "topArtists": [
+    {
+      "name": "Twenty One Pilots",
+      "image": "https://i.scdn.co/image/ab6761610000517461a7ea26d33ded218cd1e59d",
+      "url": "https://open.spotify.com/artist/3YQKmKGau1PzlVlkL1iodx"
+    },
+    {
+      "name": "Hayley Williams",
+      "image": "https://i.scdn.co/image/ab67616100005174195bd87b60599b7a3f19abf1",
+      "url": "https://open.spotify.com/artist/6Rx1JKzBrSzoKQtmbVmBnM"
+    },
+    {
+      "name": "Dua Lipa",
+      "image": "https://i.scdn.co/image/ab676161000051740c68f6c95232e716f0abee8d",
+      "url": "https://open.spotify.com/artist/6M2wZ9GZgrQXHCFfjv46we"
+    },
+    {
+      "name": "Zara Larsson",
+      "image": "https://i.scdn.co/image/ab67616100005174d519a7e349541cba8f85e965",
+      "url": "https://open.spotify.com/artist/1Xylc3o4UrD53lo9CvFvVg"
+    },
+    {
+      "name": "Lady Gaga",
+      "image": "https://i.scdn.co/image/ab67616100005174aadc18cac8d48124357c38e6",
+      "url": "https://open.spotify.com/artist/1HY2Jd0NmPuamShAr6KMms"
+    }
+  ],
+  "topTracks": [
+    {
+      "name": "Zombieboy",
+      "artist": "Lady Gaga",
+      "image": "https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/e2/84/91/e28491e5-be96-fab8-7968-b3e972a1a5da/25UMGIM07433.rgb.jpg/768x768bb.jpg",
+      "url": "https://open.spotify.com/track/0ElVpg9XIswx3XWs6kUj6a"
+    },
+    {
+      "name": "Drag Path",
+      "artist": "Twenty One Pilots",
+      "image": "https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/b7/d0/6d/b7d06d2d-2083-f417-b18d-f8ac862547b0/075679588968.jpg/768x768bb.jpg",
+      "url": "https://open.spotify.com/track/0TlcczkVTGpinpkGJpT81L"
+    },
+    {
+      "name": "Cosmic Love",
+      "artist": "Florence + The Machine",
+      "image": "https://is1-ssl.mzstatic.com/image/thumb/Music115/v4/46/45/58/46455821-202f-5fac-ee42-87853cb9fa03/09UMGIM14223.rgb.jpg/600x600bb.jpg",
+      "url": "https://open.spotify.com/track/0Fk9Byr0cEK7aNLJA44Nkf"
+    },
+    {
+      "name": "Nobody's Home",
+      "artist": "Avril Lavigne",
+      "image": "https://is1-ssl.mzstatic.com/image/thumb/Music125/v4/6b/ed/03/6bed032b-c6b7-7aed-bc60-4513d3a38a34/888880785732.jpg/768x768bb.jpg",
+      "url": "https://open.spotify.com/track/0cZDC7uxNK8lqQ3GgyvCnD"
+    },
+    {
+      "name": "Parachute",
+      "artist": "Hayley Williams",
+      "image": "https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/25/67/85/2567853a-dfde-a051-6ab6-3ae574d49639/57942.jpg/768x768bb.jpg",
+      "url": "https://open.spotify.com/track/7pasIrCqLFAOtPgXyuYHnV"
+    }
+  ]
+}

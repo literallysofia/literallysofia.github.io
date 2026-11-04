@@ -1,0 +1,110 @@
+/* ================================================
+   ANIMATIONS
+   ================================================
+   CSS animation classes for page load and scroll
+   reveal effects. All motion is disabled under
+   prefers-reduced-motion.
+   ================================================ */
+
+/* ================================================
+   KEYFRAME DEFINITIONS
+   ================================================ */
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes settle {
+  from {
+    opacity: 0;
+    transform: scale(1.03);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* ================================================
+   ANIMATION CLASSES
+   ================================================ */
+
+.animate-fade-in-up {
+  opacity: 0;
+  animation: fadeInUp var(--duration-slow) var(--ease-out) forwards;
+}
+
+.animate-fade-in {
+  opacity: 0;
+  animation: fadeIn var(--duration-slower) ease-out forwards;
+}
+
+.animate-settle {
+  opacity: 0;
+  animation: settle 1s var(--ease-out) forwards;
+}
+
+/* ================================================
+   STAGGERED ANIMATION DELAYS (80ms steps)
+   ================================================ */
+
+.animate-delay-1 { animation-delay: 0.08s; }
+.animate-delay-2 { animation-delay: 0.16s; }
+.animate-delay-3 { animation-delay: 0.24s; }
+.animate-delay-4 { animation-delay: 0.32s; }
+.animate-delay-5 { animation-delay: 0.4s; }
+
+/* ================================================
+   SCROLL REVEAL
+   ================================================
+   Elements with [data-reveal] fade up when they
+   enter the viewport (see Reveal.astro).
+   ================================================ */
+
+[data-reveal] {
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity var(--duration-slow) var(--ease-out),
+              transform var(--duration-slow) var(--ease-out);
+}
+
+[data-reveal].is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ================================================
+   REDUCED MOTION
+   ================================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  [data-reveal] {
+    opacity: 1;
+    transform: none;
+  }
+}

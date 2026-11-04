@@ -1,0 +1,98 @@
+{
+  "year": 2023,
+  "fetchedAt": "2026-11-03T20:06:06.407Z",
+  "minutes": 15152,
+  "topGenre": "alternative",
+  "artists": 545,
+  "topAlbums": [
+    {
+      "name": "THE DEATH OF PEACE OF MIND",
+      "artist": "Bad Omens",
+      "image": "https://is1-ssl.mzstatic.com/image/thumb/Music122/v4/94/a5/94/94a5945e-6067-44e5-a50f-28f86ac4c718/22UM1IM05477.rgb.jpg/768x768bb.jpg",
+      "url": "https://open.spotify.com/album/0auTn0kFZk71WAv3BbKVxQ"
+    },
+    {
+      "name": "This Is Why",
+      "artist": "Paramore",
+      "image": "https://is1-ssl.mzstatic.com/image/thumb/Music122/v4/21/de/99/21de99a3-6eb6-5372-6a96-40d992808d9c/075679716224.jpg/768x768bb.jpg",
+      "url": "https://open.spotify.com/album/6tG8sCK4htJOLjlWwb7gZB"
+    },
+    {
+      "name": "Paramore",
+      "artist": "Paramore",
+      "image": "https://is1-ssl.mzstatic.com/image/thumb/Music112/v4/32/cb/9d/32cb9d04-ef0f-93bb-fd2f-19b395785025/075679956187.jpg/768x768bb.jpg",
+      "url": "https://open.spotify.com/album/4sgYpkIASM1jVlNC8Wp9oF"
+    },
+    {
+      "name": "Petals For Armor",
+      "artist": "Hayley Williams",
+      "image": "https://is1-ssl.mzstatic.com/image/thumb/Music114/v4/17/6d/c4/176dc4f3-7688-1149-4f43-8e7db37eed60/075679827814.jpg/768x768bb.jpg",
+      "url": "https://open.spotify.com/album/4HXpQ5KQBVWN25ltjnX7xa"
+    },
+    {
+      "name": "EVERGREEN",
+      "artist": "PVRIS",
+      "image": "https://is1-ssl.mzstatic.com/image/thumb/Music126/v4/41/34/6f/41346fef-2974-5b58-fa77-c3b30debe165/1681.jpg/768x768bb.jpg",
+      "url": "https://open.spotify.com/album/4CLLPZzm1QDzUZ8FTkNPyy"
+    }
+  ],
+  "topArtists": [
+    {
+      "name": "Paramore",
+      "image": "https://i.scdn.co/image/ab67616100005174b10c34546a4ca2d7faeb8865",
+      "url": "https://open.spotify.com/artist/74XFHRwlV6OrjEM0A2NCMF"
+    },
+    {
+      "name": "Bad Omens",
+      "image": "https://i.scdn.co/image/ab676161000051743dc0577ed61ec73b498a56ee",
+      "url": "https://open.spotify.com/artist/3Ri4H12KFyu98LMjSoij5V"
+    },
+    {
+      "name": "PVRIS",
+      "image": "https://i.scdn.co/image/ab67616100005174cb455882a724905a59af80f0",
+      "url": "https://open.spotify.com/artist/6oFs3qk4VepIVFdoD4jmsy"
+    },
+    {
+      "name": "My Chemical Romance",
+      "image": "https://i.scdn.co/image/ab676161000051740c55e74e435910793888f7cf",
+      "url": "https://open.spotify.com/artist/7FBcuc1gsnv6Y1nwFtNRCb"
+    },
+    {
+      "name": "Fall Out Boy",
+      "image": "https://i.scdn.co/image/ab67616100005174362011ebe6064c38e97e9aac",
+      "url": "https://open.spotify.com/artist/4UXqAaa6dQYAk18Lv7PEgX"
+    }
+  ],
+  "topTracks": [
+    {
+      "name": "CONCRETE JUNGLE",
+      "artist": "Bad Omens",
+      "image": "https://is1-ssl.mzstatic.com/image/thumb/Music122/v4/94/a5/94/94a5945e-6067-44e5-a50f-28f86ac4c718/22UM1IM05477.rgb.jpg/768x768bb.jpg",
+      "url": "https://open.spotify.com/track/6yCysJaY0lFqHnrHvaR4pF"
+    },
+    {
+      "name": "Running Out Of Time",
+      "artist": "Paramore",
+      "image": "https://is1-ssl.mzstatic.com/image/thumb/Music122/v4/21/de/99/21de99a3-6eb6-5372-6a96-40d992808d9c/075679716224.jpg/600x600bb.jpg",
+      "url": "https://open.spotify.com/track/3MvSCWZqrq5biN5oPFGmgx"
+    },
+    {
+      "name": "The News",
+      "artist": "Paramore",
+      "image": "https://i.scdn.co/image/ab67616d0000b27304ad4e3c0eafac334163cbe4",
+      "url": "https://open.spotify.com/track/2uOlFtu0BOkj2w48MdBfqx"
+    },
+    {
+      "name": "GODDESS",
+      "artist": "PVRIS",
+      "image": "https://is1-ssl.mzstatic.com/image/thumb/Music126/v4/41/34/6f/41346fef-2974-5b58-fa77-c3b30debe165/1681.jpg/768x768bb.jpg",
+      "url": "https://open.spotify.com/track/1ZngTOTM9nWJZOnG3vWkUF"
+    },
+    {
+      "name": "Big Man, Little Dignity",
+      "artist": "Paramore",
+      "image": "https://is1-ssl.mzstatic.com/image/thumb/Music122/v4/21/de/99/21de99a3-6eb6-5372-6a96-40d992808d9c/075679716224.jpg/768x768bb.jpg",
+      "url": "https://open.spotify.com/track/2bfOeIn8bQkRr02NNX29tR"
+    }
+  ]
+}

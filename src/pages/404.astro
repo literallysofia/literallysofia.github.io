@@ -1,0 +1,24 @@
+---
+/**
+ * 404 Error Page
+ * One centred line and a link home.
+ */
+
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+const title = '404 · sofia silva';
+const description = 'Page not found';
+---
+
+<Layout title={title} description={description}>
+  <Header isNotFound />
+  <main class="not-found">
+    <h1 class="animate-fade-in-up">404</h1>
+    <p class="muted animate-fade-in-up animate-delay-1">
+      This page went to make a matcha. <a class="link" href="/">Back home →</a>
+    </p>
+  </main>
+  <Footer />
+</Layout>

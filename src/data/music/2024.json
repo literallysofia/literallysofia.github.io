@@ -1,0 +1,98 @@
+{
+  "year": 2024,
+  "fetchedAt": "2026-11-03T20:06:05.554Z",
+  "minutes": 22092,
+  "topGenre": "metalcore",
+  "artists": 410,
+  "topAlbums": [
+    {
+      "name": "THE DEATH OF PEACE OF MIND",
+      "artist": "Bad Omens",
+      "image": "https://is1-ssl.mzstatic.com/image/thumb/Music122/v4/94/a5/94/94a5945e-6067-44e5-a50f-28f86ac4c718/22UM1IM05477.rgb.jpg/768x768bb.jpg",
+      "url": "https://open.spotify.com/album/0auTn0kFZk71WAv3BbKVxQ"
+    },
+    {
+      "name": "The Greatest Mistake of My Life",
+      "artist": "Holding Absence",
+      "image": "https://is1-ssl.mzstatic.com/image/thumb/Music115/v4/9d/af/56/9daf56b7-1987-9b2a-251f-7330a66b3a68/cover.jpg/768x768bb.jpg",
+      "url": "https://open.spotify.com/album/4qY3S2Iz6VpAa2EzhWkrpo"
+    },
+    {
+      "name": "The Rise and Fall of a Midwest Princess",
+      "artist": "Chappell Roan",
+      "image": "https://is1-ssl.mzstatic.com/image/thumb/Music126/v4/42/a0/c5/42a0c5e6-6b98-f1f9-7d6b-6d6c61aba562/23UMGIM84225.rgb.jpg/768x768bb.jpg",
+      "url": null
+    },
+    {
+      "name": "FLOWERS for VASES / descansos",
+      "artist": "",
+      "image": "https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/1e/df/6b/1edf6b9e-5785-2180-40f6-78bebd8ff27a/075679792235.jpg/768x768bb.jpg",
+      "url": "https://open.spotify.com/album/3JSvIZCtxK4fUywBK41129"
+    },
+    {
+      "name": "Sundowning (Deluxe)",
+      "artist": "",
+      "image": "https://is1-ssl.mzstatic.com/image/thumb/Music112/v4/8c/cb/8f/8ccb8ff1-6b57-c537-f426-b84aed092c93/5400863106942_cover.jpg/768x768bb.jpg",
+      "url": "https://open.spotify.com/album/3tnaZYiS8ZNkTqVKJqGqLL"
+    }
+  ],
+  "topArtists": [
+    {
+      "name": "Bad Omens",
+      "image": "https://i.scdn.co/image/ab676161000051743dc0577ed61ec73b498a56ee",
+      "url": "https://open.spotify.com/artist/3Ri4H12KFyu98LMjSoij5V"
+    },
+    {
+      "name": "Holding Absence",
+      "image": "https://i.scdn.co/image/ab67616100005174f1f4135eebd4da6b2c0d940b",
+      "url": "https://open.spotify.com/artist/2tl280wIokrLjabzrSKTgU"
+    },
+    {
+      "name": "Twenty One Pilots",
+      "image": "https://i.scdn.co/image/ab6761610000517461a7ea26d33ded218cd1e59d",
+      "url": "https://open.spotify.com/artist/3YQKmKGau1PzlVlkL1iodx"
+    },
+    {
+      "name": "Sleep Token",
+      "image": "https://i.scdn.co/image/ab67616100005174d00c2ff422829437e6b5f1e0",
+      "url": "https://open.spotify.com/artist/2n2RSaZqBuUUukhbLlpnE6"
+    },
+    {
+      "name": "Paramore",
+      "image": "https://i.scdn.co/image/ab67616100005174b10c34546a4ca2d7faeb8865",
+      "url": "https://open.spotify.com/artist/74XFHRwlV6OrjEM0A2NCMF"
+    }
+  ],
+  "topTracks": [
+    {
+      "name": "Afterlife",
+      "artist": "Holding Absence",
+      "image": "https://is1-ssl.mzstatic.com/image/thumb/Music115/v4/9d/af/56/9daf56b7-1987-9b2a-251f-7330a66b3a68/cover.jpg/768x768bb.jpg",
+      "url": "https://open.spotify.com/track/7ridH3hy4aXG6Kn1XomKrO"
+    },
+    {
+      "name": "CONCRETE JUNGLE",
+      "artist": "Bad Omens",
+      "image": "https://is1-ssl.mzstatic.com/image/thumb/Music122/v4/94/a5/94/94a5945e-6067-44e5-a50f-28f86ac4c718/22UM1IM05477.rgb.jpg/768x768bb.jpg",
+      "url": "https://open.spotify.com/track/6yCysJaY0lFqHnrHvaR4pF"
+    },
+    {
+      "name": "Overcompensate",
+      "artist": "Twenty One Pilots",
+      "image": "https://is1-ssl.mzstatic.com/image/thumb/Music122/v4/86/ef/bb/86efbb30-4064-7a6b-2285-d7c2e86a68a2/075679654625.jpg/768x768bb.jpg",
+      "url": "https://open.spotify.com/track/0wEGo9LsSrSUz9HOtraWAO"
+    },
+    {
+      "name": "THE DEATH OF PEACE OF MIND",
+      "artist": "Bad Omens",
+      "image": "https://is1-ssl.mzstatic.com/image/thumb/Music122/v4/94/a5/94/94a5945e-6067-44e5-a50f-28f86ac4c718/22UM1IM05477.rgb.jpg/768x768bb.jpg",
+      "url": "https://open.spotify.com/track/6tRneEcItwpSxBtqgem5Dr"
+    },
+    {
+      "name": "Burning Down the House",
+      "artist": "Paramore",
+      "image": "https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/6a/31/56/6a315626-bbd6-3bb8-331d-f93a35b6d536/617308069013_Cover.jpg/768x768bb.jpg",
+      "url": null
+    }
+  ]
+}

@@ -1,0 +1,165 @@
+---
+/**
+ * WorkIndex Component
+ * Work page navigation:
+ * - Sticky rolling title ("01 / 04 Qonto"): names roll up through a
+ *   one-line mask, like a departure board
+ * - Liquid Glass tab bar in the same sticky row, with each project's app
+ *   icon; the active one expands to show its name, tapping one glides there
+ * - Observes the project sections and sets the page colour wash
+ *   (html[data-wash] + --wash) to the active project's accent
+ */
+
+import { Image } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
+
+interface Project {
+  slug: string;
+  name: string;
+  accent: string;
+  icon?: ImageMetadata;
+}
+
+interface Props {
+  projects: Project[];
+}
+
+const { projects } = Astro.props;
+const total = String(projects.length).padStart(2, '0');
+---
+
+<div class="work-index">
+  <span class="work-index-title" aria-hidden="true">
+    <span class="work-index-count">
+      <span data-index-current>01</span> / {total}
+    </span>
+    <span class="work-index-mask">
+      <span class="work-index-roll">
+        {projects.map((project) => <span>{project.name}</span>)}
+      </span>
+    </span>
+  </span>
+
+  <nav class="work-tabbar" aria-label="Projects">
+    <ul>
+      {projects.map((project, i) => (
+        <li>
+          <a class="work-tab" href={`#${project.slug}`} aria-label={project.name} aria-current={i === 0 ? 'true' : 'false'}>
+            {project.icon ? (
+              <Image class="work-tab-icon" src={project.icon} alt="" width={64} height={64} />
+            ) : (
+              <span class="work-tab-icon work-tab-icon-fallback" aria-hidden="true">{project.name.charAt(0)}</span>
+            )}
+            <span class="work-tab-label">{project.name}</span>
+          </a>
+        </li>
+      ))}
+    </ul>
+  </nav>
+</div>
+
+<script>
+  function initWorkIndex(): void {
+    const sections = [...document.querySelectorAll<HTMLElement>('.work-section')];
+    const roll = document.querySelector<HTMLElement>('.work-index-roll');
+    const current = document.querySelector<HTMLElement>('[data-index-current]');
+    const tabs = [...document.querySelectorAll<HTMLAnchorElement>('.work-tab')];
+    if (!sections.length || !roll || !current) return;
+
+    const root = document.documentElement;
+
+    function setActive(index: number): void {
+      const section = sections[index];
+      // Each name is one 1.1em line tall (see .work-index-roll)
+      roll!.style.transform = `translateY(-${index * 1.1}em)`;
+      current!.textContent = String(index + 1).padStart(2, '0');
+      tabs.forEach((tab, i) => tab.setAttribute('aria-current', String(i === index)));
+      root.style.setProperty('--wash', section.dataset.accent ?? 'transparent');
+      root.setAttribute('data-wash', section.id);
+      // The matcha cup's caption follows the active project
+      document.dispatchEvent(new CustomEvent('workactive', { detail: index }));
+    }
+
+    // While a tab-triggered scroll glides past other sections, keep the
+    // target active so the wash / title / tab don't flick through each one
+    let lockedTo: number | null = null;
+    let unlockTimer: number | undefined;
+    const unlock = () => {
+      lockedTo = null;
+      window.removeEventListener('scroll', onLockedScroll);
+    };
+    // Scroll has settled once no scroll event arrives for a moment
+    // (works where the `scrollend` event isn't supported)
+    function onLockedScroll(): void {
+      window.clearTimeout(unlockTimer);
+      unlockTimer = window.setTimeout(unlock, 160);
+    }
+
+    // A section is active while it crosses the middle band of the viewport
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (lockedTo !== null) return;
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) setActive(sections.indexOf(entry.target as HTMLElement));
+        });
+      },
+      { rootMargin: '-45% 0px -50% 0px' }
+    );
+    sections.forEach((section) => observer.observe(section));
+    setActive(0);
+
+    // Paging layout (phones, upright iPads): each project fills the screen
+    // below the header + this sticky title, so expose their combined height
+    const index = document.querySelector<HTMLElement>('.work-index');
+    const header = document.querySelector<HTMLElement>('header');
+    const measure = () =>
+      root.style.setProperty('--work-top', `${(header?.offsetHeight ?? 0) + (index?.offsetHeight ?? 0)}px`);
+    const sizes = new ResizeObserver(measure);
+    if (index) sizes.observe(index);
+    if (header) sizes.observe(header);
+    measure();
+
+    // The last project may never reach the middle band (it's short and the
+    // page ends), so reaching the bottom of the page makes it active
+    const page = new AbortController();
+    window.addEventListener(
+      'scroll',
+      () => {
+        if (lockedTo !== null) return;
+        const atBottom = window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 2;
+        if (atBottom) setActive(sections.length - 1);
+      },
+      { passive: true, signal: page.signal }
+    );
+
+    tabs.forEach((tab, i) =>
+      tab.addEventListener('click', (e) => {
+        e.preventDefault();
+        if (lockedTo === i) return;
+        lockedTo = i;
+        setActive(i);
+        window.addEventListener('scroll', onLockedScroll, { passive: true });
+        onLockedScroll(); // unlock even if there's nothing to scroll
+        sections[i].scrollIntoView({ behavior: 'smooth', block: 'start' });
+        history.replaceState(null, '', `#${sections[i].id}`);
+      })
+    );
+
+    // Clear the wash when leaving the page
+    document.addEventListener(
+      'astro:before-swap',
+      () => {
+        unlock();
+        page.abort();
+        observer.disconnect();
+        sizes.disconnect();
+        root.style.removeProperty('--work-top');
+        root.removeAttribute('data-wash');
+        root.style.removeProperty('--wash');
+      },
+      { once: true }
+    );
+  }
+
+  document.addEventListener('astro:page-load', initWorkIndex);
+</script>

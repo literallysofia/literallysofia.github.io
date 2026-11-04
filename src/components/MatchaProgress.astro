@@ -1,0 +1,96 @@
+---
+/**
+ * MatchaProgress Component
+ * A chawan at the bottom-right of the work page that fills with matcha
+ * as you scroll, and steams once it's full. It sits in the page margin
+ * (or a lane the content leaves free) so it never covers content, and
+ * rests above the footer once that scrolls into view.
+ * Decorative only (aria-hidden).
+ */
+
+interface Props {
+  /** Number of projects, for the "n / total" caption */
+  total: number;
+}
+
+const { total } = Astro.props;
+---
+
+<div class="matcha" aria-hidden="true" data-total={total}>
+  <svg viewBox="0 0 120 112">
+    <defs>
+      <clipPath id="matcha-cup-inside">
+        <path d="M14 30 Q14 92 60 96 Q106 92 106 30 Z" />
+      </clipPath>
+    </defs>
+    <g clip-path="url(#matcha-cup-inside)">
+      <g class="matcha-liquid">
+        <path class="matcha-wave" d="M0 0 Q10 -5 20 0 T40 0 T60 0 T80 0 T100 0 T120 0 T140 0 T160 0 V120 H0Z" />
+        <path class="matcha-foam" d="M0 2 Q10 -2 20 2 T40 2 T60 2 T80 2 T100 2 T120 2 T140 2 T160 2 V6 H0Z" />
+      </g>
+    </g>
+    <path class="matcha-stroke" d="M10 28 Q10 98 60 100 Q110 98 110 28" />
+    <ellipse class="matcha-stroke" cx="60" cy="28" rx="50" ry="5" />
+    <path class="matcha-stroke" d="M42 100 Q60 108 78 100" />
+    <g class="matcha-steam">
+      <path d="M48 18 Q44 10 50 4" />
+      <path d="M64 18 Q60 9 66 2" />
+    </g>
+  </svg>
+  <span class="matcha-caption">1 / {total}</span>
+</div>
+
+<script>
+  function initMatcha(): void {
+    const cup = document.querySelector<HTMLElement>('.matcha');
+    if (!cup) return;
+    const caption = cup.querySelector<HTMLElement>('.matcha-caption')!;
+    const total = Number(cup.dataset.total);
+    let ticking = false;
+    // The caption counts projects like the rolling title (set by WorkIndex)
+    let active = 0;
+    const onActive = (e: Event) => {
+      active = (e as CustomEvent<number>).detail;
+      update();
+    };
+    document.addEventListener('workactive', onActive);
+
+    function update(): void {
+      const max = document.documentElement.scrollHeight - window.innerHeight;
+      const progress = max > 0 ? Math.min(1, Math.max(0, window.scrollY / max)) : 1;
+      // Liquid travels from the cup's bottom (96) up to near the rim (28)
+      cup!.style.setProperty('--fill', `${96 - progress * 68}px`);
+      const full = progress > 0.97;
+      cup!.classList.toggle('is-full', full);
+      caption.textContent = full ? 'full' : `${active + 1} / ${total}`;
+
+      // Once the footer scrolls into view, lift the cup so it rests above it
+      const footer = document.querySelector('footer');
+      const overlap = footer ? window.innerHeight - footer.getBoundingClientRect().top : 0;
+      cup!.style.setProperty('--lift', `${Math.max(0, overlap)}px`);
+      ticking = false;
+    }
+
+    function onScroll(): void {
+      if (!ticking) {
+        window.requestAnimationFrame(update);
+        ticking = true;
+      }
+    }
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll, { passive: true });
+    document.addEventListener(
+      'astro:before-swap',
+      () => {
+        window.removeEventListener('scroll', onScroll);
+        window.removeEventListener('resize', onScroll);
+        document.removeEventListener('workactive', onActive);
+      },
+      { once: true }
+    );
+    update();
+  }
+
+  document.addEventListener('astro:page-load', initMatcha);
+</script>

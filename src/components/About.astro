@@ -1,0 +1,179 @@
+---
+/**
+ * About Component
+ * Photo + bio with a Likes / Currently block, experience highlights,
+ * CV on request (LinkedIn or email), education, languages, and a
+ * masonry photo gallery (one layout for desktop, one for phones;
+ * CSS shows the right one).
+ */
+
+import { Image } from 'astro:assets';
+import { siteConfig } from '../config';
+import ExperienceRows from './ExperienceRows.astro';
+import EmailButton from './EmailButton.astro';
+import { aboutCover as cover, aboutGallery as photos } from '../data/gallery';
+import reading from '../data/reading.json';
+
+/**
+ * Masonry that reads across rows: photo 1 starts column 1, photo 2
+ * column 2, and so on, so each column matches a column of the list
+ * laid out in rows.
+ */
+function masonry<T>(items: T[], count: number): T[][] {
+  return Array.from({ length: count }, (_, column) => items.filter((_, i) => i % count === column));
+}
+
+const [phoneHero, ...phoneRest] = photos;
+const layouts = [
+  { name: 'desktop', columns: masonry(photos, 3) },
+  { name: 'phone', columns: [[phoneHero], ...masonry(phoneRest, 2)] },
+];
+
+interface Education {
+  date: string;
+  degree: string;
+  web: string;
+  link?: string;
+}
+
+interface Language {
+  language: string;
+  level: string;
+}
+
+interface Current {
+  label: string;
+  value: string;
+  url?: string;
+}
+
+interface Props {
+  title: string;
+  likes: string;
+  currently: Current[];
+  education: Education[];
+  languages: Language[];
+}
+
+const { title, likes, currently, education, languages } = Astro.props;
+
+const linkedin = siteConfig.socialMedia.find((social) => social.name === 'LinkedIn');
+
+/** "Sep 2015 - Jul 2020" → "2020" */
+const endYear = (date: string) => date.match(/(\d{4})\s*$/)?.[1] ?? date;
+
+/** Currently reading, synced weekly from Goodreads (scripts/fetch-goodreads.mjs) */
+const { books } = reading;
+const oneAuthor = books.every((book) => book.author === books[0]?.author);
+---
+
+<section class="about" aria-labelledby="about-heading">
+  <div class="about-top">
+    <figure class="about-photo animate-settle">
+      <Image src={cover.module} alt={cover.alt} width={800} widths={[400, 800]} sizes="(max-width: 768px) 100vw, 40vw" loading="eager" />
+    </figure>
+
+    <div class="about-text">
+      <h1 id="about-heading" class="page-title animate-fade-in-up">{title}</h1>
+      <div class="about-bio muted animate-fade-in-up animate-delay-1">
+        <slot />
+      </div>
+
+      <div class="about-likes animate-fade-in-up animate-delay-2">
+        <div>
+          <h2 class="label">Likes</h2>
+          <p>{likes}</p>
+        </div>
+        <div>
+          <h2 class="label">Currently</h2>
+          <ul>
+            {currently.map((item) => (
+              <li>
+                <span class="muted">{item.label}:</span>{' '}
+                {item.label === 'Reading' && books.length > 0 ? (
+                  <>
+                    {books.map((book, i) => (
+                      <>
+                        {i > 0 && ' & '}
+                        <a class="link" href={book.url} target="_blank" rel="noopener noreferrer">{book.title} ↗</a>
+                        {!oneAuthor && ` by ${book.author}`}
+                      </>
+                    ))}
+                    {oneAuthor && ` by ${books[0].author}`}
+                  </>
+                ) : item.url ? (
+                  <a class="link" href={item.url}>{item.value} →</a>
+                ) : (
+                  item.value
+                )}
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <h2 class="label">Experience highlights</h2>
+  <ExperienceRows field="highlight" />
+
+  <div class="about-cv">
+    <span class="muted">Full CV on request</span>
+    <div class="about-cv-actions">
+      {linkedin && (
+        <a class="btn btn-outline" href={linkedin.url} target="_blank" rel="noopener noreferrer">LinkedIn ↗</a>
+      )}
+      <EmailButton />
+    </div>
+  </div>
+
+  <div class="about-grid">
+    <div>
+      <h2 class="label">Education</h2>
+      <div class="rows">
+        {education.map((edu) => (
+          <div class="row">
+            <span>
+              <a class="link" href={edu.web} target="_blank" rel="noopener noreferrer">{edu.degree}</a>
+              {edu.link && (
+                <>
+                  {' · '}
+                  <a class="link" href={edu.link} target="_blank" rel="noopener noreferrer">thesis ↗</a>
+                </>
+              )}
+            </span>
+            <span>{endYear(edu.date)}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <div>
+      <h2 class="label">Languages</h2>
+      <div class="rows">
+        {languages.map((lang) => (
+          <div class="row">
+            <span>{lang.language}</span>
+            <span>{lang.level}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+
+  <h2 class="label">Gallery</h2>
+  {layouts.map(({ name, columns }) => (
+    <div class={`about-gallery is-${name}`}>
+      {columns.map((column) => (
+        <div class="about-gallery-column">
+          {column.map((photo) => (
+            <figure data-reveal>
+              <Image src={photo.module} alt={photo.alt} width={800} widths={[400, 800]} sizes="(max-width: 768px) 50vw, 33vw" />
+              <figcaption>{photo.alt}</figcaption>
+            </figure>
+          ))}
+        </div>
+      ))}
+    </div>
+  ))}
+</section>

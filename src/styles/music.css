@@ -1,0 +1,449 @@
+/* ================================================
+   MUSIC PAGE
+   ================================================
+   Now playing card, year-in-music recap with a
+   pill year switcher, and recommendation cards.
+   ================================================ */
+
+/* ================================================
+   MUSIC - NOW PLAYING
+   ================================================ */
+
+.np-card {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  padding: 0.9rem;
+  border-radius: 18px;
+  background: #1C1416;
+  color: #F2EFEA;
+  box-shadow: inset 0 0 0 0.5px var(--color-border);
+  transition: transform var(--duration-normal) var(--ease-out);
+}
+
+.np-card:hover {
+  transform: scale(0.99);
+}
+
+.np-art {
+  width: 4rem;
+  height: 4rem;
+  border-radius: 8px;
+  object-fit: cover;
+  background: #5A2A4C;
+  flex: none;
+}
+
+.np-info {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-width: 0;
+}
+
+.np-status {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: var(--text-xs);
+  color: #BDB0B6;
+}
+
+.np-dot {
+  width: 0.45rem;
+  height: 0.45rem;
+  border-radius: 50%;
+  background: #BDB0B6;
+}
+
+.now-playing.is-playing .np-dot {
+  background: var(--color-candle);
+  animation: npPulse 1.6s ease-in-out infinite;
+}
+
+@keyframes npPulse {
+  50% {
+    opacity: 0.35;
+  }
+}
+
+.np-title {
+  font-family: var(--font-serif);
+  font-size: var(--text-h3);
+  line-height: 1.2;
+}
+
+.np-artist {
+  font-size: var(--text-sm);
+  color: #BDB0B6;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.np-bar {
+  display: block;
+  height: 3px;
+  margin-top: 0.5rem;
+  border-radius: 2px;
+  background: #3A2E33;
+  overflow: hidden;
+}
+
+.np-bar span {
+  display: block;
+  height: 100%;
+  width: 0;
+  background: var(--color-candle);
+  transition: width 1s linear;
+}
+
+/* ================================================
+   MUSIC - YEAR IN MUSIC
+   ================================================ */
+
+/* Switching years: containers stay put, only their contents crossfade */
+.yim-panel [data-fade] {
+  transition: opacity 0.28s ease;
+}
+
+.yim-panel.is-updating [data-fade] {
+  opacity: 0;
+}
+
+.yim-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--spacing-sm);
+  margin: var(--spacing-lg) 0 var(--spacing-sm);
+}
+
+.yim-title {
+  font-size: var(--text-h3);
+}
+
+/* Year switcher: the same Liquid Glass pill as the work tab bar
+   (clear body, specular rim, the selected year a brighter bubble) */
+.yim-years {
+  position: relative;
+  display: flex;
+  gap: 0.15rem;
+  padding: 0.3rem;
+  border-radius: var(--radius-pill);
+  background:
+    linear-gradient(
+      135deg,
+      color-mix(in srgb, var(--color-text) 10%, transparent),
+      color-mix(in srgb, var(--color-text) 3%, transparent) 55%,
+      color-mix(in srgb, var(--color-text) 6%, transparent)
+    );
+  -webkit-backdrop-filter: blur(16px) saturate(1.8);
+  backdrop-filter: blur(16px) saturate(1.8);
+  box-shadow:
+    inset 0 1px 0 var(--glass-specular),
+    inset 0 -1px 0 color-mix(in srgb, var(--color-text) 6%, transparent),
+    inset 0 0 12px color-mix(in srgb, var(--color-text) 5%, transparent),
+    0 10px 30px rgba(0, 0, 0, 0.12);
+  /* Too many years for a phone: they scroll inside the pill instead of
+     pushing the page wider */
+  max-width: 100%;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.yim-years::-webkit-scrollbar {
+  display: none;
+}
+
+/* Specular rim: a gradient hairline, brightest where light would hit */
+.yim-years::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  padding: 0.5px;
+  border-radius: inherit;
+  background: linear-gradient(
+    135deg,
+    var(--glass-specular),
+    color-mix(in srgb, var(--color-text) 8%, transparent) 40%,
+    color-mix(in srgb, var(--color-text) 4%, transparent) 70%,
+    var(--glass-specular)
+  );
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask: linear-gradient(#000 0 0) content-box exclude, linear-gradient(#000 0 0);
+  pointer-events: none;
+}
+
+.yim-year {
+  flex: none;
+  font: inherit;
+  font-size: var(--text-sm);
+  font-weight: 500;
+  padding: 0.45rem 0.85rem;
+  border: none;
+  border-radius: var(--radius-pill);
+  background: none;
+  color: var(--color-text);
+  cursor: pointer;
+  transition: background-color 0.45s var(--ease-out), box-shadow 0.45s var(--ease-out), transform 0.3s var(--ease-out);
+  -webkit-tap-highlight-color: transparent;
+}
+
+.yim-year:hover {
+  background: color-mix(in srgb, var(--color-text) 6%, transparent);
+}
+
+.yim-year:active {
+  transform: scale(0.96);
+}
+
+.yim-year[aria-selected="true"] {
+  background: color-mix(in srgb, var(--color-text) 12%, transparent);
+  box-shadow:
+    inset 0 1px 0 var(--glass-specular),
+    inset 0 0 0 0.5px color-mix(in srgb, var(--color-text) 10%, transparent);
+}
+
+.yim-stats {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(0.75rem, 1.5vw, 1.25rem);
+}
+
+.yim-stat {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  padding: 1.1rem 1.2rem;
+  border-radius: var(--radius-card);
+  font-size: var(--text-sm);
+}
+
+.yim-stat span {
+  opacity: 0.75;
+}
+
+.yim-stat strong {
+  font-family: var(--font-serif);
+  font-weight: 400;
+  font-size: var(--text-h2);
+  line-height: 1.1;
+}
+
+.yim-stat-ink {
+  background: #1C1416;
+  color: #F2EFEA;
+  box-shadow: inset 0 0 0 0.5px var(--color-border);
+}
+
+.yim-stat-pink {
+  background: linear-gradient(160deg, #FFD9E4, #FFB3C8);
+  color: #3A1022;
+}
+
+.yim-stat-blue {
+  background: linear-gradient(160deg, #6F94D6, #3F63B0);
+  color: #FFFFFF;
+}
+
+.yim-favs {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  column-gap: clamp(0.75rem, 1.5vw, 1.25rem);
+  row-gap: 0;
+  margin-top: var(--spacing-lg);
+}
+
+.yim-rest {
+  align-self: start;
+}
+
+/* Columns share two rows (square + lists), so the #2–5 lists line up
+   even when a title wraps or a column has no subtitle */
+.yim-column {
+  display: grid;
+  grid-row: span 2;
+  grid-template-rows: subgrid;
+  /* Without this the inner track grows to the longest one-line title */
+  grid-template-columns: minmax(0, 1fr);
+  min-width: 0;
+}
+
+.yim-fav {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.yim-fav-art {
+  display: block;
+  aspect-ratio: 1;
+  overflow: hidden;
+  border-radius: var(--radius-card);
+  background: var(--color-surface);
+  margin-bottom: 0.9rem;
+}
+
+.yim-fav-art img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 1.2s var(--ease-out);
+}
+
+.yim-fav:hover .yim-fav-art img {
+  transform: scale(1.04);
+}
+
+.yim-fav-text {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.yim-fav-sub:empty {
+  display: none;
+}
+
+.yim-fav-label {
+  font-size: var(--text-xs);
+  color: var(--color-text-muted);
+}
+
+.yim-fav-name {
+  font-family: var(--font-serif);
+  font-size: var(--text-h3);
+  line-height: 1.15;
+  margin-top: 0.2rem;
+}
+
+.yim-fav-sub {
+  font-size: var(--text-sm);
+  margin-top: 0.15rem;
+}
+
+.yim-rest {
+  margin-top: var(--spacing-sm);
+}
+
+.yim-item a {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  min-width: 0;
+  color: var(--color-text);
+}
+
+.yim-item-text {
+  min-width: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.yim-cover {
+  width: 1.75rem;
+  height: 1.75rem;
+  border-radius: 5px;
+  background: var(--color-surface) center / cover;
+  flex: none;
+}
+
+.yim-concert > span:first-child {
+  display: flex;
+  gap: var(--spacing-sm);
+}
+
+.yim-concert-who {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.yim-concert-who .muted {
+  font-size: var(--text-xs);
+}
+
+/* Upcoming shows: small round "soon" label */
+.yim-concert-soon {
+  display: inline-block;
+  margin-left: 0.5rem;
+  padding: 0.05rem 0.5rem;
+  font-size: 0.6875rem; /* 11px, the smallest iOS text size */
+  line-height: 1.5;
+  vertical-align: 0.1em;
+  border: 0.5px solid var(--color-border);
+  border-radius: var(--radius-pill);
+  color: var(--color-text-muted);
+}
+
+/* Favourite shows: a star in the candle colour */
+.yim-concert-star {
+  color: var(--color-candle);
+  margin-right: 0.35rem;
+}
+
+.yim-concert-date {
+  min-width: 3.5rem;
+  font-variant-numeric: tabular-nums;
+}
+
+/* ================================================
+   RESPONSIVE - MOBILE
+   ================================================ */
+
+@media (max-width: 768px) {
+  .yim-stats,
+  .yim-favs {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  /* The year pill spans the content width, years spread evenly
+     (and still scroll inside it on the narrowest phones) */
+  .yim-years {
+    width: 100%;
+  }
+
+  .yim-year {
+    flex: 1 0 0;
+    padding-inline: 0.5rem;
+  }
+
+  /* Concerts: date in its own column, then one tidy stack of
+     act, tour and venue, all lined up on the same edge */
+  .yim-concert {
+    display: grid;
+    grid-template-columns: 3.5rem minmax(0, 1fr);
+    column-gap: 0.75rem;
+    padding: 0.85rem 0;
+  }
+
+  .yim-concert > span:first-child {
+    display: contents;
+  }
+
+  .yim-concert-date {
+    min-width: 0;
+    font-size: var(--text-xs);
+    line-height: 1.85; /* sits on the act's baseline */
+  }
+
+  .yim-concert-who,
+  .yim-concert > :last-child {
+    grid-column: 2;
+  }
+
+  .yim-concert-who {
+    gap: 0.1rem;
+  }
+
+  .yim-concert > :last-child {
+    margin-top: 0.1rem;
+    font-size: var(--text-xs);
+    opacity: 0.8;
+  }
+}
+

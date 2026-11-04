@@ -1,0 +1,112 @@
+---
+/**
+ * Base Layout Component
+ * Provides HTML structure, meta tags, and global styles for all pages.
+ * Handles theme initialization to prevent flash on page load.
+ * Supports Astro view transitions for smooth page navigation.
+ *
+ * @prop {string} title - Page title (defaults to site title from config)
+ * @prop {string} description - Page description for meta tags (defaults to site description)
+ */
+
+import { ClientRouter } from 'astro:transitions';
+import { siteConfig } from '../config';
+import Reveal from '../components/Reveal.astro';
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const { title = siteConfig.siteTitle, description = siteConfig.siteDescription } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={description} />
+    <meta name="keywords" content={siteConfig.siteKeywords} />
+    <meta name="author" content={siteConfig.name} />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={siteConfig.siteUrl} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content={siteConfig.siteUrl} />
+    <meta property="twitter:title" content={title} />
+    <meta property="twitter:description" content={description} />
+
+    <meta name="theme-color" content="#F2EFEA" />
+
+    <!-- Favicons -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/png" sizes="192x192" href="/icon-192.png" />
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.json" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..500;1,9..144,300..500&family=Inter+Tight:wght@400;500&display=swap" rel="stylesheet" />
+
+    <title>{title}</title>
+
+    <ClientRouter />
+
+    <!-- Dark Mode Initialization (runs before render to prevent flash) -->
+    <script is:inline>
+      function getIsDark() {
+        var theme = null;
+        try { theme = localStorage.getItem('theme'); } catch (e) {}
+        if (theme) return theme === 'dark';
+        return window.matchMedia('(prefers-color-scheme: dark)').matches;
+      }
+
+      function applyTheme(doc) {
+        var isDark = getIsDark();
+        if (isDark) {
+          doc.documentElement.classList.remove('light-mode');
+          doc.documentElement.classList.add('dark-mode');
+        } else {
+          doc.documentElement.classList.remove('dark-mode');
+          doc.documentElement.classList.add('light-mode');
+        }
+        doc.documentElement.style.colorScheme = isDark ? 'dark' : 'light';
+        var meta = doc.querySelector('meta[name="theme-color"]');
+        if (meta) meta.setAttribute('content', isDark ? '#1C1416' : '#F2EFEA');
+      }
+
+      applyTheme(document);
+
+      document.addEventListener('astro:before-swap', function(e) {
+        applyTheme(e.newDocument);
+      });
+    </script>
+
+  </head>
+  <body>
+    <slot />
+    <Reveal />
+  </body>
+</html>
+
+<style is:global>
+  @import '../styles/theme.css';
+  @import '../styles/global.css';
+  @import '../styles/animations.css';
+  @import '../styles/header.css';
+  @import '../styles/banner.css';
+  @import '../styles/cards.css';
+  @import '../styles/about.css';
+  @import '../styles/portfolio.css';
+  @import '../styles/music.css';
+  @import '../styles/footer.css';
+  @import '../styles/theme-toggle.css';
+  @import '../styles/404.css';
+</style>

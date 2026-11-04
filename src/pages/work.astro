@@ -1,0 +1,138 @@
+---
+/**
+ * Work Page
+ * One section per project (newest first), each with a strip of
+ * App Store-style feature cards. A sticky rolling title names the
+ * project in view, the page background washes to its colour, and a
+ * matcha cup fills as you scroll.
+ */
+
+import { getCollection } from 'astro:content';
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import WorkIndex from '../components/WorkIndex.astro';
+import TodayCard from '../components/TodayCard.astro';
+import MatchaProgress from '../components/MatchaProgress.astro';
+import Footer from '../components/Footer.astro';
+
+const [portfolio] = await getCollection('portfolio');
+const { projects } = portfolio.data;
+---
+
+<Layout title="Work · sofia silva">
+  <Header autoHide />
+  <main class="work">
+    <h1 class="sr-only">Work</h1>
+
+    <WorkIndex projects={projects.map(({ slug, name, card, icon }) => ({ slug, name, accent: card.accent, icon }))} />
+
+    {projects.map((project, i) => (
+      <section
+        id={project.slug}
+        class="work-section"
+        data-accent={project.card.accent}
+        aria-labelledby={`${project.slug}-title`}
+      >
+        <h2 id={`${project.slug}-title`} class="sr-only">{project.name}</h2>
+
+        <div class="work-meta">
+          <span class="muted">{project.role} · {project.years}</span>
+          <span class="work-links">
+            {[project.link, project.extraLink].filter(Boolean).map((link) => (
+              <a class="link" href={link!.url} target="_blank" rel="noopener noreferrer">
+                {link!.label} ↗
+              </a>
+            ))}
+          </span>
+        </div>
+
+        <div class="work-strip">
+          {project.highlights.map((highlight) => (
+            <div class="work-strip-item" data-reveal>
+              <TodayCard
+                name={project.name}
+                years={project.years}
+                card={project.card}
+                eyebrow={highlight.eyebrow}
+                title={highlight.title}
+                accent={highlight.accent}
+                media={highlight.media}
+                video={highlight.video}
+                poster={highlight.poster}
+                note={highlight.note}
+              />
+            </div>
+          ))}
+        </div>
+
+        <div class="work-dots" aria-hidden="true">
+          {project.highlights.map((_, n) => <span class:list={{ 'is-active': n === 0 }} />)}
+        </div>
+
+        {project.clip && (
+          <figure class="work-clip">
+            <video src={project.clip.src} poster={project.clip.poster} autoplay muted loop playsinline preload="metadata" aria-hidden="true" />
+            <figcaption>{project.clip.caption}</figcaption>
+          </figure>
+        )}
+
+        {i === projects.length - 1 && (
+          <p class="work-outro muted">Cup is full. Thanks for staying for tea.</p>
+        )}
+      </section>
+    ))}
+
+    <MatchaProgress total={projects.length} />
+  </main>
+  <Footer />
+</Layout>
+
+<script>
+  /**
+   * Swipe strip dots (phones): highlights the dot of the card in view.
+   */
+  function initWorkDots(): void {
+    const page = new AbortController();
+
+    document.querySelectorAll<HTMLElement>('.work-section').forEach((section) => {
+      const strip = section.querySelector<HTMLElement>('.work-strip');
+      const dots = [...section.querySelectorAll<HTMLElement>('.work-dots span')];
+      if (!strip || dots.length === 0) return;
+
+      let ticking = false;
+      const update = () => {
+        const first = strip.firstElementChild as HTMLElement | null;
+        const step = first ? first.offsetWidth + parseFloat(getComputedStyle(strip).columnGap || '0') : 1;
+        const atEnd = strip.scrollLeft + strip.clientWidth >= strip.scrollWidth - 2;
+        const active = atEnd ? dots.length - 1 : Math.round(strip.scrollLeft / step);
+        dots.forEach((dot, n) => dot.classList.toggle('is-active', n === active));
+        ticking = false;
+      };
+
+      strip.addEventListener(
+        'scroll',
+        () => {
+          if (!ticking) {
+            requestAnimationFrame(update);
+            ticking = true;
+          }
+        },
+        { passive: true, signal: page.signal }
+      );
+    });
+
+    document.addEventListener('astro:before-swap', () => page.abort(), { once: true });
+  }
+
+  /** Reduced motion: clips rest on their poster frame instead of looping */
+  function initClips(): void {
+    if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    document.querySelectorAll<HTMLVideoElement>('.work-clip video').forEach((video) => {
+      video.autoplay = false;
+      video.pause();
+    });
+  }
+
+  document.addEventListener('astro:page-load', initWorkDots);
+  document.addEventListener('astro:page-load', initClips);
+</script>

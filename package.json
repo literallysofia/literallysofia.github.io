@@ -1,0 +1,25 @@
+{
+  "name": "personal-website",
+  "type": "module",
+  "version": "2.0.0",
+  "private": true,
+  "description": "Personal Website - Astro + React",
+  "author": "Sofia Silva",
+  "license": "MIT",
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro check && astro build",
+    "preview": "astro preview",
+    "astro": "astro",
+    "sync-concerts": "node --env-file-if-exists=.env scripts/fetch-notion-concerts.mjs",
+    "sync-reading": "GOODREADS_USER=199717702 node scripts/fetch-goodreads.mjs"
+  },
+  "dependencies": {
+    "astro": "^7.4.5"
+  },
+  "devDependencies": {
+    "@astrojs/check": "^0.9.12",
+    "typescript": "^5.9.3"
+  }
+}

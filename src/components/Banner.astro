@@ -1,0 +1,63 @@
+---
+/**
+ * Banner Component
+ * Full-screen home hero: candle-dot eyebrow, Fraunces headline
+ * with an italic accent, current-role description, one CTA,
+ * and the portrait. Bottom bar has a scroll cue and socials.
+ * Content comes from the hero collection.
+ */
+
+import { Image } from 'astro:assets';
+import { siteConfig } from '../config';
+import portraitImage from '../assets/portrait.jpg';
+
+interface Props {
+  eyebrow: string;
+  title: string;
+  accent: string;
+  description: string;
+}
+
+const { eyebrow, title, accent, description } = Astro.props;
+---
+
+<section class="banner" aria-labelledby="banner-title">
+  <div class="banner-content">
+    <div class="banner-intro">
+      <span class="banner-eyebrow animate-fade-in-up">
+        <span class="candle-dot" aria-hidden="true"></span>{eyebrow}
+      </span>
+
+      <h1 id="banner-title" class="animate-fade-in-up animate-delay-1">
+        {title} <em>{accent}</em>
+      </h1>
+
+      <p class="banner-description animate-fade-in-up animate-delay-2">{description}</p>
+
+      <a href="/work" class="btn animate-fade-in-up animate-delay-3">Show me the apps →</a>
+    </div>
+
+    <div class="banner-portrait animate-settle animate-delay-1">
+      <Image
+        src={portraitImage}
+        width={1200}
+        alt="Sofia looking at Monet's water lilies"
+        widths={[400, 800, 1200]}
+        sizes="(max-width: 768px) 100vw, (max-width: 1100px) and (orientation: portrait) 100vw, 40vw"
+        loading="eager"
+        fetchpriority="high"
+      />
+    </div>
+  </div>
+
+  <div class="banner-bottom muted animate-fade-in animate-delay-5">
+    <span>↓ scroll</span>
+    <ul class="banner-socials" role="list">
+      {siteConfig.socialMedia.map((social) => (
+        <li>
+          <a class="link" href={social.url} target="_blank" rel="noopener noreferrer">{social.name}</a>
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>

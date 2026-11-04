@@ -1,0 +1,38 @@
+---
+/**
+ * Reveal Component
+ * Shared scroll-reveal: any element with [data-reveal] fades up
+ * when it enters the viewport, staggered by 70ms.
+ * Included once in the layout; re-runs after view transitions.
+ */
+---
+
+<script>
+  function initReveal(): void {
+    const items = document.querySelectorAll<HTMLElement>('[data-reveal]:not(.is-visible)');
+    if (items.length === 0) return;
+
+    const STAGGER_DELAY = 70;
+    let queued = 0;
+    let resetTimer: number | undefined;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          const el = entry.target as HTMLElement;
+          setTimeout(() => el.classList.add('is-visible'), queued * STAGGER_DELAY);
+          queued++;
+          window.clearTimeout(resetTimer);
+          resetTimer = window.setTimeout(() => (queued = 0), 200);
+          observer.unobserve(el);
+        });
+      },
+      { threshold: 0.15 }
+    );
+
+    items.forEach((item) => observer.observe(item));
+  }
+
+  document.addEventListener('astro:page-load', initReveal);
+</script>

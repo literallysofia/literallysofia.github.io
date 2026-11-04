@@ -1,0 +1,218 @@
+/* ================================================
+   TODAY CARDS
+   ================================================
+   App Store "Today"-style cards shared by the home
+   selected work grid and the work page strips.
+   Colours are set per card through --card-* vars.
+   ================================================ */
+
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(0.75rem, 1.5vw, 1.25rem);
+}
+
+.today-card {
+  display: flex;
+  flex-direction: column;
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+  border-radius: var(--radius-card);
+  background: var(--card-bg);
+  color: var(--card-fg);
+  transition: transform var(--duration-normal) var(--ease-out);
+  -webkit-tap-highlight-color: transparent;
+}
+
+.today-card.has-border {
+  border: 0.5px solid var(--color-border);
+}
+
+/* Dark cards would melt into the dark page without a hairline */
+html.dark-mode .today-card {
+  box-shadow: inset 0 0 0 0.5px var(--color-border);
+}
+
+a.today-card:hover {
+  transform: scale(0.98);
+}
+
+a.today-card:active {
+  transform: scale(0.96);
+}
+
+/* ================================================
+   CARD - HEAD
+   ================================================ */
+
+.card-head {
+  padding: clamp(0.9rem, 1.6vw, 1.25rem) clamp(0.9rem, 1.6vw, 1.25rem) 0;
+}
+
+.card-eyebrow {
+  display: block;
+  font-size: 0.6875rem; /* 11px, the smallest iOS text size */
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  opacity: 0.7;
+}
+
+.card-title {
+  font-family: var(--font-serif);
+  font-weight: 400;
+  font-size: clamp(1.1rem, 0.9rem + 0.7vw, 1.5rem);
+  line-height: 1.1;
+  margin-top: 0.3rem;
+  color: inherit;
+}
+
+.card-title em {
+  color: inherit;
+}
+
+/* Type-only card: work there's no public screen for */
+.today-card.is-statement .card-head {
+  flex: 1;
+}
+
+.today-card.is-statement .card-title {
+  font-size: clamp(1.9rem, 1.2rem + 2.2vw, 3rem);
+  line-height: 1.02;
+  margin-top: 0.75rem;
+}
+
+.card-note {
+  padding: 0 clamp(0.9rem, 1.6vw, 1.25rem) clamp(0.9rem, 1.6vw, 1.25rem);
+  font-size: var(--text-xs);
+  opacity: 0.7;
+}
+
+.card-subtitle {
+  font-size: var(--text-xs);
+  opacity: 0.75;
+  margin-top: 0.3rem;
+}
+
+/* ================================================
+   CARD - DEVICE
+   ================================================ */
+
+.card-device {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  min-height: 0;
+  padding-top: clamp(1.25rem, 2.5vw, 2rem);
+}
+
+.card-screen {
+  width: 56%;
+  /* Extends 12px below its slot (hidden under the bar / card edge),
+     so the hover lift never reveals the screen's bottom edge */
+  height: calc(100% + 12px);
+  margin-bottom: -12px;
+  overflow: hidden;
+  border: 4px solid var(--phone-frame);
+  border-bottom: none;
+  border-radius: 1.25rem 1.25rem 0 0;
+  background: var(--phone-screen);
+  color: var(--phone-frame);
+  transition: transform var(--duration-slow) var(--ease-out);
+}
+
+a.today-card:hover .card-screen {
+  transform: translateY(-6px);
+}
+
+/* App Store screenshots already include their own device art */
+.card-screen.is-screenshot {
+  width: 62%;
+  border: none;
+  border-radius: 14px 14px 0 0;
+}
+
+.card-screen img,
+.card-screen video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top;
+}
+
+.card-sketch {
+  width: 100%;
+  padding: 12% 10% 0;
+}
+
+/* ================================================
+   CARD - APP BAR
+   ================================================ */
+
+.card-bar {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.6rem 0.8rem;
+  background: var(--card-bar);
+}
+
+.card-icon {
+  width: 1.75rem;
+  height: 1.75rem;
+  border-radius: 0.45rem;
+  flex: none;
+}
+
+.card-icon-fallback {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-serif);
+  background: var(--card-fg);
+  color: var(--card-accent);
+}
+
+.card-app {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  line-height: 1.2;
+}
+
+.card-app-name {
+  font-size: var(--text-xs);
+  font-weight: 500;
+}
+
+.card-app-years {
+  font-size: 0.6875rem; /* 11px, the smallest iOS text size */
+  opacity: 0.75;
+}
+
+.card-pill {
+  margin-left: auto;
+  font-size: 0.7rem;
+  font-weight: 500;
+  padding: 0.25rem 0.8rem;
+  border-radius: var(--radius-pill);
+  background: var(--card-fg);
+  color: var(--card-accent);
+  white-space: nowrap;
+}
+
+/* ================================================
+   RESPONSIVE - MOBILE
+   ================================================ */
+
+@media (max-width: 768px) {
+  .card-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .card-title {
+    font-size: 1.6rem;
+  }
+}

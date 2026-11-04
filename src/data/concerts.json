@@ -1,0 +1,1418 @@
+[
+  {
+    "name": "The Lost Tour",
+    "festival": false,
+    "favourite": false,
+    "date": "2026-12-04",
+    "artist": "Phoebe Bridgers",
+    "support": [
+      "Isaac Wood"
+    ],
+    "venue": "Adidas Arena",
+    "city": "Paris, France",
+    "upcoming": true
+  },
+  {
+    "name": "Reality Awaits World Tour 2026",
+    "festival": false,
+    "favourite": false,
+    "date": "2026-10-20",
+    "artist": "The Strokes",
+    "support": [],
+    "venue": "Palau Sant Jordi",
+    "city": "Barcelona, Spain",
+    "upcoming": false
+  },
+  {
+    "name": "The Orchestral Tour",
+    "festival": false,
+    "favourite": true,
+    "date": "2026-09-13",
+    "artist": "Sigur Rós",
+    "support": [],
+    "venue": "Coliseu do Porto",
+    "city": "Porto, Portugal",
+    "upcoming": false
+  },
+  {
+    "name": "The World Tour.",
+    "festival": false,
+    "favourite": false,
+    "date": "2026-09-12",
+    "artist": "The Neighbourhood",
+    "support": [
+      "Nessa Barrett",
+      "Noise Dept."
+    ],
+    "venue": "Meo Arena",
+    "city": "Lisbon, Portugal",
+    "upcoming": false
+  },
+  {
+    "name": "Vilar de Mouros 2026",
+    "festival": true,
+    "favourite": false,
+    "date": "2026-08-18",
+    "artist": "YUNGBLUD, President",
+    "support": [
+      "Lambrini Girls",
+      "The Molotovs"
+    ],
+    "venue": "Vilar de Mouros",
+    "city": "Viana do Castelo, Portugal",
+    "upcoming": false
+  },
+  {
+    "name": "Vodafone Paredes de Coura 2026",
+    "festival": true,
+    "favourite": false,
+    "date": "2026-08-14",
+    "artist": "Benjamim Clementine, Terraplana, Maruja",
+    "support": [
+      "Carolina Durante",
+      "Bloc Party"
+    ],
+    "venue": "Vodafone Paredes de Coura",
+    "city": "Porto, Portugal",
+    "upcoming": false
+  },
+  {
+    "name": "Long Live: The Black Parade Tour",
+    "festival": false,
+    "favourite": true,
+    "date": "2026-07-11",
+    "artist": "My Chemical Romance",
+    "support": [],
+    "venue": "Wembley Stadium",
+    "city": "London, UK",
+    "upcoming": false
+  },
+  {
+    "name": "NOS Alive",
+    "festival": true,
+    "favourite": true,
+    "date": "2026-07-09",
+    "artist": "Twenty One Pilots",
+    "support": [],
+    "venue": "NOS Alive",
+    "city": "Lisbon, Portugal",
+    "upcoming": false
+  },
+  {
+    "name": "Rock in Rio Lisboa",
+    "festival": true,
+    "favourite": false,
+    "date": "2026-06-21",
+    "artist": "Linkin Park, The Pretty Reckless",
+    "support": [
+      "Grandson",
+      "Tara Perdida",
+      "Cypress Hill"
+    ],
+    "venue": "Rock in Rio",
+    "city": "Lisbon, Portugal",
+    "upcoming": false
+  },
+  {
+    "name": "Primavera Sound Porto",
+    "festival": true,
+    "favourite": false,
+    "date": "2026-06-13",
+    "artist": "JADE, Idles",
+    "support": [
+      "NAPA",
+      "Yard Act",
+      "Massive Attack"
+    ],
+    "venue": "Primavera Sound Porto",
+    "city": "Porto, Portugal",
+    "upcoming": false
+  },
+  {
+    "name": "Primavera Sound Porto",
+    "festival": true,
+    "favourite": false,
+    "date": "2026-06-12",
+    "artist": "Gorillaz",
+    "support": [
+      "Slowdive"
+    ],
+    "venue": "Primavera Sound Porto",
+    "city": "Porto, Portugal",
+    "upcoming": false
+  },
+  {
+    "name": "Primavera Sound Porto",
+    "festival": true,
+    "favourite": false,
+    "date": "2026-06-11",
+    "artist": "The XX, Ethel Cain",
+    "support": [
+      "Oklou"
+    ],
+    "venue": "Primavera Sound Porto",
+    "city": "Porto, Portugal",
+    "upcoming": false
+  },
+  {
+    "name": "Good Dye Young Presents: Hayley Williams At A Bachelorette Party",
+    "festival": false,
+    "favourite": true,
+    "date": "2026-06-05",
+    "artist": "Hayley Williams",
+    "support": [
+      "Snuggle"
+    ],
+    "venue": "Alcatraz",
+    "city": "Milan, Italy",
+    "upcoming": false
+  },
+  {
+    "name": "Arde Bogotá World Tour 2026",
+    "festival": false,
+    "favourite": false,
+    "date": "2026-05-16",
+    "artist": "Arde Bogotá",
+    "support": [],
+    "venue": "Super Bock Arena",
+    "city": "Porto, Portugal",
+    "upcoming": false
+  },
+  {
+    "name": "Deadbeat Tour 2026",
+    "festival": false,
+    "favourite": false,
+    "date": "2026-04-04",
+    "artist": "Tame Impala",
+    "support": [
+      "RIP Magic"
+    ],
+    "venue": "Super Bock Arena",
+    "city": "Porto, Portugal",
+    "upcoming": false
+  },
+  {
+    "name": "Unamused",
+    "festival": false,
+    "favourite": false,
+    "date": "2026-03-27",
+    "artist": "Bilrus",
+    "support": [],
+    "venue": "Maus Hábitos",
+    "city": "Porto, Portugal",
+    "upcoming": false
+  },
+  {
+    "name": "Back to Badlands Tour",
+    "festival": false,
+    "favourite": false,
+    "date": "2026-01-26",
+    "artist": "Halsey",
+    "support": [],
+    "venue": "L'Olympia",
+    "city": "Paris, France",
+    "upcoming": false
+  },
+  {
+    "name": "Elige Tu Propria Aventura World Tour 2025",
+    "festival": false,
+    "favourite": false,
+    "date": "2025-12-13",
+    "artist": "Carolina Durante",
+    "support": [],
+    "venue": "Hard Club",
+    "city": "Porto, Portugal",
+    "upcoming": false
+  },
+  {
+    "name": "UK & EU Tour 2025",
+    "festival": false,
+    "favourite": false,
+    "date": "2025-12-12",
+    "artist": "Loathe",
+    "support": [
+      "Zetra",
+      "Love Is Noise"
+    ],
+    "venue": "La Machine du Moulin Rouge",
+    "city": "Paris, France",
+    "upcoming": false
+  },
+  {
+    "name": "DO YOU FEEL LOVE EUROPE 2025",
+    "festival": false,
+    "favourite": false,
+    "date": "2025-12-02",
+    "artist": "Bad Omens",
+    "support": [
+      "Bilmuri",
+      "The Ghost Inside"
+    ],
+    "venue": "Zénith Paris - La Villette",
+    "city": "Paris, France",
+    "upcoming": false
+  },
+  {
+    "name": "The Never Enough Tour",
+    "festival": false,
+    "favourite": false,
+    "date": "2025-11-26",
+    "artist": "Turnstile",
+    "support": [
+      "The Garden",
+      "High Vis"
+    ],
+    "venue": "LAV (Lisboa ao Vivo)",
+    "city": "Lisbon, Portugal",
+    "upcoming": false
+  },
+  {
+    "name": "30 anos",
+    "festival": false,
+    "favourite": false,
+    "date": "2025-11-15",
+    "artist": "Silence 4",
+    "support": [],
+    "venue": "Super Bock Arena",
+    "city": "Porto, Portugal",
+    "upcoming": false
+  },
+  {
+    "name": "The MAYHEM Ball",
+    "festival": false,
+    "favourite": false,
+    "date": "2025-10-31",
+    "artist": "Lady Gaga",
+    "support": [],
+    "venue": "Palau Sant Jordi",
+    "city": "Barcelona, Spain",
+    "upcoming": false
+  },
+  {
+    "name": "Curta Vida de uma Popstar Tour",
+    "festival": false,
+    "favourite": false,
+    "date": "2025-10-25",
+    "artist": "Bárbara Tinoco",
+    "support": [],
+    "venue": "Casino da Póvoa",
+    "city": "Porto, Portugal",
+    "upcoming": false
+  },
+  {
+    "name": "Valter Lobo Tour 2025",
+    "festival": false,
+    "favourite": false,
+    "date": "2025-10-18",
+    "artist": "Valter Lobo",
+    "support": [],
+    "venue": "Auditório Municipal De Gondomar",
+    "city": "Porto, Portugal",
+    "upcoming": false
+  },
+  {
+    "name": "Madcool",
+    "festival": true,
+    "favourite": false,
+    "date": "2025-07-12",
+    "artist": "PVRIS, Olivia Rodrigo",
+    "support": [
+      "Bloc Party",
+      "Glass Animals",
+      "FINNEAS",
+      "Justice",
+      "girl in red"
+    ],
+    "venue": "Mad Cool",
+    "city": "Madrid, Spain",
+    "upcoming": false
+  },
+  {
+    "name": "White Noise 10 Year Anniversary Tour",
+    "festival": false,
+    "favourite": false,
+    "date": "2025-07-06",
+    "artist": "PVRIS",
+    "support": [
+      "Julia Wolf"
+    ],
+    "venue": "La Maroquinerie",
+    "city": "Paris, France",
+    "upcoming": false
+  },
+  {
+    "name": "Primavera Sound Porto",
+    "festival": true,
+    "favourite": false,
+    "date": "2025-06-14",
+    "artist": "Parcels, Turnstile",
+    "support": [
+      "Wet Leg",
+      "Haim"
+    ],
+    "venue": "Primavera Sound Porto",
+    "city": "Porto, Portugal",
+    "upcoming": false
+  },
+  {
+    "name": "Primavera Sound Porto",
+    "festival": true,
+    "favourite": false,
+    "date": "2025-06-13",
+    "artist": "Deftones",
+    "support": [
+      "Michael Kiwanuka"
+    ],
+    "venue": "Primavera Sound Porto",
+    "city": "Porto, Portugal",
+    "upcoming": false
+  },
+  {
+    "name": "Primavera Sound Porto",
+    "festival": true,
+    "favourite": false,
+    "date": "2025-06-12",
+    "artist": "Fontaines D.C., Charli xcx",
+    "support": [
+      "Magdalena Bay"
+    ],
+    "venue": "Primavera Sound Porto",
+    "city": "Porto, Portugal",
+    "upcoming": false
+  },
+  {
+    "name": "What Happened to the Earth?",
+    "festival": false,
+    "favourite": false,
+    "date": "2025-05-09",
+    "artist": "Aurora",
+    "support": [
+      "Pomme",
+      "Fredrik Svabø"
+    ],
+    "venue": "Sagres Campo Pequeno",
+    "city": "Lisbon, Portugal",
+    "upcoming": false
+  },
+  {
+    "name": "The Clancy World Tour",
+    "festival": false,
+    "favourite": false,
+    "date": "2025-04-22",
+    "artist": "Twenty One Pilots",
+    "support": [
+      "Balu Brigada"
+    ],
+    "venue": "Palau Sant Jordi",
+    "city": "Barcelona, Spain",
+    "upcoming": false
+  },
+  {
+    "name": "The Final Nights of Six",
+    "festival": false,
+    "favourite": false,
+    "date": "2025-04-03",
+    "artist": "You Me At Six",
+    "support": [
+      "Holding Absence",
+      "Boston Manor"
+    ],
+    "venue": "OVO Arena Wembley",
+    "city": "London, UK",
+    "upcoming": false
+  },
+  {
+    "name": "The Final Nights of Six",
+    "festival": false,
+    "favourite": false,
+    "date": "2025-04-02",
+    "artist": "You Me At Six",
+    "support": [
+      "The Blackout",
+      "Mouth Culture"
+    ],
+    "venue": "O2 Academy Brixton",
+    "city": "London, UK",
+    "upcoming": false
+  },
+  {
+    "name": "Tsunami Sea Tour",
+    "festival": false,
+    "favourite": false,
+    "date": "2025-02-18",
+    "artist": "Spiritbox",
+    "support": [
+      "Periphery",
+      "Stray From The Path"
+    ],
+    "venue": "L'Olympia",
+    "city": "Paris, France",
+    "upcoming": false
+  },
+  {
+    "name": "Landmvrks Paris",
+    "festival": false,
+    "favourite": false,
+    "date": "2025-02-15",
+    "artist": "Landmvrks",
+    "support": [
+      "Malevolence",
+      "Resolve"
+    ],
+    "venue": "L'Olympia",
+    "city": "Paris, France",
+    "upcoming": false
+  },
+  {
+    "name": "Set It Off EU + UK 2025 Tour",
+    "festival": false,
+    "favourite": false,
+    "date": "2025-02-14",
+    "artist": "Set It Off",
+    "support": [
+      "Point North",
+      "Call Me Amour",
+      "The Sunday Sadness"
+    ],
+    "venue": "Le Trabendo",
+    "city": "Paris, France",
+    "upcoming": false
+  },
+  {
+    "name": "Teeth of God Tour",
+    "festival": false,
+    "favourite": false,
+    "date": "2024-11-18",
+    "artist": "Sleep Token",
+    "support": [
+      "Bilmuri"
+    ],
+    "venue": "Afas Live",
+    "city": "Amsterdam, Netherlands",
+    "upcoming": false
+  },
+  {
+    "name": "Still 25",
+    "festival": false,
+    "favourite": false,
+    "date": "2024-11-15",
+    "artist": "David Fonseca",
+    "support": [],
+    "venue": "Coliseu do Porto",
+    "city": "Porto, Portugal",
+    "upcoming": false
+  },
+  {
+    "name": "From Zero World Tour",
+    "festival": false,
+    "favourite": false,
+    "date": "2024-11-03",
+    "artist": "Linkin Park",
+    "support": [
+      "Sleep Token"
+    ],
+    "venue": "La Défense Arena",
+    "city": "Paris, France",
+    "upcoming": false
+  },
+  {
+    "name": "Death Or Glory Tour",
+    "festival": false,
+    "favourite": false,
+    "date": "2024-11-01",
+    "artist": "Palaye Royale",
+    "support": [
+      "I See Stars"
+    ],
+    "venue": "Cineteatro Capitólio",
+    "city": "Lisbon, Portugal",
+    "upcoming": false
+  },
+  {
+    "name": "The Trio Tour",
+    "festival": false,
+    "favourite": false,
+    "date": "2024-09-30",
+    "artist": "MARO",
+    "support": [],
+    "venue": "Teatro Sá Bandeira",
+    "city": "Porto, Portugal",
+    "upcoming": false
+  },
+  {
+    "name": "Holding Absence Chepstow Castle",
+    "festival": false,
+    "favourite": false,
+    "date": "2024-08-10",
+    "artist": "Holding Absence",
+    "support": [
+      "Casey",
+      "Caskets",
+      "Glass Heart"
+    ],
+    "venue": "Chepstow Castle",
+    "city": "Wales, UK",
+    "upcoming": false
+  },
+  {
+    "name": "Festas de Leça",
+    "festival": false,
+    "favourite": false,
+    "date": "2024-07-28",
+    "artist": "Bárbara Tinoco",
+    "support": [],
+    "venue": "Festas",
+    "city": "Porto, Portugal",
+    "upcoming": false
+  },
+  {
+    "name": "NOS Alive",
+    "festival": true,
+    "favourite": false,
+    "date": "2024-07-13",
+    "artist": "Sum 41, Pearl Jam",
+    "support": [
+      "The Breeders"
+    ],
+    "venue": "NOS Alive",
+    "city": "Lisbon, Portugal",
+    "upcoming": false
+  },
+  {
+    "name": "NOS Alive",
+    "festival": true,
+    "favourite": false,
+    "date": "2024-07-12",
+    "artist": "Dua Lipa",
+    "support": [
+      "Arlo Parks",
+      "Ashnikko",
+      "T-Rex",
+      "Genesis Owusu"
+    ],
+    "venue": "NOS Alive",
+    "city": "Lisbon, Portugal",
+    "upcoming": false
+  },
+  {
+    "name": "NOS Alive",
+    "festival": true,
+    "favourite": false,
+    "date": "2024-07-11",
+    "artist": "Nothing But Thieves, The Smashing Pumpkins, Arcade Fire",
+    "support": [
+      "Unknown Mortal Orchestra",
+      "Jessie Ware"
+    ],
+    "venue": "NOS Alive",
+    "city": "Lisbon, Portugal",
+    "upcoming": false
+  },
+  {
+    "name": "Resurrection Fest",
+    "festival": true,
+    "favourite": false,
+    "date": "2024-06-29",
+    "artist": "BABYMETAL, Electric Callboy, Avenged Sevenfold",
+    "support": [
+      "Knosis"
+    ],
+    "venue": "Resurrection Fest",
+    "city": "Viveiro, Spain",
+    "upcoming": false
+  },
+  {
+    "name": "Resurrection Fest",
+    "festival": true,
+    "favourite": false,
+    "date": "2024-06-28",
+    "artist": "The Offspring, Imminence",
+    "support": [
+      "Future Palace",
+      "Corey Taylor"
+    ],
+    "venue": "Resurrection Fest",
+    "city": "Viveiro, Spain",
+    "upcoming": false
+  },
+  {
+    "name": "Resurrection Fest",
+    "festival": true,
+    "favourite": false,
+    "date": "2024-06-27",
+    "artist": "Bring Me The Horizon",
+    "support": [
+      "Bellako",
+      "Ankor",
+      "Counterparts",
+      "Bruce Dickinson"
+    ],
+    "venue": "Resurrection Fest",
+    "city": "Viveiro, Spain",
+    "upcoming": false
+  },
+  {
+    "name": "Resurrection Fest",
+    "festival": true,
+    "favourite": false,
+    "date": "2024-06-26",
+    "artist": "Sum 41, Paleface Swiss",
+    "support": [
+      "Crystal Lake",
+      "Speed",
+      "Comeback Kid"
+    ],
+    "venue": "Resurrection Fest",
+    "city": "Viveiro, Spain",
+    "upcoming": false
+  },
+  {
+    "name": "BABYMETAL Toulouse 2024",
+    "festival": false,
+    "favourite": false,
+    "date": "2024-06-23",
+    "artist": "BABYMETAL",
+    "support": [
+      "Palaye Royale"
+    ],
+    "venue": "Zénith Toulouse Métropole",
+    "city": "Toulouse, France",
+    "upcoming": false
+  },
+  {
+    "name": "Primavera Sound Porto",
+    "festival": true,
+    "favourite": false,
+    "date": "2024-06-07",
+    "artist": "Lana Del Rey, The Last Dinner Party",
+    "support": [
+      "Crumb"
+    ],
+    "venue": "Primavera Sound Porto",
+    "city": "Porto, Portugal",
+    "upcoming": false
+  },
+  {
+    "name": "O Son Do Camino",
+    "festival": true,
+    "favourite": false,
+    "date": "2024-06-01",
+    "artist": "30 Seconds to Mars",
+    "support": [
+      "Tom Odell"
+    ],
+    "venue": "O Son Do Camino",
+    "city": "Santiago de Compostela, Spain",
+    "upcoming": false
+  },
+  {
+    "name": "O Son Do Camino",
+    "festival": true,
+    "favourite": false,
+    "date": "2024-05-31",
+    "artist": "Pet Shop Boys",
+    "support": [],
+    "venue": "O Son Do Camino",
+    "city": "Santiago de Compostela, Spain",
+    "upcoming": false
+  },
+  {
+    "name": "O Son Do Camino",
+    "festival": true,
+    "favourite": false,
+    "date": "2024-05-30",
+    "artist": "Green Day",
+    "support": [
+      "The Interrupters",
+      "Hot Milk",
+      "Arde Bogotá"
+    ],
+    "venue": "O Son Do Camino",
+    "city": "Santiago de Compostela, Spain",
+    "upcoming": false
+  },
+  {
+    "name": "The Eras Tour",
+    "festival": false,
+    "favourite": false,
+    "date": "2024-05-25",
+    "artist": "Taylor Swift",
+    "support": [
+      "Paramore"
+    ],
+    "venue": "Estádio da Luz",
+    "city": "Lisbon, Portugal",
+    "upcoming": false
+  },
+  {
+    "name": "Senhor de Matosinhos",
+    "festival": false,
+    "favourite": false,
+    "date": "2024-05-17",
+    "artist": "Diogo Piçarra",
+    "support": [],
+    "venue": "Festas",
+    "city": "Porto, Portugal",
+    "upcoming": false
+  },
+  {
+    "name": "I Prevail EU Tour 2024",
+    "festival": false,
+    "favourite": false,
+    "date": "2024-05-14",
+    "artist": "I Prevail",
+    "support": [
+      "Set It Off",
+      "Kid Bookie"
+    ],
+    "venue": "Alcatraz",
+    "city": "Milan, Italy",
+    "upcoming": false
+  },
+  {
+    "name": "BC.NR US Tour 2024",
+    "festival": false,
+    "favourite": false,
+    "date": "2024-04-24",
+    "artist": "Black Country, New Road",
+    "support": [
+      "Horse Girl",
+      "Camera Picture"
+    ],
+    "venue": "Brooklyn Paramount",
+    "city": "New York, USA",
+    "upcoming": false
+  },
+  {
+    "name": "The Jaws of Life Tour",
+    "festival": false,
+    "favourite": false,
+    "date": "2024-04-06",
+    "artist": "Pierce The Veil",
+    "support": [
+      "Dayseeker",
+      "Holding Absence"
+    ],
+    "venue": "O2 Victoria Warehouse",
+    "city": "Manchester, UK",
+    "upcoming": false
+  },
+  {
+    "name": "This World Fucking Sucks Tour",
+    "festival": false,
+    "favourite": false,
+    "date": "2024-04-04",
+    "artist": "Cassyette",
+    "support": [
+      "Harpy",
+      "Filthy Pig"
+    ],
+    "venue": "Academy 2",
+    "city": "Manchester, UK",
+    "upcoming": false
+  },
+  {
+    "name": "The 4th Wall Tour",
+    "festival": false,
+    "favourite": false,
+    "date": "2024-03-28",
+    "artist": "Blowfuse",
+    "support": [
+      "Memorial State",
+      "Obsoletos"
+    ],
+    "venue": "Woodstock 69",
+    "city": "Porto, Portugal",
+    "upcoming": false
+  },
+  {
+    "name": "Concrete Forever Tour",
+    "festival": false,
+    "favourite": false,
+    "date": "2024-02-05",
+    "artist": "Bad Omens",
+    "support": [
+      "Poppy"
+    ],
+    "venue": "Ancienne Belgique",
+    "city": "Brussels, Belgium",
+    "upcoming": false
+  },
+  {
+    "name": "Concrete Forever Tour",
+    "festival": false,
+    "favourite": false,
+    "date": "2024-01-27",
+    "artist": "Bad Omens",
+    "support": [
+      "Poppy"
+    ],
+    "venue": "Columbiahalle",
+    "city": "Berlin, Germany",
+    "upcoming": false
+  },
+  {
+    "name": "Post Human: Nex_Gen Tour",
+    "festival": false,
+    "favourite": false,
+    "date": "2024-01-20",
+    "artist": "Bring Me The Horizon",
+    "support": [
+      "Bad Omens",
+      "Cassyette",
+      "Static Dress"
+    ],
+    "venue": "O2 Arena",
+    "city": "London, UK",
+    "upcoming": false
+  },
+  {
+    "name": "20 Anos, Fim de Festa",
+    "festival": false,
+    "favourite": false,
+    "date": "2023-12-18",
+    "artist": "Tiago Bettencourt",
+    "support": [],
+    "venue": "Casa da Música",
+    "city": "Porto, Portugal",
+    "upcoming": false
+  },
+  {
+    "name": "Back From The Dead Tour",
+    "festival": false,
+    "favourite": false,
+    "date": "2023-12-02",
+    "artist": "Halestorm",
+    "support": [
+      "Black Veil Brides",
+      "Mothica"
+    ],
+    "venue": "LAV (Lisboa ao Vivo)",
+    "city": "Lisbon, Portugal",
+    "upcoming": false
+  },
+  {
+    "name": "TIMBRE Tour",
+    "festival": false,
+    "favourite": false,
+    "date": "2023-11-15",
+    "artist": "Salvador Sobral",
+    "support": [],
+    "venue": "Casa da Música",
+    "city": "Porto, Portugal",
+    "upcoming": false
+  },
+  {
+    "name": "So Much For (Tour)dust",
+    "festival": false,
+    "favourite": false,
+    "date": "2023-10-23",
+    "artist": "Fall Out Boy",
+    "support": [
+      "PVRIS",
+      "nothing,nowhere"
+    ],
+    "venue": "Zénith Paris - La Villette",
+    "city": "Paris, France",
+    "upcoming": false
+  },
+  {
+    "name": "Blink-182 World Tour 2023",
+    "festival": false,
+    "favourite": false,
+    "date": "2023-10-02",
+    "artist": "Blink-182",
+    "support": [
+      "The Story So Far"
+    ],
+    "venue": "Meo Arena",
+    "city": "Lisbon, Portugal",
+    "upcoming": false
+  },
+  {
+    "name": "Vilar de Mouros",
+    "festival": true,
+    "favourite": false,
+    "date": "2023-08-26",
+    "artist": "James",
+    "support": [
+      "Ornatos Violeta"
+    ],
+    "venue": "Vilar de Mouros",
+    "city": "Viana do Castelo, Portugal",
+    "upcoming": false
+  },
+  {
+    "name": "Vilar de Mouros",
+    "festival": true,
+    "favourite": false,
+    "date": "2023-08-23",
+    "artist": "Enter Shikari, Limp Bizkit",
+    "support": [],
+    "venue": "Vilar de Mouros",
+    "city": "Viana do Castelo, Portugal",
+    "upcoming": false
+  },
+  {
+    "name": "Love on Tour",
+    "festival": false,
+    "favourite": false,
+    "date": "2023-07-18",
+    "artist": "Harry Styles",
+    "support": [
+      "Wet Leg"
+    ],
+    "venue": "Passeio Marítimo de Algés",
+    "city": "Lisbon, Portugal",
+    "upcoming": false
+  },
+  {
+    "name": "Primavera Sound Porto",
+    "festival": true,
+    "favourite": false,
+    "date": "2023-06-10",
+    "artist": "Halsey, Blur",
+    "support": [
+      "Pup"
+    ],
+    "venue": "Primavera Sound Porto",
+    "city": "Porto, Portugal",
+    "upcoming": false
+  },
+  {
+    "name": "Music of the Spheres Tour",
+    "festival": false,
+    "favourite": false,
+    "date": "2023-05-21",
+    "artist": "Coldplay",
+    "support": [
+      "Griff",
+      "Bárbara Bandeira"
+    ],
+    "venue": "Estádio Cidade de Coimbra",
+    "city": "Coimbra, Portugal",
+    "upcoming": false
+  },
+  {
+    "name": "Queima das Fitas Porto",
+    "festival": true,
+    "favourite": false,
+    "date": "2023-05-12",
+    "artist": "Two Door Cinema Club",
+    "support": [],
+    "venue": "Queima das Fitas Porto",
+    "city": "Porto, Portugal",
+    "upcoming": false
+  },
+  {
+    "name": "This Is Why Tour",
+    "festival": false,
+    "favourite": false,
+    "date": "2023-04-23",
+    "artist": "Paramore",
+    "support": [
+      "Bloc Party"
+    ],
+    "venue": "O2 Arena",
+    "city": "London, UK",
+    "upcoming": false
+  },
+  {
+    "name": "This Is Why Tour",
+    "festival": false,
+    "favourite": false,
+    "date": "2023-04-20",
+    "artist": "Paramore",
+    "support": [
+      "Bloc Party"
+    ],
+    "venue": "O2 Arena",
+    "city": "London, UK",
+    "upcoming": false
+  },
+  {
+    "name": "Viva Las Vengeance Tour",
+    "festival": false,
+    "favourite": false,
+    "date": "2023-02-28",
+    "artist": "Panic! At The Disco",
+    "support": [
+      "Fletcher"
+    ],
+    "venue": "Sportpaleis",
+    "city": "Antwerp, Belgium",
+    "upcoming": false
+  },
+  {
+    "name": "Truth Decay Tour",
+    "festival": false,
+    "favourite": false,
+    "date": "2023-02-22",
+    "artist": "You Me At Six",
+    "support": [
+      "The Hunna",
+      "Yours Truly"
+    ],
+    "venue": "Trix",
+    "city": "Antwerp, Belgium",
+    "upcoming": false
+  },
+  {
+    "name": "A Tour of The Concrete Jungle",
+    "festival": false,
+    "favourite": false,
+    "date": "2023-02-21",
+    "artist": "Bad Omens",
+    "support": [
+      "Oxymorrons",
+      "Ghøstkid"
+    ],
+    "venue": "Trix",
+    "city": "Antwerp, Belgium",
+    "upcoming": false
+  },
+  {
+    "name": "Post Human: Survival Horror Tour",
+    "festival": false,
+    "favourite": false,
+    "date": "2023-02-15",
+    "artist": "Bring Me The Horizon",
+    "support": [
+      "A Day to Remember",
+      "Poorstacy",
+      "Static Dress"
+    ],
+    "venue": "Sala Tejo (Meo Arena)",
+    "city": "Lisbon, Portugal",
+    "upcoming": false
+  },
+  {
+    "name": "20 anos de merda e ouro",
+    "festival": false,
+    "favourite": false,
+    "date": "2023-02-11",
+    "artist": "Linda Martini",
+    "support": [],
+    "venue": "Hard Club",
+    "city": "Porto, Portugal",
+    "upcoming": false
+  },
+  {
+    "name": "Past Lives Tour",
+    "festival": false,
+    "favourite": false,
+    "date": "2023-02-01",
+    "artist": "L.S. Dunes",
+    "support": [
+      "Kayleigh Goldsworthy"
+    ],
+    "venue": "Melkweg",
+    "city": "Amsterdam, Netherlands",
+    "upcoming": false
+  },
+  {
+    "name": "Anywhere But Here Tour",
+    "festival": false,
+    "favourite": false,
+    "date": "2023-01-31",
+    "artist": "PVRIS",
+    "support": [
+      "Charlotte Sands"
+    ],
+    "venue": "013 Poppodium",
+    "city": "Tilburg, Netherlands",
+    "upcoming": false
+  },
+  {
+    "name": "VOA / Evil Live",
+    "festival": true,
+    "favourite": false,
+    "date": "2022-07-03",
+    "artist": "Bring Me The Horizon",
+    "support": [],
+    "venue": "VOA / Evil Live",
+    "city": "Lisbon, Portugal",
+    "upcoming": false
+  },
+  {
+    "name": "VOA / Evil Live",
+    "festival": true,
+    "favourite": false,
+    "date": "2022-07-02",
+    "artist": "Rise Against",
+    "support": [
+      "Sabaton"
+    ],
+    "venue": "VOA / Evil Live",
+    "city": "Lisbon, Portugal",
+    "upcoming": false
+  },
+  {
+    "name": "SWARM / Return Tour",
+    "festival": false,
+    "favourite": false,
+    "date": "2022-06-12",
+    "artist": "My Chemical Romance",
+    "support": [
+      "Creeper"
+    ],
+    "venue": "Velodrom",
+    "city": "Berlin, Germany",
+    "upcoming": false
+  },
+  {
+    "name": "Future Nostalgia Tour",
+    "festival": false,
+    "favourite": false,
+    "date": "2022-06-06",
+    "artist": "Dua Lipa",
+    "support": [
+      "Griff"
+    ],
+    "venue": "Meo Arena",
+    "city": "Lisbon, Portugal",
+    "upcoming": false
+  },
+  {
+    "name": "All the colours of you tour",
+    "festival": false,
+    "favourite": false,
+    "date": "2022-04-21",
+    "artist": "James",
+    "support": [],
+    "venue": "Super Bock Arena",
+    "city": "Porto, Portugal",
+    "upcoming": false
+  },
+  {
+    "name": "",
+    "festival": false,
+    "favourite": false,
+    "date": "2021-07-09",
+    "artist": "Salvador Sobral",
+    "support": [],
+    "venue": "Teatro Sá Bandeira",
+    "city": "Porto, Portugal",
+    "upcoming": false
+  },
+  {
+    "name": "The Bandito Tour",
+    "festival": false,
+    "favourite": false,
+    "date": "2019-03-17",
+    "artist": "Twenty One Pilots",
+    "support": [
+      "The Regrettes"
+    ],
+    "venue": "Meo Arena",
+    "city": "Lisbon, Portugal",
+    "upcoming": false
+  },
+  {
+    "name": "The Monolith Tour",
+    "festival": false,
+    "favourite": false,
+    "date": "2018-09-11",
+    "artist": "30 Seconds to Mars",
+    "support": [],
+    "venue": "Altice Forum Braga",
+    "city": "Braga, Portugal",
+    "upcoming": false
+  },
+  {
+    "name": "NOS Alive",
+    "festival": true,
+    "favourite": false,
+    "date": "2018-07-13",
+    "artist": "Kaleo, Two Door Cinema Club, Portugal. The Man",
+    "support": [],
+    "venue": "NOS Alive",
+    "city": "Lisbon, Portugal",
+    "upcoming": false
+  },
+  {
+    "name": "Primavera Sound Porto",
+    "festival": true,
+    "favourite": false,
+    "date": "2018-06-07",
+    "artist": "Father John Misty, Lorde",
+    "support": [
+      "Tyler, the Creator"
+    ],
+    "venue": "Primavera Sound Porto",
+    "city": "Porto, Portugal",
+    "upcoming": false
+  },
+  {
+    "name": "Selective Hearing Tour",
+    "festival": false,
+    "favourite": false,
+    "date": "2017-10-21",
+    "artist": "Our Last Night",
+    "support": [
+      "Bless the Fall",
+      "We Bless This Mess"
+    ],
+    "venue": "Hard Club",
+    "city": "Porto, Portugal",
+    "upcoming": false
+  },
+  {
+    "name": "Night People Tour",
+    "festival": false,
+    "favourite": false,
+    "date": "2017-03-08",
+    "artist": "You Me At Six",
+    "support": [
+      "Zanibar Aliens"
+    ],
+    "venue": "Paradise Garage",
+    "city": "Lisbon, Portugal",
+    "upcoming": false
+  },
+  {
+    "name": "",
+    "festival": false,
+    "favourite": false,
+    "date": "2017-03-03",
+    "artist": "Linda Martini",
+    "support": [],
+    "venue": "Hard Club",
+    "city": "Porto, Portugal",
+    "upcoming": false
+  },
+  {
+    "name": "",
+    "festival": false,
+    "favourite": false,
+    "date": "2017-02-06",
+    "artist": "Cage the Elephant",
+    "support": [],
+    "venue": "Coliseu do Porto",
+    "city": "Porto, Portugal",
+    "upcoming": false
+  },
+  {
+    "name": "Meo Marés Vivas",
+    "festival": true,
+    "favourite": false,
+    "date": "2016-07-16",
+    "artist": "James, Tom Odell",
+    "support": [],
+    "venue": "MEO Marés Vivas",
+    "city": "Porto, Portugal",
+    "upcoming": false
+  },
+  {
+    "name": "Meo Marés Vivas",
+    "festival": true,
+    "favourite": false,
+    "date": "2016-07-15",
+    "artist": "Kodaline, James Bay",
+    "support": [],
+    "venue": "MEO Marés Vivas",
+    "city": "Porto, Portugal",
+    "upcoming": false
+  },
+  {
+    "name": "NOS Alive",
+    "festival": true,
+    "favourite": false,
+    "date": "2016-07-08",
+    "artist": "Radiohead, Two Door Cinema Club, Tame Impala, Foals",
+    "support": [],
+    "venue": "NOS Alive",
+    "city": "Lisbon, Portugal",
+    "upcoming": false
+  },
+  {
+    "name": "Meo Marés Vivas",
+    "festival": true,
+    "favourite": false,
+    "date": "2015-07-18",
+    "artist": "The Script",
+    "support": [
+      "Jamie Cullum"
+    ],
+    "venue": "MEO Marés Vivas",
+    "city": "Porto, Portugal",
+    "upcoming": false
+  },
+  {
+    "name": "Younger Dreams Tour",
+    "festival": false,
+    "favourite": false,
+    "date": "2015-05-08",
+    "artist": "Our Last Night",
+    "support": [
+      "Palisades"
+    ],
+    "venue": "Hard Club",
+    "city": "Porto, Portugal",
+    "upcoming": false
+  },
+  {
+    "name": "Hesitant Alien Tour",
+    "festival": false,
+    "favourite": false,
+    "date": "2015-01-14",
+    "artist": "Gerard Way",
+    "support": [],
+    "venue": "Armazém F",
+    "city": "Lisbon, Portugal",
+    "upcoming": false
+  },
+  {
+    "name": "NOS Alive",
+    "festival": true,
+    "favourite": false,
+    "date": "2014-07-10",
+    "artist": "Arctic Monkeys, Imagine Dragons",
+    "support": [
+      "The Lumineers",
+      "Interpol",
+      "Ben Howard"
+    ],
+    "venue": "NOS Alive",
+    "city": "Lisbon, Portugal",
+    "upcoming": false
+  },
+  {
+    "name": "Meo Marés Vivas",
+    "festival": true,
+    "favourite": false,
+    "date": "2013-07-20",
+    "artist": "30 Seconds to Mars",
+    "support": [],
+    "venue": "MEO Marés Vivas",
+    "city": "Porto, Portugal",
+    "upcoming": false
+  },
+  {
+    "name": "The 2nd Law Tour",
+    "festival": false,
+    "favourite": false,
+    "date": "2013-06-10",
+    "artist": "Muse",
+    "support": [
+      "We Are The Ocean"
+    ],
+    "venue": "Estádio do Dragão",
+    "city": "Porto, Portugal",
+    "upcoming": false
+  },
+  {
+    "name": "Mylo Xylotour",
+    "festival": false,
+    "favourite": false,
+    "date": "2012-05-18",
+    "artist": "Coldplay",
+    "support": [
+      "Rita Ora",
+      "Marina"
+    ],
+    "venue": "Estádio do Dragão",
+    "city": "Porto, Portugal",
+    "upcoming": false
+  }
+]

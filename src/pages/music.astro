@@ -1,0 +1,27 @@
+---
+/**
+ * Music Page
+ * Spotify now playing, then a yearly recap from stats.fm snapshots
+ * with that year's favourites and concerts.
+ */
+
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import NowPlaying from '../components/NowPlaying.astro';
+import YearInMusic from '../components/YearInMusic.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout title="Music · sofia silva">
+  <Header />
+  <main class="music">
+    <h1 class="page-title animate-fade-in-up">Music</h1>
+    <p class="page-intro animate-fade-in-up animate-delay-1">
+      What's on repeat, year by year, and the shows I made it to.
+    </p>
+
+    <NowPlaying />
+    <YearInMusic />
+  </main>
+  <Footer />
+</Layout>

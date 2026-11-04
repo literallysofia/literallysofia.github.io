@@ -1,0 +1,38 @@
+---
+/**
+ * ExperienceRows Component
+ * Hairline rows of roles. On home it shows the short summary,
+ * on about it shows the one-line highlight. Only jobs that
+ * have the requested field are listed.
+ */
+
+import { getCollection } from 'astro:content';
+
+interface Props {
+  /** Which field fills the right-hand column */
+  field: 'summary' | 'highlight';
+}
+
+const { field } = Astro.props;
+
+const [experience] = await getCollection('experience');
+const jobs = experience.data.jobs.filter((job) => job[field]);
+
+/** "Mindera + Waitrose & Partners" → "Waitrose via Mindera" for a cleaner row */
+const shortCompany = (company = '') => {
+  const [agency, client] = company.split(/\s*\+\s*/);
+  return client ? `${client.replace(/ & Partners$/, '')} via ${agency}` : company;
+};
+---
+
+<div class="rows">
+  {jobs.map((job) => (
+    <div class="row">
+      <span>
+        {shortCompany(job.company)}
+        {field === 'highlight' && <span class="muted"> · {job.title}</span>}
+      </span>
+      <span>{job[field]}</span>
+    </div>
+  ))}
+</div>

@@ -1,0 +1,42 @@
+/* ================================================
+   FOOTER - SITE FOOTER
+   ================================================
+   Hairline-topped footer with text social links
+   on the left and copyright on the right.
+   ================================================ */
+
+footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--spacing-sm);
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 1.5rem var(--gutter);
+  border-top: 0.5px solid var(--color-border);
+  font-size: var(--text-xs);
+  color: var(--color-text-muted);
+}
+
+footer .social-media {
+  display: flex;
+  gap: var(--spacing-sm);
+}
+
+footer .social-media a {
+  color: var(--color-text-muted);
+  /* Taller tap area without moving the text */
+  padding: 0.5rem 0;
+  margin: -0.5rem 0;
+}
+
+footer .social-media a:hover {
+  color: var(--color-text);
+}
+
+@media (max-width: 768px) {
+  footer {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}

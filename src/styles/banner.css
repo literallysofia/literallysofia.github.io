@@ -1,0 +1,331 @@
+/* ================================================
+   BANNER - HOME HERO + HOME SECTIONS
+   ================================================
+   Full-screen hero (one viewport minus header) with
+   headline left and portrait right, plus the
+   off-screen photo strip below the fold.
+   ================================================ */
+
+.banner {
+  display: flex;
+  flex-direction: column;
+  min-height: calc(100svh - 4.5rem);
+}
+
+.banner-content {
+  flex: 1;
+  display: grid;
+  grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr);
+  gap: clamp(1.5rem, 4vw, 4rem);
+  align-items: center;
+  padding: var(--spacing-md) 0;
+}
+
+.banner-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+}
+
+.candle-dot {
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 50%;
+  background: var(--color-candle);
+  box-shadow: 0 0 0 4px color-mix(in srgb, var(--color-candle) 30%, transparent);
+  animation: candleFlicker 6s ease-in-out infinite;
+}
+
+/* Slow, slightly irregular glow — like a candle, not a loader */
+@keyframes candleFlicker {
+  0%, 100% {
+    opacity: 1;
+    box-shadow: 0 0 0 4px color-mix(in srgb, var(--color-candle) 30%, transparent),
+                0 0 8px 2px color-mix(in srgb, var(--color-candle) 35%, transparent);
+  }
+  18% {
+    opacity: 0.85;
+    box-shadow: 0 0 0 3px color-mix(in srgb, var(--color-candle) 22%, transparent),
+                0 0 6px 1px color-mix(in srgb, var(--color-candle) 25%, transparent);
+  }
+  24% {
+    opacity: 0.95;
+  }
+  50% {
+    opacity: 1;
+    box-shadow: 0 0 0 6px color-mix(in srgb, var(--color-candle) 18%, transparent),
+                0 0 14px 4px color-mix(in srgb, var(--color-candle) 40%, transparent);
+  }
+  72% {
+    opacity: 0.9;
+    box-shadow: 0 0 0 4px color-mix(in srgb, var(--color-candle) 26%, transparent),
+                0 0 9px 2px color-mix(in srgb, var(--color-candle) 30%, transparent);
+  }
+}
+
+.banner h1 {
+  font-size: var(--text-hero);
+  line-height: 1.02;
+  letter-spacing: -0.02em;
+  margin: 1rem 0 1.25rem;
+}
+
+.banner-description {
+  font-size: var(--text-lg);
+  color: var(--color-text-muted);
+  max-width: 42ch;
+  margin-bottom: 1.75rem;
+}
+
+.banner-portrait {
+  aspect-ratio: 4 / 5;
+  max-height: 70svh;
+  justify-self: end;
+  width: 100%;
+  overflow: hidden;
+  border-radius: var(--radius-sm);
+}
+
+.banner-portrait img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.banner-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 0 1.5rem;
+  font-size: var(--text-xs);
+}
+
+.banner-socials {
+  display: flex;
+  gap: var(--spacing-sm);
+}
+
+.banner-socials a {
+  color: var(--color-text-muted);
+  /* Taller tap area without moving the text */
+  padding: 0.5rem 0;
+  margin: -0.5rem 0;
+}
+
+/* ================================================
+   HOME - SELECTED WORK
+   ================================================
+   On desktop, selected work fills one screen and the
+   cards grow tall like App Store Today cards.
+   ================================================ */
+
+@media (min-width: 769px) and (orientation: landscape) {
+  .home-work {
+    min-height: calc(100svh - 4.5rem);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: var(--spacing-md) 0;
+  }
+
+  .home-work > .label {
+    margin-top: 0;
+  }
+
+  /* Tall 3:5 cards across the full column; on short windows only the
+     height is capped so all three still fit in one screen */
+  .home-work .card-grid {
+    container-type: inline-size;
+  }
+
+  .home-work .today-card {
+    aspect-ratio: auto;
+    height: min((100cqw - 2.5rem) / 3 * 5 / 3, 100svh - 12rem);
+  }
+
+  .home-work .card-subtitle {
+    font-size: var(--text-sm);
+  }
+}
+
+/* ================================================
+   HOME - OFF SCREEN PHOTO STRIP
+   ================================================ */
+
+.photo-strip {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: var(--spacing-xs);
+}
+
+.photo-strip figure {
+  position: relative;
+  margin: 0;
+  aspect-ratio: 1;
+  overflow: hidden;
+  border-radius: var(--radius-sm);
+  transition: opacity var(--duration-slow) var(--ease-out), filter var(--duration-slow) var(--ease-out);
+}
+
+.photo-strip img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 1.2s var(--ease-out);
+}
+
+/* Spotlight: the hovered photo slowly zooms, the others soften */
+.photo-strip:hover figure:not(:hover) {
+  opacity: 0.55;
+  filter: saturate(0.6);
+}
+
+.photo-strip figure:hover img {
+  transform: scale(1.04);
+}
+
+.photo-strip figcaption {
+  position: absolute;
+  left: 0.6rem;
+  bottom: 0.6rem;
+  padding: 0.3rem 0.8rem;
+  font-size: var(--text-xs);
+  color: var(--color-text);
+  background: var(--color-bg);
+  border-radius: var(--radius-pill);
+  opacity: 0;
+  transform: translateY(6px);
+  pointer-events: none;
+  transition: opacity var(--duration-normal) var(--ease-out), transform var(--duration-normal) var(--ease-out);
+}
+
+.photo-strip figure:hover figcaption {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.section-more {
+  display: inline-block;
+  font-size: var(--text-sm);
+  /* Taller tap area without moving the text (margins absorb the padding) */
+  padding: 0.25rem 0;
+  margin: calc(var(--spacing-sm) - 0.25rem) 0 -0.25rem;
+}
+
+/* ================================================
+   RESPONSIVE - TABLET PORTRAIT
+   ================================================
+   Tall screens (iPad held upright): the side-by-side
+   hero left a small portrait floating in empty space,
+   so the hero stacks like on phones and the portrait
+   fills the rest of the screen.
+   ================================================ */
+
+@media (min-width: 769px) and (max-width: 1100px) and (orientation: portrait) {
+  .banner {
+    height: calc(100svh - 4.5rem);
+    min-height: 40rem;
+  }
+
+  .banner-content {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 2rem;
+    min-height: 0;
+    padding: var(--spacing-md) 0 0;
+  }
+
+  .banner-portrait {
+    flex: 1;
+    min-height: 0;
+    aspect-ratio: auto;
+    max-height: none;
+  }
+
+  /* Tall Today cards, like the landscape grid, instead of squat 4:5 */
+  .home-work .today-card {
+    aspect-ratio: 3 / 5;
+  }
+}
+
+/* ================================================
+   RESPONSIVE - MOBILE
+   ================================================ */
+
+@media (max-width: 768px) {
+  /* The landing fits exactly one screen (minus the header): text keeps
+     its natural height and the portrait fills whatever space is left */
+  .banner {
+    height: calc(100svh - 4.5rem); /* the mobile header is 4.5rem tall */
+    min-height: 32rem;
+  }
+
+  .banner-content {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    min-height: 0;
+    padding: var(--spacing-sm) 0 0;
+  }
+
+  .banner h1 {
+    font-size: clamp(2.25rem, 9.5vw, 3rem);
+    margin: 0.75rem 0 1rem;
+  }
+
+  .banner-description {
+    font-size: var(--text-base);
+    margin-bottom: 1.25rem;
+  }
+
+  .banner-portrait {
+    flex: 1;
+    min-height: 0;
+    aspect-ratio: auto;
+    max-height: none;
+  }
+
+  .banner-bottom {
+    padding: 0.75rem 0 1rem;
+  }
+
+  .photo-strip {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  /* One even rhythm down the page: 3.5rem between sections,
+     0.875rem from a label to its content, 1rem between cards */
+  main.home {
+    padding-bottom: 3.5rem; /* last section → footer matches the gaps above */
+  }
+
+  main.home .label {
+    margin: 3.5rem 0 0.875rem;
+  }
+
+  main.home .card-grid {
+    gap: 1rem;
+  }
+
+  main.home .section-more {
+    margin-top: 1rem; /* 1.25rem to the text, after the tap padding */
+  }
+}
+
+/* Short phones (iPhone SE 1st gen, landscape-ish windows): not enough
+   height to fit everything, so the hero scrolls and the portrait keeps a
+   real size instead of squashing into a strip */
+@media (max-width: 768px) and (max-height: 620px) {
+  .banner {
+    height: auto;
+    min-height: calc(100svh - 4.5rem);
+  }
+
+  .banner-portrait {
+    flex: none;
+    aspect-ratio: 4 / 3;
+  }
+}

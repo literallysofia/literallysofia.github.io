@@ -1,0 +1,28 @@
+---
+/**
+ * About Page
+ * Photo and bio, likes, experience highlights, CV on request,
+ * education, languages, and photo gallery.
+ * Content loaded from Astro content collections.
+ */
+
+import { getCollection, render } from "astro:content";
+import Layout from "../layouts/Layout.astro";
+import Header from "../components/Header.astro";
+import AboutComponent from "../components/About.astro";
+import Footer from "../components/Footer.astro";
+
+const aboutCollection = await getCollection("about");
+const aboutData = aboutCollection[0];
+const { Content } = await render(aboutData);
+---
+
+<Layout title="About · sofia silva">
+  <Header />
+  <main>
+    <AboutComponent {...aboutData.data}>
+      <Content />
+    </AboutComponent>
+  </main>
+  <Footer />
+</Layout>

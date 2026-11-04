@@ -1,0 +1,41 @@
+---
+/**
+ * EmailButton Component
+ * "Email me" pill that builds the mailto only on click, so the
+ * address never appears as text or as a static mailto: in the HTML.
+ * The two halves are stored reversed in data attributes.
+ */
+
+import { siteConfig } from '../config';
+
+interface Props {
+  label?: string;
+}
+
+const { label = 'Email me' } = Astro.props;
+// Already stored reversed in config.ts
+const { user, domain } = siteConfig.email;
+---
+
+<button
+  type="button"
+  class="btn btn-outline email-button"
+  data-u={user}
+  data-d={domain}
+>
+  {label}
+</button>
+
+<script>
+  function initEmailButtons(): void {
+    document.querySelectorAll<HTMLButtonElement>('.email-button').forEach((button) => {
+      button.addEventListener('click', () => {
+        const reverse = (value = '') => value.split('').reverse().join('');
+        const address = `${reverse(button.dataset.u)}@${reverse(button.dataset.d)}`;
+        window.location.href = `mailto:${address}?subject=${encodeURIComponent('CV request')}`;
+      });
+    });
+  }
+
+  document.addEventListener('astro:page-load', initEmailButtons);
+</script>

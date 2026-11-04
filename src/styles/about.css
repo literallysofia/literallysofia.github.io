@@ -1,0 +1,210 @@
+/* ================================================
+   ABOUT PAGE
+   ================================================
+   Photo + bio grid with Likes / Currently, CV
+   actions, education and languages rows, and a
+   masonry gallery with hover captions.
+   ================================================ */
+
+.about-top {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr);
+  gap: clamp(1.5rem, 4vw, 4rem);
+  align-items: start;
+  padding-top: var(--spacing-md);
+}
+
+.about-photo {
+  margin: 0;
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+  border-radius: var(--radius-sm);
+}
+
+.about-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.about-text .page-title {
+  margin-top: 0;
+}
+
+.about-bio {
+  font-size: var(--text-lg);
+  max-width: 60ch;
+}
+
+.about-bio p {
+  margin-top: 1rem;
+}
+
+.about-bio em {
+  font-style: italic;
+}
+
+.about-bio strong {
+  font-weight: 500;
+  color: var(--color-text);
+}
+
+.about-likes {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--spacing-md);
+  font-size: var(--text-sm);
+}
+
+.about-likes .label {
+  margin-top: var(--spacing-md);
+}
+
+.about-likes li + li {
+  margin-top: 0.2rem;
+}
+
+/* ================================================
+   ABOUT - CV + ROWS
+   ================================================ */
+
+.about-cv {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--spacing-sm);
+  margin-top: var(--spacing-sm);
+  font-size: var(--text-sm);
+}
+
+.about-cv-actions {
+  display: flex;
+  gap: var(--spacing-xs);
+}
+
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--spacing-md);
+}
+
+.about-grid .link {
+  color: var(--color-text);
+}
+
+/* ================================================
+   ABOUT - GALLERY (masonry that reads across rows,
+   columns built in About.astro)
+   ================================================ */
+
+.about-gallery {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--spacing-xs);
+}
+
+.about-gallery.is-phone {
+  display: none;
+}
+
+.about-gallery-column {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: var(--spacing-xs);
+  min-width: 0;
+}
+
+.about-gallery figure {
+  position: relative;
+  margin: 0;
+  overflow: hidden;
+  border-radius: var(--radius-sm);
+}
+
+.about-gallery img {
+  display: block;
+  width: 100%;
+  height: auto;
+  transition: transform var(--duration-slow) var(--ease-out);
+}
+
+.about-gallery figcaption {
+  position: absolute;
+  left: 0.6rem;
+  bottom: 0.6rem;
+  padding: 0.2rem 0.6rem;
+  font-size: var(--text-xs);
+  color: var(--color-text);
+  background: var(--color-bg);
+  border-radius: var(--radius-pill);
+  opacity: 0;
+  transform: translateY(4px);
+  transition: var(--transition);
+}
+
+.about-gallery figure:hover img {
+  transform: scale(1.04);
+}
+
+.about-gallery figure:hover figcaption {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ================================================
+   RESPONSIVE - TABLET PORTRAIT
+   ================================================ */
+
+@media (min-width: 769px) and (max-width: 1100px) and (orientation: portrait) {
+  /* The photo stays beside the longer bio as you read */
+  .about-photo {
+    position: sticky;
+    top: 6rem;
+  }
+
+  /* Education / Languages rows need the full width to breathe */
+  .about-grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0;
+  }
+}
+
+/* ================================================
+   RESPONSIVE - MOBILE
+   ================================================ */
+
+@media (max-width: 768px) {
+  .about-top,
+  .about-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .about-grid {
+    gap: 0;
+  }
+
+  .about-gallery.is-desktop {
+    display: none;
+  }
+
+  /* The first photo goes full width, the rest fill two columns */
+  .about-gallery.is-phone {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .about-gallery.is-phone .about-gallery-column:first-child {
+    flex-basis: 100%;
+  }
+
+  .about-gallery.is-phone .about-gallery-column:first-child figure {
+    aspect-ratio: 4 / 3;
+  }
+
+  .about-gallery.is-phone .about-gallery-column:first-child img {
+    height: 100%;
+    object-fit: cover;
+  }
+}

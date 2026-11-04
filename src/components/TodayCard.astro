@@ -1,0 +1,126 @@
+---
+/**
+ * TodayCard Component
+ * App Store "Today"-style card used for selected work (home)
+ * and feature highlights (work page).
+ * - Eyebrow, Fraunces title with italic accent, optional subtitle
+ * - Phone screen that bleeds off the bottom edge
+ * - Optional app bar (icon, name, years, View pill)
+ * - Colours come from the app's own look (card prop)
+ */
+
+import { Image } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
+
+interface Card {
+  bg: string;
+  fg: string;
+  bar: string;
+  accent: string;
+  border?: boolean;
+}
+
+interface Props {
+  name: string;
+  years: string;
+  card: Card;
+  eyebrow: string;
+  title: string;
+  accent: string;
+  subtitle?: string;
+  media?: ImageMetadata;
+  video?: string;
+  poster?: string;
+  /** Type-only card: no screen, the title fills the card and this line sits at the bottom */
+  note?: string;
+  icon?: ImageMetadata;
+  /** Show the bottom app bar (home cards) */
+  withBar?: boolean;
+  barLabel?: string;
+  href?: string;
+}
+
+const {
+  name,
+  years,
+  card,
+  eyebrow,
+  title,
+  accent,
+  subtitle,
+  media,
+  video,
+  poster,
+  note,
+  icon,
+  withBar = false,
+  barLabel = 'View',
+  href,
+} = Astro.props;
+
+const Tag = href ? 'a' : 'article';
+const style = `--card-bg: ${card.bg}; --card-fg: ${card.fg}; --card-bar: ${card.bar}; --card-accent: ${card.accent};`;
+---
+
+<Tag
+  class:list={['today-card', { 'has-border': card.border, 'is-statement': note }]}
+  style={style}
+  href={href}
+>
+  <div class="card-head">
+    <span class="card-eyebrow">{eyebrow}</span>
+    <h3 class="card-title">{title} <em>{accent}</em></h3>
+    {subtitle && <p class="card-subtitle">{subtitle}</p>}
+  </div>
+
+  {note ? (
+    <p class="card-note">{note}</p>
+  ) : (
+  <div class="card-device">
+    <div class:list={['card-screen', { 'is-screenshot': media && !video }]}>
+      {video ? (
+        <video src={video} poster={poster} autoplay muted loop playsinline preload="metadata" aria-hidden="true" />
+      ) : media ? (
+        <Image src={media} alt={`${name}: ${title} ${accent}`} width={640} widths={[320, 640]} sizes="(max-width: 768px) 60vw, 240px" />
+      ) : (
+        <svg class="card-sketch" viewBox="0 0 60 90" aria-hidden="true">
+          <g fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round">
+            <path d="M3 4 L57 5 L56 14 L4 13 Z" />
+            <path d="M5 19 L55 18 L56 44 L4 45 Z" />
+            <path d="M6 21 L54 43 M54 20 L6 44" />
+            <path d="M4 51 L30 50 M4 56 L50 57 M4 61 L42 60" />
+            <path d="M5 68 L26 67 L27 86 L4 87 Z" />
+            <path d="M32 67 L56 68 L55 87 L33 86 Z" />
+          </g>
+        </svg>
+      )}
+    </div>
+  </div>
+  )}
+
+  {withBar && (
+    <div class="card-bar">
+      {icon ? (
+        <Image class="card-icon" src={icon} alt="" width={64} height={64} />
+      ) : (
+        <span class="card-icon card-icon-fallback" aria-hidden="true">{name.charAt(0)}</span>
+      )}
+      <span class="card-app">
+        <span class="card-app-name">{name}</span>
+        <span class="card-app-years">{years}</span>
+      </span>
+      <span class="card-pill">{barLabel}</span>
+    </div>
+  )}
+</Tag>
+
+<script>
+  /** Reduced motion: card videos rest on their poster frame instead of looping */
+  document.addEventListener('astro:page-load', () => {
+    if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    document.querySelectorAll<HTMLVideoElement>('.today-card video').forEach((video) => {
+      video.autoplay = false;
+      video.pause();
+    });
+  });
+</script>

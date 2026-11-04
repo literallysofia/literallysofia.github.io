@@ -1,0 +1,98 @@
+{
+  "year": 2021,
+  "fetchedAt": "2026-11-03T20:06:07.540Z",
+  "minutes": 11801,
+  "topGenre": "pop",
+  "artists": 423,
+  "topAlbums": [
+    {
+      "name": "FLOWERS for VASES / descansos",
+      "artist": "Hayley Williams",
+      "image": "https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/1e/df/6b/1edf6b9e-5785-2180-40f6-78bebd8ff27a/075679792235.jpg/768x768bb.jpg",
+      "url": "https://open.spotify.com/album/3JSvIZCtxK4fUywBK41129"
+    },
+    {
+      "name": "Future Nostalgia (The Moonlight Edition)",
+      "artist": "Dua Lipa",
+      "image": "https://is1-ssl.mzstatic.com/image/thumb/Music126/v4/25/cd/d4/25cdd423-4a23-1913-04ed-921a58cccb7d/190295000639.jpg/768x768bb.jpg",
+      "url": "https://open.spotify.com/album/0E3wRkztEF32ZdYICXBuBf"
+    },
+    {
+      "name": "bpm",
+      "artist": "Salvador Sobral",
+      "image": "https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/de/e7/1b/dee71b83-1c9a-edf0-0ea4-0631240d160e/190296734229.jpg/768x768bb.jpg",
+      "url": "https://open.spotify.com/album/2hkR2iRFbnUUp8XRu3KXzh"
+    },
+    {
+      "name": "Brol La Suite",
+      "artist": "Angèle",
+      "image": "https://is1-ssl.mzstatic.com/image/thumb/Music123/v4/d8/ac/ff/d8acff60-ced5-db4f-c8aa-1c6ca651856d/19UMGIM90938.rgb.jpg/768x768bb.jpg",
+      "url": "https://open.spotify.com/album/2UrPmvaX5X76LIzE6Cfiqu"
+    },
+    {
+      "name": "Future Nostalgia",
+      "artist": "",
+      "image": "https://is1-ssl.mzstatic.com/image/thumb/Music116/v4/6c/11/d6/6c11d681-aa3a-d59e-4c2e-f77e181026ab/190295092665.jpg/768x768bb.jpg",
+      "url": "https://open.spotify.com/album/0nRVAnU410D5nOyVWCadJh"
+    }
+  ],
+  "topArtists": [
+    {
+      "name": "Dua Lipa",
+      "image": "https://i.scdn.co/image/ab676161000051740c68f6c95232e716f0abee8d",
+      "url": "https://open.spotify.com/artist/6M2wZ9GZgrQXHCFfjv46we"
+    },
+    {
+      "name": "Angèle",
+      "image": "https://i.scdn.co/image/ab67616100005174a5396ab4c06009c05685d54d",
+      "url": "https://open.spotify.com/artist/3QVolfxko2UyCOtexhVTli"
+    },
+    {
+      "name": "Hayley Williams",
+      "image": "https://i.scdn.co/image/ab67616100005174195bd87b60599b7a3f19abf1",
+      "url": "https://open.spotify.com/artist/6Rx1JKzBrSzoKQtmbVmBnM"
+    },
+    {
+      "name": "Salvador Sobral",
+      "image": "https://i.scdn.co/image/ab67616100005174be21730efa6c4e20648cf0a8",
+      "url": "https://open.spotify.com/artist/0GfYO21pue5u0sVEYk9HZO"
+    },
+    {
+      "name": "Taylor Swift",
+      "image": "https://i.scdn.co/image/ab6761610000517412184bdd29403de54cb9d9c7",
+      "url": "https://open.spotify.com/artist/06HL4z0CvFAxyc27GXpf02"
+    }
+  ],
+  "topTracks": [
+    {
+      "name": "Asystole",
+      "artist": "Hayley Williams",
+      "image": "https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/1e/df/6b/1edf6b9e-5785-2180-40f6-78bebd8ff27a/075679792235.jpg/768x768bb.jpg",
+      "url": "https://open.spotify.com/track/2HYjE9RxWZlH231mI2oLlR"
+    },
+    {
+      "name": "That Kind Of Woman",
+      "artist": "Dua Lipa",
+      "image": "https://is1-ssl.mzstatic.com/image/thumb/Music116/v4/96/93/54/969354a7-8985-7833-7160-93e38110b745/190295042998.jpg/768x768bb.jpg",
+      "url": "https://open.spotify.com/track/4FuZofNMHdtsEdrsqwF3xR"
+    },
+    {
+      "name": "Future Nostalgia",
+      "artist": "Dua Lipa",
+      "image": "https://is1-ssl.mzstatic.com/image/thumb/Music116/v4/5e/bb/48/5ebb4890-aebc-59a0-5a9b-1614ba424a3f/190295237554.jpg/768x768bb.jpg",
+      "url": "https://open.spotify.com/track/6zrJLhslleCHby0wbUnvVy"
+    },
+    {
+      "name": "se de mim precisarem",
+      "artist": "Salvador Sobral",
+      "image": "https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/de/e7/1b/dee71b83-1c9a-edf0-0ea4-0631240d160e/190296734229.jpg/768x768bb.jpg",
+      "url": "https://open.spotify.com/track/03nmWR7516X5YPGkW2PjRN"
+    },
+    {
+      "name": "Tout oublier",
+      "artist": "Angèle, Roméo Elvis",
+      "image": "https://is1-ssl.mzstatic.com/image/thumb/Music113/v4/1c/05/ea/1c05ea07-24e1-ef0c-0250-cf066c28df97/cover.jpg/600x600bb.jpg",
+      "url": null
+    }
+  ]
+}

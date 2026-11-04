@@ -1,0 +1,334 @@
+---
+/**
+ * YearInMusic Component
+ * Yearly recap built from the stats.fm snapshots in
+ * src/data/music/<year>.json (written by scripts/fetch-statsfm.mjs),
+ * plus that year's concerts (src/data/concerts.json, synced from Notion).
+ *
+ * One set of containers is rendered for the latest year. Switching years
+ * keeps every container in place and only swaps its contents with a soft
+ * crossfade (the data for all years is embedded as JSON).
+ */
+
+import concertsData from '../data/concerts.json';
+
+interface Artist {
+  name: string;
+  image: string | null;
+  url: string | null;
+}
+
+interface Track extends Artist {
+  artist: string;
+}
+
+interface YearData {
+  year: number;
+  minutes: number;
+  topGenre: string;
+  artists: number;
+  topAlbums: Track[];
+  topArtists: Artist[];
+  topTracks: Track[];
+}
+
+interface Concert {
+  name: string;
+  festival: boolean;
+  favourite?: boolean;
+  upcoming?: boolean;
+  artist: string;
+  support: string[];
+  date: string;
+  venue: string;
+  city: string;
+}
+
+interface Item {
+  name: string;
+  sub: string;
+  image: string | null;
+  url: string | null;
+}
+
+const files = import.meta.glob<YearData>('../data/music/*.json', { eager: true, import: 'default' });
+const format = (n: number) => n.toLocaleString('en-GB');
+const currentYear = new Date().getFullYear();
+const concerts = (concertsData as Concert[]).slice().sort((a, b) => b.date.localeCompare(a.date));
+
+/** "2025-03-12" → "12 Mar" */
+const shortDate = (iso: string) =>
+  new Date(`${iso.slice(0, 10)}T12:00:00Z`).toLocaleDateString('en-GB', { day: 'numeric', month: 'short' });
+
+const toItem = (x: Artist | Track): Item => ({ name: x.name, sub: 'artist' in x ? x.artist : '', image: x.image, url: x.url });
+
+/** Everything one year needs, already formatted for display */
+const toView = (data: YearData) => {
+  const label = (kind: string) =>
+    data.year === currentYear ? `Current favourite ${kind}` : `${kind[0].toUpperCase()}${kind.slice(1)} of ${data.year}`;
+  const columns = [
+    { kind: 'album', items: (data.topAlbums ?? []).map(toItem) },
+    { kind: 'artist', items: data.topArtists.map(toItem) },
+    { kind: 'track', items: data.topTracks.map(toItem) },
+  ].map(({ kind, items: [first, ...rest] }) => ({ label: label(kind), first, rest }));
+
+  return {
+    year: data.year,
+    minutes: format(data.minutes),
+    topGenre: data.topGenre,
+    artists: format(data.artists),
+    columns,
+    concerts: concerts
+      .filter((c) => c.date.startsWith(String(data.year)))
+      .map((c) => ({
+        date: shortDate(c.date),
+        title: c.festival ? c.name : c.artist,
+        // Festivals without headliners yet would just repeat their name
+        sub: c.festival ? (c.artist === c.name ? '' : c.artist) : c.name,
+        place: [c.venue, c.city].filter(Boolean).join(' · '),
+        favourite: Boolean(c.favourite),
+        upcoming: Boolean(c.upcoming),
+      })),
+  };
+};
+
+const views = Object.values(files)
+  .sort((a, b) => b.year - a.year)
+  .map(toView);
+const view = views[0];
+const pad = (i: number) => String(i + 1).padStart(2, '0');
+---
+
+{view && (
+  <section class="year-in-music" aria-labelledby="year-heading">
+    <div class="yim-head">
+      <h2 id="year-heading" class="yim-title">Year in music</h2>
+      <div class="yim-years" role="tablist" aria-label="Year">
+        {views.map(({ year }, i) => (
+          <button role="tab" class="yim-year" aria-selected={i === 0 ? 'true' : 'false'} aria-controls="yim-panel" data-year={year}>
+            {year}
+          </button>
+        ))}
+      </div>
+    </div>
+
+    <div id="yim-panel" class="yim-panel" role="tabpanel" aria-live="polite">
+      <div class="yim-stats">
+        <div class="yim-stat yim-stat-ink">
+          <span>Minutes listened</span>
+          <strong data-fade data-field="minutes">{view.minutes}</strong>
+        </div>
+        <div class="yim-stat yim-stat-pink">
+          <span>Top genre</span>
+          <strong data-fade data-field="topGenre">{view.topGenre}</strong>
+        </div>
+        <div class="yim-stat yim-stat-blue">
+          <span>Artists listened to</span>
+          <strong data-fade data-field="artists">{view.artists}</strong>
+        </div>
+      </div>
+
+      <div class="yim-favs">
+        {view.columns.map(({ label, first, rest }, c) => (
+          <div class="yim-column" data-column={c}>
+            <a class="yim-fav" href={first.url ?? undefined} target="_blank" rel="noopener noreferrer" data-link>
+              <span class="yim-fav-art">
+                <img data-fade data-art src={first.image ?? ''} alt="" loading="lazy" decoding="async" hidden={!first.image} />
+              </span>
+              <span class="yim-fav-text" data-fade>
+                <span class="yim-fav-label" data-label>{label}</span>
+                <span class="yim-fav-name" data-name>{first.name}</span>
+                <span class="yim-fav-sub muted" data-sub>{first.sub}</span>
+              </span>
+            </a>
+
+            <ol class="rows yim-rest" data-fade data-rest>
+              {rest.map((item, j) => (
+                <li class="row yim-item">
+                  <a href={item.url ?? undefined} target="_blank" rel="noopener noreferrer">
+                    <span class="yim-cover" style={item.image ? `background-image:url(${item.image})` : ''} />
+                    <span class="muted">{pad(j + 1)}</span>
+                    <span class="yim-item-text">
+                      {item.name}
+                      {item.sub && <span class="muted"> · {item.sub}</span>}
+                    </span>
+                  </a>
+                </li>
+              ))}
+            </ol>
+          </div>
+        ))}
+      </div>
+
+      <div class="yim-concerts" data-fade data-concerts hidden={view.concerts.length === 0}>
+        <h3 class="label">
+          Concerts in <span data-field="year">{view.year}</span>{' '}
+          <span class="muted">· <span data-field="concertCount">{view.concerts.length}</span></span>
+        </h3>
+        <ol class="rows" data-concert-list>
+          {view.concerts.map((concert) => (
+            <li class="row yim-concert">
+              <span>
+                <span class="yim-concert-date muted">{concert.date}</span>
+                <span class="yim-concert-who">
+                  <span>
+                    {concert.favourite && <span class="yim-concert-star" role="img" aria-label="Favourite">★</span>}
+                    {concert.title}
+                    {concert.upcoming && <span class="yim-concert-soon">soon</span>}
+                  </span>
+                  {concert.sub && <span class="muted">{concert.sub}</span>}
+                </span>
+              </span>
+              <span>{concert.place}</span>
+            </li>
+          ))}
+        </ol>
+      </div>
+    </div>
+
+    {/* Row markup for the client-side swap, kept identical to the rows above */}
+    <template id="yim-item-template">
+      <li class="row yim-item">
+        <a target="_blank" rel="noopener noreferrer">
+          <span class="yim-cover"></span>
+          <span class="muted" data-num></span>
+          <span class="yim-item-text"><span data-name></span><span class="muted" data-sub></span></span>
+        </a>
+      </li>
+    </template>
+    <template id="yim-concert-template">
+      <li class="row yim-concert">
+        <span>
+          <span class="yim-concert-date muted" data-date></span>
+          <span class="yim-concert-who">
+            <span>
+              <span class="yim-concert-star" role="img" aria-label="Favourite" data-star>★</span>
+              <span data-title></span>
+              <span class="yim-concert-soon" data-soon>soon</span>
+            </span>
+            <span class="muted" data-sub></span>
+          </span>
+        </span>
+        <span data-place></span>
+      </li>
+    </template>
+
+    <script is:inline type="application/json" id="yim-data" set:html={JSON.stringify(views)} />
+  </section>
+)}
+
+<script>
+  interface Item {
+    name: string;
+    sub: string;
+    image: string | null;
+    url: string | null;
+  }
+
+  interface View {
+    year: number;
+    minutes: string;
+    topGenre: string;
+    artists: string;
+    columns: { label: string; first: Item; rest: Item[] }[];
+    concerts: { date: string; title: string; sub: string; place: string; favourite: boolean; upcoming: boolean }[];
+  }
+
+  const FADE_MS = 280;
+  const wait = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
+  const reducedMotion = () => window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /** Resolve once an image is ready (or failed), so covers never pop in */
+  const preload = (src: string | null) =>
+    new Promise<void>((resolve) => {
+      if (!src) return resolve();
+      const img = new Image();
+      img.onload = img.onerror = () => resolve();
+      img.src = src;
+    });
+
+  function setLink(el: HTMLAnchorElement, url: string | null): void {
+    if (url) el.href = url;
+    else el.removeAttribute('href');
+  }
+
+  function render(panel: HTMLElement, view: View): void {
+    const field = (name: string) => panel.querySelector<HTMLElement>(`[data-field="${name}"]`);
+    field('minutes')!.textContent = view.minutes;
+    field('topGenre')!.textContent = view.topGenre;
+    field('artists')!.textContent = view.artists;
+
+    const itemTemplate = document.getElementById('yim-item-template') as HTMLTemplateElement;
+    view.columns.forEach((column, c) => {
+      const el = panel.querySelector<HTMLElement>(`[data-column="${c}"]`);
+      if (!el) return;
+      setLink(el.querySelector<HTMLAnchorElement>('[data-link]')!, column.first.url);
+      const art = el.querySelector<HTMLImageElement>('[data-art]')!;
+      art.hidden = !column.first.image;
+      if (column.first.image) art.src = column.first.image;
+      el.querySelector('[data-label]')!.textContent = column.label;
+      el.querySelector('[data-name]')!.textContent = column.first.name;
+      el.querySelector('[data-sub]')!.textContent = column.first.sub;
+
+      const rows = column.rest.map((item, j) => {
+        const row = itemTemplate.content.firstElementChild!.cloneNode(true) as HTMLElement;
+        setLink(row.querySelector('a')!, item.url);
+        row.querySelector<HTMLElement>('.yim-cover')!.style.backgroundImage = item.image ? `url(${item.image})` : '';
+        row.querySelector('[data-num]')!.textContent = String(j + 2).padStart(2, '0');
+        row.querySelector('[data-name]')!.textContent = item.name;
+        row.querySelector('[data-sub]')!.textContent = item.sub ? ` · ${item.sub}` : '';
+        return row;
+      });
+      el.querySelector('[data-rest]')!.replaceChildren(...rows);
+    });
+
+    const concertTemplate = document.getElementById('yim-concert-template') as HTMLTemplateElement;
+    const block = panel.querySelector<HTMLElement>('[data-concerts]')!;
+    block.hidden = view.concerts.length === 0;
+    field('year')!.textContent = String(view.year);
+    field('concertCount')!.textContent = String(view.concerts.length);
+    const rows = view.concerts.map((concert) => {
+      const row = concertTemplate.content.firstElementChild!.cloneNode(true) as HTMLElement;
+      row.querySelector('[data-date]')!.textContent = concert.date;
+      row.querySelector('[data-title]')!.textContent = concert.title;
+      row.querySelector('[data-place]')!.textContent = concert.place;
+      const sub = row.querySelector<HTMLElement>('[data-sub]')!;
+      if (concert.sub) sub.textContent = concert.sub;
+      else sub.remove();
+      if (!concert.favourite) row.querySelector('[data-star]')!.remove();
+      if (!concert.upcoming) row.querySelector('[data-soon]')!.remove();
+      return row;
+    });
+    block.querySelector('[data-concert-list]')!.replaceChildren(...rows);
+  }
+
+  function initYearInMusic(): void {
+    const panel = document.getElementById('yim-panel');
+    const data = document.getElementById('yim-data');
+    if (!panel || !data) return;
+    const views: View[] = JSON.parse(data.textContent ?? '[]');
+    const tabs = [...document.querySelectorAll<HTMLButtonElement>('.yim-year')];
+    let request = 0;
+
+    tabs.forEach((tab) => {
+      tab.addEventListener('click', async () => {
+        if (tab.getAttribute('aria-selected') === 'true') return;
+        const view = views.find((v) => String(v.year) === tab.dataset.year);
+        if (!view) return;
+        tabs.forEach((other) => other.setAttribute('aria-selected', String(other === tab)));
+
+        const id = ++request;
+        if (reducedMotion()) return render(panel, view);
+
+        // Fade contents out while the new covers load, swap, fade back in
+        panel.classList.add('is-updating');
+        await Promise.all([wait(FADE_MS), ...view.columns.map((c) => preload(c.first.image))]);
+        if (id !== request) return; // a newer click took over
+        render(panel, view);
+        requestAnimationFrame(() => panel.classList.remove('is-updating'));
+      });
+    });
+  }
+
+  document.addEventListener('astro:page-load', initYearInMusic);
+</script>

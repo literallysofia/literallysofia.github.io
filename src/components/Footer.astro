@@ -1,0 +1,28 @@
+---
+/**
+ * Footer Component
+ * Site-wide footer with social links and copyright.
+ * Socials only — no email address is rendered here.
+ */
+
+import { siteConfig } from '../config';
+---
+
+<footer>
+  <ul class="social-media" role="list">
+    {siteConfig.socialMedia.map((social) => (
+      <li>
+        <a
+          class="link"
+          href={social.url}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          {social.name}
+        </a>
+      </li>
+    ))}
+  </ul>
+
+  <p>© {new Date().getFullYear()} Sofia Silva</p>
+</footer>

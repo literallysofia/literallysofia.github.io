@@ -1,0 +1,256 @@
+---
+/**
+ * Header Component
+ * Site-wide header with responsive navigation
+ * Features:
+ * - Desktop horizontal navigation
+ * - Mobile full-screen Liquid Glass menu that grows from the + button
+ * - Theme toggle via ThemeToggle component
+ * - Conditional rendering for 404 pages
+ */
+
+import { siteConfig } from "../config";
+import ThemeToggle from "./ThemeToggle.astro";
+import "../styles/header.css";
+
+interface Props {
+  isNotFound?: boolean;
+  /** Slide the header away while scrolling down (work page) */
+  autoHide?: boolean;
+}
+
+const { isNotFound = false, autoHide = false } = Astro.props;
+
+// Highlight the nav link for the current section
+const currentPath = Astro.url.pathname.replace(/\/$/, "");
+const isCurrent = (url: string) => currentPath === url;
+---
+
+<header data-autohide={autoHide ? "" : undefined}>
+  {/* Brand/Logo */}
+  <a href="/" class="navbar-brand" aria-label="Home"> sofia silva </a>
+
+  {/* Main Navigation - Hidden on 404 pages */}
+  {!isNotFound && (
+    <>
+      {/* Desktop Navigation */}
+      <div class="desktop-nav">
+        <nav aria-label="Primary navigation">
+          {siteConfig.navLinks.map((link) => (
+            <div class="nav-item">
+              <a href={link.url} aria-current={isCurrent(link.url) ? "page" : undefined}>{link.name}</a>
+            </div>
+          ))}
+        </nav>
+      </div>
+
+      {/* Desktop Theme Toggle */}
+      <div class="desktop-toggle">
+        <ThemeToggle />
+      </div>
+
+      {/* Mobile Menu Toggle Button */}
+      <button id="burger" class="mobile-burger" aria-label="Toggle menu" aria-expanded="false">
+        <div class="burger-lines">
+          <span />
+          <span />
+        </div>
+      </button>
+
+      {/* Mobile menu: full-screen Liquid Glass panel that grows from the + button */}
+      <div id="mobile-menu" class="menu" inert>
+        <nav class="menu-rows" aria-label="Mobile navigation">
+          {siteConfig.navLinks.map((link) => (
+            <a class="menu-row" href={link.url} aria-current={isCurrent(link.url) ? "page" : undefined}>
+              <span>{link.name}</span>
+              <span class="menu-row-meta" aria-hidden="true">{isCurrent(link.url) ? "you're here" : "→"}</span>
+            </a>
+          ))}
+        </nav>
+
+        <div class="menu-foot">
+          <div class="menu-theme" role="group" aria-label="Theme">
+            <button type="button" data-theme-set="light">☀ Light</button>
+            <button type="button" data-theme-set="dark">☾ Dark</button>
+          </div>
+          <ul class="menu-socials" role="list">
+            {siteConfig.socialMedia.map((social) => (
+              <li><a href={social.url} target="_blank" rel="noopener noreferrer">{social.name}</a></li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </>
+  )}
+</header>
+
+<script>
+  /**
+   * ================================================
+   * MOBILE MENU
+   * ================================================
+   * Full-screen glass panel that springs out of the + button (the + turns
+   * into an ✕). Closes on ✕, Escape, or picking a link. The panel is
+   * `inert` while closed, so it's out of the tab order.
+   */
+  function initMobileMenu(): void {
+    const burger = document.getElementById("burger");
+    const menu = document.getElementById("mobile-menu");
+    if (!burger || !menu) return;
+
+    function setOpen(open: boolean): void {
+      burger!.classList.toggle("open", open);
+      burger!.setAttribute("aria-expanded", String(open));
+      menu!.classList.toggle("open", open);
+      menu!.inert = !open;
+      // No page scrolling behind the open menu
+      document.documentElement.classList.toggle("menu-open", open);
+    }
+
+    burger.addEventListener("click", () => setOpen(!burger.classList.contains("open")));
+    // Picking a link leaves the menu open: the page crossfade dissolves it into
+    // the next page (closing it here got snapshotted mid-shrink)
+    menu.querySelectorAll(".menu-row").forEach((link) =>
+      link.addEventListener("click", () => link.getAttribute("aria-current") === "page" && setOpen(false))
+    );
+    document.addEventListener("keydown", (e) => e.key === "Escape" && setOpen(false));
+
+    // Light / Dark segmented switch: reuses the header's theme toggle logic
+    const segments = [...menu.querySelectorAll<HTMLButtonElement>("[data-theme-set]")];
+    const syncSegments = () => {
+      const dark = document.documentElement.classList.contains("dark-mode");
+      segments.forEach((s) => s.setAttribute("aria-pressed", String((s.dataset.themeSet === "dark") === dark)));
+    };
+    segments.forEach((segment) =>
+      segment.addEventListener("click", () => {
+        const wantDark = segment.dataset.themeSet === "dark";
+        const isDark = document.documentElement.classList.contains("dark-mode");
+        if (wantDark !== isDark) document.querySelector<HTMLButtonElement>(".theme-toggle")?.click();
+      })
+    );
+    document.addEventListener("themechange", syncSegments);
+    syncSegments();
+
+    // Leaving the page with the menu open shouldn't keep the scroll lock
+    document.addEventListener("astro:before-swap", () => document.documentElement.classList.remove("menu-open"), { once: true });
+  }
+
+  /**
+   * ================================================
+   * SCROLL BORDER EFFECT
+   * ================================================
+   * Shows a bottom border on the header when user scrolls down
+   * Only shows if the page is scrollable
+   * Fades in/out smoothly based on scroll position
+   */
+  function initScrollBorder(): void {
+    const header = document.querySelector("header");
+    let ticking = false;
+
+    /**
+     * Check if the page content is scrollable
+     */
+    function isPageScrollable(): boolean {
+      return document.documentElement.scrollHeight > window.innerHeight;
+    }
+
+    /**
+     * Handle scroll events with throttling for performance
+     */
+    function handleScroll(): void {
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          const scrolled = window.scrollY > 0 && isPageScrollable();
+          header?.classList.toggle("scrolled", scrolled);
+          ticking = false;
+        });
+        ticking = true;
+      }
+    }
+
+    // Attach scroll listener
+    window.addEventListener("scroll", handleScroll, { passive: true });
+
+    // Also check on resize (content height might change)
+    window.addEventListener("resize", handleScroll, { passive: true });
+
+    // Set initial state
+    handleScroll();
+  }
+
+  /**
+   * ================================================
+   * AUTO-HIDE (work page)
+   * ================================================
+   * Scrolling down slides the header away so the work page's own
+   * sticky bar takes the top; scrolling up brings it back.
+   * Exposes the visible header height as --header-offset on <html>
+   * so sticky elements can follow it.
+   */
+  function initAutoHide(): void {
+    const header = document.querySelector<HTMLElement>("header[data-autohide]");
+    const root = document.documentElement;
+    if (!header) {
+      root.style.removeProperty("--header-offset");
+      return;
+    }
+
+    const SHOW_AT_TOP = 80; // always visible near the top of the page
+    const DELTA = 6; // ignore tiny jitters
+    let lastY = window.scrollY;
+    let hidden = false;
+    let ticking = false;
+
+    // Phones page through the work projects by snapping, so the header stays put
+    // (same query as the paging layout in portfolio.css)
+    const phone = window.matchMedia("(max-width: 768px), (max-width: 1100px) and (orientation: portrait)");
+
+    function setHidden(next: boolean): void {
+      // Keep it visible while the mobile menu is open
+      if (next && document.getElementById("burger")?.classList.contains("open")) return;
+      if (next && phone.matches) next = false;
+      hidden = next;
+      header!.classList.toggle("is-hidden", hidden);
+      root.style.setProperty("--header-offset", hidden ? "0px" : `${header!.offsetHeight}px`);
+    }
+
+    function update(): void {
+      const y = window.scrollY;
+      if (y < SHOW_AT_TOP) setHidden(false);
+      else if (y - lastY > DELTA) setHidden(true);
+      else if (lastY - y > DELTA) setHidden(false);
+      if (Math.abs(y - lastY) > DELTA || y < SHOW_AT_TOP) lastY = y;
+      ticking = false;
+    }
+
+    const page = new AbortController();
+    const onScroll = () => {
+      if (!ticking) {
+        window.requestAnimationFrame(update);
+        ticking = true;
+      }
+    };
+    window.addEventListener("scroll", onScroll, { passive: true, signal: page.signal });
+    window.addEventListener("resize", () => setHidden(hidden), { passive: true, signal: page.signal });
+    document.addEventListener("astro:before-swap", () => page.abort(), { once: true });
+    setHidden(false);
+  }
+
+  /**
+   * ================================================
+   * INITIALIZATION
+   * ================================================
+   */
+
+  // Initialize all features on page load
+  initMobileMenu();
+  initScrollBorder();
+  initAutoHide();
+
+  // Re-initialize after Astro view transitions (SPA navigation)
+  document.addEventListener("astro:after-swap", () => {
+    initMobileMenu();
+    initScrollBorder();
+    initAutoHide();
+  });
+</script>

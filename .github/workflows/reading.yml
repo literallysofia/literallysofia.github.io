@@ -1,0 +1,40 @@
+name: Refresh reading
+
+# Weekly sync of the "Currently Reading" books on the public Goodreads
+# profile into src/data/reading.json (the about page's Reading line).
+# Commits only when the books change; deploy.yml redeploys after this
+# workflow (via workflow_run).
+# Uses Goodreads user 199717702 (override with the repository variable
+# GOODREADS_USER).
+on:
+  schedule:
+    - cron: "30 6 * * 1"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Fetch currently reading
+        env:
+          GOODREADS_USER: ${{ vars.GOODREADS_USER || '199717702' }}
+        run: node scripts/fetch-goodreads.mjs
+
+      - name: Commit if changed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add src/data/reading.json
+          git diff --cached --quiet || git commit -m "chore: refresh currently reading"
+          git push

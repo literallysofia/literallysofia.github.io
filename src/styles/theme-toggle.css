@@ -1,0 +1,39 @@
+/* ================================================
+   THEME TOGGLE
+   ================================================
+   Small hairline pill with a sun/moon glyph.
+   Works with the script in ThemeToggle.astro.
+   ================================================ */
+
+.theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 2.25rem;
+  height: 1.75rem;
+  padding: 0 0.6rem;
+  font-size: var(--text-sm);
+  line-height: 1;
+  color: var(--color-text);
+  background: none;
+  border: 0.5px solid var(--color-border);
+  border-radius: var(--radius-pill);
+  cursor: pointer;
+  transition: border-color var(--duration-fast) ease;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+.theme-toggle:hover {
+  border-color: var(--color-text);
+}
+
+.toggle-icon {
+  display: inline-block;
+  transition: transform var(--duration-normal) var(--ease-out);
+}
+
+.theme-toggle:active .toggle-icon {
+  transform: rotate(40deg) scale(0.9);
+}

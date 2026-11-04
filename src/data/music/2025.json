@@ -1,0 +1,98 @@
+{
+  "year": 2025,
+  "fetchedAt": "2026-11-03T20:06:05.141Z",
+  "minutes": 17200,
+  "topGenre": "alternative",
+  "artists": 566,
+  "topAlbums": [
+    {
+      "name": "Ego Death At A Bachelorette Party",
+      "artist": "Hayley Williams",
+      "image": "https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/25/67/85/2567853a-dfde-a051-6ab6-3ae574d49639/57942.jpg/768x768bb.jpg",
+      "url": "https://open.spotify.com/album/0U0Qv2jYtsgGxFDpQJKAxQ"
+    },
+    {
+      "name": "Clancy",
+      "artist": "Twenty One Pilots",
+      "image": "https://is1-ssl.mzstatic.com/image/thumb/Music122/v4/8b/39/c6/8b39c655-00fd-1b52-52ea-a98de686f3ae/075679659729.jpg/768x768bb.jpg",
+      "url": "https://open.spotify.com/album/1KFWgQTw3EMTQebaaepVBI"
+    },
+    {
+      "name": "MAYHEM",
+      "artist": "Lady Gaga",
+      "image": "https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/e2/84/91/e28491e5-be96-fab8-7968-b3e972a1a5da/25UMGIM07433.rgb.jpg/768x768bb.jpg",
+      "url": "https://open.spotify.com/album/2MHUaRi9OCyTN02SoyRRBJ"
+    },
+    {
+      "name": "From Zero",
+      "artist": "Linkin Park",
+      "image": "https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/69/21/cf/6921cff3-7074-118a-ece2-4012450e6c75/093624839811.jpg/768x768bb.jpg",
+      "url": "https://open.spotify.com/album/4R6FV9NSzhPihHR0h4pI93"
+    },
+    {
+      "name": "The Dream",
+      "artist": "",
+      "image": "https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/32/59/71/32597154-2d4d-158e-fe5b-64ac24de72de/25UMGIM73476.rgb.jpg/768x768bb.jpg",
+      "url": "https://open.spotify.com/album/48M39K7MWoYxykqTE2brIi"
+    }
+  ],
+  "topArtists": [
+    {
+      "name": "Twenty One Pilots",
+      "image": "https://i.scdn.co/image/ab6761610000517461a7ea26d33ded218cd1e59d",
+      "url": "https://open.spotify.com/artist/3YQKmKGau1PzlVlkL1iodx"
+    },
+    {
+      "name": "Hayley Williams",
+      "image": "https://i.scdn.co/image/ab67616100005174195bd87b60599b7a3f19abf1",
+      "url": "https://open.spotify.com/artist/6Rx1JKzBrSzoKQtmbVmBnM"
+    },
+    {
+      "name": "Lady Gaga",
+      "image": "https://i.scdn.co/image/ab67616100005174aadc18cac8d48124357c38e6",
+      "url": "https://open.spotify.com/artist/1HY2Jd0NmPuamShAr6KMms"
+    },
+    {
+      "name": "PVRIS",
+      "image": "https://i.scdn.co/image/ab67616100005174cb455882a724905a59af80f0",
+      "url": "https://open.spotify.com/artist/6oFs3qk4VepIVFdoD4jmsy"
+    },
+    {
+      "name": "Linkin Park",
+      "image": "https://i.scdn.co/image/ab67616100005174527d95dabbe8b8b527e8136f",
+      "url": "https://open.spotify.com/artist/6XyY86QOPPrYVGvF9ch6wz"
+    }
+  ],
+  "topTracks": [
+    {
+      "name": "Routines In The Night",
+      "artist": "Twenty One Pilots",
+      "image": "https://is1-ssl.mzstatic.com/image/thumb/Music122/v4/8b/39/c6/8b39c655-00fd-1b52-52ea-a98de686f3ae/075679659729.jpg/600x600bb.jpg",
+      "url": "https://open.spotify.com/track/5CB2J3yVh0xIOMbjAngIdl"
+    },
+    {
+      "name": "Parachute",
+      "artist": "Hayley Williams",
+      "image": "https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/25/67/85/2567853a-dfde-a051-6ab6-3ae574d49639/57942.jpg/768x768bb.jpg",
+      "url": "https://open.spotify.com/track/7pasIrCqLFAOtPgXyuYHnV"
+    },
+    {
+      "name": "The Line (from the series Arcane League of Legends)",
+      "artist": "",
+      "image": "https://i.scdn.co/image/ab67616d0000b273c637b332bcd273aaba6a248b",
+      "url": "https://open.spotify.com/track/6stXkGStcYr3Cu5nBKczEi"
+    },
+    {
+      "name": "RAWFEAR",
+      "artist": "Twenty One Pilots",
+      "image": "https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/1a/13/dc/1a13dc15-b07d-c302-4f04-080b67591628/075679609908.jpg/768x768bb.jpg",
+      "url": "https://open.spotify.com/track/43ee3gqWBlPKe2MeGJ2S6I"
+    },
+    {
+      "name": "Drum Show",
+      "artist": "Twenty One Pilots",
+      "image": "https://i.scdn.co/image/ab67616d0000b2730d6ca0fa9d9f97b4b61077da",
+      "url": "https://open.spotify.com/track/4rPl7ezxtoqshKnI1kk3dX"
+    }
+  ]
+}

@@ -1,0 +1,98 @@
+{
+  "year": 2022,
+  "fetchedAt": "2026-11-03T20:06:06.713Z",
+  "minutes": 19064,
+  "topGenre": "alternative",
+  "artists": 620,
+  "topAlbums": [
+    {
+      "name": "Danger Days: The True Lives of the Fabulous Killjoys",
+      "artist": "My Chemical Romance",
+      "image": "https://is1-ssl.mzstatic.com/image/thumb/Music62/v4/d6/05/61/d60561a5-8c82-2db1-bdde-84e582aa2a9b/093624917717.jpg/768x768bb.jpg",
+      "url": "https://open.spotify.com/album/2wPnKggTK3QhYAKL7Q0vvr"
+    },
+    {
+      "name": "Three Cheers for Sweet Revenge",
+      "artist": "",
+      "image": "https://i.scdn.co/image/ab67616d0000b273f02cbb14a2eb2835af6c68f6",
+      "url": "https://open.spotify.com/album/6F0yiLAZ3ZEpZXHhYFRrr6"
+    },
+    {
+      "name": "The Black Parade",
+      "artist": "",
+      "image": "https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/56/99/8a/56998a1c-efe7-fdf0-2b1d-e2da88d8df52/093624917724.jpg/768x768bb.jpg",
+      "url": "https://open.spotify.com/album/0FZK97MXMm5mUQ8mtudjuK"
+    },
+    {
+      "name": "tick, tick... BOOM! (Soundtrack from the Netflix Film)",
+      "artist": "Joshua Henry, Vanessa Hudgens, Robin de Jesus, Alexandra Shipp, Andrew Garfield, MJ Rodriguez, MJ Rodriguez, Alexandra Shipp",
+      "image": "https://is1-ssl.mzstatic.com/image/thumb/Music115/v4/7a/15/19/7a1519e7-52eb-d3cb-f577-2efaf44ca960/886449669110.jpg/768x768bb.jpg",
+      "url": "https://open.spotify.com/album/4d1XaejoQ5r4jdkV8k5SNJ"
+    },
+    {
+      "name": "I Brought You My Bullets, You Brought Me Your Love",
+      "artist": "My Chemical Romance",
+      "image": "https://is1-ssl.mzstatic.com/image/thumb/Music122/v4/d8/2d/53/d82d537c-819a-85da-8194-9c93c8b98a64/10336.jpg/768x768bb.jpg",
+      "url": "https://open.spotify.com/album/3VSl97ITIbXoFQvx2DQ605"
+    }
+  ],
+  "topArtists": [
+    {
+      "name": "My Chemical Romance",
+      "image": "https://i.scdn.co/image/ab676161000051740c55e74e435910793888f7cf",
+      "url": "https://open.spotify.com/artist/7FBcuc1gsnv6Y1nwFtNRCb"
+    },
+    {
+      "name": "Paramore",
+      "image": "https://i.scdn.co/image/ab67616100005174b10c34546a4ca2d7faeb8865",
+      "url": "https://open.spotify.com/artist/74XFHRwlV6OrjEM0A2NCMF"
+    },
+    {
+      "name": "Dua Lipa",
+      "image": "https://i.scdn.co/image/ab676161000051740c68f6c95232e716f0abee8d",
+      "url": "https://open.spotify.com/artist/6M2wZ9GZgrQXHCFfjv46we"
+    },
+    {
+      "name": "Hayley Williams",
+      "image": "https://i.scdn.co/image/ab67616100005174195bd87b60599b7a3f19abf1",
+      "url": "https://open.spotify.com/artist/6Rx1JKzBrSzoKQtmbVmBnM"
+    },
+    {
+      "name": "Panic! At The Disco",
+      "image": "https://i.scdn.co/image/ab67616100005174b256ae9a4b82bfff97776ae2",
+      "url": "https://open.spotify.com/artist/20JZFwl6HVl6yg8a4H3ZqK"
+    }
+  ],
+  "topTracks": [
+    {
+      "name": "The Foundations of Decay",
+      "artist": "My Chemical Romance",
+      "image": "https://is1-ssl.mzstatic.com/image/thumb/Music112/v4/7a/78/6a/7a786a68-518a-9a9a-b42c-b6cfc218fca5/054391899675.jpg/768x768bb.jpg",
+      "url": "https://open.spotify.com/track/6Pif6RkFoYzLygdqktus4Q"
+    },
+    {
+      "name": "This Is Why",
+      "artist": "Paramore",
+      "image": "https://i.scdn.co/image/ab67616d0000b27389ea7048d73a040dc56af0a7",
+      "url": "https://open.spotify.com/track/7z84Fwf1R3Z2BwHCP620CI"
+    },
+    {
+      "name": "Save Yourself, I'll Hold Them Back",
+      "artist": "My Chemical Romance",
+      "image": "https://i.scdn.co/image/ab67616d0000b2733d87c015581234a38db91e29",
+      "url": "https://open.spotify.com/track/51iWD9yGGQtxenqHjhKgkS"
+    },
+    {
+      "name": "Cemetery Drive",
+      "artist": "My Chemical Romance",
+      "image": "https://i.scdn.co/image/ab67616d0000b273aaa0ed9fc718f632c6478076",
+      "url": "https://open.spotify.com/track/2W9UperQWSd4CNHwTUOjq7"
+    },
+    {
+      "name": "Heaven Help Us",
+      "artist": "My Chemical Romance",
+      "image": "https://is1-ssl.mzstatic.com/image/thumb/Music114/v4/c0/7d/c7/c07dc74f-6903-456f-ae9b-856f0de82cbb/mzi.vikzwuxo.jpg/768x768bb.jpg",
+      "url": null
+    }
+  ]
+}

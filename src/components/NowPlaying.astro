@@ -1,0 +1,93 @@
+---
+/**
+ * NowPlaying Component
+ * Spotify "now playing" card fed by the now-playing Worker
+ * (workers/now-playing). Falls back to "Last played" and stays
+ * hidden when PUBLIC_NOW_PLAYING_URL is unset or the fetch fails.
+ * Polls every 30s, only while the tab is visible.
+ */
+
+const endpoint = import.meta.env.PUBLIC_NOW_PLAYING_URL || '';
+---
+
+<section class="now-playing" aria-labelledby="now-playing-label" hidden data-endpoint={endpoint}>
+  <h2 id="now-playing-label" class="label">Now playing</h2>
+  <a class="np-card" href="#" target="_blank" rel="noopener noreferrer">
+    <img class="np-art" alt="" width="64" height="64" />
+    <span class="np-info">
+      <span class="np-status"><span class="np-dot" aria-hidden="true"></span><span data-np-status></span></span>
+      <span class="np-title" data-np-title></span>
+      <span class="np-artist" data-np-artist></span>
+      <span class="np-bar" aria-hidden="true"><span data-np-progress></span></span>
+    </span>
+  </a>
+</section>
+
+<script>
+  interface Track {
+    isPlaying: boolean;
+    title: string;
+    artist: string;
+    album: string;
+    art: string;
+    url: string;
+    progressMs?: number;
+    durationMs?: number;
+    playedAt?: string;
+  }
+
+  const POLL_MS = 30_000;
+
+  /** "2026-11-03T10:00:00Z" → "2h ago" */
+  function timeAgo(iso?: string): string {
+    if (!iso) return '';
+    const minutes = Math.round((Date.now() - new Date(iso).getTime()) / 60000);
+    if (minutes < 60) return `${Math.max(1, minutes)}m ago`;
+    const hours = Math.round(minutes / 60);
+    return hours < 24 ? `${hours}h ago` : `${Math.round(hours / 24)}d ago`;
+  }
+
+  function initNowPlaying(): void {
+    const section = document.querySelector<HTMLElement>('.now-playing');
+    const endpoint = section?.dataset.endpoint;
+    if (!section || !endpoint) return;
+
+    const card = section.querySelector<HTMLAnchorElement>('.np-card')!;
+    const art = section.querySelector<HTMLImageElement>('.np-art')!;
+    const field = (name: string) => section.querySelector<HTMLElement>(`[data-np-${name}]`)!;
+
+    async function load(): Promise<void> {
+      if (document.hidden) return;
+      try {
+        const res = await fetch(endpoint!);
+        if (!res.ok) throw new Error(String(res.status));
+        const track: Track = await res.json();
+        card.href = track.url;
+        art.src = track.art;
+        field('title').textContent = track.title;
+        field('artist').textContent = `${track.artist} · ${track.album}`;
+        field('status').textContent = track.isPlaying ? 'Listening now on Spotify' : `Last played · ${timeAgo(track.playedAt)}`;
+        section!.classList.toggle('is-playing', track.isPlaying);
+        const pct = track.isPlaying && track.durationMs ? (100 * (track.progressMs ?? 0)) / track.durationMs : 0;
+        field('progress').style.width = `${pct}%`;
+        section!.hidden = false;
+      } catch {
+        section!.hidden = true;
+      }
+    }
+
+    load();
+    const timer = window.setInterval(load, POLL_MS);
+    document.addEventListener('visibilitychange', load);
+    document.addEventListener(
+      'astro:before-swap',
+      () => {
+        window.clearInterval(timer);
+        document.removeEventListener('visibilitychange', load);
+      },
+      { once: true }
+    );
+  }
+
+  document.addEventListener('astro:page-load', initNowPlaying);
+</script>

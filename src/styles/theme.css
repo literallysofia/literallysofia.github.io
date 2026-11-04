@@ -1,0 +1,101 @@
+/* ================================================
+   THEME - CSS CUSTOM PROPERTIES
+   ================================================
+   Centralized design tokens for colors, fonts,
+   spacing, animations, and more. Light and dark
+   are an exact inverse: porcelain and oak-black
+   swap places. Colour lives in the work cards,
+   the page itself stays black and white.
+   ================================================ */
+:root {
+  color-scheme: light;
+
+  /* Fonts */
+  --font-serif: "Fraunces", Georgia, serif;
+  --font-sans: "Inter Tight", system-ui, sans-serif;
+
+  /* Colors - Light Mode */
+  --color-bg-base: #F2EFEA;
+  --color-bg: var(--color-bg-base);
+  --color-text: #1C1416;
+  --color-text-muted: #5C5157;
+  --color-border: #DCD5CC;
+  --color-accent: #7A2E63;
+  --color-candle: #E8B45A;
+  --color-surface: #E4DED6;
+
+  /* Liquid Glass: where light catches the edge of glass controls */
+  --glass-specular: rgba(255, 255, 255, 0.85);
+  /* Full-screen glass panels (mobile menu): dense enough to read over anything */
+  --sheet-glass: rgba(246, 243, 238, 0.82);
+
+  /* Device frame (constant in both modes) */
+  --phone-frame: #1C1416;
+  --phone-screen: #F6F1EA;
+
+  /* Matcha */
+  --matcha: #8CC63F;
+  --matcha-foam: #D3EC9C;
+
+  /* Transitions */
+  --ease-out: cubic-bezier(0.2, 0.7, 0.2, 1);
+  --transition: all 0.4s var(--ease-out);
+  --transition-mode: background-color 0.4s ease, color 0.4s ease;
+
+  /* Animation durations */
+  --duration-fast: 0.3s;
+  --duration-normal: 0.45s;
+  --duration-slow: 0.6s;
+  --duration-slower: 0.8s;
+
+  /* Spacing */
+  --spacing-xs: 0.5rem;
+  --spacing-sm: 1rem;
+  --spacing-md: 2rem;
+  --spacing-lg: 3rem;
+  --spacing-xl: 6rem;
+  --gutter: clamp(1rem, 5vw, 4rem);
+  /* Grows with the fluid base size (85rem = 1360px at 16px) and, on very
+     wide screens, with the window itself, so big displays aren't mostly margin */
+  --max-width: max(85rem, 82vw);
+
+  /* Border radius */
+  --radius-sm: 0.625rem;
+  --radius-card: 1.375rem;
+  --radius-pill: 999px;
+
+  /* Type scale */
+  --text-xs: 0.75rem;
+  --text-sm: 0.875rem;
+  --text-base: 1rem;
+  --text-lg: clamp(1rem, 0.95rem + 0.3vw, 1.125rem);
+  --text-h3: clamp(1.25rem, 1.1rem + 0.6vw, 1.5rem);
+  --text-h2: clamp(2rem, 1.6rem + 1.6vw, 3rem);
+  --text-hero: clamp(2.5rem, 1.2rem + 5vw, 5.5rem);
+}
+
+/* Dark Mode */
+html.dark-mode {
+  color-scheme: dark;
+  --color-bg-base: #1C1416;
+  --color-bg: var(--color-bg-base);
+  --color-text: #F2EFEA;
+  --color-text-muted: #BDB0B6;
+  --color-border: #3A2E33;
+  --color-accent: #D9A3CB;
+  --color-surface: #2A2024;
+  /* Liquid Glass: a softer glint on dark backgrounds */
+  --glass-specular: rgba(242, 239, 234, 0.32);
+  --sheet-glass: rgba(36, 27, 30, 0.8);
+}
+
+/* Work page colour wash: the page background takes on the
+   active project's colour (set by WorkIndex.astro) */
+html[data-wash] {
+  --color-bg: color-mix(in srgb, var(--wash) 18%, var(--color-bg-base));
+}
+
+/* Qonto's black turns the light wash grey, so it gets a warm oat instead */
+html[data-wash="qonto"]:not(.dark-mode) {
+  --color-bg: color-mix(in srgb, #7A5C45 18%, var(--color-bg-base));
+}

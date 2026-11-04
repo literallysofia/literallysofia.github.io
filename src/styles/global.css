@@ -1,0 +1,249 @@
+/* ================================================
+   GLOBAL STYLES
+   ================================================
+   Base styles and resets applied site-wide.
+   Includes typography defaults, layout containers,
+   link styling, and shared utilities.
+   Uses CSS variables from theme.css.
+   ================================================ */
+
+/* ================================================
+   GLOBAL - BASE STYLES
+   ================================================ */
+
+/* Set background-color on html to prevent a flash during theme
+   initialization — html renders before body */
+html {
+  /* In-page links (e.g. the work tab bar) glide instead of jumping */
+  scroll-behavior: smooth;
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  -webkit-font-smoothing: antialiased;
+  /* Same pace as body, header and the work title bar (overscroll shows this) */
+  transition: background-color var(--duration-slower) ease;
+}
+
+html,
+body {
+  font-family: var(--font-sans);
+  font-weight: 400;
+  margin: 0;
+}
+
+/* Fluid base size: 16px up to ~1600px wide, then grows with the window
+   (up to 140% on very large screens). Layout, type and spacing are in
+   rem, so the whole site scales together instead of leaving dead space. */
+html {
+  font-size: clamp(100%, 0.4rem + 0.6vw, 140%);
+}
+
+body {
+  font-size: 1rem;
+}
+
+body {
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  line-height: 1.6;
+  transition: background-color var(--duration-slower) ease, color 0.4s ease;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+/* ================================================
+   GLOBAL - LAYOUT CONTAINERS
+   ================================================ */
+
+main {
+  width: 100%;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 var(--gutter) var(--spacing-xl);
+}
+
+/* ================================================
+   GLOBAL - TYPOGRAPHY
+   ================================================ */
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-serif);
+  font-weight: 400;
+  line-height: 1.08;
+  margin: 0;
+  font-optical-sizing: auto;
+}
+
+h1 em,
+h2 em,
+h3 em {
+  font-style: italic;
+  color: var(--color-accent);
+}
+
+p {
+  margin: 0;
+}
+
+.muted {
+  color: var(--color-text-muted);
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Small section labels ("Selected work", "Experience"...) */
+.label {
+  display: block;
+  font-family: var(--font-sans);
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+  margin: var(--spacing-xl) 0 var(--spacing-sm);
+}
+
+.page-title {
+  font-size: var(--text-h2);
+  margin-top: var(--spacing-md);
+}
+
+.page-intro {
+  color: var(--color-text-muted);
+  font-size: var(--text-lg);
+  margin-top: var(--spacing-xs);
+  max-width: 60ch;
+  /* No lonely last word on its own line */
+  text-wrap: pretty;
+}
+
+/* ================================================
+   GLOBAL - LINKS
+   ================================================ */
+
+a {
+  color: inherit;
+  text-decoration: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Underline-grow link */
+.link {
+  color: var(--color-accent);
+  background-image: linear-gradient(currentColor, currentColor);
+  background-size: 0% 1px;
+  background-position: 0 100%;
+  background-repeat: no-repeat;
+  transition: background-size var(--duration-normal) var(--ease-out);
+}
+
+.link:hover {
+  background-size: 100% 1px;
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* ================================================
+   GLOBAL - LISTS
+   ================================================ */
+
+ul,
+ol {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* ================================================
+   GLOBAL - BUTTONS
+   ================================================ */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4em;
+  font-family: var(--font-sans);
+  font-size: var(--text-sm);
+  font-weight: 500;
+  color: var(--color-bg);
+  background-color: var(--color-text);
+  border: 1px solid var(--color-text);
+  border-radius: var(--radius-pill);
+  padding: 0.65em 1.3em;
+  cursor: pointer;
+  transition: var(--transition);
+  -webkit-tap-highlight-color: transparent;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+}
+
+.btn-outline {
+  color: var(--color-text);
+  background-color: transparent;
+  border-width: 0.5px;
+}
+
+/* ================================================
+   GLOBAL - HAIRLINE ROWS
+   ================================================ */
+
+.rows {
+  border-bottom: 0.5px solid var(--color-border);
+}
+
+.row {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--spacing-sm);
+  padding: 0.7rem 0;
+  border-top: 0.5px solid var(--color-border);
+  font-size: var(--text-sm);
+}
+
+.row > :last-child {
+  color: var(--color-text-muted);
+  text-align: right;
+}
+
+/* ================================================
+   RESPONSIVE - MOBILE
+   ================================================ */
+
+@media (max-width: 768px) {
+  .label {
+    margin-top: var(--spacing-lg);
+  }
+
+  .row {
+    flex-direction: column;
+    gap: 0.1rem;
+  }
+
+  .row > :last-child {
+    text-align: left;
+  }
+}
