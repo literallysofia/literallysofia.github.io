@@ -506,9 +506,16 @@ main.work {
     display: flex;
   }
 
-  .work-tab {
+  .work-tab,
+  .work-tab[aria-current="true"] {
     flex: 1;
     justify-content: center;
+    padding-right: 0.45rem;
+  }
+
+  /* Icons only: the project name is already the big title above */
+  .work-tab-label {
+    display: none;
   }
 }
 
