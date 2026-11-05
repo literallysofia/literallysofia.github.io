@@ -15,17 +15,25 @@
     const STAGGER_DELAY = 70;
     let queued = 0;
     let resetTimer: number | undefined;
+    const revealed = new WeakSet<Element>();
 
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
-          if (!entry.isIntersecting) return;
-          const el = entry.target as HTMLElement;
-          setTimeout(() => el.classList.add('is-visible'), queued * STAGGER_DELAY);
-          queued++;
+          if (!entry.isIntersecting || revealed.has(entry.target)) return;
+          // A [data-reveal-group] (e.g. a swipe strip) reveals together, so a
+          // card peeking in from the side isn't left invisible until swiped
+          const group = entry.target.closest('[data-reveal-group]');
+          const targets = group ? [...group.querySelectorAll<HTMLElement>('[data-reveal]')] : [entry.target as HTMLElement];
+          targets.forEach((el) => {
+            if (revealed.has(el)) return;
+            revealed.add(el);
+            setTimeout(() => el.classList.add('is-visible'), queued * STAGGER_DELAY);
+            queued++;
+            observer.unobserve(el);
+          });
           window.clearTimeout(resetTimer);
           resetTimer = window.setTimeout(() => (queued = 0), 200);
-          observer.unobserve(el);
         });
       },
       { threshold: 0.15 }

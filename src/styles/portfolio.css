@@ -472,6 +472,13 @@ main.work {
     display: flex;
   }
 
+  /* An Amie-style clip makes the project taller than the screen: it gets
+     its own resting point (bottom above the cup lane) before the next project */
+  .work-clip {
+    scroll-snap-align: end;
+    scroll-margin-bottom: calc(clamp(1rem, 3vw, 2rem) + 2.25rem);
+  }
+
   .work-meta {
     flex-direction: column;
     gap: 0.25rem;
@@ -484,6 +491,24 @@ main.work {
 
   main.work {
     padding-right: var(--gutter);
+  }
+}
+
+/* Phones: the tab pill spans the content width, tabs spread evenly
+   (same as the music year pill) */
+@media (max-width: 768px) {
+  .work-tabbar {
+    width: 100%;
+  }
+
+  .work-tabbar li {
+    flex: 1 0 0;
+    display: flex;
+  }
+
+  .work-tab {
+    flex: 1;
+    justify-content: center;
   }
 }
 

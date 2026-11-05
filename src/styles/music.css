@@ -435,6 +435,11 @@
     grid-template-columns: minmax(0, 1fr);
   }
 
+  /* Stacked top artists / tracks / albums need a gap between them */
+  .yim-column + .yim-column {
+    margin-top: var(--spacing-lg);
+  }
+
   /* The year pill spans the content width, years spread evenly
      (and still scroll inside it on the narrowest phones) */
   .yim-years {

@@ -96,6 +96,13 @@ const { title = siteConfig.siteTitle, description = siteConfig.siteDescription }
   </body>
 </html>
 
+<script>
+  import { prefetchNowPlaying } from '../scripts/now-playing';
+
+  // Get the Spotify track ready before anyone opens the music page
+  document.addEventListener('astro:page-load', prefetchNowPlaying);
+</script>
+
 <style is:global>
   @import '../styles/theme.css';
   @import '../styles/global.css';

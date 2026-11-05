@@ -27,17 +27,7 @@ const endpoint = import.meta.env.PUBLIC_NOW_PLAYING_URL || '';
 </section>
 
 <script>
-  interface Track {
-    isPlaying: boolean;
-    title: string;
-    artist: string;
-    album: string;
-    art: string;
-    url: string;
-    progressMs?: number;
-    durationMs?: number;
-    playedAt?: string;
-  }
+  import { getNowPlaying } from '../scripts/now-playing';
 
   const POLL_MS = 30_000;
 
@@ -69,11 +59,9 @@ const endpoint = import.meta.env.PUBLIC_NOW_PLAYING_URL || '';
     async function load(): Promise<void> {
       if (document.hidden) return;
       try {
-        const res = await fetch(endpoint!);
-        // 204: Spotify has nothing to show right now
-        if (res.status === 204) return stopPlaying();
-        if (!res.ok) throw new Error(String(res.status));
-        const track: Track = await res.json();
+        const track = await getNowPlaying();
+        // null: Spotify has nothing to show right now
+        if (!track) return stopPlaying();
         card.href = track.url;
         art.src = track.art;
         field('title').textContent = track.title;
