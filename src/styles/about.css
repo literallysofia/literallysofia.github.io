@@ -94,6 +94,53 @@
 }
 
 /* ================================================
+   ABOUT - SCROLL HINT
+   ================================================
+   A small arrow at the bottom right saying there's
+   more below; it fades away once you scroll.
+   ================================================ */
+
+.scroll-hint {
+  position: fixed;
+  right: var(--gutter);
+  bottom: clamp(1rem, 3vw, 1.75rem);
+  z-index: 5;
+  display: grid;
+  place-items: center;
+  width: 2.25rem;
+  height: 2.25rem;
+  border-radius: var(--radius-pill);
+  border: 0.5px solid var(--color-border);
+  background: color-mix(in srgb, var(--color-bg) 70%, transparent);
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+  color: var(--color-text-muted);
+  font-size: var(--text-sm);
+  pointer-events: none;
+  animation: hintIn var(--duration-slow) var(--ease-out) 0.3s backwards, hintBob 2.4s ease-in-out 1s infinite;
+  transition: opacity var(--duration-slow) var(--ease-out), transform var(--duration-slow) var(--ease-out);
+}
+
+.scroll-hint.is-gone {
+  opacity: 0;
+  transform: translateY(8px);
+  animation: none;
+}
+
+@keyframes hintIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+}
+
+@keyframes hintBob {
+  50% {
+    transform: translateY(4px);
+  }
+}
+
+/* ================================================
    ABOUT - GALLERY (masonry that reads across rows,
    columns built in About.astro)
    ================================================ */

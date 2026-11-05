@@ -9,14 +9,43 @@
    MUSIC - NOW PLAYING
    ================================================ */
 
+/* Collapsed (and hidden from screen readers) until a track loads,
+   then the space opens and the card fades up into it */
+.now-playing {
+  display: grid;
+  grid-template-rows: 0fr;
+  opacity: 0;
+  transform: translateY(12px);
+  visibility: hidden;
+  transition:
+    grid-template-rows 0.7s var(--ease-out),
+    opacity 0.6s var(--ease-out) 0.15s,
+    transform 0.6s var(--ease-out) 0.15s,
+    visibility 0s linear 0.85s;
+}
+
+.now-playing.is-ready {
+  grid-template-rows: 1fr;
+  opacity: 1;
+  transform: none;
+  visibility: visible;
+  transition-delay: 0s, 0.15s, 0.15s, 0s;
+}
+
+.np-inner {
+  min-height: 0;
+  overflow: hidden;
+}
+
+/* Sits on the page like the rest of it: page colour, hairline edge */
 .np-card {
   display: flex;
   align-items: center;
   gap: var(--spacing-sm);
   padding: 0.9rem;
   border-radius: 18px;
-  background: #1C1416;
-  color: #F2EFEA;
+  background: var(--color-bg);
+  color: var(--color-text);
   box-shadow: inset 0 0 0 0.5px var(--color-border);
   transition: transform var(--duration-normal) var(--ease-out);
 }
@@ -46,14 +75,14 @@
   align-items: center;
   gap: 0.4rem;
   font-size: var(--text-xs);
-  color: #BDB0B6;
+  color: var(--color-text-muted);
 }
 
 .np-dot {
   width: 0.45rem;
   height: 0.45rem;
   border-radius: 50%;
-  background: #BDB0B6;
+  background: var(--color-text-muted);
 }
 
 .now-playing.is-playing .np-dot {
@@ -75,7 +104,7 @@
 
 .np-artist {
   font-size: var(--text-sm);
-  color: #BDB0B6;
+  color: var(--color-text-muted);
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -86,7 +115,7 @@
   height: 3px;
   margin-top: 0.5rem;
   border-radius: 2px;
-  background: #3A2E33;
+  background: var(--color-border);
   overflow: hidden;
 }
 

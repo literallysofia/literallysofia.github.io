@@ -176,4 +176,21 @@ const oneAuthor = books.every((book) => book.author === books[0]?.author);
       ))}
     </div>
   ))}
+
+  <span class="scroll-hint" aria-hidden="true">↓</span>
 </section>
+
+<script>
+  /** The scroll hint fades out once the reader starts scrolling */
+  function initScrollHint(): void {
+    const hint = document.querySelector<HTMLElement>('.scroll-hint');
+    if (!hint) return;
+    const page = new AbortController();
+    const update = () => hint.classList.toggle('is-gone', window.scrollY > 40);
+    update();
+    window.addEventListener('scroll', update, { passive: true, signal: page.signal });
+    document.addEventListener('astro:before-swap', () => page.abort(), { once: true });
+  }
+
+  document.addEventListener('astro:page-load', initScrollHint);
+</script>

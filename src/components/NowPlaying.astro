@@ -10,17 +10,20 @@
 const endpoint = import.meta.env.PUBLIC_NOW_PLAYING_URL || '';
 ---
 
-<section class="now-playing" aria-labelledby="now-playing-label" hidden data-endpoint={endpoint}>
-  <h2 id="now-playing-label" class="label">Now playing</h2>
-  <a class="np-card" href="#" target="_blank" rel="noopener noreferrer">
-    <img class="np-art" alt="" width="64" height="64" />
-    <span class="np-info">
-      <span class="np-status"><span class="np-dot" aria-hidden="true"></span><span data-np-status></span></span>
-      <span class="np-title" data-np-title></span>
-      <span class="np-artist" data-np-artist></span>
-      <span class="np-bar" aria-hidden="true"><span data-np-progress></span></span>
-    </span>
-  </a>
+<!-- Collapsed until a track loads, then it opens and fades in (see music.css) -->
+<section class="now-playing" aria-labelledby="now-playing-label" data-endpoint={endpoint}>
+  <div class="np-inner">
+    <h2 id="now-playing-label" class="label">Now playing</h2>
+    <a class="np-card" href="#" target="_blank" rel="noopener noreferrer">
+      <img class="np-art" alt="" width="64" height="64" />
+      <span class="np-info">
+        <span class="np-status"><span class="np-dot" aria-hidden="true"></span><span data-np-status></span></span>
+        <span class="np-title" data-np-title></span>
+        <span class="np-artist" data-np-artist></span>
+        <span class="np-bar" aria-hidden="true"><span data-np-progress></span></span>
+      </span>
+    </a>
+  </div>
 </section>
 
 <script>
@@ -70,9 +73,9 @@ const endpoint = import.meta.env.PUBLIC_NOW_PLAYING_URL || '';
         section!.classList.toggle('is-playing', track.isPlaying);
         const pct = track.isPlaying && track.durationMs ? (100 * (track.progressMs ?? 0)) / track.durationMs : 0;
         field('progress').style.width = `${pct}%`;
-        section!.hidden = false;
+        section!.classList.add('is-ready');
       } catch {
-        section!.hidden = true;
+        section!.classList.remove('is-ready');
       }
     }
 
