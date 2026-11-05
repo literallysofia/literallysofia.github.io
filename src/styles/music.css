@@ -37,6 +37,11 @@
   overflow: hidden;
 }
 
+/* Right under the intro, the same gap as before "Year in music" */
+.np-inner > .label {
+  margin-top: var(--spacing-lg);
+}
+
 /* Sits on the page like the rest of it: page colour, hairline edge */
 .np-card {
   display: flex;

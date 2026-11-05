@@ -59,23 +59,37 @@ const endpoint = import.meta.env.PUBLIC_NOW_PLAYING_URL || '';
     const art = section.querySelector<HTMLImageElement>('.np-art')!;
     const field = (name: string) => section.querySelector<HTMLElement>(`[data-np-${name}]`)!;
 
+    /** Once a track has shown, a failed or empty poll keeps it on screen instead of hiding the card */
+    function stopPlaying(): void {
+      section!.classList.remove('is-playing');
+      field('progress').style.width = '0%';
+      if (section!.classList.contains('is-ready')) field('status').textContent = 'Last played on Spotify';
+    }
+
     async function load(): Promise<void> {
       if (document.hidden) return;
       try {
         const res = await fetch(endpoint!);
+        // 204: Spotify has nothing to show right now
+        if (res.status === 204) return stopPlaying();
         if (!res.ok) throw new Error(String(res.status));
         const track: Track = await res.json();
         card.href = track.url;
         art.src = track.art;
         field('title').textContent = track.title;
         field('artist').textContent = `${track.artist} · ${track.album}`;
-        field('status').textContent = track.isPlaying ? 'Listening now on Spotify' : `Last played · ${timeAgo(track.playedAt)}`;
+        const ago = timeAgo(track.playedAt);
+        field('status').textContent = track.isPlaying
+          ? 'Listening now on Spotify'
+          : ago
+            ? `Last played · ${ago}`
+            : 'Last played on Spotify';
         section!.classList.toggle('is-playing', track.isPlaying);
         const pct = track.isPlaying && track.durationMs ? (100 * (track.progressMs ?? 0)) / track.durationMs : 0;
         field('progress').style.width = `${pct}%`;
         section!.classList.add('is-ready');
       } catch {
-        section!.classList.remove('is-ready');
+        stopPlaying();
       }
     }
 

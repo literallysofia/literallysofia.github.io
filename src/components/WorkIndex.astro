@@ -106,7 +106,16 @@ const total = String(projects.length).padStart(2, '0');
       { rootMargin: '-45% 0px -50% 0px' }
     );
     sections.forEach((section) => observer.observe(section));
-    setActive(0);
+
+    // Arriving from a home card (/work#amie): the router's own jump to the
+    // anchor doesn't stick, so go straight to that project
+    const target = sections.findIndex((section) => `#${section.id}` === location.hash);
+    if (target > 0) {
+      sections[target].scrollIntoView({ behavior: 'instant', block: 'start' });
+      setActive(target);
+    } else {
+      setActive(0);
+    }
 
     // Paging layout (phones, upright iPads): each project fills the screen
     // below the header + this sticky title, so expose their combined height
