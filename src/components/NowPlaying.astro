@@ -49,10 +49,38 @@ const endpoint = import.meta.env.PUBLIC_NOW_PLAYING_URL || '';
     const art = section.querySelector<HTMLImageElement>('.np-art')!;
     const field = (name: string) => section.querySelector<HTMLElement>(`[data-np-${name}]`)!;
 
+    const reducedMotion = () => window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const wait = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
+
+    /** Resolve once the cover is ready (or failed, or slow), so the card never opens on a blank square */
+    const preload = (src: string) =>
+      Promise.race([
+        new Promise<void>((resolve) => {
+          const img = new Image();
+          img.onload = img.onerror = () => resolve();
+          img.src = src;
+        }),
+        wait(1500),
+      ]);
+
+    // The bar moves every second between polls: where the song started and how long it is
+    let song: { startedAt: number; durationMs: number; asked?: boolean } | null = null;
+
+    function setProgress(): void {
+      const pct = song ? Math.min(100, (100 * (Date.now() - song.startedAt)) / song.durationMs) : 0;
+      field('progress').style.width = `${pct}%`;
+      // Song over: ask what's next, once (the next poll catches it if it's too early)
+      if (song && pct >= 100 && !song.asked) {
+        song.asked = true;
+        window.setTimeout(load, 2000);
+      }
+    }
+
     /** Once a track has shown, a failed or empty poll keeps it on screen instead of hiding the card */
     function stopPlaying(): void {
+      song = null;
       section!.classList.remove('is-playing');
-      field('progress').style.width = '0%';
+      setProgress();
       if (section!.classList.contains('is-ready')) field('status').textContent = 'Last played on Spotify';
     }
 
@@ -62,10 +90,19 @@ const endpoint = import.meta.env.PUBLIC_NOW_PLAYING_URL || '';
         const track = await getNowPlaying();
         // null: Spotify has nothing to show right now
         if (!track) return stopPlaying();
-        card.href = track.url;
-        art.src = track.art;
-        field('title').textContent = track.title;
-        field('artist').textContent = `${track.artist} · ${track.album}`;
+
+        const changed = field('title').textContent !== track.title || art.getAttribute('src') !== track.art;
+        if (changed) {
+          // A new song crossfades in (covers loaded first); the very first one opens the card
+          const shown = section!.classList.contains('is-ready');
+          if (shown && !reducedMotion()) section!.classList.add('is-changing');
+          await Promise.all([track.art ? preload(track.art) : null, shown && !reducedMotion() ? wait(250) : null]);
+          card.href = track.url;
+          art.src = track.art;
+          field('title').textContent = track.title;
+          field('artist').textContent = `${track.artist} · ${track.album}`;
+        }
+
         const ago = timeAgo(track.playedAt);
         field('status').textContent = track.isPlaying
           ? 'Listening now on Spotify'
@@ -73,9 +110,13 @@ const endpoint = import.meta.env.PUBLIC_NOW_PLAYING_URL || '';
             ? `Last played · ${ago}`
             : 'Last played on Spotify';
         section!.classList.toggle('is-playing', track.isPlaying);
-        const pct = track.isPlaying && track.durationMs ? (100 * (track.progressMs ?? 0)) / track.durationMs : 0;
-        field('progress').style.width = `${pct}%`;
+        song =
+          track.isPlaying && track.durationMs
+            ? { startedAt: track.receivedAt - (track.progressMs ?? 0), durationMs: track.durationMs }
+            : null;
+        setProgress();
         section!.classList.add('is-ready');
+        requestAnimationFrame(() => section!.classList.remove('is-changing'));
       } catch {
         stopPlaying();
       }
@@ -83,11 +124,13 @@ const endpoint = import.meta.env.PUBLIC_NOW_PLAYING_URL || '';
 
     load();
     const timer = window.setInterval(load, POLL_MS);
+    const ticker = window.setInterval(() => song && !document.hidden && setProgress(), 1000);
     document.addEventListener('visibilitychange', load);
     document.addEventListener(
       'astro:before-swap',
       () => {
         window.clearInterval(timer);
+        window.clearInterval(ticker);
         document.removeEventListener('visibilitychange', load);
       },
       { once: true }

@@ -60,6 +60,14 @@
   animation: settle 1s var(--ease-out) forwards;
 }
 
+/* Reached through a page crossfade (html.is-arriving, set in Layout.astro):
+   the crossfade is the entrance. Animating as well made Safari play it
+   twice: shown in the crossfade, then back to hidden and in again */
+.is-arriving :is(.animate-fade-in-up, .animate-fade-in, .animate-settle) {
+  opacity: 1;
+  animation: none;
+}
+
 /* ================================================
    STAGGERED ANIMATION DELAYS (80ms steps)
    ================================================ */

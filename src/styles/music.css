@@ -59,6 +59,18 @@
   transform: scale(0.99);
 }
 
+/* A new song: cover and words dip out, then back in with the new track */
+.np-art,
+.np-title,
+.np-artist {
+  transition: opacity 0.25s ease, transform 0.35s var(--ease-out);
+}
+
+.now-playing.is-changing :is(.np-art, .np-title, .np-artist) {
+  opacity: 0;
+  transform: translateY(4px);
+}
+
 .np-art {
   width: 4rem;
   height: 4rem;
@@ -136,13 +148,24 @@
    MUSIC - YEAR IN MUSIC
    ================================================ */
 
-/* Switching years: containers stay put, only their contents crossfade */
+/* Switching years: containers stay put, their contents dip out together,
+   then rise back in one after another (--i set in YearInMusic.astro) */
 .yim-panel [data-fade] {
-  transition: opacity 0.28s ease;
+  transition: opacity 0.4s ease, transform 0.55s var(--ease-out);
+  transition-delay: calc(var(--i, 0) * 45ms);
 }
 
 .yim-panel.is-updating [data-fade] {
   opacity: 0;
+  transform: translateY(6px);
+  transition-duration: 0.22s;
+  transition-delay: 0s;
+}
+
+/* The panel eases to its new height (e.g. a year with fewer concerts) */
+.yim-panel.is-resizing {
+  overflow: hidden;
+  transition: height 0.5s var(--ease-out);
 }
 
 .yim-head {
@@ -234,11 +257,38 @@
   transform: scale(0.96);
 }
 
-.yim-year[aria-selected="true"] {
+.yim-year[aria-selected="true"],
+.yim-indicator {
   background: color-mix(in srgb, var(--color-text) 12%, transparent);
   box-shadow:
     inset 0 1px 0 var(--glass-specular),
     inset 0 0 0 0.5px color-mix(in srgb, var(--color-text) 10%, transparent);
+}
+
+/* With JS, one bubble glides to the selected year instead of jumping
+   (placed by YearInMusic.astro) */
+.yim-indicator {
+  position: absolute;
+  top: 0.3rem;
+  bottom: 0.3rem;
+  left: 0;
+  width: var(--w, 0);
+  transform: translateX(var(--x, 0));
+  border-radius: var(--radius-pill);
+  pointer-events: none;
+}
+
+.yim-years.is-gliding .yim-indicator {
+  transition: transform 0.5s var(--ease-out), width 0.5s var(--ease-out);
+}
+
+.yim-years.has-indicator .yim-year {
+  position: relative;
+}
+
+.yim-years.has-indicator .yim-year[aria-selected="true"] {
+  background: none;
+  box-shadow: none;
 }
 
 .yim-stats {

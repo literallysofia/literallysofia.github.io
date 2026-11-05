@@ -234,7 +234,7 @@ const pad = (i: number) => String(i + 1).padStart(2, '0');
     concerts: { date: string; title: string; sub: string; place: string; favourite: boolean; upcoming: boolean }[];
   }
 
-  const FADE_MS = 280;
+  const FADE_MS = 220; // matches the fade-out in music.css
   const wait = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
   const reducedMotion = () => window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
@@ -246,6 +246,68 @@ const pad = (i: number) => String(i + 1).padStart(2, '0');
       img.onload = img.onerror = () => resolve();
       img.src = src;
     });
+
+  /** Every cover of a year, but a slow one never holds up the switch for long */
+  const preloadCovers = (view: View) =>
+    Promise.race([
+      Promise.all(view.columns.flatMap((c) => [c.first, ...c.rest]).map((item) => preload(item.image))),
+      wait(450),
+    ]);
+
+  /** Once the page is idle, fetch every year's big covers so switching years doesn't wait on them */
+  function warmCovers(views: View[]): void {
+    const warm = () => views.slice(1).forEach((view) => view.columns.forEach((c) => preload(c.first.image)));
+    if ('requestIdleCallback' in window) requestIdleCallback(warm, { timeout: 4000 });
+    else setTimeout(warm, 2000);
+  }
+
+  /** Stats first, then each column, then the concerts: the order things rise back in */
+  function setStagger(panel: HTMLElement): void {
+    panel.querySelectorAll<HTMLElement>('[data-fade]').forEach((el) => {
+      const stat = el.closest('.yim-stat');
+      const column = el.closest<HTMLElement>('[data-column]');
+      const i = stat ? [...stat.parentElement!.children].indexOf(stat) : column ? 3 + Number(column.dataset.column) : 6;
+      el.style.setProperty('--i', String(i));
+    });
+  }
+
+  /** The selected-year bubble: one element that glides between years */
+  function initIndicator(years: HTMLElement, tabs: HTMLButtonElement[]): () => void {
+    const indicator = document.createElement('span');
+    indicator.className = 'yim-indicator';
+    indicator.setAttribute('aria-hidden', 'true');
+    years.prepend(indicator);
+    years.classList.add('has-indicator');
+
+    const place = () => {
+      const selected = tabs.find((tab) => tab.getAttribute('aria-selected') === 'true');
+      if (!selected) return;
+      indicator.style.setProperty('--x', `${selected.offsetLeft}px`);
+      indicator.style.setProperty('--w', `${selected.offsetWidth}px`);
+    };
+    place();
+    // Placed before gliding is switched on, so it doesn't slide in on load
+    requestAnimationFrame(() => years.classList.add('is-gliding'));
+    const sizes = new ResizeObserver(place);
+    sizes.observe(years);
+    return place;
+  }
+
+  /** Ease the panel from its old height to the new one */
+  function resize(panel: HTMLElement, from: number): void {
+    const to = panel.offsetHeight;
+    if (from === to) return;
+    panel.style.height = `${from}px`;
+    panel.classList.add('is-resizing');
+    panel.offsetHeight; // apply the old height before animating
+    panel.style.height = `${to}px`;
+    const clear = () => {
+      panel.classList.remove('is-resizing');
+      panel.style.removeProperty('height');
+    };
+    panel.addEventListener('transitionend', (e) => e.target === panel && clear(), { once: true });
+    window.setTimeout(clear, 700); // in case transitionend never fires
+  }
 
   function setLink(el: HTMLAnchorElement, url: string | null): void {
     if (url) el.href = url;
@@ -308,6 +370,10 @@ const pad = (i: number) => String(i + 1).padStart(2, '0');
     if (!panel || !data) return;
     const views: View[] = JSON.parse(data.textContent ?? '[]');
     const tabs = [...document.querySelectorAll<HTMLButtonElement>('.yim-year')];
+    const years = document.querySelector<HTMLElement>('.yim-years');
+    const placeIndicator = years ? initIndicator(years, tabs) : () => {};
+    setStagger(panel);
+    warmCovers(views);
     let request = 0;
 
     tabs.forEach((tab) => {
@@ -316,15 +382,19 @@ const pad = (i: number) => String(i + 1).padStart(2, '0');
         const view = views.find((v) => String(v.year) === tab.dataset.year);
         if (!view) return;
         tabs.forEach((other) => other.setAttribute('aria-selected', String(other === tab)));
+        placeIndicator();
 
         const id = ++request;
         if (reducedMotion()) return render(panel, view);
 
-        // Fade contents out while the new covers load, swap, fade back in
+        // Fade contents out while the new covers load, swap, ease to the new
+        // height, then rise back in
         panel.classList.add('is-updating');
-        await Promise.all([wait(FADE_MS), ...view.columns.map((c) => preload(c.first.image))]);
+        await Promise.all([wait(FADE_MS), preloadCovers(view)]);
         if (id !== request) return; // a newer click took over
+        const from = panel.offsetHeight;
         render(panel, view);
+        resize(panel, from);
         requestAnimationFrame(() => panel.classList.remove('is-updating'));
       });
     });

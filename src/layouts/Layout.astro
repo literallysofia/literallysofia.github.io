@@ -86,6 +86,9 @@ const { title = siteConfig.siteTitle, description = siteConfig.siteDescription }
 
       document.addEventListener('astro:before-swap', function(e) {
         applyTheme(e.newDocument);
+        // Arrived by a page crossfade: entrance animations stay off for this
+        // page (Safari played them twice, see animations.css)
+        e.newDocument.documentElement.classList.add('is-arriving');
       });
     </script>
 
@@ -98,9 +101,13 @@ const { title = siteConfig.siteTitle, description = siteConfig.siteDescription }
 
 <script>
   import { prefetchNowPlaying } from '../scripts/now-playing';
+  import { decodeFirstImages, preloadNextPageImages } from '../scripts/images';
 
   // Get the Spotify track ready before anyone opens the music page
   document.addEventListener('astro:page-load', prefetchNowPlaying);
+  // The next page's first photos are loaded before it swaps in
+  document.addEventListener('astro:before-preparation', preloadNextPageImages);
+  document.addEventListener('astro:before-swap', decodeFirstImages);
 </script>
 
 <style is:global>

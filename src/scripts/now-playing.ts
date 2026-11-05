@@ -15,6 +15,8 @@ export interface Track {
   progressMs?: number;
   durationMs?: number;
   playedAt?: string;
+  /** When the response arrived (added here), so a cached answer's progress isn't read as fresh */
+  receivedAt: number;
 }
 
 export const endpoint: string = import.meta.env.PUBLIC_NOW_PLAYING_URL || '';
@@ -30,7 +32,7 @@ export function getNowPlaying(): Promise<Track | null> {
   const request = fetch(endpoint).then((res) => {
     if (res.status === 204) return null;
     if (!res.ok) throw new Error(String(res.status));
-    return res.json() as Promise<Track>;
+    return res.json().then((track: Omit<Track, 'receivedAt'>) => ({ ...track, receivedAt: Date.now() }));
   });
   cached = { at: Date.now(), request };
   // A failed fetch isn't kept, so the next poll tries again
