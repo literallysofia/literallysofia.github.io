@@ -174,15 +174,28 @@ header nav .nav-item a[aria-current="page"]::after {
 
 .menu {
   position: fixed;
-  inset: 0.375rem;
+  /* Tall as the large viewport, so on iPhone Safari the glass carries on
+     behind the floating toolbar instead of stopping above it */
+  inset: 0.375rem 0.375rem auto;
+  height: calc(100lvh - 0.75rem);
   z-index: 999;
   display: none;
   flex-direction: column;
-  /* Bottom padding scales with screen height: roomy on tall phones, tighter on short ones */
-  padding: 5rem 1rem clamp(1.25rem, 4svh, 2.25rem);
+  /* Bottom padding scales with screen height: roomy on tall phones, tighter
+     on short ones, plus whatever the toolbar covers (100lvh - 100svh) */
+  padding: 5rem 1rem calc(clamp(1.25rem, 4svh, 2.25rem) + 100lvh - 100svh);
   border-radius: 1.75rem;
   color: var(--color-text);
-  background: var(--sheet-glass);
+  /* Its own sheen, so it reads as glass edge to edge, even where there's
+     no page content behind it to blur */
+  background:
+    linear-gradient(
+      160deg,
+      color-mix(in srgb, var(--color-text) 7%, transparent),
+      color-mix(in srgb, var(--color-text) 2%, transparent) 45%,
+      color-mix(in srgb, var(--color-text) 5%, transparent)
+    ),
+    var(--sheet-glass);
   -webkit-backdrop-filter: blur(24px) saturate(1.6);
   backdrop-filter: blur(24px) saturate(1.6);
   box-shadow:
@@ -309,6 +322,35 @@ header .menu-rows {
 /* No page scrolling behind the open menu */
 html.menu-open {
   overflow: hidden;
+}
+
+/* The header bar clears while the menu is open, so the glass blurs the
+   page up there too rather than a flat strip of the header's colour */
+html.menu-open header {
+  background-color: transparent;
+  border-bottom-color: transparent;
+}
+
+/* Behind the sheet, the whole screen goes soft, so the page never shows
+   crisp in the margin around the glass */
+@media (max-width: 900px) {
+  header::before {
+    content: "";
+    position: fixed;
+    inset: 0 0 auto;
+    height: 100lvh;
+    z-index: 998;
+    background: color-mix(in srgb, var(--color-bg) 55%, transparent);
+    -webkit-backdrop-filter: blur(16px);
+    backdrop-filter: blur(16px);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.35s ease;
+  }
+
+  html.menu-open header::before {
+    opacity: 1;
+  }
 }
 
 /* ================================================
