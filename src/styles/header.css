@@ -331,18 +331,17 @@ html.menu-open header {
   border-bottom-color: transparent;
 }
 
-/* Behind the sheet, the whole screen goes soft, so the page never shows
-   crisp in the margin around the glass */
+/* Behind the sheet, the page goes away under a solid sheet of the page
+   colour. Solid on purpose: iPhone Safari tints its status bar and toolbar
+   from an opaque fixed layer touching the screen edges, so the bars match
+   it in both themes (a see-through one left them on the old colours) */
 @media (max-width: 900px) {
   header::before {
     content: "";
     position: fixed;
-    /* Pinned to the bottom edge, so Safari tints its toolbar area to match */
     inset: 0;
     z-index: 998;
-    background: color-mix(in srgb, var(--color-bg) 55%, transparent);
-    -webkit-backdrop-filter: blur(16px);
-    backdrop-filter: blur(16px);
+    background-color: var(--color-bg);
     opacity: 0;
     pointer-events: none;
     transition: opacity 0.35s ease;
