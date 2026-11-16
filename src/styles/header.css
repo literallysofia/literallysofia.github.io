@@ -174,16 +174,16 @@ header nav .nav-item a[aria-current="page"]::after {
 
 .menu {
   position: fixed;
-  /* Tall as the large viewport, so on iPhone Safari the glass carries on
-     behind the floating toolbar instead of stopping above it */
-  inset: 0.375rem 0.375rem auto;
-  height: calc(100lvh - 0.75rem);
+  /* A floating sheet inside the visible screen. iPhone Safari doesn't paint
+     the page behind its toolbar while the menu locks scrolling, so a taller
+     sheet got sliced flat there; this one keeps all four rounded corners */
+  inset: 0.375rem;
   z-index: 999;
   display: none;
   flex-direction: column;
   /* Bottom padding scales with screen height: roomy on tall phones, tighter
-     on short ones, plus whatever the toolbar covers (100lvh - 100svh) */
-  padding: 5rem 1rem calc(clamp(1.25rem, 4svh, 2.25rem) + 100lvh - 100svh);
+     on short ones */
+  padding: 5rem 1rem clamp(1.25rem, 4svh, 2.25rem);
   border-radius: 1.75rem;
   color: var(--color-text);
   /* Its own sheen, so it reads as glass edge to edge, even where there's
@@ -337,8 +337,8 @@ html.menu-open header {
   header::before {
     content: "";
     position: fixed;
-    inset: 0 0 auto;
-    height: 100lvh;
+    /* Pinned to the bottom edge, so Safari tints its toolbar area to match */
+    inset: 0;
     z-index: 998;
     background: color-mix(in srgb, var(--color-bg) 55%, transparent);
     -webkit-backdrop-filter: blur(16px);
