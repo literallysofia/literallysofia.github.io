@@ -1,9 +1,9 @@
 {
   "year": 2026,
-  "fetchedAt": "2026-11-09T15:26:10.011Z",
-  "minutes": 11050,
+  "fetchedAt": "2026-11-16T15:01:50.189Z",
+  "minutes": 11241,
   "topGenre": "alternative",
-  "artists": 655,
+  "artists": 657,
   "topAlbums": [
     {
       "name": "Ego Death At A Bachelorette Party",
@@ -54,7 +54,7 @@
     },
     {
       "name": "Zara Larsson",
-      "image": "https://i.scdn.co/image/ab67616100005174d519a7e349541cba8f85e965",
+      "image": "https://i.scdn.co/image/ab67616100005174cbfb8295e334da7f2c8b4bff",
       "url": "https://open.spotify.com/artist/1Xylc3o4UrD53lo9CvFvVg"
     },
     {
@@ -71,28 +71,28 @@
       "url": "https://open.spotify.com/track/0ElVpg9XIswx3XWs6kUj6a"
     },
     {
-      "name": "Drag Path",
-      "artist": "Twenty One Pilots",
-      "image": "https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/b7/d0/6d/b7d06d2d-2083-f417-b18d-f8ac862547b0/075679588968.jpg/768x768bb.jpg",
-      "url": "https://open.spotify.com/track/0TlcczkVTGpinpkGJpT81L"
-    },
-    {
       "name": "Parachute",
       "artist": "Hayley Williams",
       "image": "https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/25/67/85/2567853a-dfde-a051-6ab6-3ae574d49639/57942.jpg/768x768bb.jpg",
       "url": "https://open.spotify.com/track/5iALdwbhnUHa8zGStA3h1J"
     },
     {
-      "name": "Cosmic Love",
-      "artist": "Florence + The Machine",
-      "image": "https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/35/d0/12/35d01218-6e67-6d9f-f361-16a4bae153ca/26UM1IM40775.rgb.jpg/600x600bb.jpg",
-      "url": "https://open.spotify.com/track/0Fk9Byr0cEK7aNLJA44Nkf"
+      "name": "Drag Path",
+      "artist": "Twenty One Pilots",
+      "image": "https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/b7/d0/6d/b7d06d2d-2083-f417-b18d-f8ac862547b0/075679588968.jpg/768x768bb.jpg",
+      "url": "https://open.spotify.com/track/0TlcczkVTGpinpkGJpT81L"
     },
     {
       "name": "Nobody's Home",
       "artist": "Avril Lavigne",
       "image": "https://is1-ssl.mzstatic.com/image/thumb/Music125/v4/6b/ed/03/6bed032b-c6b7-7aed-bc60-4513d3a38a34/888880785732.jpg/768x768bb.jpg",
       "url": "https://open.spotify.com/track/0cZDC7uxNK8lqQ3GgyvCnD"
+    },
+    {
+      "name": "Cosmic Love",
+      "artist": "Florence + The Machine",
+      "image": "https://is1-ssl.mzstatic.com/image/thumb/Music115/v4/46/45/58/46455821-202f-5fac-ee42-87853cb9fa03/09UMGIM14223.rgb.jpg/600x600bb.jpg",
+      "url": "https://open.spotify.com/track/0Fk9Byr0cEK7aNLJA44Nkf"
     }
   ]
 }
