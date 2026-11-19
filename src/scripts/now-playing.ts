@@ -19,7 +19,30 @@ export interface Track {
   receivedAt: number;
 }
 
-export const endpoint: string = import.meta.env.PUBLIC_NOW_PLAYING_URL || '';
+/** In `npm run dev` a static track always stands in for the Worker (see devTrack) */
+export const DEV_MOCK = 'dev-mock';
+export const endpoint: string = import.meta.env.DEV ? DEV_MOCK : import.meta.env.PUBLIC_NOW_PLAYING_URL || '';
+
+/**
+ * A pretend song for local testing: always "playing", 3:12 long, looping
+ * from when the page loaded, so the progress bar and song-end refresh run.
+ * Never used in a build (import.meta.env.DEV is false there).
+ */
+const devStart = Date.now();
+function devTrack(): Track {
+  const durationMs = 192_000;
+  return {
+    isPlaying: true,
+    title: 'SUPERSCAR',
+    artist: 'ADÉLA',
+    album: 'PRIMA',
+    art: 'https://i.scdn.co/image/ab67616d0000b2733f5c7762607f34f41615db1a',
+    url: 'https://open.spotify.com/track/3OXswcKSaO6mNiNyeEbnAS',
+    progressMs: (Date.now() - devStart) % durationMs,
+    durationMs,
+    receivedAt: Date.now(),
+  };
+}
 
 /** Matches the Worker's 15s cache, so polling never asks twice for the same answer */
 const MAX_AGE_MS = 15_000;
@@ -28,6 +51,7 @@ let cached: { at: number; request: Promise<Track | null> } | undefined;
 
 /** The current track, `null` when Spotify has nothing to show (204); throws when the Worker fails */
 export function getNowPlaying(): Promise<Track | null> {
+  if (endpoint === DEV_MOCK) return Promise.resolve(devTrack());
   if (cached && Date.now() - cached.at < MAX_AGE_MS) return cached.request;
   const request = fetch(endpoint).then((res) => {
     if (res.status === 204) return null;

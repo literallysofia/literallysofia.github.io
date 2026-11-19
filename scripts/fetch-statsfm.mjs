@@ -53,8 +53,8 @@ const [stats, artists, tracks, albums, genres] = await Promise.all([
 ]);
 
 /** Artist names for an album, taken from one of its tracks in the top tracks */
-const albumArtist = (album) => {
-  const match = tracks.find(({ track }) => track.albums?.some((a) => a.id === album.id));
+const albumArtist = (album, from = tracks) => {
+  const match = from.find(({ track }) => track.albums?.some((a) => a.id === album.id));
   return match ? match.track.artists.map((a) => a.name).join(', ') : '';
 };
 
@@ -114,3 +114,49 @@ await mkdir(outDir, { recursive: true });
 const outFile = path.join(outDir, `${year}.json`);
 await writeFile(outFile, JSON.stringify(snapshot, null, 2) + '\n');
 console.log(`Wrote ${path.relative(process.cwd(), outFile)}: ${snapshot.minutes} min, top genre ${snapshot.topGenre}`);
+
+/**
+ * "On repeat": the most played track and album of the last 4 weeks, shown
+ * at the top of the music page. Refreshed on every run, whatever year the
+ * run snapshots. Written next to the year files, not among them, so the
+ * year switcher doesn't pick it up as a year.
+ */
+const DAYS = 28;
+const now = Date.now();
+const recentRange = `after=${now - DAYS * 86_400_000}&before=${now}`;
+const [recentTracks, recentAlbums] = await Promise.all([
+  get(`/top/tracks?${recentRange}&limit=50`),
+  get(`/top/albums?${recentRange}&limit=1`),
+]);
+
+/** Play count when the profile shares it (stats.fm leaves it out otherwise) */
+const plays = (item) => (Number.isFinite(item?.streams) ? item.streams : null);
+
+const topTrack = recentTracks[0];
+const topAlbum = recentAlbums[0];
+const recent = {
+  fetchedAt: new Date(now).toISOString(),
+  days: DAYS,
+  track: topTrack
+    ? {
+        name: topTrack.track.name,
+        artist: topTrack.track.artists.map((a) => a.name).join(', '),
+        image: await trackCover(topTrack.track),
+        url: spotifyUrl('track', topTrack.track.externalIds?.spotify),
+        plays: plays(topTrack),
+      }
+    : null,
+  album: topAlbum
+    ? {
+        name: topAlbum.album.name,
+        artist: albumArtist(topAlbum.album, recentTracks),
+        image: topAlbum.album.image ?? null,
+        url: spotifyUrl('album', topAlbum.album.externalIds?.spotify),
+        plays: plays(topAlbum),
+      }
+    : null,
+};
+
+const recentFile = path.join(outDir, '..', 'music-recent.json');
+await writeFile(recentFile, JSON.stringify(recent, null, 2) + '\n');
+console.log(`Wrote ${path.relative(process.cwd(), recentFile)}: ${recent.track?.name ?? '—'} / ${recent.album?.name ?? '—'}`);

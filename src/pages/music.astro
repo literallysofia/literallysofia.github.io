@@ -8,6 +8,7 @@
 import Layout from '../layouts/Layout.astro';
 import Header from '../components/Header.astro';
 import NowPlaying from '../components/NowPlaying.astro';
+import OnRepeat from '../components/OnRepeat.astro';
 import YearInMusic from '../components/YearInMusic.astro';
 import Footer from '../components/Footer.astro';
 ---
@@ -20,7 +21,11 @@ import Footer from '../components/Footer.astro';
       What's on repeat, year by year, and the shows I made it to.
     </p>
 
-    <NowPlaying />
+    <!-- On wide screens: a big cover with the song beside it (music.css) -->
+    <div class="music-now">
+      <NowPlaying />
+      <OnRepeat />
+    </div>
     <YearInMusic />
   </main>
   <Footer />

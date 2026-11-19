@@ -7,13 +7,16 @@
  * Polls every 30s, only while the tab is visible.
  */
 
-const endpoint = import.meta.env.PUBLIC_NOW_PLAYING_URL || '';
+// In `npm run dev` the shared script always serves a static test track
+import { endpoint } from '../scripts/now-playing';
 ---
 
 <!-- Collapsed until a track loads, then it opens and fades in (see music.css) -->
-<section class="now-playing" aria-labelledby="now-playing-label" data-endpoint={endpoint}>
+<!-- is-off: no player is coming (no Worker, or its first answer failed), so on repeat takes its place -->
+<section class:list={['now-playing', { 'is-off': !endpoint }]} aria-labelledby="now-playing-label" data-endpoint={endpoint}>
   <div class="np-inner">
-    <h2 id="now-playing-label" class="label">Now playing</h2>
+    <!-- The status line says it out loud ("Listening now"), so the heading is for screen readers -->
+    <h2 id="now-playing-label" class="sr-only">Now playing</h2>
     <a class="np-card" href="#" target="_blank" rel="noopener noreferrer">
       <img class="np-art" alt="" width="64" height="64" />
       <span class="np-info">
@@ -82,6 +85,7 @@ const endpoint = import.meta.env.PUBLIC_NOW_PLAYING_URL || '';
       section!.classList.remove('is-playing');
       setProgress();
       if (section!.classList.contains('is-ready')) field('status').textContent = 'Last played on Spotify';
+      else section!.classList.add('is-off');
     }
 
     async function load(): Promise<void> {
@@ -115,6 +119,7 @@ const endpoint = import.meta.env.PUBLIC_NOW_PLAYING_URL || '';
             ? { startedAt: track.receivedAt - (track.progressMs ?? 0), durationMs: track.durationMs }
             : null;
         setProgress();
+        section!.classList.remove('is-off');
         section!.classList.add('is-ready');
         requestAnimationFrame(() => section!.classList.remove('is-changing'));
       } catch {

@@ -1,0 +1,55 @@
+---
+/**
+ * OnRepeat Component
+ * One quiet line under the now playing hero: the track and album played
+ * most over the last 4 weeks, from src/data/music-recent.json (written by
+ * scripts/fetch-statsfm.mjs, refreshed weekly by the music workflow).
+ * Renders nothing without data.
+ */
+
+import recent from '../data/music-recent.json';
+
+interface Pick {
+  name: string;
+  artist: string;
+  image: string | null;
+  url: string | null;
+  plays: number | null;
+}
+
+const { track, album, days } = recent as { track: Pick | null; album: Pick | null; days: number };
+const weeks = Math.round(days / 7);
+const picks = [
+  { kind: 'Track', pick: track },
+  { kind: 'Album', pick: album },
+].filter((p): p is { kind: string; pick: Pick } => p.pick !== null);
+---
+
+{
+  picks.length > 0 && (
+    <section class="on-repeat" aria-labelledby="on-repeat-label">
+      <h2 id="on-repeat-label" class="or-label" title={`Most played over the last ${weeks} weeks`}>
+        On repeat
+      </h2>
+      {picks.map(({ kind, pick }) => (
+        <a
+          class="or-item"
+          href={pick.url ?? undefined}
+          target="_blank"
+          rel="noopener noreferrer"
+          title={`${kind} by ${pick.artist}`}
+        >
+          {pick.image ? (
+            <img class="or-art" src={pick.image} alt="" width="20" height="20" loading="lazy" />
+          ) : (
+            <span class="or-art" aria-hidden="true" />
+          )}
+          <span class="or-title">{pick.name}</span>
+          {pick.plays !== null && (
+            <span class="or-plays">{`${pick.plays}`}<span aria-hidden="true">×</span><span class="sr-only"> plays</span></span>
+          )}
+        </a>
+      ))}
+    </section>
+  )
+}
