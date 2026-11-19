@@ -26,11 +26,10 @@
       });
     }
 
-    function toggleTheme(): void {
+    function setTheme(dark: boolean): void {
       const html = document.documentElement;
       const body = document.body;
-      const isDark = html.classList.contains("dark-mode");
-      const nowLight = isDark;
+      const nowLight = !dark;
 
       // Update browser UI FIRST (before any CSS transition starts)
       html.style.colorScheme = nowLight ? "light" : "dark";
@@ -43,7 +42,9 @@
       body.classList.toggle("dark-mode", !nowLight);
       body.classList.toggle("light-mode", nowLight);
 
-      localStorage.setItem("theme", nowLight ? "light" : "dark");
+      try {
+        localStorage.setItem("theme", nowLight ? "light" : "dark");
+      } catch {}
       updateToggleIcons(!nowLight);
       document.dispatchEvent(new CustomEvent("themechange"));
     }
@@ -54,9 +55,71 @@
 
     // Attach click listeners to all toggle buttons
     toggleButtons.forEach((btn) => {
-      btn.addEventListener("click", toggleTheme);
+      btn.addEventListener("click", () => toggleTheme(centerOf(btn)));
+    });
+
+    themeSetter = setTheme;
+  }
+
+  type Origin = { x: number; y: number };
+  let themeSetter: (dark: boolean) => void = () => {};
+
+  const centerOf = (el: Element): Origin => {
+    const r = el.getBoundingClientRect();
+    return { x: r.left + r.width / 2, y: r.top + r.height / 2 };
+  };
+
+  /**
+   * The new theme spreads out as a circle from the button that was pressed,
+   * in one composited step: the page is snapshotted, switched with every
+   * colour transition off (html.theme-switching), then revealed. Before,
+   * each surface faded at its own speed and the switch looked patchy.
+   */
+  // The theme a switch still in flight is heading to, so a quick second
+  // tap flips back instead of asking for the same theme again
+  let pendingDark: boolean | null = null;
+  let inFlight = 0;
+  let latest = 0;
+  const revealStyle = document.createElement("style");
+
+  function toggleTheme(origin: Origin): void {
+    const html = document.documentElement;
+    const dark = !(pendingDark ?? html.classList.contains("dark-mode"));
+    const still = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (!document.startViewTransition || still) {
+      themeSetter(dark);
+      return;
+    }
+
+    const { x, y } = origin;
+    const radius = Math.hypot(Math.max(x, innerWidth - x), Math.max(y, innerHeight - y));
+    // The reveal is a plain CSS animation with this tap's numbers written in:
+    // iPhone Safari ignored the same animation started from script, so the
+    // theme just snapped
+    const circle = (r: number) => `circle(${r}px at ${x}px ${y}px)`;
+    revealStyle.textContent = `
+      @keyframes theme-reveal { from { clip-path: ${circle(0)}; } to { clip-path: ${circle(radius)}; } }
+      html.theme-switching::view-transition-new(root) { animation: theme-reveal 0.6s cubic-bezier(0.3, 0.6, 0.2, 1) both; }
+    `;
+    if (!revealStyle.isConnected) document.head.append(revealStyle);
+    html.classList.add("theme-switching");
+    pendingDark = dark;
+    const id = ++latest;
+    const switching = document.startViewTransition(() => themeSetter(dark));
+    inFlight++;
+    switching.finished.finally(() => {
+      // The last tap wins, even if the browser dropped a transition early
+      // without running its switch
+      if (id === latest) {
+        if (html.classList.contains("dark-mode") !== dark) themeSetter(dark);
+        pendingDark = null;
+      }
+      if (--inFlight === 0) html.classList.remove("theme-switching");
     });
   }
+
+  // The mobile menu's Light / Dark switch asks for a toggle from its own button
+  document.addEventListener("themetoggle", (e) => toggleTheme((e as CustomEvent<Origin>).detail));
 
   initThemeToggle();
 

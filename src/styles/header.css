@@ -167,8 +167,7 @@ header nav .nav-item a[aria-current="page"]::after {
 /* ================================================
    HEADER - MOBILE MENU (full-screen glass panel)
    ================================================
-   Grows out of the + button (transform-origin at the
-   button), with the links as one group of glass rows,
+   Morphs out of the + button (a growing clip), with the links as one group of glass rows,
    then a light/dark switch and socials at the bottom.
    ================================================ */
 
@@ -196,25 +195,65 @@ header nav .nav-item a[aria-current="page"]::after {
       color-mix(in srgb, var(--color-text) 5%, transparent)
     ),
     var(--sheet-glass);
-  -webkit-backdrop-filter: blur(24px) saturate(1.6);
-  backdrop-filter: blur(24px) saturate(1.6);
+  /* No backdrop-filter: what's behind the sheet is the solid backdrop
+     with its soft glows (see header::before), so blurring it looked the
+     same, and on iPhone Safari it cost ~300ms of blank screen before the
+     sheet first painted */
   box-shadow:
     inset 0 1px 0 var(--glass-specular),
-    inset 0 0 0 0.5px color-mix(in srgb, var(--color-text) 14%, transparent),
-    0 20px 50px rgba(0, 0, 0, 0.25);
-  /* Closed: a tiny bubble sitting on the + button */
-  transform-origin: calc(100% - var(--gutter) - 0.875rem) 1.875rem;
-  transform: scale(0.08);
+    inset 0 0 0 0.5px color-mix(in srgb, var(--color-text) 14%, transparent);
+  /* Closed: clipped down to the + button's circle. Opening grows the clip
+     out to the whole sheet, so the glass morphs out of the button at full
+     size: no squished text, nothing rescaled mid-animation */
+  --menu-button-top: 0.625rem;
+  --menu-button-right: calc(var(--gutter) - 0.375rem);
+  clip-path: inset(
+    var(--menu-button-top) var(--menu-button-right)
+    calc(100% - var(--menu-button-top) - 2.5rem) calc(100% - var(--menu-button-right) - 2.5rem)
+    round 1.25rem
+  );
   opacity: 0;
   pointer-events: none;
-  transition: transform 0.45s var(--ease-out), opacity 0.25s ease;
+  /* Closing: shrinks back into the button and fades out as it arrives */
+  transition:
+    clip-path 0.42s cubic-bezier(0.4, 0, 0.2, 1),
+    opacity 0.18s ease 0.26s;
 }
 
 .menu.open {
-  transform: none;
+  clip-path: inset(0 round 1.75rem);
   opacity: 1;
   pointer-events: auto;
-  transition: transform 0.55s cubic-bezier(0.2, 0.9, 0.25, 1), opacity 0.3s ease;
+  /* Opening: a soft spring that overshoots a hair and settles */
+  transition:
+    clip-path 0.6s linear(0, 0.16 6%, 0.48 14%, 0.78 24%, 0.95 33%, 1.02 42%, 1.025 50%, 1.012 60%, 1.003 75%, 1),
+    opacity 0.12s ease;
+}
+
+/* Liquid-glass rim: a thin bright edge that catches the light at the top
+   left and fades round the sides, drawn as a masked gradient border */
+.menu::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  padding: 1px;
+  border-radius: inherit;
+  background: linear-gradient(
+    150deg,
+    color-mix(in srgb, white 70%, transparent),
+    color-mix(in srgb, white 8%, transparent) 30%,
+    transparent 55%,
+    color-mix(in srgb, white 10%, transparent) 85%,
+    color-mix(in srgb, white 30%, transparent)
+  );
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask: linear-gradient(#000 0 0) content-box exclude, linear-gradient(#000 0 0);
+  pointer-events: none;
+}
+
+html.dark-mode .menu::before {
+  opacity: 0.45;
 }
 
 /* Links: one rounded group of rows, like iOS settings
@@ -241,6 +280,26 @@ header .menu-rows {
   opacity: 0;
   transform: translateY(6px);
   transition: opacity 0.3s ease, transform 0.45s var(--ease-out);
+}
+
+/* Pressing a row lights it up from inside, like tapping glass */
+.menu-row {
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Only the group's outer corners are round, so the dividers stay straight */
+.menu-row:first-child {
+  border-radius: 1.25rem 1.25rem 0 0;
+}
+
+.menu-row:last-child {
+  border-radius: 0 0 1.25rem 1.25rem;
+}
+
+.menu.open .menu-row:active {
+  background: color-mix(in srgb, var(--color-text) 7%, transparent);
+  transform: scale(0.985);
+  transition: background-color 0.1s ease, transform 0.15s ease;
 }
 
 .menu-row + .menu-row {
@@ -281,6 +340,7 @@ header .menu-rows {
 
 /* Light / Dark segmented control */
 .menu-theme {
+  position: relative;
   display: flex;
   padding: 0.2rem;
   border-radius: var(--radius-pill);
@@ -288,8 +348,32 @@ header .menu-rows {
   box-shadow: inset 0 0 0 0.5px color-mix(in srgb, var(--color-text) 12%, transparent);
 }
 
+/* One glass thumb that glides to the picked side (with a springy settle)
+   instead of each button lighting up on its own */
+.menu-theme::before {
+  content: "";
+  position: absolute;
+  inset: 0.2rem auto 0.2rem 0.2rem;
+  width: calc(50% - 0.2rem);
+  border-radius: var(--radius-pill);
+  background: color-mix(in srgb, var(--color-text) 16%, transparent);
+  box-shadow:
+    inset 0 1px 0 var(--glass-specular),
+    0 2px 8px rgba(0, 0, 0, 0.12);
+  transition: translate 0.55s linear(0, 0.2 8%, 0.6 20%, 0.9 32%, 1.04 44%, 1.05 52%, 1.02 64%, 1 80%, 1);
+}
+
+.menu-theme:has([data-theme-set="dark"][aria-pressed="true"])::before {
+  translate: 100% 0;
+}
+
 .menu-theme button {
+  position: relative;
   flex: 1;
+  /* No blue tap flash or text selection on iPhone: the thumb is the feedback */
+  -webkit-tap-highlight-color: transparent;
+  -webkit-user-select: none;
+  user-select: none;
   padding: 0.6rem 0;
   border: none;
   border-radius: var(--radius-pill);
@@ -303,8 +387,6 @@ header .menu-rows {
 
 .menu-theme button[aria-pressed="true"] {
   color: var(--color-text);
-  background: color-mix(in srgb, var(--color-text) 16%, transparent);
-  box-shadow: inset 0 1px 0 var(--glass-specular);
 }
 
 .menu-socials {
@@ -341,7 +423,13 @@ html.menu-open header {
     position: fixed;
     inset: 0;
     z-index: 998;
-    background-color: var(--color-bg);
+    /* Two soft glows (plum and candle) for the glass to bend light from,
+       fading out well before the edges, which stay the plain page colour
+       that Safari tints its bars with */
+    background:
+      radial-gradient(60% 40% at 85% 25%, color-mix(in srgb, var(--color-accent) 14%, transparent), transparent 70%),
+      radial-gradient(55% 35% at 15% 75%, color-mix(in srgb, var(--color-candle) 14%, transparent), transparent 70%),
+      var(--color-bg);
     opacity: 0;
     pointer-events: none;
     transition: opacity 0.35s ease;

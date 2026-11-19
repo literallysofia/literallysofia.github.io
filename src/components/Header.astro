@@ -125,7 +125,12 @@ const isCurrent = (url: string) => currentPath === url;
       segment.addEventListener("click", () => {
         const wantDark = segment.dataset.themeSet === "dark";
         const isDark = document.documentElement.classList.contains("dark-mode");
-        if (wantDark !== isDark) document.querySelector<HTMLButtonElement>(".theme-toggle")?.click();
+        if (wantDark === isDark) return;
+        // The new theme spreads out from the pressed segment (ThemeToggle.astro)
+        const r = segment.getBoundingClientRect();
+        document.dispatchEvent(
+          new CustomEvent("themetoggle", { detail: { x: r.left + r.width / 2, y: r.top + r.height / 2 } })
+        );
       })
     );
     document.addEventListener("themechange", syncSegments);

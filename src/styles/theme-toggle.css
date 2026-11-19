@@ -37,3 +37,32 @@
 .theme-toggle:active .toggle-icon {
   transform: rotate(40deg) scale(0.9);
 }
+
+/* ================================================
+   THEME SWITCH - CIRCLE REVEAL
+   ================================================
+   While switching (html.theme-switching, set in
+   ThemeToggle.astro) nothing fades on its own: the
+   whole page swaps at once and the new theme is
+   revealed as a circle from the pressed button.
+   ================================================ */
+
+html.theme-switching,
+html.theme-switching *,
+html.theme-switching *::before,
+html.theme-switching *::after {
+  transition: none !important;
+  /* One picture of the page, not separate morphing cards */
+  view-transition-name: none !important;
+}
+
+html.theme-switching::view-transition-old(root),
+html.theme-switching::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
+}
+
+/* The new theme draws on top while it grows */
+html.theme-switching::view-transition-new(root) {
+  z-index: 1;
+}
