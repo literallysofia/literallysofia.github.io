@@ -1,0 +1,47 @@
+name: Refresh concerts
+
+# Re-syncs every concert from the Notion "[DB] Events" database (with its
+# artists and venues) into src/data/concerts.json, the concerts list on the
+# music page. Runs on the 1st of every month and on demand (Actions →
+# Refresh concerts → Run workflow), e.g. right after adding a show in Notion.
+# Commits only when the list changes; deploy.yml redeploys after this
+# workflow (via workflow_run).
+# Needs the NOTION_TOKEN repository secret: a Notion connection token with
+# access to the Events, Artists and Venues databases.
+on:
+  schedule:
+    - cron: "0 7 1 * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Fetch concerts from Notion
+        env:
+          NOTION_TOKEN: ${{ secrets.NOTION_TOKEN }}
+        run: |
+          if [ -z "$NOTION_TOKEN" ]; then
+            echo "::error::Add a NOTION_TOKEN repository secret (Settings → Secrets and variables → Actions)."
+            exit 1
+          fi
+          node scripts/fetch-notion-concerts.mjs
+
+      - name: Commit if changed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add src/data/concerts.json
+          git diff --cached --quiet || git commit -m "chore: refresh concerts"
+          git push

@@ -4,8 +4,8 @@ name: Refresh music recap
 # for any past year. Commits src/data/music/<year>.json; deploy.yml
 # redeploys after this workflow (via workflow_run).
 # Uses the public stats.fm profile "literallysofia" (override with the
-# repository variable STATSFM_USER). Also syncs concerts from Notion when
-# the NOTION_TOKEN secret is set.
+# repository variable STATSFM_USER). Concerts sync on their own in
+# concerts.yml.
 on:
   schedule:
     - cron: "0 6 * * 1"
@@ -35,17 +35,10 @@ jobs:
           STATSFM_USER: ${{ vars.STATSFM_USER || 'literallysofia' }}
         run: node scripts/fetch-statsfm.mjs ${{ inputs.year && format('--year {0}', inputs.year) || '' }}
 
-      # Skipped until the NOTION_TOKEN secret exists
-      - name: Sync concerts from Notion
-        env:
-          NOTION_TOKEN: ${{ secrets.NOTION_TOKEN }}
-        if: env.NOTION_TOKEN != ''
-        run: node scripts/fetch-notion-concerts.mjs
-
       - name: Commit if changed
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add src/data/music src/data/music-recent.json src/data/concerts.json
+          git add src/data/music src/data/music-recent.json
           git diff --cached --quiet || git commit -m "chore: refresh music recap"
           git push

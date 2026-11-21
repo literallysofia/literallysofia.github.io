@@ -5,7 +5,7 @@ on:
     branches: [source]
   # Pushes made by the music and reading workflows don't trigger `push`, so redeploy after them
   workflow_run:
-    workflows: ["Refresh music recap", "Refresh reading"]
+    workflows: ["Refresh music recap", "Refresh reading", "Refresh concerts"]
     types: [completed]
   workflow_dispatch:
 
