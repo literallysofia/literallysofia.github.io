@@ -101,7 +101,7 @@
   {
     "name": "Rock in Rio Lisboa",
     "festival": true,
-    "favourite": false,
+    "favourite": true,
     "date": "2026-06-21",
     "artist": "Linkin Park, The Pretty Reckless",
     "support": [
@@ -280,7 +280,7 @@
   {
     "name": "The MAYHEM Ball",
     "festival": false,
-    "favourite": false,
+    "favourite": true,
     "date": "2025-10-31",
     "artist": "Lady Gaga",
     "support": [],
@@ -302,7 +302,7 @@
   {
     "name": "Valter Lobo Tour 2025",
     "festival": false,
-    "favourite": false,
+    "favourite": true,
     "date": "2025-10-18",
     "artist": "Valter Lobo",
     "support": [],
@@ -330,7 +330,7 @@
   {
     "name": "White Noise 10 Year Anniversary Tour",
     "festival": false,
-    "favourite": false,
+    "favourite": true,
     "date": "2025-07-06",
     "artist": "PVRIS",
     "support": [
@@ -343,7 +343,7 @@
   {
     "name": "Primavera Sound Porto",
     "festival": true,
-    "favourite": false,
+    "favourite": true,
     "date": "2025-06-14",
     "artist": "Parcels, Turnstile",
     "support": [
@@ -370,7 +370,7 @@
   {
     "name": "Primavera Sound Porto",
     "festival": true,
-    "favourite": false,
+    "favourite": true,
     "date": "2025-06-12",
     "artist": "Fontaines D.C., Charli xcx",
     "support": [
@@ -383,7 +383,7 @@
   {
     "name": "What Happened to the Earth?",
     "festival": false,
-    "favourite": false,
+    "favourite": true,
     "date": "2025-05-09",
     "artist": "Aurora",
     "support": [
@@ -397,7 +397,7 @@
   {
     "name": "The Clancy World Tour",
     "festival": false,
-    "favourite": false,
+    "favourite": true,
     "date": "2025-04-22",
     "artist": "Twenty One Pilots",
     "support": [
@@ -410,7 +410,7 @@
   {
     "name": "The Final Nights of Six",
     "festival": false,
-    "favourite": false,
+    "favourite": true,
     "date": "2025-04-03",
     "artist": "You Me At Six",
     "support": [
@@ -424,7 +424,7 @@
   {
     "name": "The Final Nights of Six",
     "festival": false,
-    "favourite": false,
+    "favourite": true,
     "date": "2025-04-02",
     "artist": "You Me At Six",
     "support": [
@@ -481,7 +481,7 @@
   {
     "name": "Teeth of God Tour",
     "festival": false,
-    "favourite": false,
+    "favourite": true,
     "date": "2024-11-18",
     "artist": "Sleep Token",
     "support": [
@@ -505,7 +505,7 @@
   {
     "name": "From Zero World Tour",
     "festival": false,
-    "favourite": false,
+    "favourite": true,
     "date": "2024-11-03",
     "artist": "Linkin Park",
     "support": [
@@ -531,7 +531,7 @@
   {
     "name": "The Trio Tour",
     "festival": false,
-    "favourite": false,
+    "favourite": true,
     "date": "2024-09-30",
     "artist": "MARO",
     "support": [],
@@ -542,7 +542,7 @@
   {
     "name": "Holding Absence Chepstow Castle",
     "festival": false,
-    "favourite": false,
+    "favourite": true,
     "date": "2024-08-10",
     "artist": "Holding Absence",
     "support": [
@@ -581,7 +581,7 @@
   {
     "name": "NOS Alive",
     "festival": true,
-    "favourite": false,
+    "favourite": true,
     "date": "2024-07-12",
     "artist": "Dua Lipa",
     "support": [
@@ -597,7 +597,7 @@
   {
     "name": "NOS Alive",
     "festival": true,
-    "favourite": false,
+    "favourite": true,
     "date": "2024-07-11",
     "artist": "Nothing But Thieves, The Smashing Pumpkins, Arcade Fire",
     "support": [
@@ -624,7 +624,7 @@
   {
     "name": "Resurrection Fest",
     "festival": true,
-    "favourite": false,
+    "favourite": true,
     "date": "2024-06-28",
     "artist": "The Offspring, Imminence",
     "support": [
@@ -638,7 +638,7 @@
   {
     "name": "Resurrection Fest",
     "festival": true,
-    "favourite": false,
+    "favourite": true,
     "date": "2024-06-27",
     "artist": "Bring Me The Horizon",
     "support": [
@@ -734,7 +734,7 @@
   {
     "name": "The Eras Tour",
     "festival": false,
-    "favourite": false,
+    "favourite": true,
     "date": "2024-05-25",
     "artist": "Taylor Swift",
     "support": [
@@ -828,7 +828,7 @@
   {
     "name": "Concrete Forever Tour",
     "festival": false,
-    "favourite": false,
+    "favourite": true,
     "date": "2024-02-05",
     "artist": "Bad Omens",
     "support": [
@@ -841,7 +841,7 @@
   {
     "name": "Concrete Forever Tour",
     "festival": false,
-    "favourite": false,
+    "favourite": true,
     "date": "2024-01-27",
     "artist": "Bad Omens",
     "support": [
@@ -854,7 +854,7 @@
   {
     "name": "Post Human: Nex_Gen Tour",
     "festival": false,
-    "favourite": false,
+    "favourite": true,
     "date": "2024-01-20",
     "artist": "Bring Me The Horizon",
     "support": [
@@ -894,7 +894,7 @@
   {
     "name": "TIMBRE Tour",
     "festival": false,
-    "favourite": false,
+    "favourite": true,
     "date": "2023-11-15",
     "artist": "Salvador Sobral",
     "support": [],
@@ -905,7 +905,7 @@
   {
     "name": "So Much For (Tour)dust",
     "festival": false,
-    "favourite": false,
+    "favourite": true,
     "date": "2023-10-23",
     "artist": "Fall Out Boy",
     "support": [
@@ -945,7 +945,7 @@
   {
     "name": "Vilar de Mouros",
     "festival": true,
-    "favourite": false,
+    "favourite": true,
     "date": "2023-08-23",
     "artist": "Enter Shikari, Limp Bizkit",
     "support": [],
@@ -969,7 +969,7 @@
   {
     "name": "Primavera Sound Porto",
     "festival": true,
-    "favourite": false,
+    "favourite": true,
     "date": "2023-06-10",
     "artist": "Halsey, Blur",
     "support": [
@@ -982,7 +982,7 @@
   {
     "name": "Music of the Spheres Tour",
     "festival": false,
-    "favourite": false,
+    "favourite": true,
     "date": "2023-05-21",
     "artist": "Coldplay",
     "support": [
@@ -1020,7 +1020,7 @@
   {
     "name": "This Is Why Tour",
     "festival": false,
-    "favourite": false,
+    "favourite": true,
     "date": "2023-04-20",
     "artist": "Paramore",
     "support": [
@@ -1060,7 +1060,7 @@
   {
     "name": "A Tour of The Concrete Jungle",
     "festival": false,
-    "favourite": false,
+    "favourite": true,
     "date": "2023-02-21",
     "artist": "Bad Omens",
     "support": [
@@ -1074,7 +1074,7 @@
   {
     "name": "Post Human: Survival Horror Tour",
     "festival": false,
-    "favourite": false,
+    "favourite": true,
     "date": "2023-02-15",
     "artist": "Bring Me The Horizon",
     "support": [
@@ -1100,7 +1100,7 @@
   {
     "name": "Past Lives Tour",
     "festival": false,
-    "favourite": false,
+    "favourite": true,
     "date": "2023-02-01",
     "artist": "L.S. Dunes",
     "support": [
@@ -1113,7 +1113,7 @@
   {
     "name": "Anywhere But Here Tour",
     "festival": false,
-    "favourite": false,
+    "favourite": true,
     "date": "2023-01-31",
     "artist": "PVRIS",
     "support": [
@@ -1126,7 +1126,7 @@
   {
     "name": "VOA / Evil Live",
     "festival": true,
-    "favourite": false,
+    "favourite": true,
     "date": "2022-07-03",
     "artist": "Bring Me The Horizon",
     "support": [],
@@ -1150,7 +1150,7 @@
   {
     "name": "SWARM / Return Tour",
     "festival": false,
-    "favourite": false,
+    "favourite": true,
     "date": "2022-06-12",
     "artist": "My Chemical Romance",
     "support": [
@@ -1163,7 +1163,7 @@
   {
     "name": "Future Nostalgia Tour",
     "festival": false,
-    "favourite": false,
+    "favourite": true,
     "date": "2022-06-06",
     "artist": "Dua Lipa",
     "support": [
@@ -1198,7 +1198,7 @@
   {
     "name": "The Bandito Tour",
     "festival": false,
-    "favourite": false,
+    "favourite": true,
     "date": "2019-03-17",
     "artist": "Twenty One Pilots",
     "support": [
@@ -1260,7 +1260,7 @@
   {
     "name": "Night People Tour",
     "festival": false,
-    "favourite": false,
+    "favourite": true,
     "date": "2017-03-08",
     "artist": "You Me At Six",
     "support": [
@@ -1341,7 +1341,7 @@
   {
     "name": "Younger Dreams Tour",
     "festival": false,
-    "favourite": false,
+    "favourite": true,
     "date": "2015-05-08",
     "artist": "Our Last Night",
     "support": [
@@ -1354,7 +1354,7 @@
   {
     "name": "Hesitant Alien Tour",
     "festival": false,
-    "favourite": false,
+    "favourite": true,
     "date": "2015-01-14",
     "artist": "Gerard Way",
     "support": [],
@@ -1365,7 +1365,7 @@
   {
     "name": "NOS Alive",
     "festival": true,
-    "favourite": false,
+    "favourite": true,
     "date": "2014-07-10",
     "artist": "Arctic Monkeys, Imagine Dragons",
     "support": [
@@ -1391,7 +1391,7 @@
   {
     "name": "The 2nd Law Tour",
     "festival": false,
-    "favourite": false,
+    "favourite": true,
     "date": "2013-06-10",
     "artist": "Muse",
     "support": [
@@ -1404,7 +1404,7 @@
   {
     "name": "Mylo Xylotour",
     "festival": false,
-    "favourite": false,
+    "favourite": true,
     "date": "2012-05-18",
     "artist": "Coldplay",
     "support": [
