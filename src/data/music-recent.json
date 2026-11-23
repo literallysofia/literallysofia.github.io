@@ -1,18 +1,18 @@
 {
-  "fetchedAt": "2026-11-19T17:46:54.188Z",
+  "fetchedAt": "2026-11-23T17:33:29.428Z",
   "days": 28,
   "track": {
     "name": "SUPERSCAR",
     "artist": "ADÉLA",
     "image": "https://i.scdn.co/image/ab67616d0000b2733f5c7762607f34f41615db1a",
     "url": "https://open.spotify.com/track/3OXswcKSaO6mNiNyeEbnAS",
-    "plays": 14
+    "plays": 13
   },
   "album": {
     "name": "PRIMA",
     "artist": "ADÉLA",
     "image": "https://i.scdn.co/image/ab67616d0000b273ac9d5d5263e9f03802d6864c",
     "url": "https://open.spotify.com/album/2yDFVH9CeOHt0sc9eI0aBs",
-    "plays": 45
+    "plays": 34
   }
 }

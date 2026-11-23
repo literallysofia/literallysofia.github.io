@@ -1,9 +1,9 @@
 {
   "year": 2026,
-  "fetchedAt": "2026-11-16T15:01:50.189Z",
-  "minutes": 11241,
-  "topGenre": "alternative",
-  "artists": 657,
+  "fetchedAt": "2026-11-23T17:33:29.426Z",
+  "minutes": 11417,
+  "topGenre": "pop",
+  "artists": 658,
   "topAlbums": [
     {
       "name": "Ego Death At A Bachelorette Party",
@@ -30,10 +30,10 @@
       "url": null
     },
     {
-      "name": "La La Land (Original Motion Picture Soundtrack)",
+      "name": "PRIMA",
       "artist": "",
-      "image": "https://is1-ssl.mzstatic.com/image/thumb/Music128/v4/71/02/80/7102805a-3fe3-72e7-86ff-a20f71b5ba33/00602557312201.rgb.jpg/768x768bb.jpg",
-      "url": null
+      "image": "https://i.scdn.co/image/ab67616d0000b273ac9d5d5263e9f03802d6864c",
+      "url": "https://open.spotify.com/album/2yDFVH9CeOHt0sc9eI0aBs"
     }
   ],
   "topArtists": [
@@ -83,16 +83,16 @@
       "url": "https://open.spotify.com/track/0TlcczkVTGpinpkGJpT81L"
     },
     {
+      "name": "hate that i made you love me - bunny hop montage version",
+      "artist": "Ariana Grande",
+      "image": "https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/dc/97/01/dc9701ca-b443-2a84-1966-bccee0adf0e7/26UMGIM66898.rgb.jpg/600x600bb.jpg",
+      "url": "https://open.spotify.com/track/3sLsICFrhFhXZlRFb3f2jB"
+    },
+    {
       "name": "Nobody's Home",
       "artist": "Avril Lavigne",
       "image": "https://is1-ssl.mzstatic.com/image/thumb/Music125/v4/6b/ed/03/6bed032b-c6b7-7aed-bc60-4513d3a38a34/888880785732.jpg/768x768bb.jpg",
       "url": "https://open.spotify.com/track/0cZDC7uxNK8lqQ3GgyvCnD"
-    },
-    {
-      "name": "Cosmic Love",
-      "artist": "Florence + The Machine",
-      "image": "https://is1-ssl.mzstatic.com/image/thumb/Music115/v4/46/45/58/46455821-202f-5fac-ee42-87853cb9fa03/09UMGIM14223.rgb.jpg/600x600bb.jpg",
-      "url": "https://open.spotify.com/track/0Fk9Byr0cEK7aNLJA44Nkf"
     }
   ]
 }
