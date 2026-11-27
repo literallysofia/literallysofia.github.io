@@ -13,6 +13,8 @@ import ExperienceRows from './ExperienceRows.astro';
 import EmailButton from './EmailButton.astro';
 import { aboutCover as cover, aboutGallery as photos } from '../data/gallery';
 import reading from '../data/reading.json';
+import recent from '../data/music-recent.json';
+import watching from '../data/watching.json';
 
 /**
  * Masonry that reads across rows: photo 1 starts column 1, photo 2
@@ -65,6 +67,13 @@ const endYear = (date: string) => date.match(/(\d{4})\s*$/)?.[1] ?? date;
 /** Currently reading, synced weekly from Goodreads (scripts/fetch-goodreads.mjs) */
 const { books } = reading;
 const oneAuthor = books.every((book) => book.author === books[0]?.author);
+
+/** Most-played track of the last 4 weeks, from stats.fm (scripts/fetch-statsfm.mjs) */
+const obsession = recent.track;
+
+/** Last watched film, synced weekly from Letterboxd (scripts/fetch-letterboxd.mjs) */
+const { film } = watching;
+const stars = film?.rating ? '★'.repeat(Math.floor(film.rating)) + (film.rating % 1 ? '½' : '') : '';
 ---
 
 <section class="about" aria-labelledby="about-heading">
@@ -80,10 +89,6 @@ const oneAuthor = books.every((book) => book.author === books[0]?.author);
       </div>
 
       <div class="about-likes animate-fade-in-up animate-delay-2">
-        <div>
-          <h2 class="label">Likes</h2>
-          <p>{likes}</p>
-        </div>
         <div>
           <h2 class="label">Currently</h2>
           <ul>
@@ -101,6 +106,16 @@ const oneAuthor = books.every((book) => book.author === books[0]?.author);
                     ))}
                     {oneAuthor && ` by ${books[0].author}`}
                   </>
+                ) : item.label === 'Looping' && obsession ? (
+                  <>
+                    <a class="link" href="/music">{obsession.name} →</a> by {obsession.artist}
+                  </>
+                ) : item.label === 'Just watched' && film ? (
+                  <>
+                    <a class="link" href={film.url} target="_blank" rel="noopener noreferrer">{film.title} ↗</a>
+                    {film.year && ` (${film.year})`}
+                    {stars && <span class="muted"> {stars}</span>}
+                  </>
                 ) : item.url ? (
                   <a class="link" href={item.url}>{item.value} →</a>
                 ) : (
@@ -109,6 +124,10 @@ const oneAuthor = books.every((book) => book.author === books[0]?.author);
               </li>
             ))}
           </ul>
+        </div>
+        <div>
+          <h2 class="label">Likes</h2>
+          <p>{likes}</p>
         </div>
       </div>
     </div>

@@ -1,9 +1,10 @@
 ---
 title: About
-likes: "Ceremonial matcha, pottery, live music, yoga, long fantasy books, and dogs"
+likes: "Ceremonial matcha, pottery, live music, yoga, anything artsy, fantasy books thick enough to be a weapon, and dogs"
 currently: [
-    { label: Reading, value: "nothing 😢" },
-    { label: Playing, value: "see music", url: "/music" },
+    { label: Reading, value: "between books (accepting recs)" },
+    { label: Looping, value: "whatever's on the music page", url: "/music" },
+    { label: Just watched, value: "nothing lately, touching grass" },
     { label: Learning, value: "anything AI (Claude is my bff)" }
 ]
 education: [

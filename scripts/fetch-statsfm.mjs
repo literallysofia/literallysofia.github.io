@@ -52,11 +52,27 @@ const [stats, artists, tracks, albums, genres] = await Promise.all([
   get(`/top/genres?${range}&limit=1`),
 ]);
 
-/** Artist names for an album, taken from one of its tracks in the top tracks */
+/**
+ * Artist names for an album: its own artists when stats.fm has them,
+ * else taken from one of its tracks in the top tracks
+ */
 const albumArtist = (album, from = tracks) => {
+  if (album.artists?.length) return album.artists.map((a) => a.name).join(', ');
   const match = from.find(({ track }) => track.albums?.some((a) => a.id === album.id));
   return match ? match.track.artists.map((a) => a.name).join(', ') : '';
 };
+
+/**
+ * Drop alternate-cut suffixes from a track name:
+ * "hate that i made you love me - bunny hop montage version" → "hate that i made you love me",
+ * "Song (Official Music Video)" → "Song"
+ */
+const CUT = /(montage|video|visuali[sz]er|lyric|sped up|slowed)/i;
+const trackName = (name) =>
+  name
+    .replace(/\s+-\s+([^-]+)$/, (m, tail) => (CUT.test(tail) ? '' : m))
+    .replace(/\s*[([]([^)\]]+)[)\]]\s*$/, (m, tail) => (CUT.test(tail) ? '' : m))
+    .trim();
 
 /**
  * Cover art for a track. stats.fm sometimes links a play to the music
@@ -82,7 +98,7 @@ async function trackCover(track) {
 
 const topTracks = await Promise.all(
   tracks.slice(0, LIMIT).map(async ({ track }) => ({
-    name: track.name,
+    name: trackName(track.name),
     artist: track.artists.map((a) => a.name).join(', '),
     image: await trackCover(track),
     url: spotifyUrl('track', track.externalIds?.spotify),
@@ -139,7 +155,7 @@ const recent = {
   days: DAYS,
   track: topTrack
     ? {
-        name: topTrack.track.name,
+        name: trackName(topTrack.track.name),
         artist: topTrack.track.artists.map((a) => a.name).join(', '),
         image: await trackCover(topTrack.track),
         url: spotifyUrl('track', topTrack.track.externalIds?.spotify),

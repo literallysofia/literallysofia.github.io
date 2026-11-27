@@ -547,11 +547,17 @@
   color: var(--color-text);
 }
 
+/* Long names wrap onto a second line, then clamp */
 .yim-item-text {
   min-width: 0;
-  white-space: nowrap;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
   overflow: hidden;
-  text-overflow: ellipsis;
+  overflow-wrap: anywhere;
+  line-height: 1.35;
+  text-align: left;
 }
 
 .yim-cover {

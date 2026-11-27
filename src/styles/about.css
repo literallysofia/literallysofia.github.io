@@ -51,9 +51,16 @@
 
 .about-likes {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr);
   gap: var(--spacing-md);
   font-size: var(--text-sm);
+}
+
+@media (max-width: 560px) {
+  .about-likes {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
 }
 
 .about-likes .label {

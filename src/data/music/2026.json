@@ -1,9 +1,9 @@
 {
   "year": 2026,
-  "fetchedAt": "2026-11-23T17:33:29.426Z",
-  "minutes": 11417,
+  "fetchedAt": "2026-11-27T10:06:23.295Z",
+  "minutes": 11584,
   "topGenre": "pop",
-  "artists": 658,
+  "artists": 660,
   "topAlbums": [
     {
       "name": "Ego Death At A Bachelorette Party",
@@ -31,7 +31,7 @@
     },
     {
       "name": "PRIMA",
-      "artist": "",
+      "artist": "ADÉLA",
       "image": "https://i.scdn.co/image/ab67616d0000b273ac9d5d5263e9f03802d6864c",
       "url": "https://open.spotify.com/album/2yDFVH9CeOHt0sc9eI0aBs"
     }
@@ -48,14 +48,14 @@
       "url": "https://open.spotify.com/artist/6Rx1JKzBrSzoKQtmbVmBnM"
     },
     {
-      "name": "Dua Lipa",
-      "image": "https://i.scdn.co/image/ab676161000051740c68f6c95232e716f0abee8d",
-      "url": "https://open.spotify.com/artist/6M2wZ9GZgrQXHCFfjv46we"
-    },
-    {
       "name": "Zara Larsson",
       "image": "https://i.scdn.co/image/ab67616100005174cbfb8295e334da7f2c8b4bff",
       "url": "https://open.spotify.com/artist/1Xylc3o4UrD53lo9CvFvVg"
+    },
+    {
+      "name": "Dua Lipa",
+      "image": "https://i.scdn.co/image/ab676161000051740c68f6c95232e716f0abee8d",
+      "url": "https://open.spotify.com/artist/6M2wZ9GZgrQXHCFfjv46we"
     },
     {
       "name": "Lady Gaga",
@@ -83,7 +83,7 @@
       "url": "https://open.spotify.com/track/0TlcczkVTGpinpkGJpT81L"
     },
     {
-      "name": "hate that i made you love me - bunny hop montage version",
+      "name": "hate that i made you love me",
       "artist": "Ariana Grande",
       "image": "https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/dc/97/01/dc9701ca-b443-2a84-1966-bccee0adf0e7/26UMGIM66898.rgb.jpg/600x600bb.jpg",
       "url": "https://open.spotify.com/track/3sLsICFrhFhXZlRFb3f2jB"

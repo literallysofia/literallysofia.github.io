@@ -13,7 +13,8 @@
     "preview": "astro preview",
     "astro": "astro",
     "sync-concerts": "node --env-file-if-exists=.env scripts/fetch-notion-concerts.mjs",
-    "sync-reading": "GOODREADS_USER=199717702 node scripts/fetch-goodreads.mjs"
+    "sync-reading": "GOODREADS_USER=199717702 node scripts/fetch-goodreads.mjs",
+    "sync-watching": "LETTERBOXD_USER=literallysofia node scripts/fetch-letterboxd.mjs"
   },
   "dependencies": {
     "astro": "^7.4.5"

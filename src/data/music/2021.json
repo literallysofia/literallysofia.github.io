@@ -1,6 +1,6 @@
 {
   "year": 2021,
-  "fetchedAt": "2026-11-03T20:06:07.540Z",
+  "fetchedAt": "2026-11-27T10:06:18.039Z",
   "minutes": 11801,
   "topGenre": "pop",
   "artists": 423,
@@ -31,7 +31,7 @@
     },
     {
       "name": "Future Nostalgia",
-      "artist": "",
+      "artist": "Dua Lipa",
       "image": "https://is1-ssl.mzstatic.com/image/thumb/Music116/v4/6c/11/d6/6c11d681-aa3a-d59e-4c2e-f77e181026ab/190295092665.jpg/768x768bb.jpg",
       "url": "https://open.spotify.com/album/0nRVAnU410D5nOyVWCadJh"
     }

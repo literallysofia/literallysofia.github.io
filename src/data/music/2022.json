@@ -1,6 +1,6 @@
 {
   "year": 2022,
-  "fetchedAt": "2026-11-03T20:06:06.713Z",
+  "fetchedAt": "2026-11-27T10:06:18.840Z",
   "minutes": 19064,
   "topGenre": "alternative",
   "artists": 620,
@@ -13,19 +13,19 @@
     },
     {
       "name": "Three Cheers for Sweet Revenge",
-      "artist": "",
+      "artist": "My Chemical Romance",
       "image": "https://i.scdn.co/image/ab67616d0000b273f02cbb14a2eb2835af6c68f6",
       "url": "https://open.spotify.com/album/6F0yiLAZ3ZEpZXHhYFRrr6"
     },
     {
       "name": "The Black Parade",
-      "artist": "",
+      "artist": "My Chemical Romance",
       "image": "https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/56/99/8a/56998a1c-efe7-fdf0-2b1d-e2da88d8df52/093624917724.jpg/768x768bb.jpg",
       "url": "https://open.spotify.com/album/0FZK97MXMm5mUQ8mtudjuK"
     },
     {
       "name": "tick, tick... BOOM! (Soundtrack from the Netflix Film)",
-      "artist": "Joshua Henry, Vanessa Hudgens, Robin de Jesus, Alexandra Shipp, Andrew Garfield, MJ Rodriguez, MJ Rodriguez, Alexandra Shipp",
+      "artist": "Jonathan Larson, Vanessa Hudgens, The Cast of Netflix's Film tick, tick... BOOM!, Andrew Garfield, Joshua Henry",
       "image": "https://is1-ssl.mzstatic.com/image/thumb/Music115/v4/7a/15/19/7a1519e7-52eb-d3cb-f577-2efaf44ca960/886449669110.jpg/768x768bb.jpg",
       "url": "https://open.spotify.com/album/4d1XaejoQ5r4jdkV8k5SNJ"
     },

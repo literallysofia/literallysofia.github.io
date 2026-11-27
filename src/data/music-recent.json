@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-11-23T17:33:29.428Z",
+  "fetchedAt": "2026-11-27T10:06:23.301Z",
   "days": 28,
   "track": {
     "name": "SUPERSCAR",
@@ -9,10 +9,10 @@
     "plays": 13
   },
   "album": {
-    "name": "PRIMA",
+    "name": "The Provocateur",
     "artist": "ADÉLA",
-    "image": "https://i.scdn.co/image/ab67616d0000b273ac9d5d5263e9f03802d6864c",
-    "url": "https://open.spotify.com/album/2yDFVH9CeOHt0sc9eI0aBs",
-    "plays": 34
+    "image": "https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/9c/0d/cb/9c0dcb16-e3ae-c7ae-9e68-73083300baac/25UMGIM95437.rgb.jpg/768x768bb.jpg",
+    "url": "https://open.spotify.com/album/7LWxUjVO8rhvEUQu2cyVgd",
+    "plays": 26
   }
 }

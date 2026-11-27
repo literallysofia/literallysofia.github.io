@@ -1,0 +1,41 @@
+name: Refresh watching
+
+# Weekly sync of the last watched film on the public Letterboxd profile
+# into src/data/watching.json (the about page's Watched line).
+# Commits only when the film changes; deploy.yml redeploys after this
+# workflow (via workflow_run).
+# Uses Letterboxd user "literallysofia" (override with the repository
+# variable LETTERBOXD_USER).
+on:
+  schedule:
+    - cron: "30 6 * * 1"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Fetch last watched film
+        env:
+          LETTERBOXD_USER: ${{ vars.LETTERBOXD_USER || 'literallysofia' }}
+        run: node scripts/fetch-letterboxd.mjs
+
+      - name: Commit if changed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add src/data/watching.json
+          git diff --cached --quiet || git commit -m "chore: refresh last watched film"
+          git pull --rebase
+          git push

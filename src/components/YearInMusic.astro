@@ -150,7 +150,6 @@ const pad = (i: number) => String(i + 1).padStart(2, '0');
                     <span class="muted">{pad(j + 1)}</span>
                     <span class="yim-item-text">
                       {item.name}
-                      {item.sub && <span class="muted"> · {item.sub}</span>}
                     </span>
                   </a>
                 </li>
@@ -192,7 +191,7 @@ const pad = (i: number) => String(i + 1).padStart(2, '0');
         <a target="_blank" rel="noopener noreferrer">
           <span class="yim-cover"></span>
           <span class="muted" data-num></span>
-          <span class="yim-item-text"><span data-name></span><span class="muted" data-sub></span></span>
+          <span class="yim-item-text" data-name></span>
         </a>
       </li>
     </template>
@@ -338,7 +337,6 @@ const pad = (i: number) => String(i + 1).padStart(2, '0');
         row.querySelector<HTMLElement>('.yim-cover')!.style.backgroundImage = item.image ? `url(${item.image})` : '';
         row.querySelector('[data-num]')!.textContent = String(j + 2).padStart(2, '0');
         row.querySelector('[data-name]')!.textContent = item.name;
-        row.querySelector('[data-sub]')!.textContent = item.sub ? ` · ${item.sub}` : '';
         return row;
       });
       el.querySelector('[data-rest]')!.replaceChildren(...rows);
